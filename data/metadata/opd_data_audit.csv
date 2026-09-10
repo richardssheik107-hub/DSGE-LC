@@ -1,0 +1,5 @@
+variable,start,end,frequency,obs_count,missing,duplicates,unit,negative_values,obvious_breaks,status,notes
+lc_spot,,,,,,,,,,LOGIN_REQUIRED,No OPD export inspected.
+lc_output_total,,,,,,,,,,LOGIN_REQUIRED,No OPD export inspected.
+spodumene_price,,,,,,,,,,LOGIN_REQUIRED,No OPD export inspected.
+battery_install_total_gwh,,,,,,,,,,LOGIN_REQUIRED,No OPD export inspected.
