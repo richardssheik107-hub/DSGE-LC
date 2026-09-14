@@ -1,0 +1,10 @@
+﻿month,total_lithium_ore_import,filtered_concentrate_import,filtered_share,value_origin,underlying_source,smm_source_url,source_grade,quality_flag
+2025-10,652000,531000,,DIRECT_SMM_VALUE,China Customs; SMM filtered estimate,https://www.hicend.com/ftpfile/static/file/upload/file/202512/07/5wB3osQQnC6gALb5.pdf,SOURCE_C,ACCEPTABLE_WITH_REVIEW
+2025-11,729000,678000,0.93,DIRECT_SMM_VALUE,China Customs; SMM filtered estimate,https://news.smm.cn/news/103685276,SOURCE_A,ACCEPTED
+2025-12,788500,628000,0.8,DIRECT_SMM_VALUE,China Customs; SMM filtered estimate,https://news.smm.cn/news/103734442,SOURCE_A,ACCEPTED
+2026-01,832000,636000,0.76,DIRECT_SMM_VALUE,China Customs; SMM filtered estimate,https://news.smm.cn/news/103818016,SOURCE_A,ACCEPTED
+2026-02,558000,438000,0.79,DIRECT_SMM_VALUE,China Customs; SMM filtered estimate,https://news.smm.cn/news/103818016,SOURCE_A,ACCEPTED
+2026-03,837400,602928,0.72,DERIVED_FROM_SMM_SHARE,China Customs; SMM filtered estimate,https://news.smm.cn/news/103877072,SOURCE_A,ACCEPTED_DERIVED
+2026-04,758000,507860,0.67,DERIVED_FROM_SMM_SHARE,China Customs; SMM filtered estimate,https://news.smm.cn/news/103918218,SOURCE_A,ACCEPTED_DERIVED
+2026-05,681000,,,NOT_AVAILABLE,China Customs; SMM filtered estimate,https://news.smm.cn/news/103965632,SOURCE_A,TOTAL_ONLY
+2026-06,768000,552960,0.72,DERIVED_FROM_SMM_SHARE,China Customs; SMM filtered estimate,https://news.smm.cn/news/104016985,SOURCE_A,ACCEPTED_DERIVED
