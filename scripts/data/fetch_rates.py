@@ -7,7 +7,9 @@ used.
 from __future__ import annotations
 
 import argparse
+import calendar
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date
 
 import pandas as pd
@@ -26,20 +28,35 @@ def years_between(start: str, end: str) -> list[tuple[str, str]]:
             for y in range(first.year, last.year + 1)]
 
 
+def months_between(start: str, end: str) -> list[tuple[str, str]]:
+    """Use bounded month requests; ChinaBond's multi-year response can time out."""
+    first, last = date.fromisoformat(start), date.fromisoformat(end)
+    periods: list[tuple[str, str]] = []
+    year, month = first.year, first.month
+    while (year, month) <= (last.year, last.month):
+        begin = max(first, date(year, month, 1))
+        finish = min(last, date(year, month, calendar.monthrange(year, month)[1]))
+        periods.append((begin.isoformat(), finish.isoformat()))
+        month += 1
+        if month == 13:
+            year, month = year + 1, 1
+    return periods
+
+
 def request_period(session: requests.Session, start: str, end: str) -> requests.Response:
     params = {"startTime": start, "endTime": end, "qxlx": "0,", "yqqxN": "N", "yqqxK": "K",
               "ycDefIds": f"{CURVE_ID},", "locale": "zh_CN"}
     last_error: Exception | None = None
-    for attempt in range(3):
+    for attempt in range(2):
         try:
-            response = session.post(QUERY_URL, params=params, timeout=90)
+            response = session.post(QUERY_URL, params=params, timeout=30)
             response.raise_for_status()
             if not response.content.startswith(b"["):
                 raise ValueError("response was not a JSON array")
             return response
         except (requests.RequestException, ValueError) as exc:
             last_error = exc
-            time.sleep(4 * (attempt + 1))
+            time.sleep(2 * (attempt + 1))
     raise RuntimeError(f"{start} to {end}: {last_error}")
 
 
@@ -49,12 +66,20 @@ def main() -> int:
     parser.add_argument("--end-date", default="2026-06-30")
     args = parser.parse_args()
     ensure_layout()
-    session = requests.Session()
-    session.headers["User-Agent"] = "Mozilla/5.0 (compatible; DSGE-LC public-data audit/1.0)"
     observations, raw_files, failures = [], [], []
-    for start, end in years_between(args.start_date, args.end_date):
-        try:
-            response = request_period(session, start, end)
+    def fetch(period: tuple[str, str]):
+        session = requests.Session()
+        session.headers["User-Agent"] = "Mozilla/5.0 (compatible; DSGE-LC public-data audit/1.0)"
+        return period, request_period(session, *period)
+
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        futures = [pool.submit(fetch, period) for period in months_between(args.start_date, args.end_date)]
+        for future in as_completed(futures):
+            try:
+                (start, end), response = future.result()
+            except Exception as exc:
+                failures.append(str(exc))
+                continue
             raw = save_bytes_once(RAW / "chinabond" / f"chinabond_gov_ytm_{start}_{end}.json", response.content)
             raw_files.append(raw)
             for curve in response.json():
@@ -62,9 +87,6 @@ def main() -> int:
                 if curve.get("workTime"):
                     observations.append({"date": curve["workTime"], "china_gov_3m": values.get(0.25),
                                          "china_gov_6m": values.get(0.5)})
-        except Exception as exc:
-            failures.append(str(exc))
-        time.sleep(1)
     frame = pd.DataFrame(observations)
     if not frame.empty:
         frame["date"] = pd.to_datetime(frame["date"], errors="coerce")

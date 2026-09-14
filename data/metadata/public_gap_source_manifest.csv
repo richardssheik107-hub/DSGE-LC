@@ -1,0 +1,79 @@
+variable,period,value,unit,statistic,source_grade,source_name,source_url,publication_date,original_data_provider,actual_or_forecast,definition_match,downloaded_raw,local_raw_path,candidate_status,notes
+battery_install,2026-03,56.5,GWh,MONTHLY_ACTUAL,SOURCE_B,中国汽车动力电池产业创新联盟,https://www.jtcopper.com/wp-content/uploads/2026/04/2026年3月动力电池月度信息.pdf,2026-04-16,中国汽车动力电池产业创新联盟,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,当月值，非累计
+battery_install_lfp,2026-03,45.8,GWh,MONTHLY_ACTUAL,SOURCE_B,中国汽车动力电池产业创新联盟,https://www.jtcopper.com/wp-content/uploads/2026/04/2026年3月动力电池月度信息.pdf,2026-04-16,中国汽车动力电池产业创新联盟,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,当月值，非累计
+battery_install_ncm,2026-03,10.7,GWh,MONTHLY_ACTUAL,SOURCE_B,中国汽车动力电池产业创新联盟,https://www.jtcopper.com/wp-content/uploads/2026/04/2026年3月动力电池月度信息.pdf,2026-04-16,中国汽车动力电池产业创新联盟,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,当月值，非累计
+battery_install,2026-04,62.4,GWh,MONTHLY_ACTUAL,SOURCE_B,第一财经（引中国汽车动力电池产业创新联盟）,https://www.yicai.com/news/103175233.html,2026-05-11,中国汽车动力电池产业创新联盟,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,当月值，非累计
+battery_install_lfp,2026-04,50.8,GWh,MONTHLY_ACTUAL,SOURCE_B,第一财经（引中国汽车动力电池产业创新联盟）,https://www.yicai.com/news/103175233.html,2026-05-11,中国汽车动力电池产业创新联盟,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,当月值，非累计
+battery_install_ncm,2026-04,11.5,GWh,MONTHLY_ACTUAL,SOURCE_B,第一财经（引中国汽车动力电池产业创新联盟）,https://www.yicai.com/news/103175233.html,2026-05-11,中国汽车动力电池产业创新联盟,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,当月值，非累计
+battery_install,2026-05,71.9,GWh,MONTHLY_ACTUAL,SOURCE_B,第一财经（引中国汽车动力电池产业创新联盟）,https://www.yicai.com/news/103225300.html,2026-06-11,中国汽车动力电池产业创新联盟,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,当月值，非累计
+battery_install_lfp,2026-05,58.4,GWh,MONTHLY_ACTUAL,SOURCE_B,第一财经（引中国汽车动力电池产业创新联盟）,https://www.yicai.com/news/103225300.html,2026-06-11,中国汽车动力电池产业创新联盟,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,当月值，非累计
+battery_install_ncm,2026-05,13.4,GWh,MONTHLY_ACTUAL,SOURCE_B,第一财经（引中国汽车动力电池产业创新联盟）,https://www.yicai.com/news/103225300.html,2026-06-11,中国汽车动力电池产业创新联盟,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,当月值，非累计
+battery_install,2026-06,76.5,GWh,MONTHLY_ACTUAL,SOURCE_B,界面新闻（引中国汽车动力电池产业创新联盟）,https://www.jiemian.com/article/14775234.html,2026-07-16,中国汽车动力电池产业创新联盟,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,当月值，非累计
+battery_install_lfp,2026-06,63.7,GWh,MONTHLY_ACTUAL,SOURCE_B,界面新闻（引中国汽车动力电池产业创新联盟）,https://www.jiemian.com/article/14775234.html,2026-07-16,中国汽车动力电池产业创新联盟,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,当月值，非累计
+battery_install_ncm,2026-06,12.7,GWh,MONTHLY_ACTUAL,SOURCE_B,界面新闻（引中国汽车动力电池产业创新联盟）,https://www.jiemian.com/article/14775234.html,2026-07-16,中国汽车动力电池产业创新联盟,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,当月值，非累计
+lc_output,2025-10,92260,metric tons,MONTHLY_ACTUAL,SOURCE_C,通惠期货年报（引SMM）,https://www.thqh.com.cn/A_UpLoad/upload_file/20260120171910_6397.pdf,2026-01-19,SMM,ACTUAL,True,False,,REVIEW_REQUIRED,研究报告表17；与2025-07至09重叠值完全一致
+lc_output,2025-11,95350,metric tons,MONTHLY_ACTUAL,SOURCE_C,SMM公开专题/研究报告交叉引用,https://news.smm.cn/news/103647188,2025-12-01,SMM,ACTUAL,True,False,,REVIEW_REQUIRED,SMM页面确认环比3%；精确值由引用SMM的研究资料披露
+lc_output,2025-12,99200,metric tons,MONTHLY_ACTUAL,SOURCE_C,通惠期货年报（引SMM）,https://www.thqh.com.cn/A_UpLoad/upload_file/20260120171910_6397.pdf,2026-01-19,SMM,ACTUAL,True,False,,REVIEW_REQUIRED,报告表17明确列示99200；非预测列
+lc_output,2026-01,97900,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开半年复盘,https://news.smm.cn/news/103999601,2026-07-10,SMM,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,公开正文明确1月9.79万吨
+lc_output,2026-02,83090,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开半年复盘,https://news.smm.cn/news/103999601,2026-07-10,SMM,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,公开正文明确2月8.31万吨；精确值由引用SMM正式报告交叉核验
+lc_output,2026-03,106620,metric tons,MONTHLY_ACTUAL,SOURCE_C,研究报告（引SMM）,https://www.hicend.com/ftpfile/static/file/upload/file/202604/24/PEtz6sWy4s6dQDG4.pdf,2026-04-24,SMM,ACTUAL,True,False,,REVIEW_REQUIRED,SMM公开半年复盘仅写约10.66万吨
+lc_output,2026-04,110030,metric tons,MONTHLY_ACTUAL,SOURCE_C,建信期货（引SMM）,https://www.ccbfutures.com/upload/20260511/20260511142513677.pdf,2026-05-11,SMM,ACTUAL,True,False,,REVIEW_REQUIRED,正式研究资料明确据SMM为110030吨
+lc_output,2026-05,113295,metric tons,MONTHLY_ACTUAL,SOURCE_C,五矿期货（引SMM）,https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/11/rptid/836511257711/index.phtml,2026-07-04,SMM,ACTUAL,True,False,,REVIEW_REQUIRED,正式研究资料明确5月实际产量
+lc_output,2026-06,115320,metric tons,MONTHLY_ACTUAL,SOURCE_C,紫金天风期货（引SMM）,https://finance.sina.cn/2026-07-07/detail-inihapna8101086.d.html,2026-07-07,SMM,ACTUAL,True,False,,REVIEW_REQUIRED,后续报告明确6月实际产量
+lc_spot,2025-10,75291.18,CNY/t,MONTHLY_MEAN,SOURCE_A,SMM公开专题,https://news.smm.cn/news/103685276,2025-12-25,SMM,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,后续月专题直接披露10月均价
+lc_spot,2025-11,86457.5,CNY/t,MONTHLY_MEAN,SOURCE_A,SMM公开专题,https://news.smm.cn/news/103685276,2025-12-25,SMM,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,正文直接披露11月月度均价
+lc_spot,2025-12,,CNY/t,EOM,SOURCE_A,SMM公开专题,https://news.smm.cn/news/103731790,2026-01-28,SMM,ACTUAL,True,False,,ACCESS_RESTRICTED,仅有月末118500和月均环比15%，未反推月均
+lc_spot,2026-01,156000,CNY/t,MONTHLY_MEAN,SOURCE_A,SMM公开半年复盘,https://news.smm.cn/news/103999601,2026-07-10,SMM,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,正文直接披露月度均价15.6万元/吨
+lc_spot,2026-02,149600,CNY/t,MONTHLY_MEAN,SOURCE_A,SMM公开半年复盘,https://news.smm.cn/news/103999601,2026-07-10,SMM,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,正文直接披露月度均价14.96万元/吨
+lc_spot,2026-03,156700,CNY/t,MONTHLY_MEAN,SOURCE_A,SMM公开贸易专题,https://news.smm.cn/news/103872101,2026-04-29,SMM,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,正文直接披露月度均价15.67万元/吨
+lc_spot,2026-04,,CNY/t,EOM,SOURCE_A,SMM公开专题,https://news.smm.cn/news/103918218,2026-06-01,SMM,ACTUAL,True,False,,ACCESS_RESTRICTED,仅披露月末177000和月均环比6%
+lc_spot,2026-05,,CNY/t,EOM,SOURCE_A,SMM公开专题,https://news.smm.cn/keywords/电池?page=78,2026-06-25,SMM,ACTUAL,True,False,,ACCESS_RESTRICTED,仅披露月末177500和月均环比12%
+lc_spot,2026-06,,CNY/t,DAILY_POINT,SOURCE_A,SMM公开专题,https://news.smm.cn/news/103999601,2026-07-10,SMM,ACTUAL,True,False,,ACCESS_RESTRICTED,公开正文未给出可核验的精确月均值
+spodumene_price,2025-10,944,USD/t,EOM,SOURCE_A,SMM公开专题,https://news.smm.cn/news/103637466,,SMM,ACTUAL,True,False,,VALIDATION_ONLY,
+spodumene_price,2025-11,1150,USD/t,EOM,SOURCE_A,SMM公开专题,https://news.smm.cn/news/103637466,,SMM,ACTUAL,True,False,,VALIDATION_ONLY,
+spodumene_price,2025-12,,USD/t,EOM,SOURCE_A,SMM受限历史页,https://price.smm.cn/?CategoryID=175&ItemId=14042&ProductId=202110220001,,SMM,ACTUAL,True,False,,ACCESS_RESTRICTED,
+spodumene_price,2026-01,2000,USD/t,APPROX_MONTHLY_MEAN,SOURCE_A,SMM公开半年复盘,https://steel.smm.cn/news/13879/103991010,,SMM,ACTUAL,True,False,,REVIEW_REQUIRED,
+spodumene_price,2026-02,1875,USD/t,DAILY_POINT,SOURCE_A,SMM公开半年复盘,https://steel.smm.cn/news/13879/103991010,,SMM,ACTUAL,True,False,,VALIDATION_ONLY,
+spodumene_price,2026-03,2081.4,USD/t,MONTHLY_MEAN,SOURCE_A,SMM公开贸易专题,https://news.smm.cn/news/103872101,,SMM,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+spodumene_price,2026-04,2507,USD/t,DAILY_POINT,SOURCE_A,SMM公开贸易专题,https://news.smm.cn/news/103872101,,SMM,ACTUAL,True,False,,VALIDATION_ONLY,
+spodumene_price,2026-05,,USD/t,HIGH_LOW_RANGE,SOURCE_A,SMM公开半年复盘,https://steel.smm.cn/news/13879/103991010,,SMM,ACTUAL,True,False,,VALIDATION_ONLY,
+spodumene_price,2026-06,2260,USD/t,EOM,SOURCE_A,SMM公开专题,https://news.smm.cn/keywords/锂?page=4,,SMM,ACTUAL,True,False,,VALIDATION_ONLY,
+lc_import_qty,2025-09,19597,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103587336,2025-10-24,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_export_qty,2025-09,151,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103587336,2025-10-24,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_import_qty,2025-10,23881,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103637466,2025-11-28,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_export_qty,2025-10,246,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103637466,2025-11-28,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_import_qty,2025-11,22055,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103685276,2025-12-25,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_export_qty,2025-11,759,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103685276,2025-12-25,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_import_qty,2025-12,23989,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103731790,2026-01-28,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_export_qty,2025-12,912,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103731790,2026-01-28,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_import_qty,2026-01,26858,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/live/detail/103817304,2026-03-20,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_export_qty,2026-01,472,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/live/detail/103817304,2026-03-20,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_import_qty,2026-02,26427,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/live/detail/103817304,2026-03-20,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_export_qty,2026-02,596,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/live/detail/103817304,2026-03-20,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_import_qty,2026-03,29974,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/live/detail/103864084,2026-04-20,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_export_qty,2026-03,448,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/live/detail/103864084,2026-04-20,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_import_qty,2026-04,32650,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/live/detail/103911121,2026-05-20,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_export_qty,2026-04,370,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/live/detail/103911121,2026-05-20,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_import_qty,2026-05,37555,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/live/detail/103965645,2026-06-22,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_export_qty,2026-05,201,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/live/detail/103965645,2026-06-22,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_import_qty,2026-06,25861,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/live/detail/104013273,2026-07-20,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lc_export_qty,2026-06,261,metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/live/detail/104013273,2026-07-20,中国海关,ACTUAL,True,False,,ACCEPTED_PUBLIC_PATCH,
+lithium_concentrate_import,2025-09,711000,physical metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103586849,2025-10-27,中国海关/SMM筛选,ACTUAL,False,False,,REVIEW_REQUIRED,锂辉石进口量（包含精矿与部分原矿）
+lithium_concentrate_import,2025-10,652000,physical metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103637466,2025-11-28,中国海关/SMM筛选,ACTUAL,False,False,,REVIEW_REQUIRED,锂辉石进口量（包含精矿与部分原矿）
+lithium_concentrate_import,2025-11,729000,physical metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103685276,2025-12-25,中国海关/SMM筛选,ACTUAL,False,False,,REVIEW_REQUIRED,锂辉石进口量（包含精矿与部分原矿）
+lithium_concentrate_import,2025-12,788500,physical metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103731790,2026-01-28,中国海关/SMM筛选,ACTUAL,False,False,,REVIEW_REQUIRED,锂辉石进口量（包含精矿与部分原矿）
+lithium_concentrate_import,2026-01,832000,physical metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103820156,2026-03-25,中国海关/SMM筛选,ACTUAL,False,False,,REVIEW_REQUIRED,锂辉石进口量（包含精矿与部分原矿）
+lithium_concentrate_import,2026-02,558000,physical metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103820156,2026-03-25,中国海关/SMM筛选,ACTUAL,False,False,,REVIEW_REQUIRED,锂辉石进口量（包含精矿与部分原矿）
+lithium_concentrate_import,2026-03,837400,physical metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103877072,2026-04-27,中国海关/SMM筛选,ACTUAL,False,False,,REVIEW_REQUIRED,锂辉石进口量（包含精矿与部分原矿）
+lithium_concentrate_import,2026-04,758000,physical metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103918218,2026-06-01,中国海关/SMM筛选,ACTUAL,False,False,,REVIEW_REQUIRED,锂辉石进口量（包含精矿与部分原矿）
+lithium_concentrate_import,2026-05,681000,physical metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/103965632,2026-06-22,中国海关/SMM筛选,ACTUAL,False,False,,REVIEW_REQUIRED,锂辉石进口量（包含精矿与部分原矿）
+lithium_concentrate_import,2026-06,768000,physical metric tons,MONTHLY_ACTUAL,SOURCE_A,SMM公开页面（引中国海关）,https://news.smm.cn/news/104016985,2026-07-29,中国海关/SMM筛选,ACTUAL,False,False,,REVIEW_REQUIRED,锂辉石进口量（包含精矿与部分原矿）
+cpi_yoy,2023-06,0.0,percent,YOY,SOURCE_A,国家统计局,https://www.stats.gov.cn/sj/zxfb/202307/t20230710_1941147.html,2023-07-10,国家统计局,ACTUAL,True,True,data/raw/public/gap_closure/nbs/cpi_2023_06.html,ACCEPTED_PUBLIC_PATCH,
+cpi_yoy,2023-09,0.0,percent,YOY,SOURCE_A,国家统计局,https://www.stats.gov.cn/sj/zxfb/202310/t20231013_1943548.html,2023-10-13,国家统计局,ACTUAL,True,True,data/raw/public/gap_closure/nbs/cpi_2023_09.html,ACCEPTED_PUBLIC_PATCH,
+cpi_yoy,2025-07,0.0,percent,YOY,SOURCE_A,国家统计局,https://www.stats.gov.cn/sj/zxfbhjd/202508/t20250809_1960635.html,2025-08-09,国家统计局,ACTUAL,True,True,data/raw/public/gap_closure/nbs/cpi_2025_07.html,ACCEPTED_PUBLIC_PATCH,
+ppi_yoy,2024-12,-2.3,percent,YOY,SOURCE_A,国家统计局,https://www.stats.gov.cn/sj/zxfb/202501/t20250109_1958169.html,2025-01-09,国家统计局,ACTUAL,True,True,data/raw/public/gap_closure/nbs/ppi_2024_12.html,ACCEPTED_PUBLIC_PATCH,
+ppi_yoy,2025-01,-2.3,percent,YOY,SOURCE_A,国家统计局,https://www.stats.gov.cn/xxgk/sjfb/zxfb2020/202502/t20250209_1958645.html,2025-02-09,国家统计局,ACTUAL,True,True,data/raw/public/gap_closure/nbs/ppi_2025_01.html,ACCEPTED_PUBLIC_PATCH,
+ppi_yoy,2025-07,-3.6,percent,YOY,SOURCE_A,国家统计局,https://www.stats.gov.cn/sj/zxfb/202508/t20250809_1960634.html,2025-08-09,国家统计局,ACTUAL,True,True,data/raw/public/gap_closure/nbs/ppi_2025_07.html,ACCEPTED_PUBLIC_PATCH,
+ppi_yoy,2026-03,0.5,percent,YOY,SOURCE_A,国家统计局,https://www.stats.gov.cn/sj/zxfb/202604/t20260410_1963263.html,2026-04-10,国家统计局,ACTUAL,True,True,data/raw/public/gap_closure/nbs/ppi_2026_03.html,ACCEPTED_PUBLIC_PATCH,
+china_gov_3m,2020-01/2026-06,,percent,DAILY_TO_MONTHLY_MEAN,SOURCE_A,ChinaBond,https://yield.chinabond.com.cn/cbweb-mn/yc/queryXyz,2026-09-14,ChinaBond,ACTUAL,True,True,data/raw/public/chinabond/,ACCEPTED_PUBLIC_PATCH,0.25Y国债收益率；官方日频成功并聚合月均
+china_gov_6m,2020-01/2026-06,,percent,DAILY_TO_MONTHLY_MEAN,SOURCE_A,ChinaBond,https://yield.chinabond.com.cn/cbweb-mn/yc/queryXyz,2026-09-14,ChinaBond,ACTUAL,True,True,data/raw/public/chinabond/,ACCEPTED_PUBLIC_PATCH,0.50Y国债收益率；官方日频成功并聚合月均
