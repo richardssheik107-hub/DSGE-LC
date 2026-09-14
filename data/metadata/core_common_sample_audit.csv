@@ -1,0 +1,7 @@
+﻿variable,available_start,available_end,missing_inside_common_window,common_start,common_end,common_months,data_gate
+lc_spot,2020-01,2025-09,0,,,,
+lc_output_total,2020-01,2025-09,0,,,,
+spodumene_price,2020-01,2025-09,0,,,,
+battery_install,2020-01,2025-09,0,,,,
+usd_cny_mean,2020-01,2025-09,0,,,,
+__COMMON__,,,0,2020-01,2025-09,69,GO

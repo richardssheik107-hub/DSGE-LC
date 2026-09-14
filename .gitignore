@@ -1,4 +1,11 @@
 __pycache__/
 *.py[cod]
 data/raw/commercial/opd/
+data/raw/commercial/
+data/interim/industry/
+data/processed/industry/
+data/processed/core_monthly_panel.csv
+data/动力电池行业数据库-20260323.xlsx
+data/钴锂小金属行业周度数据库-20251016.xlsx
 data/external/opd/
+data/external/

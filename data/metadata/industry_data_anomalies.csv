@@ -1,0 +1,4 @@
+﻿variable,date,value,previous_value,change_pct,reason,severity,action
+spodumene_price,2017-01-03/2019-07-02,0.0,,,613 zero placeholders before first positive quote,HIGH,REVIEW
+lc_output,2020-03,13260.0,6390.0,1.075117370892019,absolute month-on-month change above 100%; possible market move or definition/unit issue,MEDIUM,REVIEW
+battery_install,2020-03,2.7701,0.5981000000000001,3.631499749205817,absolute month-on-month change above 100%; possible market move or definition/unit issue,MEDIUM,REVIEW
