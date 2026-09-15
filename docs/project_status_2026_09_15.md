@@ -8,12 +8,12 @@
 
 - Data Freeze v1 已锁定并支持主实验；不再等待 Data Freeze v2 才继续研究。
 - Phase 1A-1、1A-2、1B 已完成，数据诊断、机制预检和 RW/AR/VAR/BVAR 基线均已形成。
-- Phase 2A、2B、2C 已完成：结构 MVP、Kalman/likelihood、constrained MLE / weak-ID preflight 均已通过阶段门槛。
+- Phase 2A、2B、2C、2D 已完成：结构 MVP、Kalman/likelihood、constrained MLE 和 Bayesian posterior convergence / identification 均已通过阶段门槛。
 - 当前主模型是 `M0_CORE5`；当前估计规格是 `M0_FULL14`。
-- 当前下一阶段是 **Phase 2D Bayesian prior design + MCMC + convergence / posterior-identification diagnostics**。
-- IRF、FEVD、历史分解、结构预测和 M1 真实数据估计仍处于 gate 之后，尚未开始。
+- 当前下一阶段是 **posterior IRF + FEVD + structural sign / economic-consistency checks**。
+- 历史分解、结构预测和 M1 真实数据估计仍处于后续 gate，尚未开始。
 
-项目实际进度已达到原中期计划约第 6 周（10 月中旬）的任务深度，较日历计划明显提前；但 posterior mixing、prior sensitivity、inventory-price weak direction 仍可能导致返工。
+项目实际进度已超过原中期计划约第 6 周（10 月中旬）的任务深度；posterior mixing 已通过，但 prior/fixed-assumption sensitivity 与 inventory-price weak direction 必须继续随结构结果报告。
 
 ## 2. Milestone table
 
@@ -26,8 +26,8 @@
 | Phase 2A | **COMPLETE** | `M0_CORE5` primary；`M1_CAPACITY6` extension | complete |
 | Phase 2B | **COMPLETE** | Gaussian state-space、Kalman、RTS、likelihood | complete |
 | Phase 2C | **COMPLETE** | `M0_FULL14` selected；synthetic + real multi-start pass | complete |
-| Phase 2D | **NEXT** | Bayesian posterior + convergence / identification | Phase 2C warnings carried forward |
-| Posterior IRF / FEVD | **GATED** | not run | Phase 2D convergence PASS |
+| Phase 2D | **COMPLETE** | Bayesian posterior convergence PASS；sensitivity completed | complete with warnings |
+| Posterior IRF / FEVD | **NEXT** | not run | propagate posterior uncertainty and warnings |
 | Historical decomposition | **GATED** | not run | posterior structural results PASS |
 | Structural OOS / futures | **LATER** | not run | core structural model stable |
 
@@ -84,7 +84,7 @@ Current model positioning is **semi-structural linear state-space MVP**. It shou
 
 ## 5. Current estimation status
 
-Phase 2C selected **`M0_FULL14`** with 14 future Bayesian free parameters:
+Phase 2C selected **`M0_FULL14`** with 14 Bayesian free parameters:
 
 `rho_d, rho_c, rho_q, rho_p, a_p, a_c, b_d, b_c, b_q, b_n, sigma_d, sigma_c, sigma_q, sigma_p`
 
@@ -102,7 +102,15 @@ Phase 2C key numerical results:
 - Powell cross-check and L-BFGS-B mode agree to numerical tolerance;
 - Hessian and OPG are full rank but weakly conditioned.
 
-This establishes a usable likelihood mode, not final statistical certainty.
+Phase 2D Bayesian results:
+
+- baseline four-chain posterior passed after one equal extension to 18,000 production draws per chain;
+- max R-hat `1.00788`, min bulk ESS `627.90`, min tail ESS `484.18`, max MCSE/SD `0.03991`;
+- flat and moderate-shrink prior sensitivity specifications converged without broad prior domination;
+- all four fixed-assumption specifications converged, with material `rho_d/sigma_d` battery-noise sensitivity and `b_n` sensitivity to fixed `rho_n`;
+- phase decision: **READY FOR POSTERIOR STRUCTURAL RESULTS — YES, WITH WARNINGS**.
+
+This establishes a converged posterior under the audited specifications, not final causal or structural certainty.
 
 ## 6. Main empirical findings carried forward
 
@@ -124,7 +132,7 @@ The following are the most defensible current conclusions and should not be over
 
 ### 7.2 Fixed measurement assumption sensitivity
 
-Higher battery measurement noise caused larger parameter drift in Phase 2C. Phase 2D must include explicit posterior sensitivity rather than silently treating `battery_sd=0.25` as known truth.
+Higher battery measurement noise causes material posterior drift in `rho_d/sigma_d`, while fixed `rho_n` materially affects `b_n`. These remain explicit warnings rather than reasons to select a preferred fixed value after seeing the data.
 
 ### 7.3 Small structural sample
 
@@ -159,28 +167,17 @@ Provider and usage layers remain separated:
 
 No provider may be silently spliced into the SMM canonical price series.
 
-## 10. Immediate next phase — Phase 2D
+## 10. Immediate next phase — posterior structural results
 
-Only the following should start next:
-
-1. fine likelihood-profile refinement for near-boundary weak parameters where useful;
-2. prior design independent of Phase 2C MLE centering;
-3. auditable multi-chain Bayesian sampling;
-4. rank-normalized split R-hat, bulk/tail ESS and MCSE diagnostics;
-5. posterior boundary/stability and prior-to-posterior contraction analysis;
-6. prior sensitivity and targeted `rho_n` / battery-noise sensitivity;
-7. posterior predictive sanity checks.
-
-IRF / FEVD / historical decomposition remain blocked until posterior convergence and identification diagnostics pass.
+Only posterior IRF, FEVD and structural sign/economic-consistency checks should start next. They must propagate posterior uncertainty and retain the `a_c`, inventory-price, prior and fixed-assumption warnings. Historical decomposition remains blocked until those structural-result checks pass.
 
 ## 11. Timeline to midterm
 
-The original schedule targeted State-Space + Kalman + likelihood by about 2026-10-19. These components plus constrained MLE preflight are already complete by 2026-09-15.
+The original schedule targeted State-Space + Kalman + likelihood by about 2026-10-19. These components, constrained MLE preflight and Phase 2D Bayesian convergence are already complete by 2026-09-15.
 
 Current revised sequence:
 
-- **now:** Phase 2D Bayesian estimation and convergence;
-- **after Phase 2D PASS:** posterior IRF + FEVD and structural sign/economic consistency checks;
+- **now:** posterior IRF + FEVD and structural sign/economic consistency checks;
 - **then:** historical decomposition of major episodes;
 - **then:** structural OOS and robustness;
 - **early November:** preliminary spot-futures extension if the core model is already stable;
@@ -192,13 +189,13 @@ When historical documents conflict, use this order:
 
 1. `docs/project_status_2026_09_15.md` — current project state.
 2. `README.md` — concise current navigation.
-3. latest phase memo (`phase2c...`, then future phase memos) — stage-specific evidence.
+3. latest phase memo (`phase2d_bayesian_estimation.md`) — stage-specific evidence.
 4. `docs/data_dictionary.md` — current data definitions and usage layers.
 5. `docs/high_value_industry_data_update.md` / `public_gap_closure_report.md` — latest data-layer detail.
 6. older acquisition / availability / OPD reports — historical snapshots only.
 
 ## 13. Current decision
 
-**Stop broad data expansion. Keep Data Freeze v1 immutable. Enter Phase 2D.**
+**Stop broad data expansion. Keep Data Freeze v1 immutable. Phase 2D is complete. Enter posterior IRF / FEVD preparation with warnings.**
 
-A Phase 2D failure would trigger a targeted estimation/specification revision, not a return to indiscriminate data hunting or automatic model expansion.
+Phase 2D did not run IRF, FEVD, historical decomposition, shock decomposition, structural OOS forecasting, or `M1` real-data estimation.
