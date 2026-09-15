@@ -224,3 +224,12 @@ ChinaBond 已恢复并成功取得 1,618 条 2020-01-02—2026-06-30 官方日�
 - 本阶段没有运行 Kalman、likelihood、参数估计、IRF、FEVD、历史分解或结构预测。
 - Next: **Phase 2B State-Space + Kalman + Likelihood**。
 - Data Freeze v2: **NOT READY / NON-BLOCKING**。
+
+## 16. Phase 2B State-Space / Kalman / Likelihood update
+
+- Phase 2B State-Space / Kalman / Likelihood: **COMPLETE**。
+- `M0_CORE5` 的 Gaussian state-space、缺失观测 Kalman filter、RTS state smoother 与 Gaussian innovation likelihood 已通过 fixed-design synthetic 和真实数据 plumbing 验证。
+- `OBS_MIXED4` 仍为 2021-01—2025-09、57个月；固定 Phase 2A design point 的 likelihood 可有限计算，全部 covariance audit 通过且未使用 jitter。
+- **NO structural parameters estimated yet**；本阶段没有 MLE、MAP、MCMC、IRF、FEVD 或历史分解。
+- Next: **Phase 2C constrained estimation preflight**，限于 parameter transforms、constrained MLE/MAP mode search、profile likelihood、multi-start、curvature/Hessian、boundary 与 weak-ID diagnostics。
+- Data Freeze v2: **NOT READY / NON-BLOCKING**。

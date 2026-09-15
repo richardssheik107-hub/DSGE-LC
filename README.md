@@ -77,7 +77,9 @@ Secondary data audit — **COMPLETE**.
 
 Phase 2A Structural MVP Design — **COMPLETE** (`M0_CORE5` primary; `M1_CAPACITY6` extension).
 
-Next: Phase 2B State-Space / Kalman / Likelihood.
+Phase 2B State-Space / Kalman / Likelihood — **COMPLETE** (`M0_CORE5`, fixed-design validation; no structural parameters estimated).
+
+Next: Phase 2C constrained estimation preflight.
 
 当前阶段已从“继续扩张数据源”切换到：
 

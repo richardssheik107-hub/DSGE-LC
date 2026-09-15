@@ -1,0 +1,22 @@
+{
+  "phase": "2B",
+  "primary_model": "M0_CORE5",
+  "primary_measurement": "OBS_MIXED4",
+  "secondary_measurement": "OBS_DLOG_MOY4",
+  "primary_initialization": "stationary",
+  "diffuse_scales": [10.0, 100.0],
+  "rho_n_grid": [0.5, 0.8, 0.95],
+  "battery_sd_grid": [0.1, 0.25, 0.5],
+  "synthetic_seed": 20260915,
+  "synthetic_T": 1200,
+  "synthetic_burn": 200,
+  "jitter_ladder": [0.0, 1e-12, 1e-10, 1e-8, 1e-6],
+  "maximum_allowed_jitter_scale": 1e-6,
+  "psd_tolerance": 1e-9,
+  "symmetry_tolerance": 1e-10,
+  "lyapunov_residual_tolerance": 1e-8,
+  "likelihood_perturbation_fraction": 0.05,
+  "continuity_step": 1e-5,
+  "missing_test_pattern": {"battery_every": 10, "output_every": 12, "spot_only_index": 25, "all_missing_index": 40},
+  "m1_smoke": {"capacity_lag": 10, "rho_k": 0.9, "gamma_m": 0.15, "periods": 300}
+}
