@@ -233,3 +233,14 @@ ChinaBond 已恢复并成功取得 1,618 条 2020-01-02—2026-06-30 官方日�
 - **NO structural parameters estimated yet**；本阶段没有 MLE、MAP、MCMC、IRF、FEVD 或历史分解。
 - Next: **Phase 2C constrained estimation preflight**，限于 parameter transforms、constrained MLE/MAP mode search、profile likelihood、multi-start、curvature/Hessian、boundary 与 weak-ID diagnostics。
 - Data Freeze v2: **NOT READY / NON-BLOCKING**。
+
+## 17. Phase 2C constrained estimation preflight update
+
+- Phase 2C constrained estimation preflight: **COMPLETE**。
+- Synthetic recovery 在固定 `T=1000`、seed `20260915`、16 starts 下 16/16 strict converged；normalized RMSE 为 `0.01975`。
+- 真实 `M0_FULL14` 在 `OBS_MIXED4` 的 32/32 starts 均得到有效成功解，28/32 位于 top cluster；Powell 与 L-BFGS-B mode 一致。
+- Selected estimation specification: **`M0_FULL14`（14 parameters）**；`a_p=0` 的 AP0 规格未触发。
+- 主要 warning：`a_c` 靠近零边界；`b_n/b_q/rho_p` 存在弱曲率组合；结果对较高 battery measurement noise 有固定假设敏感性。Hessian 与 OPG 均满秩，但不得据此声称参数已精确识别。
+- Phase 2D 仅进入 prior design、Bayesian estimation、convergence diagnostics 和 posterior-identification diagnostics。
+- **No posterior estimation yet; no IRF, no FEVD, no historical decomposition.**
+- Data Freeze v2: **NOT READY / NON-BLOCKING**。

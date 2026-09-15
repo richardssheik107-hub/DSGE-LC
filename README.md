@@ -79,7 +79,9 @@ Phase 2A Structural MVP Design — **COMPLETE** (`M0_CORE5` primary; `M1_CAPACIT
 
 Phase 2B State-Space / Kalman / Likelihood — **COMPLETE** (`M0_CORE5`, fixed-design validation; no structural parameters estimated).
 
-Next: Phase 2C constrained estimation preflight.
+Phase 2C constrained estimation preflight — **COMPLETE** (`M0_FULL14` selected for Phase 2D; weak-curvature and fixed-assumption sensitivity warnings retained).
+
+Next: Phase 2D Bayesian prior design, estimation, convergence diagnostics and posterior-identification diagnostics. IRF/FEVD/historical decomposition remain gated.
 
 当前阶段已从“继续扩张数据源”切换到：
 
