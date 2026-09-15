@@ -7,6 +7,8 @@ data/processed/industry/
 data/processed/core_monthly_panel.csv
 data/processed/core_monthly_panel_v2_candidate.csv
 data/processed/core_monthly_panel_v2.csv
+data/processed/phase1/
+outputs/phase1/
 data/动力电池行业数据库-20260323.xlsx
 data/钴锂小金属行业周度数据库-20251016.xlsx
 data/external/opd/

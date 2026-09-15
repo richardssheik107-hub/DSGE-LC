@@ -67,6 +67,8 @@ Data Freeze v2 的理想目标是 `2020-01—2026-06` 共 78 个月。现在只�
 
 ## Current research phase
 
+Phase 1A-1 descriptive diagnostics completed. Data Freeze v1 is ready for Phase 1A-2 diagnostics.
+
 当前阶段已从“继续扩张数据源”切换到：
 
 ```text

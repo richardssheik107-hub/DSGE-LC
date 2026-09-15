@@ -1,0 +1,24 @@
+{
+  "sample_start": "2020-01",
+  "sample_end": "2025-09",
+  "expected_months": 69,
+  "rolling_window": 12,
+  "large_change_threshold_pct": 30.0,
+  "extreme_change_threshold_pct": 50.0,
+  "data_freeze_sha256": "9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5",
+  "core_variables": [
+    "lc_spot",
+    "lc_output",
+    "spodumene_price",
+    "battery_install",
+    "usd_cny_mean"
+  ],
+  "units": {
+    "lc_spot": "CNY/t",
+    "lc_output": "metric tons",
+    "spodumene_price": "USD/t concentrate",
+    "spodumene_cny_t": "CNY/t concentrate",
+    "battery_install": "GWh",
+    "usd_cny_mean": "CNY per USD"
+  }
+}

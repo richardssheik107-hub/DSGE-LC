@@ -191,3 +191,10 @@ ChinaBond 已恢复并成功取得 1,618 条 2020-01-02—2026-06-30 官方日�
 **Stop broad data expansion. Start empirical work now.**
 
 尾部 SMM 授权补齐作为并行支线，不再阻塞 Phase 1。
+
+## 12. Phase 1A-1 update
+
+- Phase 1A-1 descriptive diagnostics: **COMPLETE**。
+- 已基于 Data Freeze v1 完成统一变换、数据 QA、描述统计、核心图形、12个月滚动描述、同期相关性和异常保留审计。
+- 未执行平稳性检验、领先滞后扫描、结构断点检验或 margin proxy。
+- Next: **Phase 1A-2 stationarity / lag / break diagnostics**。
