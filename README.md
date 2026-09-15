@@ -71,7 +71,9 @@ Phase 1A-1 descriptive diagnostics — **COMPLETE**.
 
 Phase 1A-2 mechanism diagnostics — **COMPLETE**.
 
-Next: RW / AR / VAR / BVAR baselines.
+Phase 1B reduced-form baselines — **COMPLETE**.
+
+Next: MVP Structural Model.
 
 当前阶段已从“继续扩张数据源”切换到：
 
@@ -126,6 +128,7 @@ Data Freeze v1
 - [论文/研究整体计划](docs/research_master_plan.md)
 - [稀疏观测数据策略](docs/data_strategy_sparse_observations.md)
 - [Phase 1 实验计划](docs/phase1_experiment_plan.md)
+- [Phase 1B reduced-form baseline results](docs/phase1b_baseline_results_memo.md)
 - [2026 年 11 月中旬中期答辩执行计划](docs/midterm_plan_2026_11.md)
 - [行业数据正式入库审计](docs/industry_data_ingestion_audit.md)
 - [公开渠道补缺报告](docs/public_gap_closure_report.md)

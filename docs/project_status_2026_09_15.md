@@ -204,4 +204,13 @@ ChinaBond 已恢复并成功取得 1,618 条 2020-01-02—2026-06-30 官方日�
 - Phase 1A-2 mechanism diagnostics: **COMPLETE**。
 - 已在 Data Freeze v1 上完成 ADF/KPSS、Zivot–Andrews、受限 lead-lag、MoY 季节性稳健性、早期 2020 稳健性、HAC 辅助确认、margin proxy 与最多两个断点的 BIC 筛选。
 - Cost → Price 形成 0–1 个月强候选；Margin → Future Output Growth 形成 9–11 个月中等候选；其他方向保留为弱或无清晰证据，不作因果解释。
-- Next: **Phase 1B reduced-form baselines（RW / AR / VAR / BVAR）**。
+- Follow-up: Phase 1B reduced-form baselines 已完成，见第 14 节。
+
+## 14. Phase 1B update
+
+- Phase 1B reduced-form baselines: **COMPLETE**。
+- 已在 Data Freeze v1 上完成 RW / AR / VAR / independent-equation Minnesota BVAR 的严格 expanding-window OOS，正式 horizons 为 1/3/6 个月。
+- 主结果使用 `RELEASE_SAFE_APPROXIMATION`；这是严格时间顺序 OOS，但不是 full vintage real-time OOS。
+- 普通 VAR 未稳定改善 AR/RW；BVAR shrinkage 明显改善小样本 VAR，其中 MIXED4 相对 AR 在三个期限均有增量，但相对 RW 仅 H1 明确胜出，结论受 horizon 与评价窗口约束。
+- 所有主模型 origin 均稳定，无 singular fit、numerical fallback 或未审计失败。
+- Next: **Phase 2 MVP Structural Model**，先完成 structural equations、state definitions、steady state / local stability 与 identification pre-check；尚未开始 Kalman、MCMC、IRF 或 FEVD。
