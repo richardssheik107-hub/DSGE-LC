@@ -1,29 +1,48 @@
 # Project Status — 2026-09-15
 
-本页作为当前仓库的**项目状态快照**。它不替代历史审计报告，而是用于回答“现在做到哪一步、哪些数据已完成、还缺什么、下一步做什么”。
+本页是仓库的**当前状态源**，用于回答“现在做到哪里、哪些结果已冻结、还缺什么、下一步是什么”。历史数据获取与阶段审计请见各自 memo，不应覆盖本页的当前状态。
 
 ## 1. Executive summary
 
-当前结论：
+截至 2026-09-15：
 
-- 核心数据阶段已经通过。
-- Data Freeze v1 已可直接进入 Phase 1 实证。
-- 公开宏观数据层基本完成到 2026-06。
-- Robustness / Validation 层已经建立。
-- 真正剩余的核心数据工作只剩 SMM 两条价格尾部和 7 个月产量精确值核验。
-- 当前主线应从“继续找数据”切换到 diagnostics、baselines 和结构模型。
+- Data Freeze v1 已锁定并支持主实验；不再等待 Data Freeze v2 才继续研究。
+- Phase 1A-1、1A-2、1B 已完成，数据诊断、机制预检和 RW/AR/VAR/BVAR 基线均已形成。
+- Phase 2A、2B、2C 已完成：结构 MVP、Kalman/likelihood、constrained MLE / weak-ID preflight 均已通过阶段门槛。
+- 当前主模型是 `M0_CORE5`；当前估计规格是 `M0_FULL14`。
+- 当前下一阶段是 **Phase 2D Bayesian prior design + MCMC + convergence / posterior-identification diagnostics**。
+- IRF、FEVD、历史分解、结构预测和 M1 真实数据估计仍处于 gate 之后，尚未开始。
 
-## 2. Data Freeze v1
+项目实际进度已达到原中期计划约第 6 周（10 月中旬）的任务深度，较日历计划明显提前；但 posterior mixing、prior sensitivity、inventory-price weak direction 仍可能导致返工。
 
-| Item | Status |
-|---|---|
-| Common start | 2020-01 |
-| Common end | 2025-09 |
-| Common months | 69 |
-| Internal missing | 0 |
-| Data gate | GO |
+## 2. Milestone table
 
-核心变量：
+| Milestone | Status | Key result | Next dependency |
+|---|---|---|---|
+| Data Freeze v1 | **READY / LOCKED** | 2020-01—2025-09，69 个月，0 internal missing | none |
+| Phase 1A-1 | **COMPLETE** | 描述统计、统一变换、季节性/异常审计 | complete |
+| Phase 1A-2 | **COMPLETE** | ADF/KPSS/ZA、lead-lag、break、margin proxy | complete |
+| Phase 1B | **COMPLETE** | RW/AR/VAR/BVAR expanding-window OOS | complete |
+| Phase 2A | **COMPLETE** | `M0_CORE5` primary；`M1_CAPACITY6` extension | complete |
+| Phase 2B | **COMPLETE** | Gaussian state-space、Kalman、RTS、likelihood | complete |
+| Phase 2C | **COMPLETE** | `M0_FULL14` selected；synthetic + real multi-start pass | complete |
+| Phase 2D | **NEXT** | Bayesian posterior + convergence / identification | Phase 2C warnings carried forward |
+| Posterior IRF / FEVD | **GATED** | not run | Phase 2D convergence PASS |
+| Historical decomposition | **GATED** | not run | posterior structural results PASS |
+| Structural OOS / futures | **LATER** | not run | core structural model stable |
+
+## 3. Data Freeze v1
+
+Current canonical main-sample version:
+
+- common start: `2020-01`
+- common end: `2025-09`
+- common months: `69`
+- internal missing: `0`
+- data gate: `GO`
+- SHA256: `9146B3C858AA0F1BE5FA59720B0446515F0A21C60FA032712F76DD248AEAB7F5`
+
+Core variables:
 
 - `lc_spot`
 - `lc_output`
@@ -31,216 +50,155 @@
 - `battery_install`
 - `usd_cny_mean`
 
-四条产业核心序列均已完成定义审计、单位审计、缺失审计和来源治理。
+Derived `spodumene_cny_t = spodumene_price × usd_cny_mean` is a RMB-denominated SC6 price proxy and **not** a full lithium-carbonate production-cost series.
 
-## 3. Public / macro layer
+## 4. Current structural model
 
-已完成：
+Primary model: **`M0_CORE5`**
 
-| Variable | Status through 2026-06 |
-|---|---|
-| USD/CNY | 78/78 |
-| CPI YoY | 78/78 |
-| PPI YoY | 78/78 |
-| NEV production | 78/78 |
-| NEV sales | 78/78 |
-| China Gov 3M | 78/78 |
-| China Gov 6M | 78/78 |
-| Battery installation | complete through 2026-06 |
-| LFP/NCM installation | complete through 2026-06 |
-| LC import/export public tail | available through 2026-06; canonical merge remains reconciliation-governed |
+State order:
 
-ChinaBond 已恢复并成功取得 1,618 条 2020-01-02—2026-06-30 官方日频国债曲线观测。
+`[d, c, q, n, p]`
 
-## 4. Robustness / validation layer
+Observation order:
 
-### Robustness
+`[spot, ore_cost, output, battery]`
 
-- `lc_spot_mysteel`
-- `spodumene_mysteel`
-- `spodumene_concentrate_import_smm_filtered`
-- route-specific LC output
-- LFP/NCM battery installation
-- LC trade auxiliary series
+Shock order:
 
-### Validation only
+`[demand, cost, supply, price]`
 
-- SMM LC inventory components
-- Mysteel Australian-SC6-route LC production cost
-- Mysteel Australian-SC6-route spot margin
+Primary structural measurement set:
 
-库存自 2026-05 起存在明确样本扩充和字段定义变化，必须在同一 methodology regime 内使用。
+- `OBS_MIXED4`
+- 2021-01—2025-09
+- `N=57`
+- Spot dlog
+- Ore CNY dlog
+- Output YoY log
+- Battery YoY log
 
-## 5. Remaining true canonical gaps
+Current model positioning is **semi-structural linear state-space MVP**. It should not be described as a fully microfounded DSGE.
 
-### P0 — SMM SC6 CIF China
+`M1_CAPACITY6` remains a pre-specified extension. Its slow-capacity mechanism is economically relevant but not part of the Phase 2D primary estimation specification.
 
-需要补：
+## 5. Current estimation status
 
-- 2025-10
-- 2025-11
-- 2025-12
-- 2026-01
-- 2026-02
-- 2026-04
-- 2026-05
-- 2026-06
+Phase 2C selected **`M0_FULL14`** with 14 future Bayesian free parameters:
 
-2026-03 严格月均已公开确认。
+`rho_d, rho_c, rho_q, rho_p, a_p, a_c, b_d, b_c, b_q, b_n, sigma_d, sigma_c, sigma_q, sigma_p`
 
-最优处理：授权导出 2025-10-01—2026-06-30 完整日频，然后统一重算月均。
+Fixed sensitivity-only values in the baseline specification:
 
-### P0 — SMM battery-grade LC spot
+- `rho_n = 0.80`
+- `battery_sd = 0.25`
 
-需要补 strict canonical：
+Phase 2C key numerical results:
 
-- 2025-12
-- 2026-04
-- 2026-05
-- 2026-06
+- synthetic recovery: 16/16 strict converged, normalized RMSE `0.019749`;
+- real data: 32/32 finite optimizer successes;
+- 28/32 solutions in the top cluster;
+- best loglik: `-262.600888`;
+- Powell cross-check and L-BFGS-B mode agree to numerical tolerance;
+- Hessian and OPG are full rank but weakly conditioned.
 
-已公开确认严格月均：2025-10、2025-11、2026-01、2026-02、2026-03。
+This establishes a usable likelihood mode, not final statistical certainty.
 
-最优处理：授权导出 2025-10-01—2026-06-30 完整日频。
+## 6. Main empirical findings carried forward
 
-### P0 — SMM LC output
+The following are the most defensible current conclusions and should not be overstated as causal proof:
 
-仍需精确值确认：
+1. **Cost → Price: strongest reduced-form mechanism candidate.** Spot and RMB SC6 changes show the most stable short-horizon relationship.
+2. **Demand: noisy latent anchor.** Battery installation should not be equated one-for-one with the structural demand shock.
+3. **Short-run supply response: mixed evidence.** Reduced-form evidence was weak, but structural `a_p` has an interior Phase 2C likelihood profile; therefore it remains in `M0_FULL14`.
+4. **Inventory pressure: economically useful but weakly identified.** `b_n` is near the lower region and interacts with `b_q` and `rho_p`.
+5. **Slow capacity: extension, not current core.** Margin-to-future-output evidence supports testing it later, but current data do not justify making it part of the primary 14-parameter posterior.
 
-- 2025-10: candidate 92,260 t
-- 2025-11: candidate 95,350 t
-- 2025-12: candidate 99,200 t
-- 2026-03: candidate 106,620 t
-- 2026-04: candidate 110,030 t
-- 2026-05: candidate 113,295 t
-- 2026-06: candidate 115,320 t
+## 7. Main risks
 
-已接受：
+### 7.1 Weak curvature
 
-- 2026-01: 97,900 t
-- 2026-02: 83,090 t
+- `a_c` is near the lower boundary and dominates the weakest Hessian direction.
+- `b_n / b_q / rho_p` form an important weak direction.
+- Hessian and OPG remain full rank, so this is weak identification rather than catastrophic rank failure.
 
-这些 review candidates 在获得 SMM 原始月度表或足够高等级证据前，不进入 canonical。
+### 7.2 Fixed measurement assumption sensitivity
 
-## 6. Data Freeze v2 target
+Higher battery measurement noise caused larger parameter drift in Phase 2C. Phase 2D must include explicit posterior sensitivity rather than silently treating `battery_sd=0.25` as known truth.
 
-理想目标：
+### 7.3 Small structural sample
 
-```text
-2020-01 ~ 2026-06
-78 months
-```
+`OBS_MIXED4` has only 57 monthly observations. Bayesian posterior concentration must therefore be judged together with prior-to-posterior contraction, R-hat, ESS and prior sensitivity.
 
-完成上述三类 SMM 尾部核验后即可形成 v2，并统一重跑 Phase 1；不需要重新设计实验。
+### 7.4 Linear-model limitation
 
-## 7. Data issues that are no longer blockers
+The 2021–2022 surge and 2023 decline are extreme episodes. A linear stationary-deviation MVP may get mechanisms and timing broadly right without matching all nonlinear amplitudes. Nonlinear extensions remain conditional on evidence, not default next steps.
 
-不再作为 Phase 1 强制条件：
+## 8. Remaining canonical data gaps to 2026-06
 
-- capacity
-- utilization
-- long-history social inventory
-- investment / capex
-- enterprise profit
-- complete filtered concentrate imports
-- PMI
-- industrial production
-- M2
-- GFEX warehouse receipts
+Data Freeze v2 target remains 2020-01—2026-06 (78 months) and is **NOT READY / NON-BLOCKING**.
 
-其中 capacity、investment、inventory gap、margin、expected price 等优先作为 latent states；真实短样本用于验证。
+Remaining strict canonical gaps:
 
-## 8. Phase 1 status
+- SMM SC6 CIF China: 2025-10, 11, 12; 2026-01, 02, 04, 05, 06.
+- SMM LC output: 2025-10, 11, 12; 2026-03, 04, 05, 06 require direct verification of candidate actuals.
+- SMM battery-grade LC spot: 2025-12, 2026-04, 05 require direct confirmation; 2026-06 requires complete-month confirmation.
 
-当前已经满足进入 Phase 1 的数据门槛。
+Battery installation is already complete through 2026-06. Capacity, utilization, long inventory, investment and enterprise profit are not current blockers.
 
-下一顺序：
+## 9. Public / robustness / validation layers
 
-1. descriptive statistics and plots
-2. level/log/difference/growth transformations
-3. stationarity and break diagnostics
-4. lead-lag screening
-5. Random Walk / AR baselines
-6. VAR / BVAR
-7. margin-proxy mechanism pre-check
-8. freeze lag choices and prior ranges
-9. MVP structural state-space model
+Public macro coverage is essentially complete through 2026-06 for FX, CPI, PPI, NEV, China Gov 3M/6M and battery installation.
 
-## 9. Timing
+Provider and usage layers remain separated:
 
-- 2026-09-21：数据版本冻结
-- 2026-10-19：State-Space + Kalman + likelihood 跑通
-- 2026-11-02：IRF + FEVD 完成
-- 2026-11-10：主要实验冻结
-- 2026-11 中旬：中期答辩
+- `A_CORE`: SMM core + battery + FX used by frozen main sample.
+- `ROBUSTNESS`: Mysteel alternative prices, route output, filtered concentrate imports, LFP/NCM, trade auxiliary series.
+- `VALIDATION_ONLY`: SMM inventory by methodology regime, route cost/profit short samples.
+- `CANDIDATE`: Data Freeze v2 tail values and secondary transcriptions not yet canonical.
 
-## 10. Source-of-truth order
+No provider may be silently spliced into the SMM canonical price series.
 
-如果仓库历史文档之间出现状态冲突，按以下顺序理解：
+## 10. Immediate next phase — Phase 2D
 
-1. `docs/project_status_2026_09_15.md` — 当前总状态
-2. `docs/high_value_industry_data_update.md` — 最新 robustness / validation 更新
-3. `docs/public_gap_closure_report.md` — 公开尾部补缺
-4. `docs/industry_data_ingestion_audit.md` — 商业行业工作簿入库时点快照
-5. 更早的 acquisition / availability 报告 — 历史记录
+Only the following should start next:
 
-历史报告中的旧缺口不代表当前仍缺失。
+1. fine likelihood-profile refinement for near-boundary weak parameters where useful;
+2. prior design independent of Phase 2C MLE centering;
+3. auditable multi-chain Bayesian sampling;
+4. rank-normalized split R-hat, bulk/tail ESS and MCSE diagnostics;
+5. posterior boundary/stability and prior-to-posterior contraction analysis;
+6. prior sensitivity and targeted `rho_n` / battery-noise sensitivity;
+7. posterior predictive sanity checks.
 
-## 11. Current decision
+IRF / FEVD / historical decomposition remain blocked until posterior convergence and identification diagnostics pass.
 
-**Stop broad data expansion. Start empirical work now.**
+## 11. Timeline to midterm
 
-尾部 SMM 授权补齐作为并行支线，不再阻塞 Phase 1。
+The original schedule targeted State-Space + Kalman + likelihood by about 2026-10-19. These components plus constrained MLE preflight are already complete by 2026-09-15.
 
-## 12. Phase 1A-1 update
+Current revised sequence:
 
-- Phase 1A-1 descriptive diagnostics: **COMPLETE**。
-- 已基于 Data Freeze v1 完成统一变换、数据 QA、描述统计、核心图形、12个月滚动描述、同期相关性和异常保留审计。
-- 未执行平稳性检验、领先滞后扫描、结构断点检验或 margin proxy。
-- Follow-up: Phase 1A-2 stationarity / lag / break diagnostics 已完成，见第 13 节。
+- **now:** Phase 2D Bayesian estimation and convergence;
+- **after Phase 2D PASS:** posterior IRF + FEVD and structural sign/economic consistency checks;
+- **then:** historical decomposition of major episodes;
+- **then:** structural OOS and robustness;
+- **early November:** preliminary spot-futures extension if the core model is already stable;
+- **by 2026-11-10:** freeze major experiments and switch to result organization / midterm materials.
 
-## 13. Phase 1A-2 update
+## 12. Source-of-truth order
 
-- Phase 1A-2 mechanism diagnostics: **COMPLETE**。
-- 已在 Data Freeze v1 上完成 ADF/KPSS、Zivot–Andrews、受限 lead-lag、MoY 季节性稳健性、早期 2020 稳健性、HAC 辅助确认、margin proxy 与最多两个断点的 BIC 筛选。
-- Cost → Price 形成 0–1 个月强候选；Margin → Future Output Growth 形成 9–11 个月中等候选；其他方向保留为弱或无清晰证据，不作因果解释。
-- Follow-up: Phase 1B reduced-form baselines 已完成，见第 14 节。
+When historical documents conflict, use this order:
 
-## 14. Phase 1B update
+1. `docs/project_status_2026_09_15.md` — current project state.
+2. `README.md` — concise current navigation.
+3. latest phase memo (`phase2c...`, then future phase memos) — stage-specific evidence.
+4. `docs/data_dictionary.md` — current data definitions and usage layers.
+5. `docs/high_value_industry_data_update.md` / `public_gap_closure_report.md` — latest data-layer detail.
+6. older acquisition / availability / OPD reports — historical snapshots only.
 
-- Phase 1B reduced-form baselines: **COMPLETE**。
-- 已在 Data Freeze v1 上完成 RW / AR / VAR / independent-equation Minnesota BVAR 的严格 expanding-window OOS，正式 horizons 为 1/3/6 个月。
-- 主结果使用 `RELEASE_SAFE_APPROXIMATION`；这是严格时间顺序 OOS，但不是 full vintage real-time OOS。
-- 普通 VAR 未稳定改善 AR/RW；BVAR shrinkage 明显改善小样本 VAR，其中 MIXED4 相对 AR 在三个期限均有增量，但相对 RW 仅 H1 明确胜出，结论受 horizon 与评价窗口约束。
-- 所有主模型 origin 均稳定，无 singular fit、numerical fallback 或未审计失败。
-- Next: **Phase 2 MVP Structural Model**，先完成 structural equations、state definitions、steady state / local stability 与 identification pre-check；尚未开始 Kalman、MCMC、IRF 或 FEVD。
+## 13. Current decision
 
-## 15. Phase 2A Structural MVP Design update
+**Stop broad data expansion. Keep Data Freeze v1 immutable. Enter Phase 2D.**
 
-- Phase 2A Structural MVP Design: **COMPLETE**。
-- Selected Phase 2B primary model: **`M0_CORE5`**；`M1_CAPACITY6` 保留为预先规定的慢产能扩展。
-- 已冻结状态、冲击、方程、A/B/G/H 映射、尺度归一化、符号限制，并完成局部稳定性、可观测性、可达性、moment-Jacobian 与固定 seed 人工模拟预检。
-- 主观测 `OBS_MIXED4` 有效期 2021-01—2025-09（57个月）；`OBS_DLOG_MOY4` 对照为 2020-02—2025-09（68个月）。
-- 本阶段没有运行 Kalman、likelihood、参数估计、IRF、FEVD、历史分解或结构预测。
-- Next: **Phase 2B State-Space + Kalman + Likelihood**。
-- Data Freeze v2: **NOT READY / NON-BLOCKING**。
-
-## 16. Phase 2B State-Space / Kalman / Likelihood update
-
-- Phase 2B State-Space / Kalman / Likelihood: **COMPLETE**。
-- `M0_CORE5` 的 Gaussian state-space、缺失观测 Kalman filter、RTS state smoother 与 Gaussian innovation likelihood 已通过 fixed-design synthetic 和真实数据 plumbing 验证。
-- `OBS_MIXED4` 仍为 2021-01—2025-09、57个月；固定 Phase 2A design point 的 likelihood 可有限计算，全部 covariance audit 通过且未使用 jitter。
-- **NO structural parameters estimated yet**；本阶段没有 MLE、MAP、MCMC、IRF、FEVD 或历史分解。
-- Next: **Phase 2C constrained estimation preflight**，限于 parameter transforms、constrained MLE/MAP mode search、profile likelihood、multi-start、curvature/Hessian、boundary 与 weak-ID diagnostics。
-- Data Freeze v2: **NOT READY / NON-BLOCKING**。
-
-## 17. Phase 2C constrained estimation preflight update
-
-- Phase 2C constrained estimation preflight: **COMPLETE**。
-- Synthetic recovery 在固定 `T=1000`、seed `20260915`、16 starts 下 16/16 strict converged；normalized RMSE 为 `0.01975`。
-- 真实 `M0_FULL14` 在 `OBS_MIXED4` 的 32/32 starts 均得到有效成功解，28/32 位于 top cluster；Powell 与 L-BFGS-B mode 一致。
-- Selected estimation specification: **`M0_FULL14`（14 parameters）**；`a_p=0` 的 AP0 规格未触发。
-- 主要 warning：`a_c` 靠近零边界；`b_n/b_q/rho_p` 存在弱曲率组合；结果对较高 battery measurement noise 有固定假设敏感性。Hessian 与 OPG 均满秩，但不得据此声称参数已精确识别。
-- Phase 2D 仅进入 prior design、Bayesian estimation、convergence diagnostics 和 posterior-identification diagnostics。
-- **No posterior estimation yet; no IRF, no FEVD, no historical decomposition.**
-- Data Freeze v2: **NOT READY / NON-BLOCKING**。
+A Phase 2D failure would trigger a targeted estimation/specification revision, not a return to indiscriminate data hunting or automatic model expansion.

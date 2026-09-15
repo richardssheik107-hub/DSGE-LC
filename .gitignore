@@ -1,21 +1,42 @@
+# Python / tooling
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+.idea/
+.vscode/
+
+# Commercial / protected raw data
 data/raw/commercial/opd/
 data/raw/commercial/
 data/interim/industry/
 data/processed/industry/
-data/processed/core_monthly_panel.csv
-data/processed/core_monthly_panel_v2_candidate.csv
-data/processed/core_monthly_panel_v2.csv
-data/processed/phase1/
-outputs/phase1/
-outputs/phase2/
 data/动力电池行业数据库-20260323.xlsx
 data/动力电池行业数据库-20260819.xlsx
 data/【东吴电新数据库】锂电池材料价格周报-20260612.xlsx
 data/钴锂小金属行业周度数据库-20251016.xlsx
+
+# Frozen / candidate commercial-derived panels
+data/processed/core_monthly_panel.csv
+data/processed/core_monthly_panel_v2_candidate.csv
+data/processed/core_monthly_panel_v2.csv
+data/processed/phase1/
+data/processed/candidates/lc_spot_dongwu_smm_tail_candidates.csv
+
+# Generated outputs
+outputs/phase1/
+outputs/phase2/
+outputs/repository_audit/
+
+# Local audit products containing commercial-derived detail
 data/metadata/dongwu_smm_lc_spot_reconciliation.csv
 data/metadata/dongwu_smm_quote_calendar_audit.csv
-data/processed/candidates/lc_spot_dongwu_smm_tail_candidates.csv
+
+# External / credentialed data workspaces
 data/external/opd/
 data/external/

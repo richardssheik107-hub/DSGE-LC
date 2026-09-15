@@ -1,156 +1,109 @@
 # DSGE-LC
 
-Lithium Carbonate (LC) price dynamics and pricing mechanism research project.
+中国碳酸锂价格波动与定价机制研究仓库。项目采用 **experiment-first + staged complexity + sparse observations / latent states** 路线：先用少量高质量产业观测完成可复现诊断与基线，再进入结构状态空间、Bayesian 估计、IRF/FEVD、历史分解和期现扩展。
 
-本仓库用于研究中国碳酸锂价格波动与定价机制。当前采用 **experiment-first + sparse observations + latent states** 的路线：先用少量高质量产业观测建立可复现基线，再逐步进入结构状态空间、Kalman、IRF/FEVD、历史分解和期现货扩展。
+> 状态快照：2026-09-15  
+> 当前主线：**Phase 2D Bayesian estimation**  
+> 当前模型定位：**semi-structural linear state-space MVP，不是完整 DSGE**
 
-> **状态更新时间：2026-09-15**
+## Research question
+
+核心问题是：中国碳酸锂价格的大幅上涨、快速下跌和阶段性震荡，能否由需求、成本、供给、库存压力以及更慢的产能调整机制解释，并进一步扩展到现货—期货定价？
 
 ## Current status
 
-### Data Freeze v1 — READY
+| Phase | Status | Main output |
+|---|---|---|
+| Data Freeze v1 | **READY / LOCKED** | 2020-01—2025-09，69 个月，内部缺失 0 |
+| Phase 1A-1 | **COMPLETE** | 描述统计、变换、季节性与异常保留审计 |
+| Phase 1A-2 | **COMPLETE** | 平稳性、断点、领先滞后、机制预检 |
+| Phase 1B | **COMPLETE** | RW / AR / VAR / BVAR expanding-window OOS |
+| Phase 2A | **COMPLETE** | `M0_CORE5` 结构设计与识别预检 |
+| Phase 2B | **COMPLETE** | State-space / Kalman / RTS / likelihood 验证 |
+| Phase 2C | **COMPLETE** | `M0_FULL14` constrained-estimation preflight |
+| Phase 2D | **NEXT** | prior design、MCMC、收敛与 posterior identification |
 
-当前核心月度样本已冻结：
+Phase 2C 已确认：synthetic recovery 通过；真实数据 32/32 multi-start 有效并收敛；`M0_FULL14` 进入下一阶段。当前仍保留三个重要 warning：`a_c` 接近零方向、`b_n/b_q/rho_p` 弱曲率组合、battery measurement-noise 固定假设敏感性。
 
-- `common_start = 2020-01`
-- `common_end = 2025-09`
-- `common_months = 69`
-- 共同区间内部缺失：`0`
-- `DATA_GATE = GO`
+## Current structural model
 
-核心产业变量：
+Primary model：`M0_CORE5`
 
-- `lc_spot`：SMM 国产电池级碳酸锂 99.5%，CNY/t，日频聚合月均
-- `lc_output`：SMM 中国碳酸锂总产量，metric tons，月度
-- `spodumene_price`：SMM SC6 Li₂O、CIF China、USD/t，日频聚合月均
-- `battery_install`：中国动力电池当月总装车量，GWh，月度
-- `usd_cny_mean`：USD/CNY 月均
+- states: `[d, c, q, n, p]`
+- observations: `[spot, ore_cost, output, battery]`
+- shocks: `[demand, cost, supply, price]`
+- primary measurement: `OBS_MIXED4`
+- estimation sample: 2021-01—2025-09，`N=57`
+- estimation specification: `M0_FULL14`
+- fixed sensitivity parameters: `rho_n=0.80`, `battery_sd=0.25`
 
-四条核心产业序列均为 `A_CORE`。Data Freeze v1 不再回写或静默覆盖。
+`M1_CAPACITY6` 继续作为慢产能 extension，不进入当前主规格的真实数据估计。
 
-### Public / macro layer — essentially complete through 2026-06
+## Data governance
 
-已完成：
+Data Freeze v1 是当前所有主实验的唯一 canonical 输入版本：
 
-- `battery_install`：2020-01—2026-06
-- `usd_cny_mean`：2020-01—2026-06，78/78
-- `cpi_yoy`：78/78
-- `ppi_yoy`：78/78
-- `china_gov_3m_mean`：78/78
-- `china_gov_6m_mean`：78/78
-- ChinaBond 官方日频国债曲线：1,618 条，2020-01-02—2026-06-30
-- 碳酸锂进口/出口：公开海关尾部已补至 2026-06，进入候选/辅助面板并保留来源治理
-- NEV 产量/销量：78/78
+`9146B3C858AA0F1BE5FA59720B0446515F0A21C60FA032712F76DD248AEAB7F5`
 
-### Robustness / validation layer — READY
+Data Freeze v2 目标为 2020-01—2026-06，但仍有 SMM spot、SC6 和 LC output 尾部核验缺口，状态为 **NOT READY / NON-BLOCKING**。Mysteel、Dongwu、库存、成本利润等均保留在 robustness / validation / candidate 层，禁止静默拼接进 SMM canonical series。
 
-已新增并分层管理：
-
-- Mysteel 电池级碳酸锂月均价：`ROBUSTNESS`
-- Mysteel SC6 CIF China 月均价：`ROBUSTNESS`
-- Mysteel 澳洲 SC6 路线碳酸锂成本/即期利润：`VALIDATION_ONLY`
-- SMM filtered 锂精矿进口：`ROBUSTNESS`
-- SMM 社会库存：`VALIDATION_ONLY`，严格按 methodology regime 分段
-- 路线产量、LC 贸易、LFP/NCM 装车：稳健性/辅助分析
-
-不同数据提供商不会被拼接成同一条核心价格序列。
-
-## Remaining canonical gaps to 2026-06
-
-Data Freeze v2 的理想目标是 `2020-01—2026-06` 共 78 个月。现在只剩三类核心尾部需要最终授权核验：
-
-1. **SMM 电池级碳酸锂**：2025-12、2026-04、2026-05、2026-06 的严格月均或完整日频。
-2. **SMM SC6 CIF China**：2025-10—2026-02、2026-04—2026-06 的严格月均或完整日频。
-3. **SMM 中国碳酸锂总产量**：2025-10、11、12 及 2026-03—06 的精确月度实际值；已有公开实际值候选，但尚未升级为 canonical。
-
-`battery_install` 已无尾部缺口。库存、成本利润、产能、开工率均不再作为 Phase 1 的 Go/No-Go 条件。
-
-## Current research phase
-
-Phase 1A-1 descriptive diagnostics — **COMPLETE**.
-
-Phase 1A-2 mechanism diagnostics — **COMPLETE**.
-
-Phase 1B reduced-form baselines — **COMPLETE**.
-
-Secondary data audit — **COMPLETE**.
-
-Phase 2A Structural MVP Design — **COMPLETE** (`M0_CORE5` primary; `M1_CAPACITY6` extension).
-
-Phase 2B State-Space / Kalman / Likelihood — **COMPLETE** (`M0_CORE5`, fixed-design validation; no structural parameters estimated).
-
-Phase 2C constrained estimation preflight — **COMPLETE** (`M0_FULL14` selected for Phase 2D; weak-curvature and fixed-assumption sensitivity warnings retained).
-
-Next: Phase 2D Bayesian prior design, estimation, convergence diagnostics and posterior-identification diagnostics. IRF/FEVD/historical decomposition remain gated.
-
-当前阶段已从“继续扩张数据源”切换到：
+## Research pipeline
 
 ```text
 Data Freeze v1
-→ Diagnostics
-→ Stationarity / lag screening / break checks
-→ Random Walk / AR
-→ VAR / BVAR
-→ MVP Structural Model
-→ State-Space + Kalman
-→ Parameter Estimation
-→ IRF + FEVD
-→ Historical Decomposition
-→ OOS Forecast
-→ Preliminary Spot-Futures Extension
+→ descriptive / stationarity / lag / break diagnostics
+→ RW / AR / VAR / BVAR baselines
+→ structural MVP design
+→ state-space + Kalman + likelihood
+→ constrained MLE / weak-ID preflight
+→ Bayesian posterior estimation   ← current
+→ posterior IRF + FEVD
+→ historical decomposition
+→ structural OOS forecast
+→ preliminary spot-futures extension
+→ mixed-frequency / capacity / stochastic-cycle extensions only if justified
 ```
 
-数据尾部授权补齐与 Phase 1 实证并行进行；不等待 78 个月 v2 才开始实验。
+## Repository map
 
-## November 2026 midterm target
+- `configs/` — phase-specific operational configuration; Phase 2A remains the source of structural parameter bounds.
+- `data/` — public raw data, committed processed public/auxiliary panels, metadata and governance records. Commercial raw workbooks are intentionally ignored.
+- `docs/` — current project status, plans, phase memos, data audits and reference notes. Start at [`docs/README.md`](docs/README.md).
+- `scripts/` — reproducible entry points for data builds and phase runners.
+- `src/` — reusable library code: diagnostics, baselines, evaluation, data audit and structural modeling.
+- `tests/` — regression and safety tests for data, diagnostics and structural phases.
 
-硬目标：**2026 年 11 月中旬中期答辩**。
+See [`docs/repository_architecture.md`](docs/repository_architecture.md) for the code/data flow and source-of-truth rules.
 
-关键 Gate：
+## Reproducibility
 
-- **2026-09-21：核心数据版本冻结**，停止无限寻找完美历史数据
-- **2026-10-19：State-Space + Kalman + likelihood 跑通**
-- **2026-11-02：IRF + FEVD 完成**
-- **2026-11-10 后：原则上只做结果整理、复现和答辩材料**
+Recommended environment is Python 3.13 (the latest full regression was executed in the configured 3.13 environment; 3.12 previously lacked required packages rather than exposing a code incompatibility).
 
-## Model path
+```bash
+python -m pip install -r requirements.txt
+python -m pip install -r requirements-dev.txt
+python -m pytest -q
+```
 
-中期 MVP：
-
-**Demand + Cost + Supply + Spot**
-
-观测优先：
-
-- `lc_spot`
-- `lc_output`
-- `spodumene_price`
-- `battery_install`
-- `usd_cny_mean`
-- 必要时加入 `risk_free_rate`
-
-`capacity`、`investment`、`inventory_gap`、`margin`、`expected_price`、`risk_premium` 等先作为 latent states；已有库存和成本利润短样本用于后续验证，而不是强制进入长样本观测方程。
+Phase outputs under `outputs/phase1/` and `outputs/phase2/` are local generated artifacts and are intentionally ignored. Commercial Excel files and commercial-derived canonical panels are also excluded from Git.
 
 ## Key documents
 
-- [最新项目状态](docs/project_status_2026_09_15.md)
-- [论文/研究整体计划](docs/research_master_plan.md)
-- [稀疏观测数据策略](docs/data_strategy_sparse_observations.md)
-- [Phase 1 实验计划](docs/phase1_experiment_plan.md)
-- [Phase 1B reduced-form baseline results](docs/phase1b_baseline_results_memo.md)
-- [2026 年 11 月中旬中期答辩执行计划](docs/midterm_plan_2026_11.md)
-- [行业数据正式入库审计](docs/industry_data_ingestion_audit.md)
-- [公开渠道补缺报告](docs/public_gap_closure_report.md)
-- [高价值产业数据更新](docs/high_value_industry_data_update.md)
-- [数据字典](docs/data_dictionary.md)
+- [Documentation index](docs/README.md)
+- [Current project status](docs/project_status_2026_09_15.md)
+- [Research master plan](docs/research_master_plan.md)
+- [Midterm execution plan](docs/midterm_plan_2026_11.md)
+- [Data dictionary](docs/data_dictionary.md)
+- [Phase 2A structural specification](docs/phase2a_structural_mvp_spec.md)
+- [Phase 2B Kalman / likelihood validation](docs/phase2b_kalman_likelihood_validation.md)
+- [Phase 2C estimation preflight](docs/phase2c_estimation_preflight.md)
 
-## Research principle
+## Research discipline
 
-- 不以高 R² 作为单一成功标准；
-- 参数必须可识别，估计结果必须稳定；
-- IRF 的符号和时间顺序必须符合产业机制；
-- FEVD 不允许由未经检验的单一“万能周期项”吸收绝大部分波动；
-- 必须做历史分解；
-- 预测必须与 Random Walk、AR、VAR/BVAR 等基线进行严格样本外比较；
-- 复杂模块必须通过 ablation 证明增量价值；
-- 不让难以获得的长期产业数据成为项目单点依赖；
-- 中期前主模型优先于期权、tick 微观结构、非线性等支线。
+- 不以高 R² 或单次最优 likelihood 作为成功标准；
+- 参数识别、数值稳定、multi-start / multi-chain convergence 必须单独审计；
+- IRF 先检查符号和时间顺序，再讨论经济解释；
+- FEVD、历史分解和结构预测必须在 posterior convergence gate 之后执行；
+- 复杂模块必须通过 ablation / robustness 证明增量价值；
+- 数据提供商不得为了补洞而静默拼接；
+- 中期前优先完成主模型闭环，而不是继续扩张大型支线。

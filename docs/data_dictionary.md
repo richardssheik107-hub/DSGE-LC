@@ -1,93 +1,166 @@
-# Phase 1 data dictionary
+# DSGE-LC Data Dictionary
 
-> 更新时间：2026-09-15
->
-> 本文件描述当前项目实际使用的数据口径。Data Freeze v1 的核心样本为 2020-01—2025-09，共 69 个月，`DATA_GATE=GO`。
+> 更新时间：2026-09-15  
+> 当前主实验数据版本：**Data Freeze v1**  
+> 当前主结构估计样本：`OBS_MIXED4`, 2021-01—2025-09, `N=57`
 
-## 1. Core / A_CORE
+本文件描述当前项目实际使用的数据定义、usage layer、coverage 和版本规则。历史 acquisition / audit 文档不应覆盖这里的当前定义。
 
-| Canonical variable | Source / definition | Frequency | Unit | Current coverage | Use |
+## 1. Usage layers
+
+### `A_CORE`
+
+进入 Data Freeze v1 并用于主实验构造的 canonical 核心数据。
+
+### `ROBUSTNESS`
+
+替代提供商、替代口径或辅助变量，只用于稳健性，不得静默填补 canonical 缺口。
+
+### `VALIDATION_ONLY`
+
+短样本、方法论分段明显或仅适合验证潜在机制的数据，不直接进入当前主测量方程。
+
+### `CANDIDATE`
+
+尚未完成 strict source verification 的尾部值、二级转录或 v2 候选数据，不进入当前 Phase 2 主估计。
+
+### `PUBLIC_AUXILIARY`
+
+公开宏观、金融和贸易数据，用于控制、后续扩展或稳健性。
+
+## 2. Core / A_CORE
+
+| Variable | Definition | Frequency | Unit | Current canonical coverage | Current model use |
 |---|---|---:|---:|---|---|
-| `lc_spot` | SMM 国产电池级碳酸锂 99.5% 现货评估价；日频算术月均为主，月末/中位数做稳健性 | daily → monthly | CNY/t | canonical complete through 2025-09 | 核心价格观测 |
-| `lc_output` | SMM 中国碳酸锂总产量；实际月度产量，不是排产/预测 | monthly | metric tons | canonical complete through 2025-09 | 供给锚 |
-| `spodumene_price` | SMM Spodumene Concentrate 6% Li₂O, CIF China | daily → monthly | USD/t | canonical complete through 2025-09 | 原料成本锚 |
-| `battery_install` | 中国动力电池产业创新联盟，中国动力电池当月总装车量 | monthly | GWh | 2020-01—2026-06 | 需求锚 |
-| `usd_cny_mean` | USD/CNY 日度汇率的月度算术均值；1 USD 对应多少 CNY | daily → monthly | CNY per USD | 2020-01—2026-06 | 进口成本换算/宏观控制 |
+| `lc_spot` | SMM 国产电池级碳酸锂 99.5% 现货评估价；日频算术月均为主 | daily → monthly | CNY/t | complete through 2025-09 | Spot price anchor |
+| `lc_output` | SMM 中国碳酸锂总产量；实际月度产量 | monthly | metric tons | complete through 2025-09 | Supply / output anchor |
+| `spodumene_price` | SMM Spodumene Concentrate 6% Li₂O, CIF China | daily → monthly | USD/t | complete through 2025-09 | Raw-material cost anchor |
+| `battery_install` | 中国动力电池产业创新联盟，当月动力电池总装车量 | monthly | GWh | 2020-01—2026-06 | Noisy demand measurement anchor |
+| `usd_cny_mean` | USD/CNY 日度汇率月度算术均值 | daily → monthly | CNY per USD | 2020-01—2026-06 | Cost conversion / extension |
 
-核心派生量：
+Derived variable:
 
-- `spodumene_cny_t = spodumene_price × usd_cny_mean`
-- 含义：人民币计价的 SC6 精矿价格代理；**不是**碳酸锂生产成本。
+`spodumene_cny_t = spodumene_price × usd_cny_mean`
 
-### Core versioning
+Interpretation: RMB-denominated SC6 concentrate-price proxy. It is **not** a full lithium-carbonate production-cost series.
 
-- **Data Freeze v1**：2020-01—2025-09，69 个共同完整月份，内部缺失 0。
-- **Data Freeze v2 candidate**：目标 2020-01—2026-06，78 个自然月；当前仍受 SMM 价格尾部与部分产量精确值审核限制。
-- 禁止用 Mysteel、长江有色或其他机构的价格直接拼接到 SMM canonical series。
+## 3. Data Freeze versioning
 
-## 2. Remaining canonical tail gaps
+### Data Freeze v1 — ACTIVE / LOCKED
 
-| Variable | Remaining strict gap through 2026-06 | Status |
+- common period: 2020-01—2025-09
+- common months: 69
+- internal missing: 0
+- data gate: GO
+- SHA256: `9146B3C858AA0F1BE5FA59720B0446515F0A21C60FA032712F76DD248AEAB7F5`
+
+This is the only canonical version for current Phase 1 / Phase 2 main experiments.
+
+### Data Freeze v2 candidate — NOT READY / NON-BLOCKING
+
+Target: 2020-01—2026-06, 78 natural months.
+
+Do not use v2 candidate values inside current structural estimation until direct verification and a new freeze are explicitly completed.
+
+## 4. Remaining strict canonical gaps to 2026-06
+
+| Variable | Remaining strict gap | Status |
 |---|---|---|
-| `lc_spot` | 2025-12；2026-04、05、06 | 需 SMM 严格月均或完整日频 |
-| `lc_output` | 2025-10、11、12；2026-03、04、05、06 | 已有实际值候选，仍需精确值确认 |
-| `spodumene_price` | 2025-10—2026-02；2026-04—06 | 需 SMM SC6 CIF China 严格月均或完整日频 |
-| `battery_install` | 无 | 已补至 2026-06 |
+| `lc_spot` | 2025-12; 2026-04, 05, 06 | direct SMM monthly mean / complete daily confirmation still required |
+| `lc_output` | 2025-10, 11, 12; 2026-03, 04, 05, 06 | candidate actuals exist but require direct verification |
+| `spodumene_price` | 2025-10—2026-02; 2026-04—06 | direct SMM SC6 strict monthly mean / daily export required |
+| `battery_install` | none through 2026-06 | complete |
 
-已公开接受但尚未改变 v1 的尾部包括：
+Already accepted tail values that still do **not** alter v1 include:
 
-- `lc_spot`：2025-10、2025-11、2026-01、2026-02、2026-03 的 SMM 官方严格月均；
-- `lc_output`：2026-01、2026-02 的 SMM 官方实际值；
-- `spodumene_price`：2026-03 的 SMM SC6 CIF China 严格月均。
+- `lc_spot`: 2025-10, 2025-11, 2026-01, 2026-02, 2026-03;
+- `lc_output`: 2026-01, 2026-02;
+- `spodumene_price`: 2026-03.
 
-## 3. Public / macro variables
+## 5. Phase 2 measurement use
 
-| Variable | Frequency | Unit | Definition / source rule | Current status |
-|---|---:|---:|---|---|
-| `cpi_yoy` | monthly | % | 国家统计局 CPI 同比；不是指数水平 | 78/78 |
-| `ppi_yoy` | monthly | % | 国家统计局 PPI 同比；不是指数水平 | 78/78 |
-| `nev_sales` | monthly | 万辆 / standardized local unit | CAAM/MIIT 口径新能源汽车销量 | 78/78 |
-| `nev_production` | monthly | 万辆 / standardized local unit | CAAM/MIIT 口径新能源汽车产量 | 78/78 |
-| `china_gov_3m_mean` | daily → monthly | % | ChinaBond 中国国债收益率曲线 0.25Y 节点月均 | 78/78 |
-| `china_gov_6m_mean` | daily → monthly | % | ChinaBond 中国国债收益率曲线 0.50Y 节点月均 | 78/78 |
-| `lpr_1y` / `lpr_5y` | policy quote / monthly state | % | 中国货币网 / 全国银行间同业拆借中心 LPR | ROBUSTNESS |
-| `lc_import_qty` / `lc_export_qty` | monthly | metric tons | 锂的碳酸盐物理贸易量；kg 必须除以 1,000 | public tail through 2026-06 available; canonical merge governed by reconciliation |
+### `OBS_MIXED4` — PRIMARY
 
-ChinaBond 当前不再是 `MANUAL_REQUIRED`。已取得 2020-01-02—2026-06-30 共 1,618 条官方日频国债曲线记录，并计算 3M/6M 月均。
+2021-01—2025-09, N=57:
 
-## 4. Robustness variables
+- Spot dlog;
+- Ore CNY dlog;
+- Output YoY log;
+- Battery YoY log.
 
-| Variable | Provider | Frequency | Unit | Definition | Use |
-|---|---|---:|---:|---|---|
-| `lc_spot_mysteel` | Mysteel | monthly mean | CNY/t | 中国电池级碳酸锂，出厂含税月均 | ROBUSTNESS |
-| `spodumene_mysteel` | Mysteel | monthly mean | USD/t | SC6 Li₂O, CIF China 月均 | ROBUSTNESS |
-| `spodumene_concentrate_import_smm_filtered` | SMM / China Customs | monthly | metric tons | 海关总来矿经 SMM 进一步筛选后的锂精矿估计 | ROBUSTNESS |
-| route-specific LC output | SMM | monthly | metric tons | 盐湖/锂云母/锂辉石路线产量 | ROBUSTNESS |
-| `battery_install_lfp` / `battery_install_ncm` | 动力电池联盟 | monthly | GWh | LFP/NCM 当月装车量 | ROBUSTNESS |
+This is the current `M0_CORE5 / M0_FULL14` estimation measurement set.
 
-Mysteel 与 SMM 保持提供商分离。当前可比重叠期内，Mysteel 仅用于替代来源稳健性，不用于补 SMM canonical 缺口。
+### `OBS_DLOG_MOY4` — SECONDARY / TRANSFORMATION CHECK
 
-## 5. Validation-only variables
+2020-02—2025-09, N=68:
 
-| Variable | Frequency | Unit | Definition | Constraint |
-|---|---:|---:|---|---|
-| SMM LC inventory components | weekly | metric tons | 冶炼厂、下游、其他、总量等库存 | `VALIDATION_ONLY`; 2026-05 起存在扩样/口径断点 |
-| `lc_cost_spodumene_mysteel` | sparse weekly | CNY/t LC | Mysteel 明确披露的澳洲 SC6 路线折算碳酸锂成本 | `VALIDATION_ONLY` |
-| `lc_margin_spodumene_mysteel` | sparse weekly | CNY/t LC | Mysteel 明确披露的澳洲 SC6 路线即期利润/亏损 | `VALIDATION_ONLY` |
+- four-variable dlog;
+- calendar-month demeaning.
 
-库存不得把旧样本“总库存”与扩样后的“全环节总计”直接拼接。跨 methodology regime 的长期增长率比较默认禁止。
+Used for transformation feasibility / smoke testing, not for raw-likelihood comparison with `OBS_MIXED4`.
 
-## 6. Aggregation and missing-data rules
+## 6. Robustness series
 
-- 日频 spot / spodumene：月度算术均值为主；同时保留月末与中位数做 robustness。
-- 月度产量/装车：使用当月实际流量，不把累计值当单月值。
-- 周度库存：保留周频 canonical validation 文件；月均/EOM 仅作辅助。
-- 不做 linear interpolation、forward fill、backward fill、spline 或基于预测的填补。
-- `forecast / estimate / planned` 不得写入 actual。
-- 不从折线图、柱状图像素或环比反推 strict canonical 值。
-- 所有来源、定义、单位、方法变化和接受状态必须进入 metadata / source manifest。
+| Variable / group | Provider | Unit / frequency | Use |
+|---|---|---|---|
+| `lc_spot_mysteel` | Mysteel | monthly mean, CNY/t | `ROBUSTNESS` |
+| `spodumene_mysteel` | Mysteel | monthly mean, USD/t | `ROBUSTNESS` |
+| filtered concentrate imports | SMM / China Customs | monthly tons | `ROBUSTNESS` |
+| route-specific LC output | SMM | monthly tons | `ROBUSTNESS` |
+| `battery_install_lfp` / `battery_install_ncm` | battery alliance | monthly GWh | `ROBUSTNESS` |
+| LC trade auxiliary series | public / reconciled | monthly tons | `ROBUSTNESS` / extension |
 
-## 7. Methodology notes
+Mysteel and SMM remain separate providers. Robustness series cannot fill holes inside SMM canonical series.
 
-- SMM SC6 CIF China 在 2025 年进行方法论征询，新年度方法论自 2026-01-01 生效；保留为潜在制度审查窗口，不做机械统计调整。
-- SMM 碳酸锂库存于 2026-05 扩大样本，并在 2026-06 调整字段定义；库存验证必须 regime-aware。
+## 7. Validation-only series
+
+| Variable | Frequency | Unit | Constraint |
+|---|---:|---:|---|
+| SMM LC inventory components | weekly | metric tons | methodology-regime-aware only; 2026-05 onward expansion / definition change |
+| `lc_cost_spodumene_mysteel` | sparse weekly | CNY/t LC | route-specific cost validation only |
+| `lc_margin_spodumene_mysteel` | sparse weekly | CNY/t LC | route-specific spot margin validation only |
+
+Inventory old-regime and expanded-regime totals must not be treated as one uninterrupted long series.
+
+## 8. Secondary / candidate series
+
+Dongwu workbook SMM battery-grade LC transcription is a secondary source audit, not a canonical replacement. Candidate full-month values for 2025-12, 2026-04 and 2026-05 remain review candidates; 2026-06 was partial in the audited workbook and must not be used as a full-month observation.
+
+Any CCMN / Changjiang or future alternative-provider series must be stored under a distinct variable name and may only enter robustness or fallback experiments that are explicitly documented.
+
+## 9. Public / macro variables
+
+| Variable | Frequency | Definition | Status |
+|---|---:|---|---|
+| `cpi_yoy` | monthly | NBS CPI YoY | 78/78 through 2026-06 |
+| `ppi_yoy` | monthly | NBS PPI YoY | 78/78 |
+| `nev_sales` | monthly | NEV sales | 78/78 |
+| `nev_production` | monthly | NEV production | 78/78 |
+| `china_gov_3m_mean` | daily → monthly | ChinaBond 0.25Y node monthly mean | 78/78 |
+| `china_gov_6m_mean` | daily → monthly | ChinaBond 0.50Y node monthly mean | 78/78 |
+| `lpr_1y` / `lpr_5y` | quote / monthly state | LPR | auxiliary / robustness |
+| LC import / export | monthly | physical trade quantity | public tail through 2026-06 available; merge remains reconciliation-governed |
+
+ChinaBond 2020-01-02—2026-06-30 contains 1,618 official daily curve observations used to compute 3M/6M monthly means.
+
+## 10. Aggregation and missing-data rules
+
+- daily spot / spodumene: arithmetic monthly mean for main use; median / month-end may be robustness outputs;
+- monthly production / installation: use actual monthly flow, never cumulative YTD as monthly flow;
+- weekly inventory: preserve weekly validation source; monthly aggregation only for explicitly defined checks;
+- no linear interpolation;
+- no forward fill / backward fill;
+- no spline or model-imputed canonical values;
+- no `forecast / planned / estimate` values written as actual;
+- no chart-pixel extraction into strict canonical series;
+- no provider splicing to extend a core price series.
+
+## 11. Methodology notes
+
+- SMM SC6 CIF China had methodology consultation in late 2025; new annual methodology became effective 2026-01-01. Record the regime, do not mechanically adjust historical values.
+- SMM LC inventory expanded sample coverage around 2026-05 and later field definitions changed; validation must be regime-aware.
+- Battery chemistry totals may differ slightly from total installation due to other chemistries and rounding; do not force component sums to overwrite official totals.
+
+## 12. Current modeling interpretation
+
+Observed data do not need to exist for every structural state. Current latent / weakly observed concepts include demand state, inventory pressure and future capacity. Long histories of capacity, investment, inventory or enterprise profit are therefore not blockers for `M0_CORE5`.

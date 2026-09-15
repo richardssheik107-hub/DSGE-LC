@@ -1,636 +1,300 @@
 # DSGE-LC 研究整体计划
 
-> 项目定位：先做实验、再决定最终论文形态。
->
-> 当前目标不是立刻完成论文写作，而是验证一个针对中国碳酸锂产业链的结构模型是否真的具有经济解释力、参数可识别性、历史解释能力与样本外预测价值。
-
----
+> 项目原则：**experiment-first + staged complexity**。先验证最小结构模型是否可识别、可估、可解释，再按证据增加容量、期货、异频或周期模块。
 
 ## 1. 核心研究问题
 
 本项目围绕一个总问题展开：
 
-> **中国碳酸锂价格的大幅上涨、快速下跌与阶段性震荡，能否由“需求—库存—利润—投资—滞后产能—供给—价格”的产业链动态机制解释，并进一步统一现货与期货定价？**
+> 中国碳酸锂价格的大幅上涨、快速下跌和阶段性震荡，能否由需求、成本、供给、库存压力及滞后产能机制解释，并进一步统一现货与期货定价？
 
-拆分为 6 个可检验问题：
+拆成六个研究问题：
 
-1. 新能源汽车、动力电池、储能等下游需求变化，对碳酸锂现货价格的冲击有多大、持续多久？
-2. 锂辉石等上游成本冲击，是否主要通过利润压缩、开工率下降与供给收缩传导至价格？
-3. 高利润是否会诱发资本开支和新增产能，并通过建设/投产滞后形成内生的“锂周期”？
-4. 库存是否是连接供需变化与短期价格波动的关键状态变量？
-5. 期货价格是否通过预期、持有成本、便利收益、套保压力和投机需求，更快地反映产业信息？
-6. 一个结构化 MF-DSGE 是否能在样本外预测和历史解释中优于 Random Walk、AR、VAR/BVAR 等简单基线？
+1. 下游需求变化对碳酸锂现货价格的影响方向、强度与持续时间如何？
+2. 锂辉石等上游成本如何传导至价格与供给？
+3. 高利润是否会通过滞后投资/产能形成更慢的供给反馈？
+4. 库存或供需松紧是否是连接生产、需求与价格的重要状态？
+5. 期货是否通过预期、carry、便利收益与风险溢价更快反映信息？
+6. 结构模型在历史解释和样本外预测中，相对 RW / AR / VAR / BVAR 能提供什么增量？
 
----
+## 2. 当前模型定位与长期愿景必须区分
 
-## 2. 总体研究策略
+### 2.1 当前执行模型
 
-本项目采用 **experiment-first + staged complexity** 原则。
+当前主模型是：
 
-不直接搭建一个包含几十个方程、几十个冲击的大型 DSGE，而是按模块逐步增加复杂度。每增加一个模块，都必须回答：
+**semi-structural linear state-space MVP**
 
-- 是否改善参数识别？
-- 是否改善 IRF 的经济合理性？
-- 是否改善历史分解？
-- 是否改善样本外预测？
-- 是否只是提高了拟合，但没有真正增加解释力？
+不是完整微观基础 DSGE。
 
-只有通过增量验证的模块，才进入最终模型。
+Primary model：`M0_CORE5`
 
----
+- states: `[d,c,q,n,p]`
+- observations: `[spot,ore_cost,output,battery]`
+- shocks: Demand / Cost / Supply / Price
+- primary measurement: `OBS_MIXED4`
+- sample: 2021-01—2025-09，N=57
+- selected estimation specification: `M0_FULL14`
 
-## 3. 最终候选模型的经济结构
+当前目标是先确认：
 
-### 3.1 需求模块
+- posterior 可收敛；
+- cost / demand / supply / inventory-price 通道具有可解释 posterior；
+- IRF / FEVD 合理；
+- 主要历史阶段可以被结构冲击分解；
+- structural OOS 至少具有可比较性。
 
-碳酸锂是中间投入品，不直接采用“居民消费碳酸锂”的代表性家庭逻辑。
+### 2.2 长期模型愿景
 
-候选需求结构：
+长期候选模型可进一步加入：
 
-\[
-D_t^{LC}=D_t^{EV}+D_t^{ESS}+D_t^{Other}
-\]
+- slow capacity / investment lag；
+- observed / latent inventory validation；
+- futures / basis / convenience yield；
+- mixed-frequency observations；
+- stochastic cycle ablation；
+- nonlinear / regime-switching extensions。
 
-其中重点由以下变量驱动：
+这些不是当前已经实现的模块，也不是中期前默认必须实现的模块。
 
-- 新能源汽车销量/产量
-- 动力电池装车量
-- 储能需求
-- 正极材料产量
-- 单位电池锂耗/技术路线变化
+## 3. 当前已经执行的研究路径
 
-预期机制：
+实际执行顺序已经冻结为：
 
-\[
-Demand\uparrow \Rightarrow Inventory\downarrow \Rightarrow Price\uparrow
-\]
+```text
+Phase 1A-1  Descriptive diagnostics
+→ Phase 1A-2  Stationarity / lag / break / mechanism diagnostics
+→ Phase 1B    RW / AR / VAR / BVAR OOS baselines
+→ Phase 2A    Structural MVP design + identification precheck
+→ Phase 2B    State-space + Kalman + likelihood validation
+→ Phase 2C    Constrained MLE / profile / curvature / weak-ID preflight
+→ Phase 2D    Bayesian posterior + convergence / posterior identification
+→ Posterior IRF + FEVD
+→ Historical Decomposition
+→ Structural OOS Forecast
+→ Preliminary Spot-Futures Extension
+→ Capacity / Mixed-Frequency / Stochastic-Cycle extensions only if justified
+```
 
----
+这是当前 source-of-truth 路线。早期文档中把 Mixed-Frequency 放在 Bayesian MCMC 之前的编号属于长期设想，不再代表当前执行顺序。
 
-### 3.2 供给/生产模块
+## 4. 当前核心经济结构
 
-基础生产函数候选：
+### Demand
 
-\[
-Q_t=A_t K_t^{\alpha} M_t^{\beta} u_t
-\]
+真实需求状态 `d_t` 是 latent state，动力电池装车是 noisy measurement anchor，而不是需求本身。
 
-其中：
+Reduced-form evidence 对 Battery → Price 不强，因此模型不应写成 `Demand_t = BatteryInstall_t`。
 
-- \(Q_t\)：碳酸锂产量
-- \(A_t\)：技术、提锂效率、管理效率
-- \(K_t\)：有效产能
-- \(M_t\)：矿石/盐湖资源投入
-- \(u_t\)：产能利用率/开工率
+### Cost
 
-预期机制：
+`c_t` 由人民币计价的 SC6 成本代理锚定。前序诊断中 Cost → Price 是最稳定的短期机制候选，因此 cost channel 保留为 core。
 
-\[
-Capacity\uparrow \Rightarrow Output\uparrow \Rightarrow Inventory\uparrow \Rightarrow Price\downarrow
-\]
+### Supply
 
----
+`q_t` 表示短期供给/产量状态。价格对短期产量的 reduced-form evidence 偏弱，但 Phase 2C 的 `a_p` likelihood profile 有内部集中，因此当前仍保留该参数。
 
-### 3.3 成本与利润模块
+### Inventory pressure
 
-构造碳酸锂产业利润指标：
+`n_t` 是由滞后 `q-d` 累积的库存/供需松紧状态，不具有长期直接库存观测。它在当前模型中属于可解释但弱识别的结构状态，后验必须做 prior sensitivity。
 
-\[
-Margin_t=P_t^{LC}-Cost_t
-\]
+### Price
 
-成本项可由：
+`p_t` 由自身惯性、需求、成本、供给和 inventory pressure 共同决定。当前最需要警惕的弱方向是 `b_n / b_q / rho_p`。
 
-\[
-Cost_t=\omega_1 P_t^{Spodumene}+\omega_2 Energy_t+\omega_3 FX_t+\omega_4 Other_t
-\]
+## 5. Slow-capacity extension
 
-构成。
+`M1_CAPACITY6` 作为预设 extension 保留：
 
-核心机制：
+`k_t = rho_k k_(t-1) + gamma_m m_(t-L)`
 
-\[
-Margin\uparrow \Rightarrow Utilization\uparrow
-\]
+其中 margin proxy 只是 `z(log Spot) - z(log Ore CNY)`，不是实际企业利润。
 
-以及中长期：
+Phase 1A-2 的 margin → future output growth 在约 9—11 个月形成 moderate candidate，因此慢产能机制具有研究价值；但 Phase 2A/2B 已显示 `gamma_m` 需要外生 margin-input variation 才能被识别，且 capacity 无独立 shock 时 smoother covariance 退化。因此 M1 不进入当前 Phase 2D 主估计。
 
-\[
-Margin\uparrow \Rightarrow Investment\uparrow
-\]
+## 6. 数据策略
 
----
+### Core / A_CORE
 
-### 3.4 投资—产能滞后模块
+- SMM battery-grade LC spot；
+- SMM total LC output；
+- SMM SC6 CIF China；
+- battery installation；
+- USD/CNY。
 
-这是碳酸锂模型最关键的结构之一。
+Data Freeze v1：2020-01—2025-09，69 个月，作为当前 canonical main sample。
 
-候选形式：
+### Robustness
 
-\[
-K_{t+1}=(1-\delta_K)K_t+I_{t-L}
-\]
+- Mysteel alternative LC / SC6 prices；
+- route-specific LC output；
+- filtered concentrate imports；
+- LFP/NCM installation；
+- trade auxiliary series。
 
-其中 \(L\) 表示矿山、盐湖或锂盐加工项目的建设/投产滞后。
+### Validation only
 
-目标是让模型在不依赖额外随机周期项的情况下，先测试能否自然生成：
+- SMM social inventory components；
+- route production cost / margin short samples。
 
-\[
-Price\uparrow \rightarrow Margin\uparrow \rightarrow Investment\uparrow \rightarrow Capacity_{t+L}\uparrow \rightarrow Output\uparrow \rightarrow Inventory\uparrow \rightarrow Price\downarrow
-\]
+### Candidate
 
-如果该机制已经能产生稳定周期，则 stochastic cycle 只作为后续增量模块，而不是先验必选项。
+- Data Freeze v2 tail values；
+- Dongwu SMM secondary transcription；
+- other unverified exact-month fills。
 
----
+原则：不同 provider 不拼接成一条 canonical price series；不插值、不 ffill、不根据图表反推 strict canonical 值。
 
-### 3.5 库存模块
+## 7. Phase 2D — Bayesian posterior estimation
 
-库存是碳酸锂相对生猪模型最重要的新增结构。
-
-基础恒等式：
-
-\[
-INV_{t+1}=INV_t+Q_t-D_t
-\]
-
-候选价格机制：
-
-\[
-P_t=f(Q_t-D_t,INV_t,E_tP_{t+1})
-\]
-
-预期：
-
-- 需求冲击 → 库存下降 → 价格上升
-- 产能释放 → 库存增加 → 价格下降
-- 库存过低 → 便利收益上升 → 近月现货/期货定价发生变化
-
----
-
-### 3.6 现货价格模块
-
-第一阶段不追求复杂价格粘性结构，先验证最小可识别形式。
-
-候选因素：
-
-- 供需缺口
-- 库存水平
-- 预期未来供需
-- 成本与利润状态
-- 外生供给扰动
-
-后续视数据与残差特征决定是否引入：
-
-- 非线性价格调整
-- 状态切换
-- 阈值效应
-- Regime-dependent shock
-
----
-
-### 3.7 期货与基差模块
-
-候选定价骨架：
-
-\[
-F_{t,T}=S_t e^{(r_t+s_t-y_t)(T-t)}+RP_t
-\]
-
-其中：
-
-- \(r_t\)：资金成本
-- \(s_t\)：仓储/持有成本
-- \(y_t\)：便利收益
-- \(RP_t\)：风险溢价
-
-风险溢价候选：
-
-\[
-RP_t=f(Hedging_t,Speculation_t,Inventory_t)
-\]
-
-重点研究：
-
-\[
-Inventory \rightarrow Convenience\ Yield \rightarrow Basis \rightarrow Futures
-\]
-
-以及：
-
-\[
-Expectation + Hedging + Speculation \rightarrow Futures
-\]
-
----
-
-### 3.8 宏观与外部冲击
-
-第一版只保留少量高价值冲击：
-
-1. 新能源需求冲击
-2. 锂矿/原料成本冲击
-3. 供给/产能冲击
-4. 库存冲击
-5. 汇率/进口成本冲击
-
-后续根据识别结果再考虑：
-
-- 利率冲击
-- 产业政策冲击
-- 地缘政治风险
-- 市场情绪
-- stochastic cycle
-
-原则：**冲击越少越好，前提是能够解释主要机制。**
-
----
-
-## 4. 数据体系设计
-
-### 4.1 核心数据层
-
-| 模块 | 变量 | 建议频率 | 主要用途 |
-|---|---|---:|---|
-| 现货 | 电池级碳酸锂现货价格 | 日/周 | 价格核心观测 |
-| 期货 | 主力/连续合约、近月合约 | 日 | 期货定价与预测 |
-| 基差 | Spot - Futures | 日 | 期现结构 |
-| 供给 | 碳酸锂产量 | 月 | 生产模块 |
-| 产能 | 有效产能/投产项目/开工率 | 月 | 产能周期 |
-| 成本 | 锂辉石精矿价格 | 日/周/月 | 原料成本冲击 |
-| 成本 | 能源价格、汇率 | 日/月 | 成本传导 |
-| 需求 | 新能源汽车销量/产量 | 月 | 需求冲击 |
-| 需求 | 动力电池装车量 | 月 | 需求冲击 |
-| 需求 | 储能、正极材料产量 | 月 | 需求稳健性 |
-| 库存 | 交易所库存/仓单 | 日/周 | 库存状态 |
-| 库存 | 社会库存/企业库存代理 | 周/月 | 库存稳健性 |
-| 贸易 | 碳酸锂进口量 | 月 | 外部供给 |
-| 金融 | 利率 | 日/月 | 期货持有成本 |
-
-### 4.2 两层样本设计
-
-**长样本现货模型**：尽可能使用更早期的现货与产业数据，用于供需、库存、成本、产能机制识别。
-
-**短样本期货扩展模型**：以碳酸锂期货上市之后的日度数据为主，用于期现联动、基差、套保/投机和预测。
-
-原则：不为了期货模块，把整个结构模型都压缩到一个过短样本。
-
----
-
-## 5. 实验路线图
-
-### Experiment 0 — 数据可行性
-
-目标：确认哪些机制能被数据支持。
-
-输出：
-
-- canonical dataset
-- data dictionary
-- 缺失率/频率/起止时间审计
-- 结构突变和异常值报告
-- 同步规则
-
-### Experiment 1 — Reduced-form 机制预检
-
-使用：
-
-- AR/ARIMA
-- VAR/BVAR
-- ARDL/VECM（视平稳性和协整而定）
-- Granger/lag screening
-
-目的：
-
-- 估计潜在滞后长度
-- 识别变量方向
-- 给 DSGE prior 与结构参数范围提供依据
-
-### Experiment 2 — 最小结构模型 MVP
-
-仅包含：
-
-- Demand
-- Production
-- Inventory
-- Spot Price
-
-验收标准：
-
-- 稳态可解
-- 动态稳定
-- 需求/供给/库存冲击 IRF 符号合理
-- 关键参数可识别
-
-### Experiment 3 — 产能投资滞后
-
-新增：
-
-- Margin
-- Investment
-- Capacity Lag
-
-核心检验：
-
-模型是否能够内生生成“高利润—扩产—滞后过剩—价格回落”的周期。
-
-### Experiment 4 — 期货模块
-
-新增：
-
-- Futures
-- Basis
-- Carry
-- Convenience Yield
-- Hedging/Speculation
-
-检验：
-
-期货是否比现货更快反映基本面与预期。
-
-### Experiment 5 — Mixed-Frequency
-
-构建：
-
-- 日度价格
-- 周度库存
-- 月度产业数据
-
-进入统一状态空间，用不规则 Kalman Filter 处理异频观测。
-
-### Experiment 6 — Bayesian MCMC
+当前立即执行的研究阶段。
 
 目标：
 
-- posterior estimation
-- 多链收敛
-- posterior-vs-prior identification
-- posterior predictive check
+- prior design 不用同一数据的 MLE 做窄先验中心；
+- transformed-space MCMC target 正确包含 Jacobian；
+- 至少 4 条独立链；
+- rank-normalized split R-hat；
+- bulk / tail ESS；
+- MCSE；
+- posterior stability / boundary mass；
+- prior-to-posterior contraction；
+- prior sensitivity；
+- targeted `rho_n` / battery noise sensitivity；
+- posterior predictive sanity。
 
-### Experiment 7 — Stochastic Cycle Ablation
+只有该阶段 PASS，才有资格解释 IRF / FEVD。
 
-比较：
+## 8. Posterior structural results
 
-- Base Model
-- Base + Stochastic Cycle
+### IRF
+
+核心 shocks：
+
+- Demand +；
+- Cost +；
+- Supply +；
+- Price residual shock。
+
+优先检验符号、峰值时间与衰减顺序，而不是追求曲线平滑。
+
+### FEVD
+
+至少报告与月度模型一致的 1/3/6/12 月 horizons，检查是否存在单一冲击不合理吸收大多数价格波动。
+
+### Historical decomposition
+
+核心解释窗口：
+
+- 2021—2022 上涨；
+- 2023 下跌；
+- 后续震荡。
+
+如果线性 MVP 对极端行情幅度解释不足，应先报告 limitation，再决定是否需要非线性扩展。
+
+## 9. Structural OOS
+
+结构模型预测必须与已有基线保持严格可比：
+
+- Random Walk；
+- AR；
+- VAR；
+- BVAR。
+
+主张应限制为：结构模型是否增加机制解释和预测增量，而不是要求它在所有 horizon 都击败 RW/BVAR。
+
+## 10. Futures extension
+
+在核心 spot model 冻结后，再进入：
+
+`F_{t,T} = S_t exp[(r_t+s_t-y_t)(T-t)] + RP_t`
+
+候选机制：
+
+- inventory → convenience yield → basis；
+- expectations / hedging / speculation → futures risk premium；
+- spot-futures lead-lag / price discovery。
+
+期货/期权高频数据已存在，不重复大规模下载。
+
+## 11. Mixed-frequency extension
+
+Mixed-frequency 是后续扩展，而不是当前 Bayesian 估计的前置条件。
+
+未来可把：
+
+- 日度价格；
+- 周度库存；
+- 月度产业变量
+
+映射到 dynamic observation matrix 中，继续复用已经验证的 Kalman core。
+
+## 12. Stochastic-cycle ablation
+
+只有当 base structural model 在 residual / turning point / historical decomposition 上暴露明确缺口时，才比较：
+
+- Base model；
+- Base + stochastic cycle。
 
 必须评估：
 
-- likelihood / marginal likelihood
-- FEVD 是否被单一周期项过度支配
-- forecast 是否真正改善
-- residual 是否改善
-- turning-point detection 是否改善
+- posterior / likelihood 改善；
+- FEVD 是否被周期项过度支配；
+- forecast 是否真正改善；
+- turning-point / residual 是否改善。
 
-### Experiment 8 — 非线性扩展（仅必要时）
+不得复制参考生猪论文的周期冲击占比或固定 MCMC 次数。
 
-如果模型出现：
+## 13. Nonlinear extensions
 
-- 水平拟合很好
-- 转折点预测差
-- 尾部残差明显厚尾
+Markov switching、threshold state、regime-dependent shocks 等只在下列证据出现时考虑：
 
-再考虑：
+- 极端期 residual 明显系统性偏离；
+- historical decomposition 方向正确但幅度长期失真；
+- posterior predictive check 显示线性模型持续失败；
+- OOS turning points 明显无法捕捉。
 
-- Markov switching
-- Threshold state
-- Regime-dependent shock
-- 非线性状态空间
+## 14. Unified success criteria
 
----
+### Numerical
 
-## 6. 统一验收指标
+- stable transition dynamics；
+- Kalman covariance audit clean；
+- no hidden pseudo-inverse / uncontrolled jitter；
+- optimizer / sampler results reproducible。
 
-### 6.1 求解层
+### Identification
 
-- steady state 成功
-- BK/stability 条件满足
-- 无爆炸路径
-- 初值扰动后回归稳态
+- multi-start / multi-chain agreement；
+- R-hat / ESS / MCSE pass；
+- prior sensitivity explicitly reported；
+- weak parameters not hidden behind priors。
 
-### 6.2 参数层
+### Economics
 
-- 多链收敛
-- \(\hat R\) 合格
-- ESS 足够
-- 关键 posterior 不完全复制 prior
-- 参数不长期贴边界
-- 不同初始化结果稳定
+- IRF signs and timing plausible；
+- FEVD not dominated by an artificial residual factor without evidence；
+- historical decomposition connects model shocks to major episodes without overclaiming causality。
 
-### 6.3 IRF 层
+### Forecasting
 
-重点检查“符号 + 时间顺序”，而不是只看图是否平滑。
+- strict OOS；
+- compare with RW / AR / VAR / BVAR；
+- horizon- and window-dependence must be reported。
 
-预期核心模式：
+## 15. Midterm boundary
 
-| 冲击 | Price | Output | Inventory | Margin | Future Capacity |
-|---|---:|---:|---:|---:|---:|
-| Demand + | ↑ | 滞后↑ | ↓ | ↑ | ↑ |
-| Raw Material Cost + | ↑ | ↓ | ↓/不确定 | ↓ | ↓ |
-| Capacity + | ↓ | ↑ | ↑ | ↓ | ↓ |
-| Technology + | ↓ | ↑ | ↑ | 短期不确定 | ↑ |
-| FX Depreciation | ↑ | ↓ | ↓ | ↓ | ↓ |
-| Inventory + | ↓ | 近端弱 | ↑ | ↓ | ↓ |
+中期前优先完成：
 
-### 6.4 FEVD 层
+1. Phase 2D posterior estimation；
+2. IRF / FEVD；
+3. historical decomposition；
+4. structural OOS；
+5. one key robustness round；
+6. preliminary spot-futures extension if time permits。
 
-目标：解释“谁驱动价格波动”。
+中期前默认不强求：M1 Bayesian estimation、mixed-frequency full model、stochastic cycle、large nonlinear extensions、tick microstructure、options pricing。
 
-但设置防过拟合规则：
+## 16. Final principle
 
-- 如果一个抽象周期项解释 >70% 的多数核心变量，必须做 ablation；
-- 如果去掉该项后模型仍能合理解释历史，则优先保留经济机制模型；
-- FEVD 必须和 historical decomposition 相互印证。
-
-### 6.5 历史分解
-
-重点解释：
-
-- 2021–2022 上涨阶段
-- 高位转折
-- 2023 快速下跌阶段
-- 后续低位震荡/反弹阶段
-
-希望模型能够区分：
-
-- demand-driven rally
-- supply-release correction
-- inventory accumulation/depletion
-- cost shock
-- expectation/futures shock
-
-### 6.6 样本外预测
-
-至少比较：
-
-- Random Walk
-- AR(1)
-- VAR/BVAR
-- Simple Carry/Futures Model
-- Structural Model / MF-DSGE
-
-指标：
-
-- RMSE
-- MAE
-- Theil’s U
-- Direction Accuracy
-- Up Accuracy
-- Down Accuracy
-- Turning-point Accuracy
-
-重点：**不把高 R² 当作样本外预测成功。**
-
----
-
-## 7. Go / No-Go 决策规则
-
-### Gate A — 数据
-
-Go：关键变量样本长度足够、频率可统一、库存/产能至少有可靠代理。
-
-No-Go：核心变量长期缺失、样本重叠过短、无法建立最小供需库存系统。
-
-### Gate B — 结构模型
-
-Go：MVP 可稳定求解，核心冲击 IRF 符号和时序合理。
-
-No-Go：长期出现不可解释反向响应，且无法通过结构调整解决。
-
-### Gate C — 参数识别
-
-Go：关键参数 posterior 被数据更新且多链收敛。
-
-No-Go：大部分参数 posterior≈prior 或严重贴边界。
-
-### Gate D — 历史解释
-
-Go：上涨与下跌阶段由不同结构冲击主导，符合产业事实。
-
-No-Go：模型主要靠一个抽象残差/周期项解释全部波动。
-
-### Gate E — 预测
-
-Go：至少在部分关键指标上稳定优于 Random Walk/AR/VAR baseline，且 Theil’s U < 1。
-
-No-Go：高拟合但样本外无增量价值。
-
----
-
-## 8. 论文最终可能形成的三档版本
-
-### Version A — 最稳妥
-
-产业链结构模型 + VAR/BVAR 稳健性 + 期现价格发现。
-
-适用于：Mixed-Frequency/MCMC 增量有限，但核心产业机制成立。
-
-### Version B — 目标版本
-
-产业链 MF-DSGE + Bayesian MCMC + Historical Decomposition + Forecast Benchmark。
-
-这是当前首选目标。
-
-### Version C — 扩展版本
-
-Version B + Stochastic Cycle / Regime Switching / Nonlinear Extension。
-
-只有在实验明确证明有增量价值时采用。
-
----
-
-## 9. 建议仓库结构
-
-```text
-DSGE-LC/
-├── README.md
-├── docs/
-│   ├── research_master_plan.md
-│   ├── phase1_experiment_plan.md
-│   ├── data_dictionary.md
-│   ├── model_equations.md
-│   └── decision_log.md
-├── data/
-│   ├── raw/
-│   ├── interim/
-│   └── processed/
-├── src/
-│   ├── data/
-│   ├── diagnostics/
-│   ├── baselines/
-│   ├── model/
-│   ├── estimation/
-│   └── evaluation/
-├── scripts/
-├── configs/
-├── notebooks/
-├── tests/
-└── outputs/
-    ├── figures/
-    ├── tables/
-    ├── diagnostics/
-    └── runs/
-```
-
-原则：raw data 不覆盖，processed data 可复现生成，所有实验有 run config 与输出目录。
-
----
-
-## 10. 项目阶段规划
-
-### Phase 1 — 数据可行性与机制预检
-
-目标：确认数据、滞后、方向、结构突变，决定 MVP 变量集。
-
-### Phase 2 — 最小结构模型
-
-目标：Production + Demand + Inventory + Spot 能稳定求解并产生合理 IRF。
-
-### Phase 3 — 利润、投资与产能滞后
-
-目标：测试内生锂周期。
-
-### Phase 4 — 期货与基差
-
-目标：建立 inventory/carry/expectation/futures 链条。
-
-### Phase 5 — Mixed-Frequency + Bayesian Estimation
-
-目标：统一异频观测并完成参数后验估计。
-
-### Phase 6 — 历史分解、样本外预测、消融
-
-目标：决定最终论文究竟保留哪些模块。
-
-### Phase 7 — 论文正式写作
-
-只有完成前六阶段的关键 Go/No-Go 决策后，才冻结最终模型与论文框架。
-
----
-
-## 11. 当前最重要的研究纪律
-
-1. 不为了“论文更复杂”增加模块。
-2. 不为了提高 R² 调整结构。
-3. 不允许用全样本拟合冒充样本外预测。
-4. 不允许 stochastic cycle 在未经消融的情况下成为万能解释变量。
-5. 所有结构假设必须有数据、文献或产业机制至少一种支持。
-6. 所有关键结果都必须能够被复现实验脚本一键生成。
-7. 每个阶段结束时都记录“保留/删除/待验证”的决策。
-
----
-
-## 12. 当前项目结论
-
-当前最值得优先验证的不是完整 MF-DSGE，而是一个更小的核心闭环：
-
-\[
-Demand \rightarrow Inventory \rightarrow Spot\ Price
-\]
-
-以及：
-
-\[
-Spot\ Price-Cost \rightarrow Margin \rightarrow Investment/Utilization \rightarrow Lagged\ Capacity \rightarrow Output \rightarrow Inventory
-\]
-
-如果这两个闭环可以在真实碳酸锂数据上得到稳定、可解释、可识别的实验结果，则本研究方向成立；后续 Mixed-Frequency、期货、stochastic cycle 和非线性模型均作为增量扩展。
+**先做小模型完整闭环，再增加结构；先证明可识别和可解释，再追求复杂度。**
