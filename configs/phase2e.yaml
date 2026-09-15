@@ -1,0 +1,32 @@
+{
+  "phase": "2E",
+  "primary_model": "M0_CORE5",
+  "estimation_spec": "M0_FULL14",
+  "posterior_source": "PHASE2D_BASELINE",
+  "baseline_artifact": "outputs/phase2/phase2d/baseline_posterior_draws.npz",
+  "irf_max_horizon": 24,
+  "irf_report_horizons": [0, 1, 3, 6, 12, 18, 24],
+  "fevd_horizons": [1, 3, 6, 12, 24],
+  "credible_quantiles": [0.05, 0.16, 0.50, 0.84, 0.95],
+  "strong_sign_probability": 0.90,
+  "moderate_sign_probability": 0.75,
+  "terminal_persistence_review": 0.20,
+  "residual_dominance_moderate": 0.50,
+  "residual_dominance_high": 0.70,
+  "residual_dominance_severe": 0.80,
+  "irf_sensitivity_moderate_sd": 0.50,
+  "irf_sensitivity_high_sd": 1.00,
+  "fevd_sensitivity_moderate": 0.10,
+  "fevd_sensitivity_high": 0.20,
+  "rho_n": 0.80,
+  "battery_sd": 0.25,
+  "seed": 20260915,
+  "sensitivity_artifacts": {
+    "PRIOR_FLAT_BOUNDED": null,
+    "PRIOR_MODERATE_SHRINK": null,
+    "BATTERY_SD_010": null,
+    "BATTERY_SD_050": null,
+    "RHO_N_050": null,
+    "RHO_N_095": null
+  }
+}
