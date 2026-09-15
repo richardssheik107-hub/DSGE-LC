@@ -73,7 +73,11 @@ Phase 1A-2 mechanism diagnostics — **COMPLETE**.
 
 Phase 1B reduced-form baselines — **COMPLETE**.
 
-Next: MVP Structural Model.
+Secondary data audit — **COMPLETE**.
+
+Phase 2A Structural MVP Design — **COMPLETE** (`M0_CORE5` primary; `M1_CAPACITY6` extension).
+
+Next: Phase 2B State-Space / Kalman / Likelihood.
 
 当前阶段已从“继续扩张数据源”切换到：
 

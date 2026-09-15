@@ -214,3 +214,13 @@ ChinaBond 已恢复并成功取得 1,618 条 2020-01-02—2026-06-30 官方日�
 - 普通 VAR 未稳定改善 AR/RW；BVAR shrinkage 明显改善小样本 VAR，其中 MIXED4 相对 AR 在三个期限均有增量，但相对 RW 仅 H1 明确胜出，结论受 horizon 与评价窗口约束。
 - 所有主模型 origin 均稳定，无 singular fit、numerical fallback 或未审计失败。
 - Next: **Phase 2 MVP Structural Model**，先完成 structural equations、state definitions、steady state / local stability 与 identification pre-check；尚未开始 Kalman、MCMC、IRF 或 FEVD。
+
+## 15. Phase 2A Structural MVP Design update
+
+- Phase 2A Structural MVP Design: **COMPLETE**。
+- Selected Phase 2B primary model: **`M0_CORE5`**；`M1_CAPACITY6` 保留为预先规定的慢产能扩展。
+- 已冻结状态、冲击、方程、A/B/G/H 映射、尺度归一化、符号限制，并完成局部稳定性、可观测性、可达性、moment-Jacobian 与固定 seed 人工模拟预检。
+- 主观测 `OBS_MIXED4` 有效期 2021-01—2025-09（57个月）；`OBS_DLOG_MOY4` 对照为 2020-02—2025-09（68个月）。
+- 本阶段没有运行 Kalman、likelihood、参数估计、IRF、FEVD、历史分解或结构预测。
+- Next: **Phase 2B State-Space + Kalman + Likelihood**。
+- Data Freeze v2: **NOT READY / NON-BLOCKING**。
