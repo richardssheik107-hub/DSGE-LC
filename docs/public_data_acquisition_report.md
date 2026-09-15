@@ -1,62 +1,172 @@
 # Public Data Acquisition Report
 
-## 1. 本轮目标
+> 累计状态更新时间：2026-09-15
+>
+> 本文件现记录**截至 2026-06 的公开数据累计状态**。早期轮次中的“缺失 / MANUAL_REQUIRED”若与本页当前状态冲突，以本页和 `public_gap_closure_report.md` 为准。
 
-完成 2020-01 至 2026-06 的可公开获取数据，并保留原始响应、审计与缺口；未运行任何模型，亦未改动期货、期权、tick、分钟数据或既有 USD/CNY 原始文件。
+## 1. Current public-data status
 
-## 2. 覆盖结果
+| Variable | Coverage | Obs / completeness | Current status | Main source |
+|---|---|---:|---|---|
+| `usd_cny_mean` | 2020-01—2026-06 | 78/78 | OK | existing protected daily FX source |
+| `cpi_yoy` | 2020-01—2026-06 | 78/78 | OK | 国家统计局 |
+| `ppi_yoy` | 2020-01—2026-06 | 78/78 | OK | 国家统计局 |
+| `nev_sales` | 2020-01—2026-06 | 78/78 | OK | MIIT/CAAM |
+| `nev_production` | 2020-01—2026-06 | 78/78 | OK | MIIT/CAAM |
+| `china_gov_3m_mean` | 2020-01—2026-06 | 78/78 | OK | ChinaBond 0.25Y |
+| `china_gov_6m_mean` | 2020-01—2026-06 | 78/78 | OK | ChinaBond 0.50Y |
+| `lc_import_qty` / `lc_export_qty` | 2020-01—2024-12 canonical public + later supplements through 2026-06 | tail available | RECONCILIATION-GOVERNED | UN Comtrade + China Customs/SMM public references |
+| `battery_install` tail | 2026-03—2026-06 | 4/4 | ACCEPTED_PUBLIC_PATCH | 动力电池联盟权威转载 |
 
-| Variable | Start | End | Obs | Missing | Status |
-|---|---|---|---:|---:|---|
-| cpi_yoy | 2020-01 | 2026-06 | 75 | 3 | PARTIAL |
-| ppi_yoy | 2020-01 | 2026-06 | 74 | 4 | PARTIAL |
-| nev_sales | 2020-01 | 2026-06 | 78 | 0 | OK |
-| nev_production | 2020-01 | 2026-06 | 78 | 0 | OK |
-| china_gov_3m_mean |  |  | 0 | 78 | MANUAL_REQUIRED |
-| china_gov_6m_mean |  |  | 0 | 78 | MANUAL_REQUIRED |
-| lc_import_qty | 2020-01 | 2024-12 | 60 | 18 | PARTIAL |
-| lc_export_qty | 2020-01 | 2024-12 | 60 | 18 | PARTIAL |
-| usd_cny_mean | 2020-01 | 2026-06 | 78 | 0 | OK |
+公开宏观层已不再是当前建模 blocker。
 
-## 3. 已取得数据
+## 2. ChinaBond status — resolved
 
-- NBS：CPI、PPI 取国家统计局原始公告 HTML。滚动档案之外的历史月通过国家统计局官网站内检索定位原文；无插值。HTML 对照见 `data/metadata/nbs_reconciliation.csv`。
-- MIIT：全国新能源汽车月度产量、销量均为 78 期，单位为万辆。原文的顺序为“产销”；2020-08 为唯一累计值反推，记录于 `data/metadata/nev_derived_months.csv`。
-- UN Comtrade：HS 283691、中国（156）、World（0）月度进口/出口响应已保存。仅使用 `netWgt`，kg 除以 1,000 转吨；2025-01 以后 API 无可用净重，保留 NA。
+早期尝试因官方接口连接重置而失败；后续公开补缺轮中 ChinaBond 官方端点恢复可访问。
 
-## 4. 仍不可取得
+当前已取得：
 
-- ChinaBond：已尝试官方国债收益率曲线接口 `queryXyz`，参数明确为 0.25Y/0.50Y（不是 SHIBOR）；远端重置连接，故两序列保持 NA，并在 source manifest 留存失败信息。建议人工在中债历史曲线页导出后再放入日频文件。
+- 1,618 条官方日频中国国债曲线记录
+- 日期：2020-01-02—2026-06-30
+- 0.25Y 节点 → `china_gov_3m_mean`
+- 0.50Y 节点 → `china_gov_6m_mean`
+- 两个期限月度均值均为 78/78
 
-## 5. 审计与验证
+这些不是 SHIBOR、DR007、LPR 或国开债。ChinaBond **不再需要人工导出**。
 
-- 缺失月份、覆盖率和描述统计：`data/metadata/public_data_audit.csv`。
-- 原始来源留存检查：`data/metadata/public_data_validation.csv`。
-- Comtrade 重复文件只审计、不删除：`data/metadata/comtrade_duplicate_audit.csv`。
-- USD/CNY 既有 raw SHA-256 保护台账：`data/metadata/protected_raw_hashes.csv`。
+## 3. CPI / PPI status — resolved
 
-# Round 3 — Auxiliary Data
+此前 CPI 缺 3 个月、PPI 缺 4 个月；后续均由国家统计局官方原文补齐。
 
-## 1. 本轮目标
+当前：
 
-仅获取可追溯的辅助变量；主月度面板及四条人工收集的产业数据均未改动，未开始任何建模。
+- CPI：78/78
+- PPI：78/78
 
-## 2. GFEX 仓单结果
+未使用插值或非官方替代。
 
-尝试访问广州期货交易所官方站点时，本环境的 TLS 握手失败。未以商业站点替代，`gfex_lc_warehouse_receipt` 保持 `FAILED`；未假设仓单与吨数换算关系。
+## 4. NEV and battery demand data
 
-## 3. 宏观与金融数据结果
+NEV 产量、销量已覆盖 2020-01—2026-06，共 78 期。
 
-- LPR：从全国银行间同业拆借中心（中国货币网）官方历史接口取得 1Y、5Y 公布日数据，并保留于 `lpr_quotes_daily.csv`。月度值是当月有效的政策报价状态，而不是统计插值。
-- 制造业 PMI、规模以上工业增加值：国家统计局官方检索服务的批量请求出现超时阻塞；为避免单一来源拖慢项目，未使用非官方替代，保持失败状态。
-- M2：本轮未找到可稳定、可批量复现的人民银行官方历史接口，保持失败状态。
+动力电池装车量核心历史来自商业行业工作簿；公开渠道已补齐：
 
-## 4. 下游辅助数据结果
+| Month | Total GWh | LFP GWh | NCM GWh | Status |
+|---|---:|---:|---:|---|
+| 2026-03 | 56.5 | 45.8 | 10.7 | ACCEPTED_PUBLIC_PATCH |
+| 2026-04 | 62.4 | 50.8 | 11.5 | ACCEPTED_PUBLIC_PATCH |
+| 2026-05 | 71.9 | 58.4 | 13.4 | ACCEPTED_PUBLIC_PATCH |
+| 2026-06 | 76.5 | 63.7 | 12.7 | ACCEPTED_PUBLIC_PATCH |
 
-复用已保存的工信部月报原文，新增汽车总产量、总销量及新能源汽车渗透率。渗透率优先使用报告直接值；报告未直接给出时，仅用同月 `nev_sales / auto_sales * 100` 计算，且任一基础值缺失即保持 NA。
+2026-01、2026-02 的公开联盟数据与商业工作簿完全一致，因此公开尾部被接受。
 
-## 5. 可选数据、质量与推荐
+## 5. Lithium carbonate trade
 
-- 未获取 DR007、逆回购、MLF、充电桩、锂矿石进口和 Brent，以避免无明确官方稳定口径的扩张。
-- 推荐：`lpr_1y`、`lpr_5y` 为 **ROBUSTNESS**；`auto_sales`、`auto_production`、`nev_penetration` 为 **ROBUSTNESS**。
-- `gfex_lc_warehouse_receipt` 为 **FUTURES_ONLY / VALIDATION_ONLY**，且当前不可用；PMI、工业增加值、M2 为 **DO_NOT_USE**，直至获得可复现官方序列。
+UN Comtrade HS 283691、中国 156、World 0 的 `netWgt` 构成 2020-01—2024-12 的公共基础序列；kg 除以 1,000 转为 metric tons。
+
+商业行业表与 Comtrade 重叠期的既有对账结果：
+
+- `MATCH`: 54 months
+- `MINOR_DIFFERENCE`: 3 months
+- `MATERIAL_DIFFERENCE`: 1 month
+- `NOT_COMPARABLE / supplement-only`: 2025 early tail
+
+公开 SMM 页面明确引用中国海关的数据已补出 2025-09—2026-06 的月度进口/出口数量。它们进入候选/辅助面板；最终 canonical trade merge 必须继续遵循 reconciliation，不静默覆盖历史来源。
+
+## 6. Public industry tail status
+
+### 6.1 SMM battery-grade lithium carbonate spot
+
+公开严格月均已找到并接受：
+
+- 2025-10: 75,291.18 CNY/t
+- 2025-11: 86,457.5 CNY/t
+- 2026-01: 156,000 CNY/t
+- 2026-02: 149,600 CNY/t
+- 2026-03: 156,700 CNY/t
+
+仍缺 strict canonical：
+
+- 2025-12
+- 2026-04
+- 2026-05
+- 2026-06
+
+以上仍需 SMM 授权日频或严格月均。
+
+### 6.2 SMM lithium carbonate output
+
+已接受：
+
+- 2026-01: 97,900 t
+- 2026-02: 83,090 t
+
+仍为 `REVIEW_REQUIRED` 的精确值候选：
+
+- 2025-10: 92,260 t
+- 2025-11: 95,350 t
+- 2025-12: 99,200 t
+- 2026-03: 106,620 t
+- 2026-04: 110,030 t
+- 2026-05: 113,295 t
+- 2026-06: 115,320 t
+
+这些值均不得在未完成最终核验前自动写入 Data Freeze v1。
+
+### 6.3 SMM SC6 CIF China
+
+2026-03 严格月均 2,081.4 USD/t 已公开确认。
+
+仍缺：
+
+- 2025-10—2026-02
+- 2026-04—2026-06
+
+公开页面中的日点值、月末值、区间和近似月均均不能替代 strict monthly mean。
+
+## 7. High-value public robustness / validation data
+
+已新增：
+
+- Mysteel 电池级碳酸锂月均：`ROBUSTNESS`
+- Mysteel SC6 CIF China 月均：`ROBUSTNESS`
+- Mysteel 澳洲 SC6 路线碳酸锂成本/即期利润：`VALIDATION_ONLY`
+- SMM filtered 锂精矿进口：`ROBUSTNESS`
+- SMM 库存扩样/方法制度断点：`VALIDATION_ONLY`
+
+这些数据不替代 SMM core canonical series。
+
+## 8. Variables intentionally not pursued as blockers
+
+以下变量目前不是 Phase 1 Go/No-Go 条件：
+
+- 长期产能
+- 长期开工率
+- 完整长期社会库存
+- 企业 capex / 投资
+- 企业利润
+- PMI
+- 工业增加值
+- M2
+- DR007 / MLF / reverse repo
+- 大规模政策、情绪与地缘风险文本指标
+
+其中产能、投资、库存、利润等可先作为 latent states；已有短样本用于后续验证。
+
+## 9. Data gate
+
+Data Freeze v1：
+
+- 2020-01—2025-09
+- 69 个共同完整月份
+- 核心产业变量内部缺失 0
+- `DATA_GATE = GO`
+
+因此当前主线已从“继续寻找更多公开数据”切换到 Phase 1 diagnostics 和 baselines；剩余 SMM 尾部授权补齐与实证并行进行。
+
+## 10. Related reports
+
+- `docs/industry_data_ingestion_audit.md`：商业行业工作簿正式入库审计
+- `docs/public_gap_closure_report.md`：公开尾部补缺与 reconciliation
+- `docs/high_value_industry_data_update.md`：Mysteel、filtered imports、库存制度断点和成本利润验证层
+- `docs/project_status_2026_09_15.md`：当前项目总状态
