@@ -19,8 +19,9 @@
 - [`phase2a_identification_precheck.md`](phase2a_identification_precheck.md) — stability / observability / reachability / local Jacobian 预检。
 - [`phase2b_kalman_likelihood_validation.md`](phase2b_kalman_likelihood_validation.md) — Kalman filter、RTS smoother、likelihood 和 numerical audit。
 - [`phase2c_estimation_preflight.md`](phase2c_estimation_preflight.md) — constrained MLE、multi-start、profile、Hessian/OPG 和 weak-ID 结论。
+- [`phase2d_bayesian_estimation.md`](phase2d_bayesian_estimation.md) — proper prior、z-space MCMC、Jacobian、多链收敛、prior/fixed-assumption sensitivity 与 posterior identification。
 
-当前下一阶段是 Phase 2D Bayesian estimation；在正式 phase memo 生成之前，不应把计划中的 MCMC 设定写成“已经完成”。
+**Phase 2D 已完成。当前下一阶段是 posterior IRF + FEVD + structural sign / economic-consistency checks。** Historical decomposition 仍由该结构结果 gate 阻塞。
 
 ## C. Phase 1 empirical results
 
@@ -61,6 +62,7 @@ README.md
 → phase2a_structural_mvp_spec.md
 → phase2b_kalman_likelihood_validation.md
 → phase2c_estimation_preflight.md
+→ phase2d_bayesian_estimation.md
 → research_master_plan.md
 → midterm_plan_2026_11.md
 ```
@@ -68,7 +70,7 @@ README.md
 ## G. Documentation maintenance rule
 
 - `project_status_YYYY_MM_DD.md`：当前状态快照，只写“现在是什么”。
-- `phaseX...md`：阶段完成后的不可随意重写结果 memo。
+- `phaseX...md`：阶段完成后的结果 memo；允许补充勘误或 lineage note，但不得无痕改写历史结论。
 - `*_audit.md` / `*_report.md`：数据或实现审计，保留当时口径。
 - `research_master_plan.md`：长期路线，可随 evidence 更新，但必须区分 current MVP 与 future extension。
 - 旧文档中的“下一步”是历史语境，不自动覆盖最新 project status。

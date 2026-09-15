@@ -28,6 +28,7 @@ run_phase1b_baselines.py
 run_phase2a_structural_design.py
 run_phase2b_kalman_validation.py
 run_phase2c_estimation_preflight.py
+run_phase2d_bayesian_estimation.py
 ```
 
 Execution order matches the research pipeline; do not skip phase gates just because later code exists.
@@ -41,7 +42,7 @@ A runner may:
 - assemble inputs;
 - call `src/` functions;
 - generate ignored CSV/figures;
-- write concise aggregate diagnostics.
+- write concise aggregate diagnostics。
 
 A runner should not:
 
@@ -49,12 +50,12 @@ A runner should not:
 - redefine structural equations;
 - embed commercial observations in source code;
 - silently change earlier-phase parameter ranges;
-- automatically launch the next research phase after a gate failure.
+- automatically launch the next research phase after a gate failure。
 
-## Next runner
+## Current next runner
 
-When Phase 2D implementation begins, use a new explicit entry point such as:
+Phase 2D is complete. The next runner should be a separate posterior structural-results entry point, for example:
 
-`run_phase2d_bayesian_estimation.py`
+`run_phase2e_posterior_structural_results.py`
 
-and keep MCMC / diagnostics logic in reusable `src/structural/` modules.
+Its scope should be limited to posterior IRF, FEVD and structural sign/economic-consistency checks. Historical decomposition should remain a later gated runner rather than being silently bundled into the same script.

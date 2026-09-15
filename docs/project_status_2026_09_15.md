@@ -199,3 +199,21 @@ When historical documents conflict, use this order:
 **Stop broad data expansion. Keep Data Freeze v1 immutable. Phase 2D is complete. Enter posterior IRF / FEVD preparation with warnings.**
 
 Phase 2D did not run IRF, FEVD, historical decomposition, shock decomposition, structural OOS forecasting, or `M1` real-data estimation.
+
+## 14. Repository lineage clarification
+
+The canonical remote `main` lineage is:
+
+```text
+f2fd8928e1804b04f10be64357a77e001b5df7ef  Phase 2C
+→ 5e1407f23f6532a4191b65e34446cf08401bd654  repository/docs/reproducibility refresh
+→ 9d4bf73a0307afecbdce4ab8bc497c976dbc452b  Phase 2D Bayesian estimation
+```
+
+The Phase 2D implementation was initially reported from a local lineage that started at `f2fd892`, producing a local commit id `88faa8...`. Before remote integration, the repository-maintenance commit `5e1407f...` had already advanced `main`. Reapplying/integrating the same Phase 2D change on top of that parent necessarily changed the Git commit SHA to `9d4bf73...`.
+
+Therefore:
+
+- `9d4bf73...` is the canonical remote Phase 2D commit;
+- `88faa8...` is a pre-integration local commit identifier and should not be used as a remote source-of-truth reference;
+- this SHA difference is a Git-history/parent difference, not evidence of a changed Data Freeze or a different Phase 2D statistical result.
