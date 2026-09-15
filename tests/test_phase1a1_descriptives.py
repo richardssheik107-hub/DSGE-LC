@@ -98,7 +98,7 @@ class Phase1A1DescriptiveTests(unittest.TestCase):
         self.assertEqual(actual, CONFIG["data_freeze_sha256"])
 
     def test_18_figures_use_exact_configured_sample(self) -> None:
-        figures = sorted((OUTPUT / "figures").glob("*.png"))
+        figures = sorted(path for path in (OUTPUT / "figures").glob("*.png") if int(path.name.split("_", 1)[0]) <= 10)
         self.assertEqual(len(figures), 10)
         expected = f"{CONFIG['sample_start']} to {CONFIG['sample_end']}"
         for figure in figures:

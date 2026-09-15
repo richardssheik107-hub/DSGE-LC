@@ -197,4 +197,11 @@ ChinaBond 已恢复并成功取得 1,618 条 2020-01-02—2026-06-30 官方日�
 - Phase 1A-1 descriptive diagnostics: **COMPLETE**。
 - 已基于 Data Freeze v1 完成统一变换、数据 QA、描述统计、核心图形、12个月滚动描述、同期相关性和异常保留审计。
 - 未执行平稳性检验、领先滞后扫描、结构断点检验或 margin proxy。
-- Next: **Phase 1A-2 stationarity / lag / break diagnostics**。
+- Follow-up: Phase 1A-2 stationarity / lag / break diagnostics 已完成，见第 13 节。
+
+## 13. Phase 1A-2 update
+
+- Phase 1A-2 mechanism diagnostics: **COMPLETE**。
+- 已在 Data Freeze v1 上完成 ADF/KPSS、Zivot–Andrews、受限 lead-lag、MoY 季节性稳健性、早期 2020 稳健性、HAC 辅助确认、margin proxy 与最多两个断点的 BIC 筛选。
+- Cost → Price 形成 0–1 个月强候选；Margin → Future Output Growth 形成 9–11 个月中等候选；其他方向保留为弱或无清晰证据，不作因果解释。
+- Next: **Phase 1B reduced-form baselines（RW / AR / VAR / BVAR）**。
