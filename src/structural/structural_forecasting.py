@@ -70,13 +70,63 @@ def fit_map_multistart(transform, observations, bounds, prior, starts, rho_n=.8,
         obj = NativeMapObjective(transform, observations, bounds, prior, rho_n, battery_sd)
         z0 = np.clip(transform.theta_to_unconstrained(start), -z_bound, z_bound)
         res = minimize(obj, z0, method="L-BFGS-B", bounds=[(-z_bound, z_bound)] * len(z0), options={"maxiter": maxiter, "ftol": ftol})
-        theta = transform.unconstrained_to_theta(res.x); value = float(obj(res.x)); p = {**theta, "rho_n": rho_n}
-        radius = float(stability_metrics(system_matrices("M0_CORE5", p)[0])["spectral_radius"])
-        rows.append({"start_id": i, "success": bool(res.success), "objective": value, "theta": theta,
-                     "spectral_radius": radius, "nit": int(getattr(res, "nit", 0)), "nfev": int(res.nfev), "message": str(res.message)})
-    valid = [r for r in rows if np.isfinite(r["objective"]) and r["objective"] < 1e11 and r["spectral_radius"] < 1]
+        theta = transform.unconstrained_to_theta(res.x)
+        reasons = []
+        if not bool(res.success):
+            reasons.append("OPTIMIZER_NOT_CONVERGED")
+        within_support = all(
+            name in theta and np.isfinite(theta[name]) and lo <= theta[name] <= hi
+            for name, (lo, hi) in bounds.items()
+        )
+        if not within_support:
+            reasons.append("OUTSIDE_NATIVE_SUPPORT")
+        radius = float("nan")
+        if within_support:
+            try:
+                p = {**theta, "rho_n": rho_n}
+                radius = float(stability_metrics(system_matrices("M0_CORE5", p)[0])["spectral_radius"])
+            except (ValueError, np.linalg.LinAlgError, OverflowError, FloatingPointError):
+                pass
+        stable = bool(np.isfinite(radius) and radius < 1)
+        if not stable:
+            reasons.append("UNSTABLE_OR_INVALID_SYSTEM")
+        loglik = float("nan")
+        likelihood_status = "NOT_EVALUATED"
+        logprior = float("nan")
+        if within_support and stable:
+            try:
+                lik = evaluate_m0_likelihood(p, battery_sd, obj.y)
+                likelihood_status = lik.status
+                loglik = float(lik.loglik)
+            except (ValueError, np.linalg.LinAlgError, OverflowError, FloatingPointError):
+                likelihood_status = "EVALUATION_ERROR"
+            try:
+                logprior = float(log_prior_native(theta, bounds, prior))
+            except (ValueError, OverflowError, FloatingPointError):
+                pass
+        if likelihood_status != "OK" or not np.isfinite(loglik):
+            reasons.append("INVALID_LIKELIHOOD")
+        if not np.isfinite(logprior):
+            reasons.append("INVALID_PRIOR_OR_SUPPORT")
+        value = (
+            float(-(loglik + logprior))
+            if likelihood_status == "OK" and np.isfinite(loglik) and np.isfinite(logprior)
+            else obj.penalty
+        )
+        if not np.isfinite(value) or value == obj.penalty:
+            reasons.append("INVALID_OBJECTIVE")
+        rows.append({"start_id": i, "success": bool(res.success), "admissible": not reasons,
+                     "failure_reasons": reasons, "objective": value, "theta": theta,
+                     "within_support": within_support, "likelihood_status": likelihood_status,
+                     "loglik": loglik, "logprior": logprior, "spectral_radius": radius,
+                     "nit": int(getattr(res, "nit", 0)), "nfev": int(res.nfev), "message": str(res.message)})
+    valid = [r for r in rows if r["admissible"]]
     if not valid:
-        raise RuntimeError("no valid structural MAP solution")
+        detail = "; ".join(
+            f"start {r['start_id']}: {','.join(r['failure_reasons'])}; optimizer={r['message']}"
+            for r in rows
+        ) or "no starts supplied"
+        raise RuntimeError(f"no converged, valid structural MAP solution ({detail})")
     return min(valid, key=lambda r: r["objective"]), rows
 
 

@@ -42,5 +42,14 @@
     "historical_log_identity_absolute_tolerance": 1e-8,
     "historical_endpoint_absolute_tolerance": 1e-8,
     "legacy_posterior_scaler_hash_rule": "Exact matching LEGACY_V1_PER_SERIES_SCALER only; COMMON_SUPPORT_57_SCALER is not posterior-compatible without re-estimation."
+  },
+  "forecast_external_validation": {
+    "forecast_actual_absolute_tolerance": 1e-6,
+    "forecast_metric_absolute_tolerance": 1e-7,
+    "bootstrap_seed": 20260916,
+    "bootstrap_replicates": 2000,
+    "bootstrap_block_lengths_months": [3, 6],
+    "bootstrap_interval_quantiles": [0.025, 0.975],
+    "information_set_note": "Given-selected-specification historical recursive OOS with RELEASE_SAFE_APPROXIMATION; not untouched model selection, full vintage or prospective validation."
   }
 }

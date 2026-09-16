@@ -10,8 +10,8 @@
 | A04 | P0 | CLOSED（R1-4；LEGACY保留） | 逐列scaler manifest；原v1与共同支持期对照 | [R1-4审计](../audits/r1_measurement_and_units.md)：原输入/后验似然回放、68/57逐列拟合、两版 hash、历史log均值项与端点；COMMON仅构建未估计 |
 | A05 | P1 | CLOSED（R1-2） | FEVD/HD逐draw和均值加总、边际区间、先累计后分位、正负堆叠已修正 | [R1-2审计](../audits/r1_historical_and_fevd.md)：FEVD 168 PASS、H1库存7个 NOT_DEFINED；基线12月中位数和0.964508属合法边际统计 |
 | A06 | P1 | PARTIAL（R1-4操作定义完成） | 月度/同比/库存指数定义与产业推导 | [R1-4审计](../audits/r1_measurement_and_units.md)已固定方程-观测-状态-单位和符号限制；导师方法范围与最终论文表述仍待确认 |
-| A07 | P1 | OPEN | OOS成功状态、预测目标与同键公平比较 | 不选未收敛解；origin/target/horizon一致；伪实时/真前瞻分开 |
-| A08 | P1 | OPEN | 外部验证加入时间样本误差与filtered对照 | 同源成本机械成分明示；库存制度和block依赖处理 |
+| A07 | P1 | CLOSED（R1-5历史复核/未来防护） | OOS成功状态、预测目标与同键公平比较 | [R1-5审计](../audits/r1_forecast_and_external_validation.md)：旧 86/86 起点优化成功、56 完整键真值一致、15 指标复算；未收敛解未来禁入；真前瞻验证仍属未来研究 |
+| A08 | P1 | CLOSED（R1-5最小增补；解释降级） | 外部验证加入时间样本误差与filtered对照 | [R1-5审计](../audits/r1_forecast_and_external_validation.md)：同 draw 滤波/平滑、原水平/log/变化/去趋势、固定 2,000×3/6 月配对块；高成本相关有同源成分，库存变化量区间跨零 |
 | A09 | P1 | PARTIAL | 核心参考稿映射已写；实际理论章节与导师确认待做 | 不宣称已实现四部门/混频/联合期现；引用正式版本可追踪 |
 | A10 | P1 | OPEN | 引文核实、19章草稿收束、图表/公式/格式 | 无待核验关键引用；正式DOCX/PPTX实排；导师反馈逐条闭合 |
 | A11 | P1 | PARTIAL | pandas最低版本已修；构建便携/集成分层和私有artifact备份 | 干净环境执行记录、依赖锁、数据/scaler/code绑定、恢复演练 |

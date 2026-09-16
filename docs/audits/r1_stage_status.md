@@ -9,7 +9,7 @@ run_id：`R1_20260916_190253`。只有已执行的检查才可标为完成；旧
 | R1-2 A02/A05 | COMPLETE（技术） | [历史与FEVD修正](r1_historical_and_fevd.md)：七套原后验输入不变；FEVD 168 PASS + 7 个数学上未定义单元；历史数值技术 PASS，但后期窗口 6 个 AMBIGUOUS，解释门槛为 `INTERPRETATION_REVIEW_REQUIRED` |
 | R1-3 A03 | COMPLETE（描述性） | [期现同区间复核](r1_spot_futures_alignment.md)：535 日、七次换月、月末/双方月均/日频严格键控；旧月频+1 0.710→同端点约0.526，月频峰转同期；日频+1约0.475保留。整体 `DIRECTION_OR_PEAK_SENSITIVE`，不作因果或可交易解释 |
 | R1-4 A04/A06 | COMPLETE（测量与单位；导师范围待确认） | [测量与单位审计](r1_measurement_and_units.md)：情形 A，原输入 228 值完全重建、12 个生产 draw 似然回放一致；共同支持期仅构建未估计；78 个历史原始 log/端点键通过。A06 的导师理论范围确认仍开放 |
-| R1-5 A07/A08 | OPEN | 预测键、外部不确定性尚未复核 |
+| R1-5 A07/A08 | COMPLETE（技术；解释限于描述性） | [预测与外部验证审计](r1_forecast_and_external_validation.md)：21 起点的 86/86 旧优化成功；五模型 56 完整键/15 指标复算通过；MAP 候选准入修复；同 draw filtered/smoothed 与 3/6 月配对 block bootstrap。库存变化量弱，成本同源，非实时/非因果 |
 | R1-6 论文与计划 | OPEN | 等前面实际结果形成后同步 |
 
 本表的 COMPLETE 仅指该行的工作项，绝不等于论文提交就绪。
