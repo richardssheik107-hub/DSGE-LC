@@ -12,7 +12,8 @@
 - 当前主模型是 `M0_CORE5`；当前估计规格是 `M0_FULL14`。
 - Phase 2E 已修复 sensitivity artifact persistence gap，六套 posterior IRF/FEVD sensitivity propagation 全部完成并通过。
 - Phase 2F posterior historical decomposition 已完成；shock reconstruction、decomposition identity 和 critical sensitivity gates 全部通过。
-- 历史分解、结构预测和 M1 真实数据估计仍处于后续 gate，尚未开始。
+- Phase 2G strict Structural OOS 已完成：H1 优于 RW，H3/H6 优于 AR，三期限均优于 unrestricted VAR，但 BVAR 仍是最强预测 challenger；结果定位为 competitive forecasting 而非 forecast dominance。
+- M1 真实数据估计仍未启动；下一阶段为关键 robustness / external validation。
 
 项目实际进度已超过原中期计划约第 6 周（10 月中旬）的任务深度；posterior mixing 已通过，但 prior/fixed-assumption sensitivity 与 inventory-price weak direction 必须继续随结构结果报告。
 
@@ -28,11 +29,11 @@
 | Phase 2B | **COMPLETE** | Gaussian state-space、Kalman、RTS、likelihood | complete |
 | Phase 2C | **COMPLETE** | `M0_FULL14` selected；synthetic + real multi-start pass | complete |
 | Phase 2D | **COMPLETE** | Bayesian posterior convergence PASS；sensitivity completed | complete with warnings |
-| Posterior IRF / FEVD | **REQUIRES STRUCTURAL REVIEW** | baseline computed; sensitivity propagation blocked | recover existing sensitivity artifacts without resampling |
 | Phase 2E IRF / FEVD | **COMPLETE** | core price signs stable；all FEVD shifts LOW | complete |
 | Phase 2F Historical decomposition | **COMPLETE** | episode attribution stable；numerical audits PASS | complete |
-| Structural OOS | **NEXT** | not run | compare with RW / AR / VAR / BVAR |
-| Futures | **LATER** | not run | core structural OOS complete |
+| Phase 2G Structural OOS | **COMPLETE** | strict expanding-window MAP OOS；H1 U2=0.914, H3=1.240, H6=1.131 | key robustness / external validation |
+| Key robustness / external validation | **NEXT** | SMM inventory + route cost/margin already available | validate latent inventory-pressure and cost blocks |
+| Futures | **LATER** | not run | robustness complete and core results frozen |
 
 ## 3. Data Freeze v1
 
@@ -170,9 +171,11 @@ Provider and usage layers remain separated:
 
 No provider may be silently spliced into the SMM canonical price series.
 
-## 10. Immediate next phase — Structural OOS
+## 10. Phase 2G Structural OOS — COMPLETE
 
-Phase 2E artifact recovery and sensitivity propagation are complete. Phase 2F historical decomposition is also complete: the 2021--2022 model-implied positive contribution is led by cost, 2023 negative pressure is broad with cost the largest negative net component, and 2024--2025 negative fundamentals are partly offset by a positive price residual. The next task is strict Structural OOS comparison against RW / AR / VAR / BVAR.
+Phase 2E artifact recovery/sensitivity and Phase 2F historical decomposition are complete. Phase 2G then ran a strict expanding-window structural OOS with training-only scaling and release-safe Output/Battery treatment. Structural M0 has U2 `0.914 / 1.240 / 1.131` at H1/H3/H6: it beats RW at H1, AR at H3/H6, and VAR at all horizons, but not BVAR. The result supports a `mechanism + competitive forecasting` contribution, not universal forecast superiority.
+
+The next task is a bounded robustness / external-validation round using already available SMM inventory and route cost/margin series.
 
 ## 11. Timeline to midterm
 
@@ -182,7 +185,8 @@ Current revised sequence:
 
 - **complete:** Phase 2E artifact recovery and full posterior IRF/FEVD sensitivity;
 - **complete:** Phase 2F historical decomposition of major episodes;
-- **next:** structural OOS and robustness;
+- **complete:** Phase 2G strict structural OOS;
+- **next:** key robustness / external validation;
 - **early November:** preliminary spot-futures extension if the core model is already stable;
 - **by 2026-11-10:** freeze major experiments and switch to result organization / midterm materials.
 
@@ -199,9 +203,9 @@ When historical documents conflict, use this order:
 
 ## 13. Current decision
 
-**Stop broad data expansion. Keep Data Freeze v1 immutable. Phase 2E and Phase 2F are complete. Structural OOS is next.**
+**Stop broad data expansion. Keep Data Freeze v1 immutable. Phase 2E, Phase 2F and Phase 2G are complete. Key robustness / external validation is next.**
 
-No structural OOS forecasting, futures estimation or `M1` real-data estimation has yet been run.
+Structural OOS has now been run. Futures estimation and `M1` real-data estimation have not yet been run.
 
 ## 14. Repository lineage clarification
 

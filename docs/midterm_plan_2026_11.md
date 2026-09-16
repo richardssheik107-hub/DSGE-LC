@@ -17,7 +17,7 @@
 | W5 10/7—10/13 | 结构模型框架 | **COMPLETE AHEAD OF SCHEDULE** |
 | W6 10/14—10/20 | State-space / Kalman / 初步估计 | **COMPLETE AHEAD OF SCHEDULE** |
 | W7 10/21—10/27 | Bayesian + IRF / FEVD | **COMPLETE** |
-| W8 10/28—11/3 | 历史分解 / 预测 | **NOT STARTED** |
+| W8 10/28—11/3 | 历史分解 / 预测 | **COMPLETE AHEAD OF SCHEDULE** |
 | W9 11/4—11/10 | 稳健性 / 期现扩展 | **NOT STARTED** |
 | W10 | 中期整理 | **NOT STARTED** |
 
@@ -94,9 +94,13 @@ Phase 2D 已通过，不再把 MCMC mixing 当作当前 blocker。现在风险�
 
 如果线性 MVP 对极端行情幅度解释不足，先诚实记录 limitation，再决定是否需要局部 robustness，而不是立即引入大型非线性模型。
 
-### Next — Structural OOS
+### Structural OOS — COMPLETE
 
-继续遵守 Phase 1B 的严格时间顺序原则，与 Random Walk、AR、VAR、BVAR 进行可比 OOS 评估。
+已完成 strict expanding-window Structural OOS：training-only scaling、release-safe Output/Battery、每个 origin 重新 MAP 估计。结构 M0 的 H1/H3/H6 U2 为 `0.914 / 1.240 / 1.131`；预测表现具有竞争力但不支配 BVAR/RW。
+
+### Next — Key robustness / external validation
+
+优先使用现有 SMM social inventory 与 route cost/margin series 对 latent inventory-pressure 和 cost blocks 做独立外部验证；不改变 Data Freeze v1 与 frozen core model。
 
 ### Early November — Robustness / futures
 
@@ -135,7 +139,10 @@ Phase 2D 已通过，不再把 MCMC mixing 当作当前 blocker。现在风险�
 
 - Data Freeze v1：**already locked**；
 - Phase 2D posterior convergence：**PASS**；
-- posterior IRF / FEVD structural consistency：**CURRENT GATE**；
+- posterior IRF / FEVD structural consistency：**PASS**；
+- historical decomposition：**PASS**；
+- strict Structural OOS：**PASS**；
+- key robustness / external validation：**CURRENT GATE**；
 - IRF / FEVD：目标仍为 2026-11-02 前完成；
 - 主要实验：2026-11-10 前冻结；
 - 11 月 10 日后原则上只做结果整理、复现、必要修正和答辩材料。
@@ -146,10 +153,10 @@ Phase 2D 已通过，不再把 MCMC mixing 当作当前 blocker。现在风险�
 
 ```text
 Phase 2D posterior convergence        [COMPLETE]
-→ posterior IRF / FEVD                [CURRENT]
-→ historical decomposition
-→ structural OOS
-→ robustness
+→ posterior IRF / FEVD                [COMPLETE]
+→ historical decomposition             [COMPLETE]
+→ structural OOS                       [COMPLETE]
+→ robustness / external validation      [CURRENT]
 → futures extension
 → midterm report / PPT
 ```

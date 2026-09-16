@@ -1,0 +1,17 @@
+﻿{
+  "phase": "2G",
+  "primary_model": "M0_CORE5",
+  "measurement": "OBS_MIXED4",
+  "rho_n": 0.80,
+  "battery_sd": 0.25,
+  "prior": "PRIOR_BASELINE_WEAK",
+  "information_set": "RELEASE_SAFE_APPROXIMATION",
+  "first_origin": "2023-12",
+  "horizons": [1, 3, 6],
+  "starts_first_origin": 6,
+  "starts_later_origin": 4,
+  "maxiter": 400,
+  "ftol": 1e-9,
+  "z_bound": 8.0,
+  "seed": 20260915
+}

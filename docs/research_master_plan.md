@@ -32,12 +32,11 @@ Primary model：`M0_CORE5`
 - sample: 2021-01—2025-09，N=57
 - selected estimation specification: `M0_FULL14`
 
-Phase 2D 已完成，baseline posterior 与 prior/fixed-assumption sensitivity 均通过预设收敛门槛。当前立即目标是：
+Phase 2D—2G 已完成：posterior convergence、IRF/FEVD、historical decomposition 与 strict Structural OOS 均通过各自 gate。当前立即目标是：
 
-- posterior IRF / FEVD；
-- structural sign / timing / economic-consistency checks；
-- 通过后再进入 historical decomposition；
-- 再进入 structural OOS 和期现扩展。
+- 用现有 SMM inventory / route cost-margin 数据做关键 external validation；
+- 不改动 frozen core model，先判断 inventory-pressure 与 cost block 是否获得独立数据支持；
+- robustness 通过后再进入 preliminary spot-futures extension。
 
 ### 2.2 长期模型愿景
 
@@ -64,9 +63,10 @@ Phase 1A-1  Descriptive diagnostics
 → Phase 2B    State-space + Kalman + likelihood validation
 → Phase 2C    Constrained MLE / profile / curvature / weak-ID preflight
 → Phase 2D    Bayesian posterior + convergence / posterior identification   [COMPLETE]
-→ Posterior IRF + FEVD                                                      [CURRENT]
-→ Historical Decomposition                 COMPLETE
-→ Structural OOS Forecast                  NEXT
+→ Phase 2E    Posterior IRF + FEVD                                             [COMPLETE]
+→ Phase 2F    Historical Decomposition                                         [COMPLETE]
+→ Phase 2G    Strict Structural OOS Forecast                                    [COMPLETE]
+→ Key robustness / external validation                                         [NEXT]
 → Preliminary Spot-Futures Extension
 → Capacity / Mixed-Frequency / Stochastic-Cycle extensions only if justified
 ```
@@ -161,7 +161,7 @@ Baseline 通过全部预设 gate。必须继续保留的 warnings：
 - battery-noise sensitivity in `rho_d/sigma_d`；
 - fixed-`rho_n` sensitivity in `b_n`。
 
-## 8. Posterior structural results [CURRENT]
+## 8. Posterior structural results [COMPLETE]
 
 ### IRF
 
@@ -187,7 +187,7 @@ Baseline 通过全部预设 gate。必须继续保留的 warnings：
 - weak parameters 是否导致关键 IRF/FEVD 对 prior / fixed assumptions 极度敏感；
 - residual price shock 是否异常吞噬 FEVD。
 
-## 9. Historical decomposition
+## 9. Historical decomposition [COMPLETE]
 
 核心解释窗口：
 
@@ -197,9 +197,11 @@ Baseline 通过全部预设 gate。必须继续保留的 warnings：
 
 如果线性 MVP 对极端行情幅度解释不足，应先报告 limitation，再决定是否需要非线性扩展。
 
-## 10. Structural OOS
+## 10. Structural OOS [COMPLETE]
 
-结构模型预测必须与已有基线保持严格可比：Random Walk、AR、VAR、BVAR。主张应限制为结构模型是否增加机制解释和预测增量，而不是要求它在所有 horizon 都击败 RW/BVAR。
+结构模型已按严格 expanding-window、training-only scaling 与 release-safe approximation 完成 OOS。H1/H3/H6 U2 分别为 `0.914 / 1.240 / 1.131`。结构 M0 在 H1 优于 RW、H3/H6 优于 AR、三个期限均优于 unrestricted VAR，但 BVAR 仍更强。结论定位为 `mechanism + competitive forecasting`，不宣称普遍预测优势。
+
+下一步优先做关键 robustness / external validation：用独立 SMM inventory 与 route cost/margin 短样本检验 latent `n_t` 与 `c_t` 的外部对应关系，而不是立即增加大型新模型。
 
 ## 11. Futures extension
 

@@ -23,8 +23,9 @@
 - [`phase2e_artifact_recovery.md`](phase2e_artifact_recovery.md) — 六套 sensitivity posterior deterministic recovery 与完整 integrity audit。
 - [`phase2e_posterior_irf_fevd.md`](phase2e_posterior_irf_fevd.md) — 完整 posterior IRF/FEVD sensitivity propagation 与 structural-results gate。
 - [`phase2f_historical_decomposition.md`](phase2f_historical_decomposition.md) — posterior shock reconstruction、历史分解、episode attribution 与 sensitivity。
+- [`phase2g_structural_oos.md`](phase2g_structural_oos.md) — strict expanding-window structural OOS、RW/AR/VAR/BVAR 对比与 leakage audit。
 
-**Phase 2E 与 Phase 2F 均已完成。** 下一阶段是 Structural OOS Forecast；本轮没有启动。
+**Phase 2E、Phase 2F 与 Phase 2G 均已完成。** 下一阶段是 key robustness / external validation。
 
 ## C. Phase 1 empirical results
 
