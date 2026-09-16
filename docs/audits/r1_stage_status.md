@@ -5,8 +5,8 @@ run_id：`R1_20260916_190253`。只有已执行的检查才可标为完成；旧
 | 阶段 | 状态 | 关闭证据／待办 |
 |---|---|---|
 | R1-0 工作区与输入预检 | COMPLETE | [预检记录](r1_preflight.md)；冻结哈希吻合、旧文件及用户修改已备份、revision 输出目录已验证忽略；22 项现有诊断测试通过 |
-| R1-1 A01 | IN_PROGRESS | 七套 NPZ 在位；baseline 来源与独立收敛尚待验证 |
-| R1-2 A02/A05 | OPEN | 依赖相关后验通过 R1-1；旧输出只读 |
+| R1-1 A01 | COMPLETE | [独立后验诊断](r1_posterior_diagnostics.md)：七套门槛通过；baseline 为有证据的重建来源，非原始 sidecar；draws 未改动 |
+| R1-2 A02/A05 | IN_PROGRESS | R1-1 已通过；旧输出仍只读，待修正历史门槛与展示统计 |
 | R1-3 A03 | OPEN | 可独立审计，但尚无正式修正输出 |
 | R1-4 A04/A06 | OPEN | LEGACY 输入/scaler/单位尚未核验 |
 | R1-5 A07/A08 | OPEN | 预测键、外部不确定性尚未复核 |

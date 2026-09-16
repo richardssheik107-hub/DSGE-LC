@@ -1,0 +1,16 @@
+{
+  "revision": "R1",
+  "diagnostic_reference": "ArviZ 0.22.0",
+  "reference_parity": {
+    "rhat_absolute_tolerance": 1e-6,
+    "ess_relative_tolerance": 0.01,
+    "mcse_sd_relative_tolerance": 0.01
+  },
+  "artifact_replay": {
+    "seed": 20260916,
+    "draws_per_spec": 16,
+    "component_absolute_tolerance": 1e-8,
+    "radius_absolute_tolerance": 1e-10,
+    "summary_absolute_tolerance": 1e-9
+  }
+}

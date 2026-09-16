@@ -4,7 +4,7 @@
 
 | ID | 优先级 | 当前状态 | 最小处理 | 关闭证据 |
 |---|---|---|---|---|
-| A01 | P0 | OPEN，独立入口已加 | 修正ESS配对/MCSE和冻结链判定；先诊断已有七套draw | 与ArviZ/作者参考实现比较；常数/漂移/AR链反例；真实draw新旧表；完整回归 |
+| A01 | P0 | CLOSED（R1-1；baseline来源为PASS_RECONSTRUCTED） | 修正ESS配对/MCSE和冻结链判定；七套原draw只读复核 | [R1-1独立诊断](../audits/r1_posterior_diagnostics.md)：ArviZ对照、反例、七套真实draw新旧表、全量测试；原NPZ未变 |
 | A02 | P0 | OPEN | 实现HD HIGH分支、全部必要门槛和数值/经济分级 | 人工主要贡献反转可触发REVIEW；子样本FAIL不得READY；真实规格重新分类 |
 | A03 | P0 | OPEN | 统一月末/平均价格收益；校对日频相邻日期；事前主力对照 | 同口径结果表、日期键审计、无跨合约跳价；不要求显著或某方向 |
 | A04 | P0 | OPEN | 逐列scaler manifest；原v1与共同支持期对照 | 拟合N/日期/均值/SD明确；历史log恢复含均值项；版本化 |

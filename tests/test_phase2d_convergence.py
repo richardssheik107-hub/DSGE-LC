@@ -25,7 +25,7 @@ class Phase2DConvergenceTests(unittest.TestCase):
   for t in range(1,2000):x[:,t]=.95*x[:,t-1]+e[:,t]
   self.assertLess(effective_sample_size(x),2000)
  def test_39_tail_ess_finite(self):self.assertTrue(np.isfinite(tail_ess(self.rng.normal(size=(4,500)))))
- def test_40_constant_chain_safe(self):self.assertEqual(effective_sample_size(np.ones((4,100))),400)
+ def test_40_constant_chain_safe(self):self.assertEqual(effective_sample_size(np.ones((4,100))),0)
  def test_41_failed_diagnostics_detected(self):
   rows=[{"rhat":1.02,"bulk_ess":500,"tail_ess":500,"mcse_sd":.01}];cfg={"rhat_threshold":1.01,"bulk_ess_threshold":400,"tail_ess_threshold":400,"mcse_sd_threshold":.05};self.assertFalse(convergence_pass(rows,cfg))
  def test_42_all_chains_extended_equal(self):
