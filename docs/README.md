@@ -24,8 +24,9 @@
 - [`phase2e_posterior_irf_fevd.md`](phase2e_posterior_irf_fevd.md) — 完整 posterior IRF/FEVD sensitivity propagation 与 structural-results gate。
 - [`phase2f_historical_decomposition.md`](phase2f_historical_decomposition.md) — posterior shock reconstruction、历史分解、episode attribution 与 sensitivity。
 - [`phase2g_structural_oos.md`](phase2g_structural_oos.md) — strict expanding-window structural OOS、RW/AR/VAR/BVAR 对比与 leakage audit。
+- [`phase2h_external_validation.md`](phase2h_external_validation.md) — SMM inventory / route-cost external validation 与 inventory-persistence sensitivity。
 
-**Phase 2E、Phase 2F 与 Phase 2G 均已完成。** 下一阶段是 key robustness / external validation。
+**Phase 2E—2H 均已完成。** 下一阶段是 preliminary spot-futures extension。
 
 ## C. Phase 1 empirical results
 

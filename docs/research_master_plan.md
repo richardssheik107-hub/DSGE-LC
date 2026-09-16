@@ -32,11 +32,7 @@ Primary model：`M0_CORE5`
 - sample: 2021-01—2025-09，N=57
 - selected estimation specification: `M0_FULL14`
 
-Phase 2D—2G 已完成：posterior convergence、IRF/FEVD、historical decomposition 与 strict Structural OOS 均通过各自 gate。当前立即目标是：
-
-- 用现有 SMM inventory / route cost-margin 数据做关键 external validation；
-- 不改动 frozen core model，先判断 inventory-pressure 与 cost block 是否获得独立数据支持；
-- robustness 通过后再进入 preliminary spot-futures extension。
+Phase 2D—2H 已完成：posterior convergence、IRF/FEVD、historical decomposition、strict Structural OOS 与关键 external validation 均通过各自 gate。外部验证显示 latent inventory-pressure 与 physical inventory 同向，但 magnitude 对 `rho_n` 敏感；cost state 与 direct route-cost changes 高度一致。当前立即目标是 preliminary spot-futures extension。
 
 ### 2.2 长期模型愿景
 
@@ -66,8 +62,8 @@ Phase 1A-1  Descriptive diagnostics
 → Phase 2E    Posterior IRF + FEVD                                             [COMPLETE]
 → Phase 2F    Historical Decomposition                                         [COMPLETE]
 → Phase 2G    Strict Structural OOS Forecast                                    [COMPLETE]
-→ Key robustness / external validation                                         [NEXT]
-→ Preliminary Spot-Futures Extension
+→ Phase 2H    Key robustness / external validation                            [COMPLETE]
+→ Preliminary Spot-Futures Extension                                           [NEXT]
 → Capacity / Mixed-Frequency / Stochastic-Cycle extensions only if justified
 ```
 
@@ -201,7 +197,7 @@ Baseline 通过全部预设 gate。必须继续保留的 warnings：
 
 结构模型已按严格 expanding-window、training-only scaling 与 release-safe approximation 完成 OOS。H1/H3/H6 U2 分别为 `0.914 / 1.240 / 1.131`。结构 M0 在 H1 优于 RW、H3/H6 优于 AR、三个期限均优于 unrestricted VAR，但 BVAR 仍更强。结论定位为 `mechanism + competitive forecasting`，不宣称普遍预测优势。
 
-下一步优先做关键 robustness / external validation：用独立 SMM inventory 与 route cost/margin 短样本检验 latent `n_t` 与 `c_t` 的外部对应关系，而不是立即增加大型新模型。
+Phase 2H 已完成该 external validation。Baseline `n_t` 与 log monthly-mean inventory Pearson median 为 `0.650`，在 `rho_n=.50/.95` 下仍保持正向但强度变化明显；`c_t` 与 spodumene-route cost dlog Pearson 为 `0.988`。该结果强化 cost proxy 与 inventory-state interpretation，同时保留 inventory-persistence sensitivity warning。
 
 ## 11. Futures extension
 

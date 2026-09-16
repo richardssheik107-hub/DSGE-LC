@@ -18,7 +18,7 @@
 | W6 10/14—10/20 | State-space / Kalman / 初步估计 | **COMPLETE AHEAD OF SCHEDULE** |
 | W7 10/21—10/27 | Bayesian + IRF / FEVD | **COMPLETE** |
 | W8 10/28—11/3 | 历史分解 / 预测 | **COMPLETE AHEAD OF SCHEDULE** |
-| W9 11/4—11/10 | 稳健性 / 期现扩展 | **NOT STARTED** |
+| W9 11/4—11/10 | 稳健性 / 期现扩展 | **ROBUSTNESS COMPLETE AHEAD OF SCHEDULE；FUTURES NEXT** |
 | W10 | 中期整理 | **NOT STARTED** |
 
 Phase 2D 已完成，因此实际研究位置已经超过原计划 W6，并正式进入 posterior structural-results 阶段。
@@ -98,9 +98,13 @@ Phase 2D 已通过，不再把 MCMC mixing 当作当前 blocker。现在风险�
 
 已完成 strict expanding-window Structural OOS：training-only scaling、release-safe Output/Battery、每个 origin 重新 MAP 估计。结构 M0 的 H1/H3/H6 U2 为 `0.914 / 1.240 / 1.131`；预测表现具有竞争力但不支配 BVAR/RW。
 
-### Next — Key robustness / external validation
+### Key robustness / external validation — COMPLETE
 
-优先使用现有 SMM social inventory 与 route cost/margin series 对 latent inventory-pressure 和 cost blocks 做独立外部验证；不改变 Data Freeze v1 与 frozen core model。
+已使用现有 SMM social inventory 与 route cost series 完成独立外部验证。Baseline `n_t` 与 log monthly-mean inventory Pearson median `0.650`，方向在 `rho_n=.50/.95` 下保持稳定但 magnitude 明显敏感；`c_t` 与 spodumene-route cost dlog Pearson `0.988`。
+
+### Next — Preliminary spot-futures extension
+
+只复用本机已有 GFEX 碳酸锂期货数据，不重新下载；先做数据位置/coverage/contract-roll audit，再做月度 spot-futures relation / basis / price-discovery 的中期版本。
 
 ### Early November — Robustness / futures
 
@@ -142,7 +146,8 @@ Phase 2D 已通过，不再把 MCMC mixing 当作当前 blocker。现在风险�
 - posterior IRF / FEVD structural consistency：**PASS**；
 - historical decomposition：**PASS**；
 - strict Structural OOS：**PASS**；
-- key robustness / external validation：**CURRENT GATE**；
+- key robustness / external validation：**PASS**；
+- preliminary spot-futures extension：**CURRENT GATE**；
 - IRF / FEVD：目标仍为 2026-11-02 前完成；
 - 主要实验：2026-11-10 前冻结；
 - 11 月 10 日后原则上只做结果整理、复现、必要修正和答辩材料。
@@ -156,7 +161,7 @@ Phase 2D posterior convergence        [COMPLETE]
 → posterior IRF / FEVD                [COMPLETE]
 → historical decomposition             [COMPLETE]
 → structural OOS                       [COMPLETE]
-→ robustness / external validation      [CURRENT]
-→ futures extension
+→ robustness / external validation      [COMPLETE]
+→ preliminary futures extension          [CURRENT]
 → midterm report / PPT
 ```

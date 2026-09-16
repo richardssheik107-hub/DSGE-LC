@@ -1,0 +1,17 @@
+{
+  "phase": "2H",
+  "sample_end": "2025-09",
+  "measurement": "OBS_MIXED4",
+  "seed": 20260915,
+  "baseline_draws_per_chain": 1000,
+  "sensitivity_draws_per_chain": 250,
+  "inventory_start": "2023-06",
+  "inventory_end": "2025-09",
+  "cost_start": "2022-11",
+  "cost_end": "2025-09",
+  "lag_scan_months": 3,
+  "inventory_primary": "lc_inventory_total_mean",
+  "inventory_secondary": "lc_inventory_total_eom",
+  "cost_primary": "lc_cost_spodumene",
+  "cost_secondary": "lc_cost_lepidolite"
+}
