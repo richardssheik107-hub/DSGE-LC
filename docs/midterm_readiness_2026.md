@@ -1,5 +1,7 @@
 # 2026 年中期答辩准备度审计
 
+> **历史快照，已被 R1 修订取代（2026-09-16）**：下文 `MIDTERM_READY_WITH_WARNINGS`、611 项测试、旧 FEVD 统计、月频期现 +1 峰值与图表可用性均是当时判断，不是当前验收结论。旧版可由 Git `main@ef2eb3785b8dad58b7d4532298f5a184972b8260` 查看；本文件保留作审计轨迹，不作为答辩数字来源。当前应查阅[研究状态](CURRENT_STATUS.md)、[R1 主张修订](audits/r1_claim_revision.md)和[修正版表图清单](midterm_table_manifest.md)。正式论文提交尚未就绪。
+
 ## 1. Final decision
 
 **MIDTERM_READY_WITH_WARNINGS**

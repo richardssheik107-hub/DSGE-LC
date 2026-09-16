@@ -1,6 +1,6 @@
 # 研究总计划：从可运行模型到可定稿论文
 
-当前状态见[CURRENT_STATUS](CURRENT_STATUS.md)，完整日期计划见[定稿路线](plans/thesis_finalization_2026_2028.md)。此文件取代旧“所有中期任务完成后直接增加模型”的执行顺序。
+R1-6 修订：2026-09-16。旧版见 Git 提交 `ef2eb3785b8dad58b7d4532298f5a184972b8260`。当前状态见[CURRENT_STATUS](CURRENT_STATUS.md)，完整日期计划见[定稿路线](plans/thesis_finalization_2026_2028.md)。此文件不把已运行实验等同于统计证据、导师批准或学校提交就绪。
 
 ## 核心问题
 
@@ -15,8 +15,8 @@ M0_CORE5，状态`[d,c,q,n,p]`、四类冲击，M0_FULL14。主观测为月度dl
 | 层次 | 状态/任务 |
 |---|---|
 | 数据至2I实验 | 历史版本已运行；结果保留 |
-| 独立学术审计 | 已发现A01—A11，必须据证据修正 |
-| 修正后中期版本 | 先关闭P0，再核验论文口径、引用和图表 |
+| R1 独立修正 | R1-0—R1-6 本轮任务已按[阶段审计](audits/r1_stage_status.md)与[最终验收](audits/r1_final_validation.md)完成；A06 方法范围和 A09—A12 仍有外部确认事项 |
+| 修正后中期版本 | 按[修正清单](plans/correction_backlog.md)登记已关闭与未关闭；核验论文口径、引用、图表和正式材料，不宣称只剩排版 |
 | 扩样/前瞻预测 | 锁定协议，区分已看过尾部与真正未来数据 |
 | 可选扩展 | 一次一个；优先库存测量/慢供给，必须证明增量 |
 | 最终论文 | 理论与方法一致、统计结论可复核、文本和材料正式验收 |
@@ -27,12 +27,12 @@ M0_CORE5，状态`[d,c,q,n,p]`、四类冲击，M0_FULL14。主观测为月度dl
 
 ## 数据与版本
 
-v1保持原hash和原scaler约定，修正版另建experiment ID；v2/v3不覆盖v1。晚于2025-09的数据不自动是前瞻测试集，所有release/as-of/修订时点须登记。
+v1保持原hash和原 `LEGACY OBS_MIXED4` scaler约定；[R1-4](audits/r1_measurement_and_units.md)已重放其实际估计输入，`COMMON_SUPPORT_57_SCALER` 只构建未估计，不能配用原后验。修正版须另建 experiment ID；v2/v3不覆盖v1。晚于2025-09的数据不自动是前瞻测试集，所有release/as-of/修订时点须登记。
 
 ## 论文成功标准
 
-不是预测第一、所有参数远离零或残差低于某一任意比例。标准是：数据与方程口径一致；诊断算法独立可信；不隐瞒弱识别；FEVD/HD与单位正确；预测没有信息越界；核心论断有原文/结果支撑；负面证据不被调掉。
+不是预测第一、所有参数远离零或残差低于某一任意比例。标准是：数据与方程口径一致；诊断算法独立可信；不隐瞒弱识别；FEVD/HD与单位正确；预测信息集与点预测对象明确；核心论断有原文/结果支撑；负面证据不被调掉。当前结果只能支持有边界的半结构解释：后期历史敏感性六项不明确，同端点月频期货 +1 已不再是峰，结构历史 OOS 不全面胜过基准，库存变化量支持弱且成本验证有同源成分。详见[R1 历史/FEVD](audits/r1_historical_and_fevd.md)、[期现](audits/r1_spot_futures_alignment.md)、[预测/外部](audits/r1_forecast_and_external_validation.md)。
 
 ## 不再默认新增
 
-Harvey cycle、TVP、Markov switching、完整混频、M1全估计、期权和tick微观结构都不是毕业默认条件。先完成[修正清单](plans/correction_backlog.md)。
+Harvey cycle、TVP、Markov switching、完整混频、M1全估计、期权和tick微观结构都不是毕业默认条件。R1-6 文稿与结果登记已完成；下一步是关键引用核实和导师/学校事项，开放项见[修正清单](plans/correction_backlog.md)。

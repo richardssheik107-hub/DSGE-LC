@@ -1,31 +1,20 @@
-# Midterm Figure Manifest
+# Midterm Figure Manifest（R1 修订）
 
-主文/答辩只使用以下 10 张主图。所有路径均为仓库相对路径，文件位于 ignored outputs；`outputs/midterm/` 中的重绘图由 `py -3.13 scripts/build_midterm_evidence_figures.py` 生成，不改变任何估计结果。
+修订日期：2026-09-16。范围：R1-1 后验诊断、R1-2 FEVD/历史分解、R1-3 期现对齐、R1-4 测量与单位、R1-5 OOS/外部验证。受影响主图：4、6—10；相关表 5—10；结论包括 FEVD 加总、后期历史稳健性、月频领先峰值及库存变化证据；尤其旧 6/7/10 不能继续作为修正结论的主图。旧版定位：Git `ef2eb37` 的本文件及当时所列 Phase 2 输出；旧文件不覆盖。下列 R1 输出位于 ignored 私有目录，不因路径存在而获得再分发许可。最终 PPTX 仍须按本清单实排、检查图题/图注和可读性。
 
-| Figure | Purpose | Path | Frozen source | Status / use |
-|---|---|---|---|---|
-| Figure 1 | LC spot price history | `outputs/phase1/figures/01_lc_spot_level.png` | Data Freeze v1 / Phase 1A-1 | PRIMARY；background/data |
-| Figure 2 | Research mechanism | `outputs/midterm/figure_02_research_mechanism.png` | `docs/phase2a_structural_mvp_spec.md` | PRIMARY；model overview |
-| Figure 3 | Data and structural-model map | `outputs/midterm/figure_03_data_model_map.png` | Data Freeze + OBS_MIXED4 definitions | PRIMARY；data/model bridge |
-| Figure 4 | Posterior parameter summary | `outputs/midterm/figure_04_posterior_parameter_summary.png` | `outputs/phase2/phase2d/baseline_posterior_summary.csv` | PRIMARY；identification warning visible |
-| Figure 5 | Posterior price IRFs for four shocks | `outputs/phase2/phase2e/irf_price_4shocks.png` | Phase 2E baseline posterior | PRIMARY；direction, not causal proof |
-| Figure 6 | Posterior price FEVD bands | `outputs/phase2/phase2e/fevd_price_posterior_bands.png` | Phase 2E FEVD | PRIMARY；residual-share warning |
-| Figure 7 | Historical price decomposition | `outputs/phase2/phase2f/historical_price_decomposition.png` | Phase 2F baseline posterior subset | PRIMARY；conditional smoothed means |
-| Figure 8 | Strict structural OOS comparison | `outputs/midterm/figure_08_structural_oos_comparison.png` | `outputs/phase2/phase2g/structural_oos_u2_table.csv` | PRIMARY；competitive, not dominant |
-| Figure 9 | Inventory and cost external validation | `outputs/midterm/figure_09_external_validation.png` | Phase 2H state paths / external data | PRIMARY；construct validity |
-| Figure 10 | Spot-futures lead-lag | `outputs/phase2/phase2i/lead_lag_correlation.png` | Phase 2I monthly/daily returns | PRIMARY；preliminary evidence only |
+| Figure | 用途与修订口径 | 当前路径或证据 | 使用状态 |
+|---|---|---|---|
+| 1 | 现货价格历史；不作事件因果归因 | `outputs/phase1/figures/01_lc_spot_level.png` | 可用；Data Freeze v1 背景图 |
+| 2 | 半结构研究机制；残差不是投机 | `outputs/midterm/figure_02_research_mechanism.png` | 可用；图注注明非完整 DSGE |
+| 3 | 数据—状态映射；`OBS_MIXED4` 是月度不同变换，不是混频 | `outputs/midterm/figure_03_data_model_map.png`；`outputs/revisions/R1_20260916_190253/measurement_final/measurement_definition_registry.json` | 有条件可用；实排时复核图内术语 |
+| 4 | 原 LEGACY v1 后验参数；诊断数字另取 R1-1 | `outputs/midterm/figure_04_posterior_parameter_summary.png`；`outputs/revisions/R1_20260916_190253/posterior_audit_final/posterior_diagnostics_corrected.csv` | 参数图可用；不可用旧诊断表充作新 ESS |
+| 5 | 既有四冲击价格 IRF；受模型/符号支持约束 | `outputs/phase2/phase2e/irf_price_4shocks.png` | 有条件可用；方向不是独立因果识别 |
+| 6 | 价格 FEVD：**逐 draw 份额的后验均值**，堆叠加总为 1 | `outputs/revisions/R1_20260916_190253/fevd/fevd_price_horizons_mean_stacked.png`；`outputs/revisions/R1_20260916_190253/fevd/fevd_corrected_summary.csv` | R1 主图；旧 `outputs/phase2/phase2e/fevd_price_posterior_bands.png` 仅历史 |
+| 7 | 历史分解：后验均值正负分堆、含初始条件；纵轴为标准化价格变化压力 | `outputs/revisions/R1_20260916_190253/historical/historical_signed_mean_stack.png`；`outputs/revisions/R1_20260916_190253/historical/historical_episode_corrected.csv` | R1 主图；旧 `outputs/phase2/phase2f/historical_price_decomposition.png` 仅历史 |
+| 8 | 给定已选规格的递归历史 OOS、发布滞后近似；点预测不是无条件 `E[P]` | `outputs/revisions/R1_20260916_190253/forecast_verified/forecast_metric_revision.csv` | 修正表可用；旧 `outputs/midterm/figure_08_structural_oos_comparison.png` 图题称 `Strict`，重绘标题前**不用作主图** |
+| 9 | 外部状态验证的 filtered/smoothed、变换及时间块区间 | `outputs/revisions/R1_20260916_190253/external_validation_final/external_validation_filtered_vs_smoothed.csv`；`outputs/revisions/R1_20260916_190253/external_validation_final/external_validation_transformation_comparison.csv`；`outputs/revisions/R1_20260916_190253/external_validation_final/external_validation_block_bootstrap.csv` | R1 表可用；旧 `outputs/midterm/figure_09_external_validation.png` 只能作带限制的时间序列示意，不展示新区间 |
+| 10 | 期现相同端点/严格相邻交易期与滞后成交量选约对照 | `outputs/revisions/R1_20260916_190253/futures/lead_lag_specification_comparison.csv`；`outputs/revisions/R1_20260916_190253/futures/futures_claim_revision.csv` | R1 表可用；旧 `outputs/phase2/phase2i/lead_lag_correlation.png` 含月频错配口径，**禁作修正版主图** |
 
-## Appendix candidates
+附图候选：`outputs/revisions/R1_20260916_190253/historical/historical_cumulative_draw_first.png`。该图先逐 draw 累计再取分位；蓝色区间仅为价格残差的条件平滑均值区间，不能说是全部状态预测区间。旧 `outputs/phase2/phase2f/episode_contribution_bars.png` 与其他 Phase 2E/2F/2I 图留作历史对照，不自动升级为 R1 图。
 
-- `outputs/phase1/figures/14_lead_lag_heatmap_dlog.png`
-- `outputs/phase1/figures/23_theil_u2_by_model_horizon.png`
-- `outputs/phase2/phase2e/sensitivity_irf_price.png`
-- `outputs/phase2/phase2f/episode_contribution_bars.png`
-- `outputs/phase2/phase2i/futures_contract_coverage.png`
-- `outputs/phase2/phase2i/main_contract_timeline.png`
-- `outputs/phase2/phase2i/spot_futures_basis.png`
-- `outputs/phase2/phase2i/basis_inventory_relationship.png`
-
-## Freeze rule
-
-允许后续调整字体、尺寸、配色和中文标签；禁止通过重估、截断不利区间或改变坐标定义来美化结论。若主图内容改变，必须同步更新 claim registry、table manifest 和 report/slide references。
+正式放映前，Figure 8 应重绘去掉过强的 `Strict` 图题，Figure 9/10 应基于 R1 表单独制图或直接用表。不得截图旧图再改标题以掩盖统计口径；图中统计量、单位、窗口、样本数和私有数据许可须逐项复核。R1-2 新 Figure 6/7 已打开目视检查：前者四段逐 horizon 加总为 1，后者正负分堆且初始条件单列；这不代替最终 PPTX 排版审查。

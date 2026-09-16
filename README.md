@@ -2,13 +2,13 @@
 
 中国碳酸锂价格波动与定价机制研究。当前实际模型为 **M0_CORE5月度半结构线性状态空间模型**，不是完整DSGE，也不是已经实现的混合频率或期现联合定价模型。
 
-> 更新：2026-09-16。主要实验与中期初稿已形成；独立代码/文献审计发现必须修正的问题。当前状态：**RESEARCH_AUDIT_CORRECTIONS_REQUIRED**。旧 `MIDTERM_READY_WITH_WARNINGS` 是当时阶段记录，不等于最终学术验收。
+> R1-6 导航修订：2026-09-16；本文件旧版可由 Git 提交 `ef2eb3785b8dad58b7d4532298f5a184972b8260` 查看。R1-0—R1-6 本轮技术修正、结论登记和中期源稿同步已验收，判定为 `TECHNICAL_REVISION_COMPLETE_WITH_INTERPRETATION_LIMITS`；后期历史解释、期现领先、预测与外部验证均有明确限制。**正式论文提交尚未就绪**。旧 `MIDTERM_READY_WITH_WARNINGS` 仅是当时阶段记录。
 
 ## 先读这四份
 
-1. [当前状态与立即任务](docs/CURRENT_STATUS.md)
-2. [全论文/仓库审计](docs/audits/2026_09_16_research_audit.md)
-3. [生猪核心参考稿逐项对照](docs/references/hog_paper_comparison.md)
+1. [当前状态与剩余任务](docs/CURRENT_STATUS.md)
+2. [R1 各阶段及解释边界](docs/audits/r1_stage_status.md)
+3. [全论文/仓库审计](docs/audits/2026_09_16_research_audit.md)与[修正清单](docs/plans/correction_backlog.md)
 4. [直到定稿的完整计划](docs/plans/thesis_finalization_2026_2028.md)
 
 完整导航见 [docs/README.md](docs/README.md)。
@@ -18,13 +18,13 @@
 | 模块 | 历史完成内容 | 当前使用条件 |
 |---|---|---|
 | 数据与Phase 1 | v1、描述/机制诊断、RW/AR/VAR/BVAR | 保留数据与原始结果；模型选择后的历史OOS不得升级为前瞻检验 |
-| Phase 2A—2D | 结构设计、Kalman、MLE、Bayesian及敏感性 | 先独立复核ESS/MCSE与冻结链检测 |
-| Phase 2E—2F | 后验IRF/FEVD与历史分解 | 修正加总展示、变换单位和敏感性门槛 |
-| Phase 2G—2H | 结构OOS与库存/成本外部验证 | 区分点预测目标、条件区间与真正独立信息 |
-| Phase 2I | 期现基差、连续合约与滞后 | 月度两端收益口径需统一；保持初步证据定位 |
-| Phase 2J/3A/3B | 证据清单、中期报告、讲稿与问答 | 仍需引用核验、勘误和正式版式 |
+| Phase 2A—2D | 结构设计、Kalman、MLE、Bayesian及敏感性 | [R1-1](docs/audits/r1_posterior_diagnostics.md)七套原 draw 诊断通过；baseline 来源为重建认证，未重采样 |
+| Phase 2E—2F | 后验IRF/FEVD与历史分解 | [R1-2](docs/audits/r1_historical_and_fevd.md)加总/门槛已修；[R1-4](docs/audits/r1_measurement_and_units.md)原始 log 单位已核；后期窗口六项不明确 |
+| Phase 2G—2H | 结构OOS与库存/成本外部验证 | [R1-5](docs/audits/r1_forecast_and_external_validation.md)已核点预测/同键/不确定性；不宣称全面胜 BVAR、实时前瞻或独立因果验证 |
+| Phase 2I | 期现基差、连续合约与滞后 | [R1-3](docs/audits/r1_spot_futures_alignment.md)对齐后月频 +1 不再是峰；日频 +1 为短样本描述 |
+| Phase 2J/3A/3B | 证据清单、中期报告、讲稿与问答 | [R1-6 主张和源稿同步](docs/audits/r1_final_validation.md)完成；引文、导师反馈、正式 DOCX/PPTX 与学院流程未验收 |
 
-历史全量验收记录为611项通过。本轮新增独立审计工具的8项合成测试通过，**没有在GitHub-only环境重跑受限数据全链，不把两者简单相加为新全量测试数**。
+历史 611 项与早期便携审计 8 项只属各自阶段；R1-6 在授权研究环境执行完整 `tests/` 得到 **705 passed、0 failed、4 skipped**，原因见[最终验收](docs/audits/r1_final_validation.md)，不把不同轮次测试数相加。
 
 ## 模型与数据边界
 
@@ -32,16 +32,16 @@
 - `M0_FULL14`，基线固定 `rho_n=0.80`、`battery_sd=0.25`。
 - v1核心水平样本2020-01—2025-09，69个月；主要结构样本2021-01—2025-09，57个月。
 - v1记录SHA256：`9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5`。
-- 商业观测和后验draw保存在授权本地环境，不在Git；本轮未访问或修改它们。
+- 商业观测和后验 draw 保存在授权本地环境，不在 Git；R1 只读核验其既有文件，未修改原样本、原 posterior 或旧 Phase 2D—2I 输出。
+- 原 `LEGACY OBS_MIXED4` 的 spot/ore scaler 用 68 期拟合、同比两列用 57 期，四列实际入模 57 期；共同支持期 scaler 仅构建未估计，不能混配旧后验。
 - v2仍为候选，不静默拼接供应商、不覆盖v1。
 
 ## 当前工作顺序
 
 ```text
-独立诊断与历史分解门槛修正
-→ 期现/测量/加总口径核验
-→ 必要的预测与外部验证对照
-→ 文献与理论定位、导师审核
+R1-6 结果登记、论文数字/单位/图表同步和最终验收：已完成
+→ 文献正式版本核验、导师半结构范围确认
+→ 学校模板、正式材料与中期反馈
 → 修正后中期冻结
 → 版本化扩样与真正前瞻检验
 → 最多一项有证据的扩展
@@ -79,6 +79,6 @@ python scripts/audit_posterior_independent.py
 
 最后一条缺少artifacts/元数据或诊断未通过时返回REVIEW，不自动下载、不补造、不重跑MCMC。详见[复现指南](docs/REPRODUCIBILITY.md)。
 
-## 本轮整理的安全边界
+## 本轮修正的安全边界
 
-保留旧阶段memo、原始报告和所有科学结果；更新当前导航、计划和审计，不静默改变模型/likelihood/后验。后续修正须给出独立测试及受影响结果版本。此前本地未提交改动须先核对，不用force push或hard reset解决同步问题。
+保留旧阶段 memo、原始报告、七套 production posterior 和原数据；新审计输出位于 Git 忽略的 `outputs/revisions/R1_20260916_190253/`，不静默改变模型/likelihood/后验。R1-4 共同支持期不等于新估计规格。需授权数据、导师和学校信息才能关闭的事项继续开放。不得以 force push、hard reset 或清理未知 untracked 文件解决同步问题。

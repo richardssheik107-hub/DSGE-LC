@@ -1,5 +1,7 @@
 # 中期答辩最终检查清单
 
+> **历史快照，已被 R1 修订取代（2026-09-16）**：下列勾选、611 项旧测试、旧图表“存在即完成”和 `MIDTERM_READY_WITH_WARNINGS` 仅记录当时状态；不能当作当前答辩/论文验收。旧版可由 Git `main@ef2eb3785b8dad58b7d4532298f5a184972b8260` 查看。现以[当前状态](CURRENT_STATUS.md)、[R1 阶段状态](audits/r1_stage_status.md)、[修正版表图清单](midterm_figure_manifest.md)及实际最终测试为准；正式 DOCX/PPTX、引用、导师和学校事项仍未关闭。
+
 ## A. 数据与复现
 
 - [x] Data Freeze v1 路径固定：`data/processed/core_monthly_panel.csv`
