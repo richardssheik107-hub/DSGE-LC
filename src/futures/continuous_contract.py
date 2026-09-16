@@ -1,6 +1,8 @@
 """Deterministic volume main contract and roll-safe return construction."""
 from __future__ import annotations
 
+import re
+
 import numpy as np
 import pandas as pd
 
@@ -63,6 +65,167 @@ def select_daily_main_contract(
     if not selected.volume_share.between(0, 1).all():
         raise ValueError("main-contract volume share is outside [0,1]")
     return selected
+
+
+def select_lagged_volume_main_contract(
+    daily_contracts: pd.DataFrame,
+    start_date: str | None = None,
+    end_date: str | None = None,
+) -> pd.DataFrame:
+    """Select day ``t``'s contract using only ``t-1`` volume and known expiry.
+
+    Every date present in the supplied verified trading-day panel is retained,
+    even when no contract or price is eligible.  The contract decision is made
+    *before* looking up day ``t``'s close/volume.  The close is used solely to
+    value the chosen contract; no ex-post replacement is allowed.  A roll-safe
+    return always uses the chosen contract's own ``t-1`` close, including on a
+    switch.  This is a timing audit, not a claim of executable close-to-close
+    strategy returns after observing the prior close's final volume.
+
+    Tie-break: highest prior volume, nearest nonexpired delivery month, then
+    lexicographically smallest normalized contract code.  ``end_date`` may be
+    an exact date or ``YYYY-MM`` (inclusive calendar-month end).
+    """
+    required = {"date", "contract", "daily_close", "daily_volume"}
+    if not required.issubset(daily_contracts.columns):
+        raise ValueError(f"daily contract columns missing: {sorted(required - set(daily_contracts.columns))}")
+    frame = daily_contracts.loc[:, ["date", "contract", "daily_close", "daily_volume"]].copy()
+    frame["date"] = pd.to_datetime(frame["date"], errors="coerce").dt.normalize()
+    if frame.date.isna().any():
+        raise ValueError("invalid trading date")
+    frame["contract"] = frame.contract.astype(str).str.upper().str.strip()
+    frame["daily_close"] = pd.to_numeric(frame.daily_close, errors="coerce")
+    frame["daily_volume"] = pd.to_numeric(frame.daily_volume, errors="coerce")
+    if frame.duplicated(["date", "contract"]).any():
+        raise ValueError("duplicate date/contract rows in daily panel")
+    if frame.empty:
+        raise ValueError("empty daily contract panel")
+    delivery = {code: contract_delivery_month(code) for code in frame.contract.unique()}
+    groups = {date: group.set_index("contract", drop=False)
+              for date, group in frame.groupby("date", sort=True)}
+    dates = sorted(groups)
+    selected: list[dict[str, object]] = []
+    previous_main: str | None = None
+    previous_main_close = np.nan
+    for index, date in enumerate(dates):
+        prior_date = dates[index - 1] if index else pd.NaT
+        current = groups[date]
+        observed_volume = current.daily_volume.where(current.daily_volume.gt(0)).sum(min_count=1)
+        today_total_volume = float(observed_volume) if pd.notna(observed_volume) else np.nan
+        main: str | None = None
+        prior_volume = np.nan
+        prior_total_volume = np.nan
+        prior_candidates = 0
+        reference_close = np.nan
+        today_close = np.nan
+        today_volume = np.nan
+        current_row_present = False
+        if pd.isna(prior_date):
+            selection_status = "NO_PRIOR_VOLUME"
+        else:
+            prior = groups[prior_date]
+            candidates = prior.loc[prior.daily_volume.gt(0) & prior.daily_volume.notna()].copy()
+            candidates = candidates.loc[
+                candidates.contract.map(delivery).ge(date.to_period("M"))
+            ].copy()
+            prior_candidates = len(candidates)
+            if not prior_candidates:
+                selection_status = "NO_ELIGIBLE_PRIOR_CONTRACT"
+            else:
+                candidates["delivery_period"] = candidates.contract.map(delivery)
+                candidates["delivery_distance"] = candidates.delivery_period.map(
+                    lambda period: period.ordinal - date.to_period("M").ordinal)
+                candidates = candidates.reset_index(drop=True).sort_values(
+                    ["daily_volume", "delivery_distance", "contract"],
+                    ascending=[False, True, True], kind="mergesort")
+                chosen = candidates.iloc[0]
+                main = str(chosen.contract)
+                prior_volume = float(chosen.daily_volume)
+                prior_total_volume = float(candidates.daily_volume.sum())
+                previous_close = chosen.daily_close
+                if pd.notna(previous_close) and np.isfinite(previous_close) and previous_close > 0:
+                    reference_close = float(previous_close)
+                selection_status = "SELECTED"
+                current_row_present = main in current.index
+                if current_row_present:
+                    quote = current.loc[main]
+                    today_close = float(quote.daily_close) if pd.notna(quote.daily_close) else np.nan
+                    today_volume = float(quote.daily_volume) if pd.notna(quote.daily_volume) else np.nan
+        close_available = bool(np.isfinite(today_close) and today_close > 0)
+        reference_available = bool(np.isfinite(reference_close) and reference_close > 0)
+        switch_assessable = bool(main is not None and previous_main is not None)
+        switch = int(switch_assessable and main != previous_main)
+        roll_return = np.nan
+        raw_return = np.nan
+        if close_available and np.isfinite(previous_main_close) and previous_main_close > 0:
+            raw_return = float(np.log(today_close / previous_main_close))
+        if main is None:
+            return_status = selection_status
+        elif not current_row_present:
+            return_status = "SELECTED_CONTRACT_NOT_QUOTED_TODAY"
+        elif not close_available:
+            return_status = "SELECTED_CONTRACT_CLOSE_MISSING_OR_NONPOSITIVE"
+        elif not reference_available:
+            return_status = ("SWITCH_NEW_CONTRACT_REFERENCE_MISSING" if switch else
+                             "SELECTED_CONTRACT_PRIOR_CLOSE_MISSING")
+        else:
+            roll_return = float(np.log(today_close / reference_close))
+            return_status = ("SWITCH_NEW_CONTRACT_REFERENCE" if switch else
+                             "SAME_CONTRACT" if switch_assessable else
+                             "PRIOR_MAIN_UNAVAILABLE_VALID_REFERENCE")
+        selected.append({
+            "date": date,
+            "return_start_date": prior_date,
+            "return_end_date": date,
+            "elapsed_trading_days": 1 if pd.notna(prior_date) else np.nan,
+            "main_contract": main,
+            "main_close": today_close,
+            "main_volume": today_volume,
+            "total_market_volume": today_total_volume,
+            "volume_share": (float(today_volume / today_total_volume)
+                             if np.isfinite(today_volume) and np.isfinite(today_total_volume)
+                             and today_total_volume > 0 else np.nan),
+            "selection_rule": "LAGGED_VOLUME_MAIN",
+            "selection_status": selection_status,
+            "selection_asof_date": prior_date,
+            "selection_information_date": prior_date,
+            "prior_trading_date_present": bool(pd.notna(prior_date)),
+            "known_volume": prior_volume,
+            "prior_selection_volume": prior_volume,
+            "prior_total_eligible_volume": prior_total_volume,
+            "prior_volume_share": (float(prior_volume / prior_total_volume)
+                                   if np.isfinite(prior_total_volume) and prior_total_volume > 0
+                                   else np.nan),
+            "prior_candidate_count": prior_candidates,
+            "selection_tie_break": "PRIOR_VOLUME_DESC;NEAREST_VALID_DELIVERY;CONTRACT_ASC",
+            "contract_validity_rule": "DELIVERY_MONTH_NOT_BEFORE_TARGET_MONTH",
+            "selected_current_row_present": current_row_present,
+            "selected_current_close_available": close_available,
+            "prior_main_contract": previous_main,
+            "switch_assessable": switch_assessable,
+            "switch_flag": switch,
+            "roll_flag": switch,
+            "roll_reference_date": prior_date,
+            "roll_reference_close": reference_close,
+            "roll_safe_log_return": roll_return,
+            "raw_main_close_log_change": raw_return,
+            "roll_return_status": return_status,
+            "futures_complete_flag": bool(np.isfinite(roll_return)),
+            "eligibility_reason": "ELIGIBLE" if np.isfinite(roll_return) else return_status,
+        })
+        previous_main = main
+        previous_main_close = today_close
+    result = pd.DataFrame(selected)
+    if start_date is not None:
+        result = result.loc[result.date.ge(pd.Timestamp(start_date).normalize())]
+    if end_date is not None:
+        end = (pd.Period(end_date, freq="M").end_time.normalize()
+               if re.fullmatch(r"\d{4}-\d{2}", str(end_date))
+               else pd.Timestamp(end_date).normalize())
+        result = result.loc[result.date.le(end)]
+    if result.empty:
+        raise ValueError("no verified trading dates in requested window")
+    return result.reset_index(drop=True)
 
 
 def add_roll_safe_returns(main_daily: pd.DataFrame, daily_contracts: pd.DataFrame) -> pd.DataFrame:

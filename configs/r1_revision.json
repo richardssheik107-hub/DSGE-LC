@@ -25,5 +25,15 @@
     "identity_relative_tolerance": 1e-10,
     "minimum_covariance_eigenvalue_tolerance": -1e-10,
     "fevd_additivity_absolute_tolerance": 1e-10
+  },
+  "futures_alignment": {
+    "analysis_start_date": "2023-07-21",
+    "sample_end": "2025-09",
+    "monthly_lags": [-3, -2, -1, 0, 1, 2, 3],
+    "daily_lags": [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5],
+    "minimum_correlation_pairs": 3,
+    "partial_listing_month": "2023-07",
+    "material_absolute_correlation_change": 0.10,
+    "claim_rule_note": "Exploratory descriptive classification; 0.10 is an operational magnitude rule, not a test or ex-ante discovery claim."
   }
 }

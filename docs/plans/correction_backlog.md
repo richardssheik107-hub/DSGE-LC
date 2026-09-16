@@ -6,7 +6,7 @@
 |---|---|---|---|---|
 | A01 | P0 | CLOSED（R1-1；baseline来源为PASS_RECONSTRUCTED） | 修正ESS配对/MCSE和冻结链判定；七套原draw只读复核 | [R1-1独立诊断](../audits/r1_posterior_diagnostics.md)：ArviZ对照、反例、七套真实draw新旧表、全量测试；原NPZ未变 |
 | A02 | P0 | CLOSED（实现；解释需复核） | HD HIGH/AMBIGUOUS/NOT_EVALUATED 与全部必要门槛、数值/经济分级已实现 | [R1-2审计](../audits/r1_historical_and_fevd.md)：七套数值 PASS；18 组合 10 STABLE/2 MODERATE/6 AMBIGUOUS；不可无条件声称稳健 |
-| A03 | P0 | OPEN | 统一月末/平均价格收益；校对日频相邻日期；事前主力对照 | 同口径结果表、日期键审计、无跨合约跳价；不要求显著或某方向 |
+| A03 | P0 | CLOSED（R1-3；仅描述性） | 旧错配口径保留为LEGACY；同端点月末、双方完整月均、严格相邻日频与滞后成交量主力均已核验 | [R1-3审计](../audits/r1_spot_futures_alignment.md)：月频+1 0.710→约0.526且峰转同期；日频+1约0.475保留；整体 `DIRECTION_OR_PEAK_SENSITIVE`，不作因果/策略声称 |
 | A04 | P0 | OPEN | 逐列scaler manifest；原v1与共同支持期对照 | 拟合N/日期/均值/SD明确；历史log恢复含均值项；版本化 |
 | A05 | P1 | CLOSED（R1-2） | FEVD/HD逐draw和均值加总、边际区间、先累计后分位、正负堆叠已修正 | [R1-2审计](../audits/r1_historical_and_fevd.md)：FEVD 168 PASS、H1库存7个 NOT_DEFINED；基线12月中位数和0.964508属合法边际统计 |
 | A06 | P1 | OPEN | 月度/同比/库存指数定义与产业推导 | 方程-变量-单位映射；符号限制不被当识别；导师方法范围确认 |
