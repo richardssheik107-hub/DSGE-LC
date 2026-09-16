@@ -26,8 +26,13 @@
 - [`phase2g_structural_oos.md`](phase2g_structural_oos.md) — strict expanding-window structural OOS、RW/AR/VAR/BVAR 对比与 leakage audit。
 - [`phase2h_external_validation.md`](phase2h_external_validation.md) — SMM inventory / route-cost external validation 与 inventory-persistence sensitivity。
 - [`phase2i_spot_futures.md`](phase2i_spot_futures.md) — 5-minute GFEX contract audit、roll-safe main contract、期现 basis、lead-lag 与 inventory sensitivity。
+- [`midterm_evidence_matrix.md`](midterm_evidence_matrix.md) — 研究问题到证据、强度、warning 和可写 claim 的映射。
+- [`midterm_claim_registry.md`](midterm_claim_registry.md) — STRONG / PARTIAL / WEAK / NOT_SUPPORTED 结论边界。
+- [`midterm_figure_manifest.md`](midterm_figure_manifest.md) / [`midterm_table_manifest.md`](midterm_table_manifest.md) — 中期主图主表冻结。
+- [`midterm_result_digest.md`](midterm_result_digest.md) — 3–5 页导师速览版结果链。
+- [`midterm_reproducibility_manifest.md`](midterm_reproducibility_manifest.md) — SHA、commits、configs、runners、seeds 与 ignored artifacts。
 
-**Phase 2E—2I 均已完成。** 下一阶段是 Phase 2J midterm evidence / claim / figure / table freeze。
+**Phase 2E—2J 均已完成，CORE MIDTERM EXPERIMENTS 已冻结。** 下一阶段是 Phase 3A midterm research report。
 
 ## C. Phase 1 empirical results
 

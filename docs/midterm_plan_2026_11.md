@@ -19,7 +19,7 @@
 | W7 10/21—10/27 | Bayesian + IRF / FEVD | **COMPLETE** |
 | W8 10/28—11/3 | 历史分解 / 预测 | **COMPLETE AHEAD OF SCHEDULE** |
 | W9 11/4—11/10 | 稳健性 / 期现扩展 | **COMPLETE AHEAD OF SCHEDULE** |
-| W10 | 中期整理 | **CURRENT — EVIDENCE FREEZE** |
+| W10 | 中期整理 | **EVIDENCE FREEZE COMPLETE；REPORT CURRENT** |
 
 Phase 2D 已完成，因此实际研究位置已经超过原计划 W6，并正式进入 posterior structural-results 阶段。
 
@@ -106,9 +106,13 @@ Phase 2D 已通过，不再把 MCMC mixing 当作当前 blocker。现在风险�
 
 只复用本机已有 GFEX 碳酸锂期货数据，没有重新下载。36 个 five-minute contracts 完成 coverage/hash/schema audit；volume-main series 使用 same-day volume 与 roll-safe return。冻结窗口内 535 个日频和 27 个月度 observations 显示 `+1` lead-lag 的 preliminary futures-leading evidence。I(1) gate 未通过，因此不强行做 cointegration/VECM；basis–inventory rank relation 对 `rho_n` 不稳健。
 
-### Current — Phase 2J midterm evidence freeze
+### Complete — Phase 2J midterm evidence freeze
 
-整理 evidence matrix、claim registry、figure/table manifests、result digest 和 reproducibility manifest；停止新增大型模型。
+Evidence matrix、claim registry、10-figure / 11-table manifests、result digest 和 reproducibility manifest 已完成；核心实验正式冻结。
+
+### Current — Phase 3A report drafting
+
+只使用 frozen outputs / memos 写 19-section 中期报告主体，不新增大型模型，不把弱证据升级成强 claim。
 
 ### Early November — Robustness / futures
 
@@ -152,7 +156,8 @@ Phase 2D 已通过，不再把 MCMC mixing 当作当前 blocker。现在风险�
 - strict Structural OOS：**PASS**；
 - key robustness / external validation：**PASS**；
 - preliminary spot-futures extension：**PASS WITH SHORT-SAMPLE / TIMING WARNING**；
-- midterm evidence freeze：**CURRENT GATE**；
+- midterm evidence freeze：**COMPLETE**；
+- midterm research report：**CURRENT GATE**；
 - IRF / FEVD：目标仍为 2026-11-02 前完成；
 - 主要实验：2026-11-10 前冻结；
 - 11 月 10 日后原则上只做结果整理、复现、必要修正和答辩材料。
@@ -168,6 +173,7 @@ Phase 2D posterior convergence        [COMPLETE]
 → structural OOS                       [COMPLETE]
 → robustness / external validation      [COMPLETE]
 → preliminary futures extension          [COMPLETE]
-→ midterm evidence freeze                [CURRENT]
-→ midterm report / PPT
+→ midterm evidence freeze                [COMPLETE]
+→ midterm report                         [CURRENT]
+→ defense PPT / Q&A
 ```

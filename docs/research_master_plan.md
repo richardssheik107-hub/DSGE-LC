@@ -32,7 +32,7 @@ Primary model：`M0_CORE5`
 - sample: 2021-01—2025-09，N=57
 - selected estimation specification: `M0_FULL14`
 
-Phase 2D—2I 已完成：posterior convergence、IRF/FEVD、historical decomposition、strict Structural OOS、关键 external validation 与 preliminary spot-futures extension 均通过各自 operational gate。外部验证显示 latent inventory-pressure 与 physical inventory 同向，但 magnitude 对 `rho_n` 敏感；cost state 与 direct route-cost changes 高度一致。期现结果提供 preliminary futures-leading evidence，但不支持在当前短样本上强行做 cointegration / VECM，basis–inventory rank relation 也不稳健。当前立即目标是 Phase 2J midterm evidence freeze。
+Phase 2D—2J 已完成：posterior convergence、IRF/FEVD、historical decomposition、strict Structural OOS、关键 external validation、preliminary spot-futures extension 与 midterm evidence freeze 均完成。外部验证显示 latent inventory-pressure 与 physical inventory 同向，但 magnitude 对 `rho_n` 敏感；cost state 与 direct route-cost changes 高度一致。期现结果提供 preliminary futures-leading evidence，但不支持在当前短样本上强行做 cointegration / VECM，basis–inventory rank relation 也不稳健。核心中期实验已经冻结，当前立即目标是 Phase 3A report drafting。
 
 ### 2.2 长期模型愿景
 
@@ -64,7 +64,8 @@ Phase 1A-1  Descriptive diagnostics
 → Phase 2G    Strict Structural OOS Forecast                                    [COMPLETE]
 → Phase 2H    Key robustness / external validation                            [COMPLETE]
 → Phase 2I    Preliminary Spot-Futures Extension                               [COMPLETE]
-→ Phase 2J    Midterm Evidence / Claim / Figure Freeze                         [NEXT]
+→ Phase 2J    Midterm Evidence / Claim / Figure Freeze                         [COMPLETE]
+→ Phase 3A    Midterm Research Report                                          [NEXT]
 → Capacity / Mixed-Frequency / Stochastic-Cycle extensions only if justified
 ```
 

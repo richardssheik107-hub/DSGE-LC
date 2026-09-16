@@ -31,6 +31,7 @@ data/processed/candidates/lc_spot_dongwu_smm_tail_candidates.csv
 # Generated outputs
 outputs/phase1/
 outputs/phase2/
+outputs/midterm/
 outputs/repository_audit/
 
 # Local audit products containing commercial-derived detail
