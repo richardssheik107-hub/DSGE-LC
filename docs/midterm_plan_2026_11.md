@@ -19,7 +19,7 @@
 | W7 10/21—10/27 | Bayesian + IRF / FEVD | **COMPLETE** |
 | W8 10/28—11/3 | 历史分解 / 预测 | **COMPLETE AHEAD OF SCHEDULE** |
 | W9 11/4—11/10 | 稳健性 / 期现扩展 | **COMPLETE AHEAD OF SCHEDULE** |
-| W10 | 中期整理 | **DEFENSE PACKAGE COMPLETE；FINAL AUDIT CURRENT** |
+| W10 | 中期整理 | **ALL PRE-MIDTERM TASKS COMPLETE** |
 
 Phase 2D 已完成，因此实际研究位置已经超过原计划 W6，并正式进入 posterior structural-results 阶段。
 
@@ -118,9 +118,9 @@ Evidence matrix、claim registry、10-figure / 11-table manifests、result diges
 
 已按冻结的 18 页结构生成 slide source、18 页 speaker notes、40 个答辩问答、1 分钟/3 分钟摘要和答辩 checklist。所有文件通过自动结构检查，未新增实证结论或修改结果。
 
-### Current — Final Midterm Readiness Audit
+### Complete — Final Midterm Readiness Audit
 
-执行最新全量测试、Python compile、Freeze SHA、图表/表格路径、Git安全与远端一致性审计，并生成`docs/midterm_readiness_2026.md`。
+最新全量测试、Python compile、Freeze SHA、图表/表格路径、Git安全与远端一致性审计均通过，`docs/midterm_readiness_2026.md`已完成。最终分类为`MIDTERM_READY_WITH_WARNINGS`。
 
 ### Early November — Robustness / futures
 
@@ -167,7 +167,7 @@ Evidence matrix、claim registry、10-figure / 11-table manifests、result diges
 - midterm evidence freeze：**COMPLETE**；
 - midterm research report：**COMPLETE**；
 - midterm defense package：**COMPLETE**；
-- final midterm readiness audit：**CURRENT GATE**；
+- final midterm readiness audit：**COMPLETE**；
 - IRF / FEVD：目标仍为 2026-11-02 前完成；
 - 主要实验：2026-11-10 前冻结；
 - 11 月 10 日后原则上只做结果整理、复现、必要修正和答辩材料。
@@ -186,5 +186,5 @@ Phase 2D posterior convergence        [COMPLETE]
 → midterm evidence freeze                [COMPLETE]
 → midterm report                         [COMPLETE]
 → defense PPT / Q&A                      [COMPLETE]
-→ final readiness audit                  [CURRENT]
+→ final readiness audit                  [COMPLETE]
 ```

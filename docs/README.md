@@ -36,8 +36,9 @@
 - [`midterm_defense_qa.md`](midterm_defense_qa.md) — 40个答辩问题、直接回答、依据和限制。
 - [`midterm_one_minute_summary.md`](midterm_one_minute_summary.md) / [`midterm_three_minute_summary.md`](midterm_three_minute_summary.md) — 压缩汇报版本。
 - [`midterm_defense_checklist.md`](midterm_defense_checklist.md) — 数据、测试、图表、措辞和Git交付检查。
+- [`midterm_readiness_2026.md`](midterm_readiness_2026.md) — 最终测试、Freeze、Git安全、主要警告与readiness分类。
 
-**Phase 2E—2J、Phase 3A 与 Phase 3B 均已完成，CORE MIDTERM EXPERIMENTS 已冻结。** 下一阶段是 Final Midterm Readiness Audit。
+**全部中期答辩前任务已经完成，CORE MIDTERM EXPERIMENTS 已冻结。最终分类：MIDTERM_READY_WITH_WARNINGS。** 中期以后只按readiness memo中的计划推进，不自动启动大型扩展。
 
 ## C. Phase 1 empirical results
 
@@ -82,6 +83,7 @@ README.md
 → midterm_report_2026.md
 → midterm_slides_2026.md
 → midterm_defense_qa.md
+→ midterm_readiness_2026.md
 → research_master_plan.md
 → midterm_plan_2026_11.md
 ```

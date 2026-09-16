@@ -16,10 +16,10 @@
 - [x] Phase 2J全量测试：600 passed
 - [x] Phase 3A全量测试：604 passed
 - [x] Phase 3B全量测试：608 passed
-- [ ] 最终readiness后记录最新真实pytest总数
-- [ ] 最终执行`py -3.13 -m pytest -q`
-- [ ] 对新增Python执行`py -3.13 -m py_compile`
-- [ ] 最终执行`git diff --check`
+- [x] 最终readiness全量测试：611 passed
+- [x] 最终执行`py -3.13 -m pytest -q`
+- [x] 对13个新增Python文件执行`py -3.13 -m py_compile`
+- [x] 最终执行`git diff --check`
 
 ## C. 报告与图表
 
@@ -85,5 +85,5 @@
 - [x] `HEAD == origin/main == ls-remote main`
 - [x] 工作树不存在未知tracked修改
 - [x] README、docs index、project status、master plan和midterm plan状态一致
-- [ ] 最终`docs/midterm_readiness_2026.md`已完成并推送
-- [ ] 最终分类已经依据审计选择，不为完成感强行写READY
+- [x] 最终`docs/midterm_readiness_2026.md`已完成并推送
+- [x] 最终分类已经依据审计选择：`MIDTERM_READY_WITH_WARNINGS`

@@ -18,7 +18,8 @@
 - Phase 2J midterm evidence freeze 已完成：evidence matrix、claim registry、10 张主图、11 张主表、result digest 与 reproducibility manifest 已冻结。
 - Phase 3A midterm research report 已完成：19-section Chinese thesis-core draft，23,365 个非空字符、16,002 个汉字，数字/图表/措辞/样本日期审计通过。
 - Phase 3B midterm defense package 已完成：18页演示源、18页讲稿、40题问答、1/3分钟摘要与checklist。
-- **CORE MIDTERM EXPERIMENTS: FROZEN.** M1 真实数据估计中期前不再启动；下一阶段为 Final Midterm Readiness Audit。
+- Final Midterm Readiness Audit 已完成：611 tests PASS、13个新增Python文件compile PASS、Freeze/Git/remote safety PASS。
+- **CORE MIDTERM EXPERIMENTS: FROZEN. MIDTERM_READY_WITH_WARNINGS.** M1真实数据估计与其他大型扩展中期前不再启动。
 
 项目实际进度已超过原中期计划约第 6 周（10 月中旬）的任务深度；posterior mixing 已通过，但 prior/fixed-assumption sensitivity 与 inventory-price weak direction 必须继续随结构结果报告。
 
@@ -42,7 +43,7 @@
 | Phase 2J Midterm evidence freeze | **COMPLETE** | claim boundaries and 10-figure / 11-table evidence chain frozen | complete |
 | Phase 3A Midterm report | **COMPLETE** | 19-section Chinese thesis-core draft；automated structure/warning checks pass | complete |
 | Phase 3B Defense package | **COMPLETE** | 18 slides、18 notes、40 Q&A、1/3-minute summaries、checklist | complete |
-| Final readiness audit | **NEXT** | tests/compile/freeze/git/remote/readiness memo | final gate |
+| Final readiness audit | **COMPLETE** | 611 tests；compile/freeze/git/remote PASS | MIDTERM_READY_WITH_WARNINGS |
 
 ## 3. Data Freeze v1
 
@@ -202,7 +203,8 @@ Current revised sequence:
 - **complete:** Phase 2J midterm evidence / claim / figure / table freeze;
 - **complete:** Phase 3A midterm research report / thesis-core draft;
 - **complete:** Phase 3B midterm defense package;
-- **next:** Final Midterm Readiness Audit;
+- **complete:** Final Midterm Readiness Audit;
+- **post-midterm only:** true future OOS、Data Freeze v2/v3、targeted extensions、final thesis writing;
 - **by 2026-11-10:** freeze major experiments and switch to result organization / midterm materials.
 
 ## 12. Source-of-truth order
@@ -218,7 +220,7 @@ When historical documents conflict, use this order:
 
 ## 13. Current decision
 
-**Stop broad data/model expansion. Keep Data Freeze v1 immutable. Phase 2E—2J, Phase 3A and Phase 3B are complete. CORE MIDTERM EXPERIMENTS ARE FROZEN. Final Midterm Readiness Audit is next.**
+**Stop broad data/model expansion. Keep Data Freeze v1 immutable. All pre-midterm phases and the final readiness audit are complete. CORE MIDTERM EXPERIMENTS ARE FROZEN. Final decision: MIDTERM_READY_WITH_WARNINGS.**
 
 Structural OOS, key external validation, and the bounded preliminary spot-futures extension have been run and synthesized into the evidence/claim freeze. A full structural futures model and `M1` real-data estimation have not been run and are outside the remaining pre-midterm scope.
 
