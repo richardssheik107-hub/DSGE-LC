@@ -41,3 +41,8 @@ data/metadata/dongwu_smm_quote_calendar_audit.csv
 # External / credentialed data workspaces
 data/external/opd/
 data/external/
+
+# Local environment credentials; keep documented examples shareable
+.env
+.env.*
+!.env.example

@@ -1,61 +1,17 @@
-# Script Entry Points
+# 执行入口
 
-`scripts/` contains executable orchestration. Reusable model logic belongs in `src/`; scripts should mainly load configuration/data, call library functions, write ignored outputs and enforce stage gates.
+数据入口在`data/`子目录。研究入口依次为phase1a1、phase1a2、phase1b及phase2a—phase2i的已有run脚本。后验恢复入口为`recover_phase2d_sensitivity_artifacts.py`。IRF/HD/OOS已经实现，不再列为尚未编写。
 
-## Data scripts
+## 当前先运行审计，不自动重跑MCMC
 
-`scripts/data/` contains acquisition, ingestion, audit, reconciliation and panel-building utilities. Important examples include:
-
-- `audit_industry_data.py`
-- `audit_new_secondary_excel.py`
-- `audit_public_completion.py`
-- `build_core_monthly_panel.py`
-- `build_high_value_industry_update.py`
-- `build_industry_monthly.py`
-- `build_public_gap_closure.py`
-- `build_public_phase1_dataset.py`
-
-Commercial raw workbooks remain local and ignored. Data scripts must not silently overwrite Data Freeze v1.
-
-## Phase runners
-
-Current main runners:
-
-```text
-run_phase1a1_descriptives.py
-run_phase1a2_diagnostics.py
-run_phase1b_baselines.py
-run_phase2a_structural_design.py
-run_phase2b_kalman_validation.py
-run_phase2c_estimation_preflight.py
-run_phase2d_bayesian_estimation.py
+```bash
+python scripts/audit_posterior_independent.py
 ```
 
-Execution order matches the research pipeline; do not skip phase gates just because later code exists.
+该新增入口只读已有七套后验，使用ArviZ对rank R-hat、bulk/tail ESS和均值MCSE独立核验，写新报告。无数据或元数据不完整时REVIEW，不重建draw、不下载商业数据。详见`docs/REPRODUCIBILITY.md`。
 
-## Runner design rule
+## Runner规则
 
-A runner may:
+runner负责读取明确版本、编排、写输出及门槛；核心算法应在src中。当前HD含部分内联门槛/绘图技术债，按A02/A05小步修复，不大规模搬文件。
 
-- load config;
-- verify data hashes / sample boundaries;
-- assemble inputs;
-- call `src/` functions;
-- generate ignored CSV/figures;
-- write concise aggregate diagnostics。
-
-A runner should not:
-
-- contain a second copy of the Kalman likelihood;
-- redefine structural equations;
-- embed commercial observations in source code;
-- silently change earlier-phase parameter ranges;
-- automatically launch the next research phase after a gate failure。
-
-## Current next runner
-
-Phase 2D is complete. The next runner should be a separate posterior structural-results entry point, for example:
-
-`run_phase2e_posterior_structural_results.py`
-
-Its scope should be limited to posterior IRF, FEVD and structural sign/economic-consistency checks. Historical decomposition should remain a later gated runner rather than being silently bundled into the same script.
+每次执行记录配置/代码/输入与输出hash；失败不得继续后续阶段；经济结论不显著不等于计算失败。正式提交阶段报告需确认数值门槛和经济解释两者，不只依据文件存在。

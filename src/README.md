@@ -1,58 +1,20 @@
-# Source Package Guide
+# 源码指南
 
-`src/` contains reusable research code. Phase runners should orchestrate these modules rather than duplicate their logic.
+| 包 | 职责 |
+|---|---|
+| baselines | RW/AR/VAR/BVAR |
+| diagnostics | 变换、描述统计、平稳性/断点/滞后 |
+| evaluation | 预测拆分、递归预测、指标 |
+| data_audit | 数据源和工作簿复核 |
+| structural | 方程/矩阵/观测、Kalman/likelihood、MLE、Bayes、IRF/FEVD、HD、结构预测与外部验证 |
+| futures | 合约审计、连续主力/换月收益、期现对齐与统计 |
 
-## Packages
+## 当前结构栈
 
-- `baselines/` — Random Walk, AR, VAR and BVAR forecast baselines.
-- `data_audit/` — reusable source / workbook audit helpers.
-- `diagnostics/` — transformations, descriptive statistics, stationarity, break and lag diagnostics.
-- `evaluation/` — evaluation utilities used by forecast experiments.
-- `structural/` — structural MVP, state-space, Kalman, likelihood, deterministic estimation and Bayesian posterior diagnostics.
+spec/equations → matrices/measurement → stability/identification → state_space/kalman/likelihood → parameter_transform/estimation/profiles → priors/mcmc/posterior_artifacts → irf/fevd/historical_decomposition → structural_forecasting/external_validation。
 
-## Structural stack
+## 必须先修的边界
 
-Current `src/structural/` responsibilities progress roughly as:
+`mcmc_diagnostics`的ESS配对、MCSE和常数链；HD runner的HIGH分类/最终门槛；`measurement`的实际scaler样本；`spot_futures`的月度收益定义。详细证据见docs/audits/2026_09_16_research_audit.md。
 
-```text
-spec / equations
-→ matrices / measurement
-→ stability / observability / identification
-→ simulation
-→ state_space
-→ kalman / kalman_diagnostics
-→ likelihood
-→ parameter_transform
-→ estimation / profiles / curvature / optimization_diagnostics
-→ priors
-→ mcmc / mcmc_diagnostics
-→ posterior_diagnostics
-```
-
-The Phase 2A equations and Phase 2B canonical likelihood remain frozen interfaces unless a dedicated model-revision phase is explicitly approved.
-
-## Phase 2D modules
-
-Phase 2D added focused Bayesian modules:
-
-- `priors.py` — proper native-space priors and stable-prior audit;
-- `mcmc.py` — Jacobian-correct z-space adaptive random-walk Metropolis;
-- `mcmc_diagnostics.py` — rank-normalized split R-hat, bulk/tail ESS, MCSE and chain diagnostics;
-- `posterior_diagnostics.py` — posterior summaries, boundary mass, contraction, sensitivity and PPC summaries.
-
-Phase 2D is complete; these modules are now reusable infrastructure rather than an active extension point.
-
-## Next extension point
-
-The next structural-results layer should add focused, testable modules for:
-
-- posterior IRF generation;
-- posterior FEVD;
-- sign / timing / economic-consistency audits;
-- posterior uncertainty propagation。
-
-Do not combine historical decomposition or structural OOS into the same implementation before the IRF/FEVD consistency gate passes.
-
-## Refactoring rule
-
-Prefer additive modules and small tested refactors. Avoid moving or renaming established Phase 2A—2D modules unless necessary, because tests and phase memos rely on those interfaces.
+本轮不无痕替换冻结主算法。独立checker在scripts中，作为对现有实现的外部复核；下一步只有在独立测试和真实artifacts重算后，才更新正式算法与结果版本。冻结接口不意味着禁止修bug，也不允许为修bug顺便改经济方程或先验。

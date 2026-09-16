@@ -1,190 +1,39 @@
-# Repository Architecture
+# 仓库架构与证据流
 
-本页描述仓库的**运行结构和 source-of-truth 关系**。目标是减少“文档写了一套、脚本读另一套、配置又复制一套”的漂移风险。
-
-## 1. Top-level layout
+## 功能分层
 
 ```text
-DSGE-LC/
-├─ configs/        phase-specific operational settings
-├─ data/           public raw, processed public/auxiliary data, metadata
-├─ docs/           plans, current status, phase memos, data audits
-├─ scripts/        executable entry points
-├─ src/            reusable library code
-├─ tests/          regression, numerical and safety tests
-├─ README.md       concise current project navigation
-├─ requirements.txt
-└─ requirements-dev.txt
+公开/授权原始数据 → data scripts → canonical/candidate/validation metadata
+→ core v1 + transformation/scaler
+→ diagnostics / baselines
+→ structural equations / matrices / measurement
+→ Kalman / likelihood / estimation / posterior artifacts
+→ IRF / FEVD / historical / OOS / external validation
+→ independent futures extension
+→ auditable tables / figures / manuscript
 ```
 
-Commercial workbooks and commercial-derived core panels are local-only and protected by `.gitignore`.
+`docs/audits`记录发现，`docs/plans`管理修正和定稿，`docs/references`记录参考版本，`docs/archive`隔离过时设计。`outputs`和商业数据本地受限，不通过移动目录美化仓库。
 
-## 2. Source-of-truth hierarchy
+## 当前来源优先级
 
-### Project status
+- 研究准入与结论强度：CURRENT_STATUS → 最新审计/勘误 → 阶段memo → 历史计划。
+- 精确复现：input hash + scaler/config/model/diagnostic version + source commit + artifact manifest。不能只靠某篇最新memo覆盖旧数字。
+- 结构参数范围：phase2a；后续明确命名的敏感性可另行定义，不能静默替换。
+- 时间计划：plans/thesis_finalization_2026_2028.md；学院正式日期优先于规划假设。
 
-1. `docs/project_status_2026_09_15.md`
-2. latest phase memo
-3. `README.md`
-4. historical plans / acquisition reports
+## 代码包
 
-### Structural specification
+`diagnostics`、`baselines`、`evaluation`、`data_audit`、`structural`与`futures`各自承担功能。结构层已包含后验、IRF/FEVD、HD、预测与外部验证，不再称它们为未来待添加模块。
 
-- equations / state order / shock order: `docs/phase2a_structural_mvp_spec.md` + `src/structural/`
-- admissible parameter ranges: `configs/phase2a.yaml`
-- Kalman / likelihood convention: Phase 2B code and memo
-- selected estimation specification: Phase 2C memo
+## 当前架构债务
 
-Do not duplicate Phase 2A parameter bounds into later configs unless a later phase deliberately defines a sensitivity range.
+部分runner混合计算、图表、门槛，使用硬编码路径；部分`.yaml`内容实际由json.loads读取。先登记再小步修正，不对冻结主模型大规模改名/搬家。HD门槛与MCMC诊断按A01/A02单独修复。
 
-### Data definitions
+## 测试与输出
 
-- current variable definitions: `docs/data_dictionary.md`
-- current freeze status: `docs/project_status_2026_09_15.md`
-- source-specific details: corresponding audit / metadata files
+便携单元测试、合成参考验证、授权数据集成测试、长实验必须分别报告。新clone缺商业CSV/NPZ时不宣称可全链复现。独立后验checker只是收敛与最小provenance复核，不替代支持区间、稳定性、likelihood或整篇论文验收。
 
-## 3. Data flow
+## 已完成的本轮整理
 
-```text
-public raw / local commercial workbooks
-        ↓
-scripts/data/* ingestion / audit
-        ↓
-metadata + local commercial processed layer
-        ↓
-local core_monthly_panel.csv  [ignored]
-        ↓
-Data Freeze v1 hash gate
-        ↓
-Phase 1 transformed dataset  [ignored]
-        ↓
-Phase 1 diagnostics / baselines
-        ↓
-Phase 2 measurement preparation
-        ↓
-state-space / likelihood / estimation
-        ↓
-phase outputs under outputs/  [ignored]
-```
-
-The repository intentionally commits metadata, public panels and code, but not licensed commercial values or generated Phase 2 state/chain outputs.
-
-## 4. Code layers
-
-### `src/data_audit/`
-
-Reusable helpers for auditing secondary Excel / data-source consistency. It should not own structural-model logic.
-
-### `src/diagnostics/`
-
-Phase 1 transformations and empirical diagnostics:
-
-- descriptive statistics;
-- stationarity;
-- break tests;
-- lag screening;
-- Phase 1A-2 diagnostics / figures.
-
-### `src/baselines/`
-
-Reduced-form forecast baselines:
-
-- Random Walk;
-- AR;
-- VAR;
-- independent-equation Minnesota BVAR.
-
-### `src/evaluation/`
-
-Forecast / evaluation utilities shared by baseline experiments.
-
-### `src/structural/`
-
-Structural MVP stack. Current responsibilities include:
-
-- specification and equations;
-- matrix construction;
-- measurement mapping;
-- stability / observability / identification;
-- simulation;
-- state-space preparation;
-- Kalman / smoother / likelihood;
-- parameter transforms;
-- constrained estimation;
-- profiles / curvature / optimization diagnostics.
-
-Phase 2D Bayesian modules should be added here rather than embedded entirely inside runner scripts.
-
-## 5. Script layers
-
-### `scripts/data/`
-
-Data acquisition, ingestion, reconciliation, audit and panel construction. These scripts must preserve provider separation and must not silently overwrite Data Freeze v1.
-
-### `scripts/phase1/`
-
-Dataset preparation specific to Phase 1.
-
-### root phase runners
-
-- `run_phase1a1_descriptives.py`
-- `run_phase1a2_diagnostics.py`
-- `run_phase1b_baselines.py`
-- `run_phase2a_structural_design.py`
-- `run_phase2b_kalman_validation.py`
-- `run_phase2c_estimation_preflight.py`
-
-Future runners should follow the same naming convention and remain orchestration layers; reusable logic belongs in `src/`.
-
-## 6. Configuration rules
-
-- `phase1.yaml`: Phase 1 experiment settings.
-- `phase2a.yaml`: structural design and canonical parameter ranges.
-- `phase2b.yaml`: Kalman / likelihood validation settings.
-- `phase2c.yaml`: optimization / profile / curvature operational settings.
-
-Later phase configs should reference earlier canonical bounds rather than re-copying them. Config files should contain operational choices, not result tables.
-
-## 7. Output rules
-
-Generated experiment outputs belong under:
-
-```text
-outputs/phase1/
-outputs/phase2/
-```
-
-They are local artifacts and ignored by Git. Result memos may commit compact aggregate numbers, but must not commit:
-
-- licensed monthly commercial observations;
-- raw chain draws;
-- monthly latent-state histories unless later explicitly approved for publication;
-- optimization traces containing protected observations;
-- commercial Excel workbooks.
-
-## 8. Testing discipline
-
-Tests are not only unit tests; they are research-safety gates. Existing suites check:
-
-- data hashes and frozen ranges;
-- no future-data contamination;
-- transformation / stationarity logic;
-- forecast stability;
-- state-space dimensions;
-- covariance PSD / finite Kalman calculations;
-- likelihood consistency;
-- optimization and profile logic;
-- Git/data safety assumptions.
-
-A new research phase should add tests before it is marked COMPLETE.
-
-## 9. What should not be refactored during Phase 2D
-
-Until Bayesian estimation is stable, avoid large path or module moves in:
-
-- `src/structural/`;
-- existing phase runner names;
-- `configs/phase2a.yaml` bounds;
-- Data Freeze construction scripts.
-
-Documentation/navigation cleanup is safe; structural refactoring should wait until the posterior stage is frozen.
+当前入口和历史分离；核心参考核对；终稿路线；目录指南；依赖最低版本修正；新增只读审计入口。科学结果与旧代码不无痕重写，下一阶段修正由backlog控制。

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "updated": "2026-09-16",
+  "audit_base_commit": "674020c37ce093139c778798cd91f739435d8da8",
+  "status": "RESEARCH_AUDIT_CORRECTIONS_REQUIRED",
+  "graduation_target_assumption": "2028-06",
+  "earlier_plan_contingency": "2027-06",
+  "advisor_complete_draft_target": "2027-02-28",
+  "formal_deadlines_confirmed": false,
+  "full_pipeline_rerun_in_this_update": false,
+  "portable_audit_tests_passed": 8,
+  "tasks": [
+    {"id":"A01","priority":"P0","status":"OPEN","title":"Independent ESS/MCSE and stored-posterior re-audit"},
+    {"id":"A02","priority":"P0","status":"OPEN","title":"Historical sensitivity classifier and complete readiness gate"},
+    {"id":"A03","priority":"P0","status":"OPEN","title":"Matched spot/futures return definitions and date intervals"},
+    {"id":"A04","priority":"P0","status":"OPEN","title":"Scaler fitting support and historical units"},
+    {"id":"A05","priority":"P1","status":"OPEN","title":"Posterior additivity and signed displays"},
+    {"id":"A06","priority":"P1","status":"OPEN","title":"Measurement, inventory-index meaning and theory alignment"},
+    {"id":"A07","priority":"P1","status":"OPEN","title":"Forecast convergence, estimand and information set"},
+    {"id":"A08","priority":"P1","status":"OPEN","title":"External validation uncertainty and independence"},
+    {"id":"A09","priority":"P1","status":"PARTIAL","title":"Reference-paper mapping and advisor scope confirmation"},
+    {"id":"A10","priority":"P1","status":"OPEN","title":"Citation, thesis prose and formatted deliverables"},
+    {"id":"A11","priority":"P1","status":"PARTIAL","title":"Environment, test tiers and private artifact restoration"},
+    {"id":"A12","priority":"MANAGEMENT","status":"OPEN","title":"Confirm graduation and school submission deadlines"}
+  ]
+}

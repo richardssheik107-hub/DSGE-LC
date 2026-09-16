@@ -1,97 +1,43 @@
-# Documentation Index
+# 文档导航
 
-本目录同时包含**当前 source of truth、阶段结果 memo、数据审计和历史获取记录**。阅读时不要把早期 acquisition report 中的旧缺口当成当前状态。
+## 当前入口（优先阅读）
 
-## A. Current source of truth
+- [CURRENT_STATUS](CURRENT_STATUS.md)：当前判定、P0任务、已做/未做边界。
+- [全论文与仓库审计](audits/2026_09_16_research_audit.md)：代码、口径、结论及复现问题。
+- [生猪参考稿对照](references/hog_paper_comparison.md)：35页修改稿的实际方法、差异与核对事项。
+- [修正清单](plans/correction_backlog.md)：每个发现的关闭条件。
+- [直到定稿的完整计划](plans/thesis_finalization_2026_2028.md)：中期前逐周、2027提前路线与2028主路线。
+- [复现指南](REPRODUCIBILITY.md)及[仓库架构](repository_architecture.md)。
 
-1. [`project_status_2026_09_15.md`](project_status_2026_09_15.md) — 当前总状态：做到哪里、主模型、主要风险、下一步。
-2. [`../README.md`](../README.md) — 仓库总览、当前阶段和快速导航。
-3. [`research_master_plan.md`](research_master_plan.md) — 当前执行路线与长期模型愿景。
-4. [`midterm_plan_2026_11.md`](midterm_plan_2026_11.md) — 中期答辩时间表，已按实际提前进度更新。
-5. [`data_dictionary.md`](data_dictionary.md) — 当前数据定义、coverage、usage layer 和版本规则。
-6. [`repository_architecture.md`](repository_architecture.md) — 代码、脚本、数据和配置之间的依赖关系。
+## 模型与阶段证据
 
-若这些文件与更早文档冲突，以 `project_status_2026_09_15.md` 和最新 phase memo 为准。
+| 范围 | 文档 |
+|---|---|
+| 数据 | [数据字典](data_dictionary.md)、[正式入库](industry_data_ingestion_audit.md)、[二次工作簿审计](new_excel_secondary_data_audit.md) |
+| 探索/基准 | [描述统计](phase1_data_diagnostics_memo.md)、[机制诊断](phase1a2_mechanism_diagnostics_memo.md)、[基准预测](phase1b_baseline_results_memo.md) |
+| 结构/数值 | [2A规格](phase2a_structural_mvp_spec.md)、[2A预检](phase2a_identification_precheck.md)、[2B](phase2b_kalman_likelihood_validation.md)、[2C](phase2c_estimation_preflight.md) |
+| 后验 | [2D](phase2d_bayesian_estimation.md)、[artifact恢复](phase2e_artifact_recovery.md) |
+| 结构结果 | [2E IRF/FEVD](phase2e_posterior_irf_fevd.md)、[2F历史分解](phase2f_historical_decomposition.md) |
+| 预测/验证 | [2G OOS](phase2g_structural_oos.md)、[2H外部验证](phase2h_external_validation.md)、[2I期现](phase2i_spot_futures.md) |
 
-## B. Active structural-model evidence
+阶段memo保持当时结果，**与当前审计一起阅读**。例如旧“无HIGH敏感性”不能覆盖审计发现的分类程序没有HIGH分支。
 
-- [`phase2a_structural_mvp_spec.md`](phase2a_structural_mvp_spec.md) — `M0_CORE5` / `M1_CAPACITY6` 方程、状态、观测和归一化。
-- [`phase2a_identification_precheck.md`](phase2a_identification_precheck.md) — stability / observability / reachability / local Jacobian 预检。
-- [`phase2b_kalman_likelihood_validation.md`](phase2b_kalman_likelihood_validation.md) — Kalman filter、RTS smoother、likelihood 和 numerical audit。
-- [`phase2c_estimation_preflight.md`](phase2c_estimation_preflight.md) — constrained MLE、multi-start、profile、Hessian/OPG 和 weak-ID 结论。
-- [`phase2d_bayesian_estimation.md`](phase2d_bayesian_estimation.md) — proper prior、z-space MCMC、Jacobian、多链收敛、prior/fixed-assumption sensitivity 与 posterior identification。
-- [`phase2e_artifact_recovery.md`](phase2e_artifact_recovery.md) — 六套 sensitivity posterior deterministic recovery 与完整 integrity audit。
-- [`phase2e_posterior_irf_fevd.md`](phase2e_posterior_irf_fevd.md) — 完整 posterior IRF/FEVD sensitivity propagation 与 structural-results gate。
-- [`phase2f_historical_decomposition.md`](phase2f_historical_decomposition.md) — posterior shock reconstruction、历史分解、episode attribution 与 sensitivity。
-- [`phase2g_structural_oos.md`](phase2g_structural_oos.md) — strict expanding-window structural OOS、RW/AR/VAR/BVAR 对比与 leakage audit。
-- [`phase2h_external_validation.md`](phase2h_external_validation.md) — SMM inventory / route-cost external validation 与 inventory-persistence sensitivity。
-- [`phase2i_spot_futures.md`](phase2i_spot_futures.md) — 5-minute GFEX contract audit、roll-safe main contract、期现 basis、lead-lag 与 inventory sensitivity。
-- [`midterm_evidence_matrix.md`](midterm_evidence_matrix.md) — 研究问题到证据、强度、warning 和可写 claim 的映射。
-- [`midterm_claim_registry.md`](midterm_claim_registry.md) — STRONG / PARTIAL / WEAK / NOT_SUPPORTED 结论边界。
-- [`midterm_figure_manifest.md`](midterm_figure_manifest.md) / [`midterm_table_manifest.md`](midterm_table_manifest.md) — 中期主图主表冻结。
-- [`midterm_result_digest.md`](midterm_result_digest.md) — 3–5 页导师速览版结果链。
-- [`midterm_reproducibility_manifest.md`](midterm_reproducibility_manifest.md) — SHA、commits、configs、runners、seeds 与 ignored artifacts。
-- [`midterm_report_2026.md`](midterm_report_2026.md) — 19-section 中期研究报告 / thesis-core draft，数字与结论边界来自 frozen evidence。
-- [`midterm_slides_2026.md`](midterm_slides_2026.md) / [`midterm_speaker_notes_2026.md`](midterm_speaker_notes_2026.md) — 18页答辩源文件与逐页讲稿。
-- [`midterm_defense_qa.md`](midterm_defense_qa.md) — 40个答辩问题、直接回答、依据和限制。
-- [`midterm_one_minute_summary.md`](midterm_one_minute_summary.md) / [`midterm_three_minute_summary.md`](midterm_three_minute_summary.md) — 压缩汇报版本。
-- [`midterm_defense_checklist.md`](midterm_defense_checklist.md) — 数据、测试、图表、措辞和Git交付检查。
-- [`midterm_readiness_2026.md`](midterm_readiness_2026.md) — 最终测试、Freeze、Git安全、主要警告与readiness分类。
+## 中期工作草稿（需按审计修订，不是终稿）
 
-**全部中期答辩前任务已经完成，CORE MIDTERM EXPERIMENTS 已冻结。最终分类：MIDTERM_READY_WITH_WARNINGS。** 中期以后只按readiness memo中的计划推进，不自动启动大型扩展。
+[报告](midterm_report_2026.md) · [演示源](midterm_slides_2026.md) · [讲稿](midterm_speaker_notes_2026.md) · [问答](midterm_defense_qa.md) · [一分钟](midterm_one_minute_summary.md) · [三分钟](midterm_three_minute_summary.md) · [检查表](midterm_defense_checklist.md)
 
-## C. Phase 1 empirical results
+[证据矩阵](midterm_evidence_matrix.md) · [原论断登记](midterm_claim_registry.md) · [图清单](midterm_figure_manifest.md) · [表清单](midterm_table_manifest.md) · [结果摘要](midterm_result_digest.md) · [复现记录](midterm_reproducibility_manifest.md)
 
-- [`phase1_data_diagnostics_memo.md`](phase1_data_diagnostics_memo.md) — 描述统计、统一变换、异常保留、基础图形与同期相关。
-- [`phase1a2_mechanism_diagnostics_memo.md`](phase1a2_mechanism_diagnostics_memo.md) — stationarity / break / lead-lag / mechanism diagnostics。
-- [`phase1b_baseline_results_memo.md`](phase1b_baseline_results_memo.md) — RW / AR / VAR / BVAR expanding-window OOS。
-- [`phase1_experiment_plan.md`](phase1_experiment_plan.md) — Phase 1 当时的执行计划；属于阶段计划，不覆盖当前总路线。
+这些原始材料未被本轮无痕改写；使用前落实审计的单位、加总、诊断和期現收益口径修正。图文件存在不等于图内结果已最终验收。
 
-## D. Data governance and audits
+## 计划与历史
 
-- [`industry_data_ingestion_audit.md`](industry_data_ingestion_audit.md) — 商业行业工作簿首次正式入库审计。
-- [`high_value_industry_data_update.md`](high_value_industry_data_update.md) — robustness / validation 高价值产业数据更新。
-- [`new_excel_secondary_data_audit.md`](new_excel_secondary_data_audit.md) — Dongwu / later battery workbook 二级审计。
-- [`public_gap_closure_report.md`](public_gap_closure_report.md) — 公开尾部补缺与 reconciliation。
-- [`public_data_acquisition_report.md`](public_data_acquisition_report.md) — 早期公开数据获取记录，属于历史快照。
-- [`opd_data_availability_report.md`](opd_data_availability_report.md) — OPD 可用性审计；登录受限结论为历史数据源治理信息。
-- [`opd_manual_search_checklist.md`](opd_manual_search_checklist.md) — OPD 手工登录搜索清单。
+- [研究总计划](research_master_plan.md)、[中期剩余周计划](midterm_plan_2026_11.md)：现在的行动顺序。
+- [参考文献说明](REFERENCE_HOG_PAPER.md)、[参考指导路线](hog_mfdsge_guided_execution_plan.md)：核验后的定位。
+- [旧项目状态](project_status_2026_09_15.md)、[旧中期ready记录](midterm_readiness_2026.md)：保留的历史快照，不是当前准入结论。
+- [早期生猪指导蓝图原样副本](archive/hog_mfdsge_blueprint_2026_09_15.md)：候选方程/旧日期/旧门槛不得覆盖现行规范。
+- public acquisition、OPD、high-value data等旧报告继续保留在原路径，当前缺口见元数据与完整计划。
 
-数据层的当前规则以 `data_dictionary.md` 与 `project_status_2026_09_15.md` 为准。
+## 维护规则
 
-## E. Reference and long-term design
-
-- [`REFERENCE_HOG_PAPER.md`](REFERENCE_HOG_PAPER.md) — 参考生猪 MF-DSGE 论文的仓库内简要说明。
-- [`hog_mfdsge_guided_execution_plan.md`](hog_mfdsge_guided_execution_plan.md) — 从参考论文映射到锂价研究的详细执行框架。
-- [`data_strategy_sparse_observations.md`](data_strategy_sparse_observations.md) — sparse observations + latent states 数据策略。
-
-这些文件用于理论与长期设计，不表示所有候选模块已经实现。
-
-## F. Reading order for a new collaborator
-
-建议顺序：
-
-```text
-README.md
-→ project_status_2026_09_15.md
-→ data_dictionary.md
-→ phase1b_baseline_results_memo.md
-→ phase2a_structural_mvp_spec.md
-→ phase2b_kalman_likelihood_validation.md
-→ phase2c_estimation_preflight.md
-→ phase2d_bayesian_estimation.md
-→ midterm_report_2026.md
-→ midterm_slides_2026.md
-→ midterm_defense_qa.md
-→ midterm_readiness_2026.md
-→ research_master_plan.md
-→ midterm_plan_2026_11.md
-```
-
-## G. Documentation maintenance rule
-
-- `project_status_YYYY_MM_DD.md`：当前状态快照，只写“现在是什么”。
-- `phaseX...md`：阶段完成后的结果 memo；允许补充勘误或 lineage note，但不得无痕改写历史结论。
-- `*_audit.md` / `*_report.md`：数据或实现审计，保留当时口径。
-- `research_master_plan.md`：长期路线，可随 evidence 更新，但必须区分 current MVP 与 future extension。
-- 旧文档中的“下一步”是历史语境，不自动覆盖最新 project status。
+先更改当前状态与修正清单，再追加带日期的阶段勘误；不要只在旧文档末尾追加“COMPLETE”而保留互相冲突的NEXT。数据、scaler、模型、prior、诊断和输出版本分开追踪。不得为增加测试数量而锁定错误算法。

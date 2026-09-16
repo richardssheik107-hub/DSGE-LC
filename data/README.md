@@ -1,108 +1,29 @@
-# Data Directory Guide
+# 数据与artifact治理
 
-本目录只承载可以安全进入 Git 的公开数据、元数据和经过治理的派生层。商业原始工作簿、商业 core panel 和大部分阶段输出保持本地，不提交。
+## 分层
 
-## 1. Layout
+| 层 | 用途 |
+|---|---|
+| A_CORE | v1的SMM现货、SC6、中国LC产量、动力电池装车、USD/CNY |
+| ROBUSTNESS | 替代提供商、分路线/化学体系与贸易等对照，不静默补主序列 |
+| VALIDATION_ONLY | 短库存/路线成本等构念验证；并不天然完全独立 |
+| CANDIDATE | 待核验尾部、二次转录和新数据版本 |
+| PUBLIC_AUXILIARY | 公开宏观/金融辅助数据；公开可读不自动有再分发许可 |
 
-```text
-data/
-├─ raw/
-│  └─ public/          publicly shareable raw inputs
-├─ processed/
-│  ├─ public_monthly_panel.csv
-│  ├─ public_monthly_panel_v2_candidate.csv
-│  ├─ auxiliary_macro_monthly.csv
-│  ├─ phase1/          local/ignored Phase 1 processed data
-│  ├─ robustness/
-│  └─ validation/
-└─ metadata/           manifests, audits, coverage, reconciliation, hashes
-```
+v1：2020-01—2025-09，69个月；记录hash `9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5`。商业核心、raw Excel与NPZ本地ignored，本轮GitHub整理未读取/修改它们。
 
-Local-only paths protected by `.gitignore` include commercial raw workbooks, commercial processed industry panels, `core_monthly_panel*.csv`, candidate commercial tails and generated phase outputs.
+v2目标2026-06仍登记现货4个月、SC6 8个月、产量7个月待核验；电池至2026-06完整。明细见`metadata/data_freeze_v2_gap_status.csv`。这不是本轮最新公开渠道搜索结论。
 
-## 2. Usage layers
+## 定义约束
 
-### A_CORE
+现货/SC6月均与月末分开，产量/装车是当月流量不是累计YTD，库存是制度相关存量；元/吨、美元/吨、GWh不混用。人民币矿价不是每吨LC完整生产成本。`n`是标准化供需压力，不是实物吨数。
 
-Current canonical variables used to construct Data Freeze v1:
+## 新版本应绑定
 
-- `lc_spot`
-- `lc_output`
-- `spodumene_price`
-- `battery_install`
-- `usd_cny_mean`
+来源与许可、统计月份、first_release、retrieved_at、vintage、单位/频率、原始与canonical hash、各列scaler拟合范围、代码/config/诊断版本。现有元数据不足部分按A11补充，不伪造历史首次发布日期。
 
-Data Freeze v1:
+晚于v1的数据可能已被看过，只能称扩样/保留数据；prospective必须在协议冻结后才到达并在目标实现前留存预测。
 
-- 2020-01—2025-09
-- 69 complete common months
-- SHA256 `9146B3C858AA0F1BE5FA59720B0446515F0A21C60FA032712F76DD248AEAB7F5`
-- **ACTIVE / IMMUTABLE FOR CURRENT MAIN EXPERIMENTS**
+## 文件与备份
 
-### ROBUSTNESS
-
-Alternative or auxiliary series used only to test robustness, for example Mysteel prices, route output, filtered concentrate imports, LFP/NCM installation and trade auxiliary series.
-
-These must not fill holes inside the SMM canonical series.
-
-### VALIDATION_ONLY
-
-Short or regime-sensitive series used to validate latent mechanisms, including SMM inventory and route cost / margin observations.
-
-These do not become main measurement equations merely because they exist.
-
-### CANDIDATE
-
-Unverified Data Freeze v2 tail values, secondary transcriptions and candidate fills. They are explicitly excluded from current Phase 2 estimation until promoted through source and definition audit.
-
-### PUBLIC_AUXILIARY
-
-Public macro / financial variables such as CPI, PPI, NEV, China government yields and FX used for controls, extensions or later futures work.
-
-## 3. Version rules
-
-### Data Freeze v1
-
-Current primary version. Never silently overwrite it.
-
-### Data Freeze v2 candidate
-
-Target: 2020-01—2026-06, 78 months.
-
-Status: **NOT READY / NON-BLOCKING**.
-
-Remaining strict gaps are documented in `docs/project_status_2026_09_15.md` and `docs/data_dictionary.md`.
-
-A v2 candidate may coexist with v1 but must not contaminate current estimation.
-
-## 4. Provider separation
-
-- SMM remains the canonical provider for the core LC / SC6 / output series.
-- Mysteel stays a robustness provider.
-- Dongwu SMM transcription remains secondary/candidate unless direct evidence upgrades it.
-- CCMN / other providers, if used later, must remain separate series.
-
-Never splice providers into one price series to manufacture a longer history.
-
-## 5. Aggregation / missing-data rules
-
-- daily spot / SC6 → arithmetic monthly mean for main aggregation;
-- monthly production / installation → actual monthly flow, not cumulative YTD;
-- inventory → regime-aware weekly / monthly validation only;
-- no linear interpolation;
-- no forward/back fill;
-- no chart-pixel extraction into strict canonical data;
-- no forecast / plan values written as actuals.
-
-## 6. Metadata is first-class data
-
-`data/metadata/` contains the governance layer: source manifests, coverage, hashes, methodology changes, reconciliation tables and candidate status. These files are intentionally committed because they explain how the local commercial layer was constructed without redistributing licensed values.
-
-## 7. Safe development rule
-
-Before any phase that claims to use Data Freeze v1:
-
-1. verify the freeze hash;
-2. verify sample end does not exceed 2025-09 unless explicitly running a v2 branch/experiment;
-3. verify candidate/robustness series have not been merged into core columns;
-4. keep generated outputs under ignored `outputs/` paths.
+继续raw/processed/metadata布局，不搬动或删除未知untracked。商业与生成结果不上传Git；建立私有artifact备份和恢复演练。新增后验审计报告存`outputs/repository_audit/`，与旧结果分开。
