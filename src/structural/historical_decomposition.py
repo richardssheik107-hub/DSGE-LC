@@ -51,7 +51,8 @@ def activity_shares(price_contributions, indices):
     selected = np.asarray(indices, int)
     activity = np.abs(values[..., selected, :]).sum(axis=-2)
     total = activity.sum(axis=-1, keepdims=True)
-    shares = np.divide(activity, total, out=np.zeros_like(activity), where=total > 0)
+    # No activity means a share is undefined, not a four-shock zero vector.
+    shares = np.divide(activity, total, out=np.full_like(activity, np.nan), where=total > 0)
     return activity, shares
 
 

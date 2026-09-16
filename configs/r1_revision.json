@@ -12,5 +12,18 @@
     "component_absolute_tolerance": 1e-8,
     "radius_absolute_tolerance": 1e-10,
     "summary_absolute_tolerance": 1e-9
+  },
+  "historical": {
+    "required_specifications": ["BASELINE", "PRIOR_FLAT_BOUNDED", "PRIOR_MODERATE_SHRINK", "BATTERY_SD_010", "BATTERY_SD_050", "RHO_N_050", "RHO_N_095"],
+    "subset_median_shift_max_full_sd": 0.10,
+    "subset_tail_quantile_shift_max_full_sd": 0.25,
+    "dominant_driver_posterior_probability": 0.75,
+    "high_activity_share_change": 0.20,
+    "sign_interval_low": 0.05,
+    "sign_interval_high": 0.95,
+    "identity_absolute_tolerance": 1e-8,
+    "identity_relative_tolerance": 1e-10,
+    "minimum_covariance_eigenvalue_tolerance": -1e-10,
+    "fevd_additivity_absolute_tolerance": 1e-10
   }
 }

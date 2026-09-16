@@ -85,6 +85,11 @@ def test_30_activity_shares_sum_to_one():
     _,shares=activity_shares(np.array([[[1,-2],[3,-4]]]),[0,1]);assert np.allclose(shares.sum(-1),1)
 
 
+def test_zero_activity_share_is_undefined_not_four_zeros():
+    _, shares = activity_shares(np.zeros((2, 3, 4)), [0, 1, 2])
+    assert np.isnan(shares).all()
+
+
 def test_31_signed_net_shares_not_used():
     import inspect
     assert "abs(values" in inspect.getsource(activity_shares)
