@@ -3,7 +3,7 @@
 中国碳酸锂价格波动与定价机制研究仓库。项目采用 **experiment-first + staged complexity + sparse observations / latent states** 路线：先用少量高质量产业观测完成可复现诊断与基线，再进入结构状态空间、Bayesian 估计、IRF/FEVD、历史分解和期现扩展。
 
 > 状态快照：2026-09-16
-> 当前主线：**Phase 2J midterm evidence freeze COMPLETE；Phase 3A midterm report NEXT**
+> 当前主线：**Phase 3A midterm report COMPLETE；Phase 3B defense package NEXT**
 > 当前模型定位：**semi-structural linear state-space MVP，不是完整 DSGE**
 
 ## Research question
@@ -28,6 +28,7 @@
 | Phase 2H External Validation | **COMPLETE** | latent inventory sign validated；cost proxy strongly aligned with direct route costs |
 | Phase 2I Spot–Futures | **COMPLETE** | 36 GFEX contracts；roll-safe main series；preliminary futures-leading evidence；cointegration gate not met |
 | Phase 2J Evidence Freeze | **COMPLETE** | evidence matrix、claim registry、10-figure / 11-table freeze、reproducibility manifest |
+| Phase 3A Midterm Report | **COMPLETE** | 19-section Chinese thesis-core draft；23k+ non-whitespace characters；claim and citation boundaries audited |
 
 Phase 2E/2F 已闭环：六套 sensitivity posterior artifacts 通过 deterministic replay audit，IRF/FEVD 没有核心价格方向反转，历史分解的 reconstruction 与 identity error 均在 `10^-14` 量级。仍保留 `a_c`、`b_n/b_q/rho_p`、battery noise、固定 `rho_n`、小样本和 conditional-state-mean uncertainty warnings。
 
@@ -69,7 +70,8 @@ Data Freeze v1
 → key robustness / external validation
 → preliminary spot-futures extension
 → midterm evidence / claim / figure freeze
-→ midterm research report                    ← next
+→ midterm research report
+→ midterm defense package                    ← next
 → mixed-frequency / capacity / stochastic-cycle extensions only if justified
 ```
 
@@ -118,6 +120,7 @@ Phase outputs under `outputs/phase1/` and `outputs/phase2/` are local generated 
 - [Midterm table manifest](docs/midterm_table_manifest.md)
 - [Midterm result digest](docs/midterm_result_digest.md)
 - [Midterm reproducibility manifest](docs/midterm_reproducibility_manifest.md)
+- [2026 midterm research report](docs/midterm_report_2026.md)
 
 ## Research discipline
 

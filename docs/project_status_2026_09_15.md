@@ -16,7 +16,8 @@
 - Phase 2H key robustness / external validation 已完成：physical inventory 与 latent `n_t` 同向且显著跟踪，direct route-cost changes 与 `c_t` 高度同步；inventory correlation magnitude 对 `rho_n` 敏感。
 - Phase 2I preliminary spot-futures extension 已完成：36 个 GFEX 5-minute contracts 通过只读 audit，roll-safe volume-main series 覆盖 2023-07—2025-09；daily/monthly diagnostics 提供 preliminary futures-leading evidence，但 I(1) gate 未通过，不能声称 cointegration / VECM，basis–inventory rank relation 不稳健。
 - Phase 2J midterm evidence freeze 已完成：evidence matrix、claim registry、10 张主图、11 张主表、result digest 与 reproducibility manifest 已冻结。
-- **CORE MIDTERM EXPERIMENTS: FROZEN.** M1 真实数据估计中期前不再启动；下一阶段为 Phase 3A midterm research report。
+- Phase 3A midterm research report 已完成：19-section Chinese thesis-core draft，23,365 个非空字符、16,002 个汉字，数字/图表/措辞/样本日期审计通过。
+- **CORE MIDTERM EXPERIMENTS: FROZEN.** M1 真实数据估计中期前不再启动；下一阶段为 Phase 3B midterm defense package。
 
 项目实际进度已超过原中期计划约第 6 周（10 月中旬）的任务深度；posterior mixing 已通过，但 prior/fixed-assumption sensitivity 与 inventory-price weak direction 必须继续随结构结果报告。
 
@@ -38,7 +39,8 @@
 | Phase 2H External validation | **COMPLETE** | inventory Pearson median 0.650 baseline；cost-route Pearson 0.988 | complete with `rho_n` magnitude warning |
 | Phase 2I Preliminary spot-futures | **COMPLETE** | 36 contracts；535 daily / 27 monthly observations；lead-lag peaks at +1；no justified cointegration/VECM | complete with short-sample / timing / `rho_n` warnings |
 | Phase 2J Midterm evidence freeze | **COMPLETE** | claim boundaries and 10-figure / 11-table evidence chain frozen | complete |
-| Phase 3A Midterm report | **NEXT** | 19-section Chinese thesis-core draft | use frozen evidence only |
+| Phase 3A Midterm report | **COMPLETE** | 19-section Chinese thesis-core draft；automated structure/warning checks pass | complete |
+| Phase 3B Defense package | **NEXT** | 18-slide source、speaker notes、Q&A、summaries、checklist | use frozen report/evidence |
 
 ## 3. Data Freeze v1
 
@@ -196,7 +198,8 @@ Current revised sequence:
 - **complete:** Phase 2H key robustness / external validation;
 - **complete:** Phase 2I preliminary spot-futures extension using existing GFEX data;
 - **complete:** Phase 2J midterm evidence / claim / figure / table freeze;
-- **next:** Phase 3A midterm research report / thesis-core draft;
+- **complete:** Phase 3A midterm research report / thesis-core draft;
+- **next:** Phase 3B midterm defense package;
 - **by 2026-11-10:** freeze major experiments and switch to result organization / midterm materials.
 
 ## 12. Source-of-truth order
@@ -212,7 +215,7 @@ When historical documents conflict, use this order:
 
 ## 13. Current decision
 
-**Stop broad data/model expansion. Keep Data Freeze v1 immutable. Phase 2E—2J are complete. CORE MIDTERM EXPERIMENTS ARE FROZEN. Phase 3A report drafting is next.**
+**Stop broad data/model expansion. Keep Data Freeze v1 immutable. Phase 2E—2J and Phase 3A are complete. CORE MIDTERM EXPERIMENTS ARE FROZEN. Phase 3B defense-package drafting is next.**
 
 Structural OOS, key external validation, and the bounded preliminary spot-futures extension have been run and synthesized into the evidence/claim freeze. A full structural futures model and `M1` real-data estimation have not been run and are outside the remaining pre-midterm scope.
 

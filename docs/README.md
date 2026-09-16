@@ -31,8 +31,9 @@
 - [`midterm_figure_manifest.md`](midterm_figure_manifest.md) / [`midterm_table_manifest.md`](midterm_table_manifest.md) — 中期主图主表冻结。
 - [`midterm_result_digest.md`](midterm_result_digest.md) — 3–5 页导师速览版结果链。
 - [`midterm_reproducibility_manifest.md`](midterm_reproducibility_manifest.md) — SHA、commits、configs、runners、seeds 与 ignored artifacts。
+- [`midterm_report_2026.md`](midterm_report_2026.md) — 19-section 中期研究报告 / thesis-core draft，数字与结论边界来自 frozen evidence。
 
-**Phase 2E—2J 均已完成，CORE MIDTERM EXPERIMENTS 已冻结。** 下一阶段是 Phase 3A midterm research report。
+**Phase 2E—2J 与 Phase 3A 均已完成，CORE MIDTERM EXPERIMENTS 已冻结。** 下一阶段是 Phase 3B midterm defense package。
 
 ## C. Phase 1 empirical results
 
@@ -74,6 +75,7 @@ README.md
 → phase2b_kalman_likelihood_validation.md
 → phase2c_estimation_preflight.md
 → phase2d_bayesian_estimation.md
+→ midterm_report_2026.md
 → research_master_plan.md
 → midterm_plan_2026_11.md
 ```

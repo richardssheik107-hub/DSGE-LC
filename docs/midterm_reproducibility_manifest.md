@@ -34,6 +34,8 @@
 - Phase 2I new-code compile: PASS
 - Phase 2I experiment gates: `PHASE_2I_READY=YES`
 - Phase 2J evidence-freeze tests: `4 passed`; included in the full `600 passed` total.
+- Phase 3A report validation: `4 passed`; full repository result `604 passed`, 0 failed.
+- Phase 3A report audit: 19 numbered sections, 23,365 non-whitespace characters, 16,002 CJK characters.
 
 ## 4. Configs and runners
 
