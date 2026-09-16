@@ -1,42 +1,34 @@
 # 当前研究状态
 
-更新：2026-09-16。审计基点：`674020c37ce093139c778798cd91f739435d8da8`；R1-6 开工前版本：`ef2eb3785b8dad58b7d4532298f5a184972b8260`。
+更新：2026-09-16。实证版本为f121588（R1完成）；本次为GitHub-only文献核验与导师稿R2整理，未重新访问Windows设备、商业数据或后验。
 
 ## 当前判定
 
-**TECHNICAL_REVISION_COMPLETE_WITH_INTERPRETATION_LIMITS**；**THESIS_SUBMISSION_READY: NO**。
+- TECHNICAL_REVISION_COMPLETE_WITH_INTERPRETATION_LIMITS：R1原判定保留。
+- ADVISOR_TEXT_DRAFT_READY_WITH_LIMITS：九章导师审阅文本已形成并正式入库。
+- ADVISOR_FULL_FIGURE_DRAFT_READY：待授权本地完整图表合成/实排。
+- THESIS_SUBMISSION_READY：NO，导师/学院要求未验收。
 
-R1-0—R1-6 的约定统计修正、独立复核和中期源稿同步已完成。本状态不等于后期历史解释完全稳健、真实前瞻验证完成或正式论文可提交。旧日期的 `MIDTERM_READY_WITH_WARNINGS` 仅是历史判断；旧稿和旧图未删除，失效主张已在修正版正文和清单中降级。
+[导师初稿](thesis/advisor_draft.md) · [审阅说明](thesis/advisor_review_note.md) · [20项文献登记](references/verified_literature_20260916.md) · [7—10工作日补全计划](plans/advisor_draft_completion.md)。
 
-## 立即要做
+## R1已完成，不重复启动
 
-| 优先级 | 项目 | 当前状态 |
-|---|---|---|
-| P0 A01 | ESS/Geyer配对、尾部ESS、均值MCSE、冻结链与空门槛 | R1-1已修正并复核七套原draw；所有冻结门槛通过，baseline来源为有证据的重建认证，见[本轮诊断](audits/r1_posterior_diagnostics.md) |
-| P0 A02 | HD的HIGH敏感性分类、子样本/门槛条件 | R1-2实现与独立输出复核完成：技术 PASS；后期窗口六项 AMBIGUOUS，历史解释需复核，不能无条件写稳健。见[本轮历史/FEVD审计](audits/r1_historical_and_fevd.md) |
-| P0 A03 | 月度期现平均价变化与累计收益不一致 | R1-3同区间对照完成：旧月+1 0.710→同端点约0.526，月频峰转同期；日频+1约0.475保留。整体仅描述性、方向/峰值敏感，见[期现审计](audits/r1_spot_futures_alignment.md) |
-| P0 A04 | 每列scaler拟合样本与实际结构样本不同 | R1-4已证实情形A并保留LEGACY：spot/ore用68期拟合、同比两列57期；共同支持期仅构建未估计；历史原始log含均值项及端点均通过，见[测量与单位审计](audits/r1_measurement_and_units.md) |
-| P1 | 分位数加总、OOS目标、外部验证、引用与理论 | A05已修；A07/A08完成最小技术复核，历史结构 OOS 不全面领先，库存变化量支持弱、成本同源；引文与导师理论范围未闭合。见[预测/外部验证审计](audits/r1_forecast_and_external_validation.md) |
-| R1-6 | 结果登记和中期材料一致性 | 85 条机器可读结果、10 条结论修订与 11 份主要源稿同步；旧准备度/检查表标为历史快照。详见[主张修订](audits/r1_claim_revision.md)与[最终验收](audits/r1_final_validation.md) |
+七套原后验独立诊断通过，未重采样；基线来源保持PASS_RECONSTRUCTED。历史/FEVD门槛、加总与单位已修，后期六项AMBIGUOUS；月频收益对齐后峰值同期，日频+1仍是短样本描述。原LEGACY scaler重建通过，共同57期仅构建未估计。OOS同键/优化保护和外部时间块对照完成。详见[audits/r1_final_validation.md](audits/r1_final_validation.md)和[任务台账](plans/correction_backlog.md)。
 
-详细证据：[全论文审计](audits/2026_09_16_research_audit.md)。执行：[修正清单](plans/correction_backlog.md)。
+## 本次新增及其边界
 
-## 可保留的研究基础
+新增九章正文、中英文摘要、模型矩阵附录、参数/诊断/FEVD/预测/期现汇总表，核对20项研究来源的题录/摘要/官方正文与使用边界。不是精读20篇全文，不自动确认生猪修改稿发表状态，不把参考作者学校当学生学校。
 
-M0_CORE5 / M0_FULL14；69个月核心数据，57个月结构观测；已有参数、IRF、FEVD、历史分解、OOS、外部验证和独立期现分析。成本通道相对稳定、残差仍大、结构预测不普遍胜过BVAR，是目前需要保留并在修正后复核的结果，不是本轮重新估计所得。
+上次中断的blob未进入main；本次重新核对并使用修订正文。完整私有IRF、价格和逐月HD图仍由本地Codex按[图清单](thesis/figure_completion_manifest.md)补齐。新引用和原始实证分开，未增加新数据/估计。
 
-## 本轮确实完成与没有完成
+## 可保留的主要结果
 
-已完成：GitHub代码/文档和上传参考稿审计；当前/历史导航分离；定稿计划与修正登记；pandas最低版本更正；R1-0本地输入保护；R1-1七套原后验的独立来源/稳定性/收敛复核及正式诊断修正；R1-2历史分解门槛、FEVD逐draw加总与图表修正（技术通过，后期解释仍需复核）；R1-3现货与期货同区间收益和信息集对齐（仅描述性）；R1-4原测量scaler/后验绑定与历史原始log单位复核（情形A，不重估）；R1-5旧预测完整键与目标复核、未来MAP准入防护及外部时间块不确定性增补；R1-6结果登记、主张分类、正文/讲稿/表图清单和项目导航同步。
+12月FEVD均值为需求8.91%、成本21.30%、供给4.90%、残差64.89%；成本为模型内相对有支持的基本面，不是完全外生因果。结构U2为0.914/1.240/1.131，仅H1优于RW且未胜BVAR。库存水平约0.650但变化量弱且rho_n敏感；成本0.988共享矿价。期现同端点同期/+1约0.676/0.526，日频+1约0.475，非稳定价格发现证明。来源均为R1，不是本次新估计。
 
-未完成：关键引文正式版本逐条核验、导师对半结构理论范围和论文叙述确认、正式 DOCX/PPTX 实排与学校流程/日期、许可数据备份恢复演练和真正未来样本检验。A06/A09—A12 仍有开放项；R1-2 后期 6 项 `AMBIGUOUS`、R1-3 短样本多 lag 描述、R1-5 库存变化弱与成本同源必须随结论陈述。最终研究环境完整 `tests/` 为 **705 passed、0 failed、4 skipped**；4 项因本环境缺隔离审计依赖 ArviZ 而跳过，R1-1 隔离参考环境目标测试另有 44 passed。旧 611 项是历史记录，不与新数字相加。
+## 下一步
 
-## 版本与时限
+本地Codex补R1全图版、核对引用与数值、导出DOCX/PDF并视觉检查；学生独立阅读全文和推导，尽快给导师第一轮审阅。导师决定半结构范围和必要对照，不为毕业自动加M1/混频/周期/TVP。A06/A09—A12仍有开放项。
 
-v1记录hash：`9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5`。当前GitHub整理不修改商业数据或draws。以前在本地尝试的未提交改动不得自动等同于main；恢复本地工作时先保存diff。
+原研究环境705 passed、0 failed、4 skipped及隔离44 passed是R1既有记录；本轮没有重新运行全量研究测试，后续文稿测试单列。Data Freeze记录hash为9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5，本轮未改数据。
 
-按用户口述2028-06作为主规划假设，保留早期计划2027-06的提前路线；2027-02月底完整稿。最终毕业日期/半结构范围应与导师确认，不阻塞当前修正。详见[完整计划](plans/thesis_finalization_2026_2028.md)。
-
-## 证据层级
-
-当前状态和审计用于判断“结论能否使用”；原代码/配置/输入hash用于复现；阶段memo是当时结果，新的审计发现不得被旧PASS覆盖。工程完成、数值有效、统计支持、经济解释和行政就绪分别判定。
+长期日期按2028-06作规划假设、2027-06作备用；学生学院正式日期尚未确认。当前稿件不等待2027才提交导师。研究完成、图文完整、行政提交和毕业合格不得混为一个布尔门槛。
