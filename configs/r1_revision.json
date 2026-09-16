@@ -35,5 +35,12 @@
     "partial_listing_month": "2023-07",
     "material_absolute_correlation_change": 0.10,
     "claim_rule_note": "Exploratory descriptive classification; 0.10 is an operational magnitude rule, not a test or ex-ante discovery claim."
+  },
+  "measurement_audit": {
+    "legacy_reconstruction_absolute_tolerance": 1e-12,
+    "posterior_loglik_replay_absolute_tolerance": 1e-8,
+    "historical_log_identity_absolute_tolerance": 1e-8,
+    "historical_endpoint_absolute_tolerance": 1e-8,
+    "legacy_posterior_scaler_hash_rule": "Exact matching LEGACY_V1_PER_SERIES_SCALER only; COMMON_SUPPORT_57_SCALER is not posterior-compatible without re-estimation."
   }
 }

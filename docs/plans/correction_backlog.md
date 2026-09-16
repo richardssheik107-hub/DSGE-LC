@@ -7,9 +7,9 @@
 | A01 | P0 | CLOSED（R1-1；baseline来源为PASS_RECONSTRUCTED） | 修正ESS配对/MCSE和冻结链判定；七套原draw只读复核 | [R1-1独立诊断](../audits/r1_posterior_diagnostics.md)：ArviZ对照、反例、七套真实draw新旧表、全量测试；原NPZ未变 |
 | A02 | P0 | CLOSED（实现；解释需复核） | HD HIGH/AMBIGUOUS/NOT_EVALUATED 与全部必要门槛、数值/经济分级已实现 | [R1-2审计](../audits/r1_historical_and_fevd.md)：七套数值 PASS；18 组合 10 STABLE/2 MODERATE/6 AMBIGUOUS；不可无条件声称稳健 |
 | A03 | P0 | CLOSED（R1-3；仅描述性） | 旧错配口径保留为LEGACY；同端点月末、双方完整月均、严格相邻日频与滞后成交量主力均已核验 | [R1-3审计](../audits/r1_spot_futures_alignment.md)：月频+1 0.710→约0.526且峰转同期；日频+1约0.475保留；整体 `DIRECTION_OR_PEAK_SENSITIVE`，不作因果/策略声称 |
-| A04 | P0 | OPEN | 逐列scaler manifest；原v1与共同支持期对照 | 拟合N/日期/均值/SD明确；历史log恢复含均值项；版本化 |
+| A04 | P0 | CLOSED（R1-4；LEGACY保留） | 逐列scaler manifest；原v1与共同支持期对照 | [R1-4审计](../audits/r1_measurement_and_units.md)：原输入/后验似然回放、68/57逐列拟合、两版 hash、历史log均值项与端点；COMMON仅构建未估计 |
 | A05 | P1 | CLOSED（R1-2） | FEVD/HD逐draw和均值加总、边际区间、先累计后分位、正负堆叠已修正 | [R1-2审计](../audits/r1_historical_and_fevd.md)：FEVD 168 PASS、H1库存7个 NOT_DEFINED；基线12月中位数和0.964508属合法边际统计 |
-| A06 | P1 | OPEN | 月度/同比/库存指数定义与产业推导 | 方程-变量-单位映射；符号限制不被当识别；导师方法范围确认 |
+| A06 | P1 | PARTIAL（R1-4操作定义完成） | 月度/同比/库存指数定义与产业推导 | [R1-4审计](../audits/r1_measurement_and_units.md)已固定方程-观测-状态-单位和符号限制；导师方法范围与最终论文表述仍待确认 |
 | A07 | P1 | OPEN | OOS成功状态、预测目标与同键公平比较 | 不选未收敛解；origin/target/horizon一致；伪实时/真前瞻分开 |
 | A08 | P1 | OPEN | 外部验证加入时间样本误差与filtered对照 | 同源成本机械成分明示；库存制度和block依赖处理 |
 | A09 | P1 | PARTIAL | 核心参考稿映射已写；实际理论章节与导师确认待做 | 不宣称已实现四部门/混频/联合期现；引用正式版本可追踪 |
