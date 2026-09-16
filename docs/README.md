@@ -32,8 +32,12 @@
 - [`midterm_result_digest.md`](midterm_result_digest.md) — 3–5 页导师速览版结果链。
 - [`midterm_reproducibility_manifest.md`](midterm_reproducibility_manifest.md) — SHA、commits、configs、runners、seeds 与 ignored artifacts。
 - [`midterm_report_2026.md`](midterm_report_2026.md) — 19-section 中期研究报告 / thesis-core draft，数字与结论边界来自 frozen evidence。
+- [`midterm_slides_2026.md`](midterm_slides_2026.md) / [`midterm_speaker_notes_2026.md`](midterm_speaker_notes_2026.md) — 18页答辩源文件与逐页讲稿。
+- [`midterm_defense_qa.md`](midterm_defense_qa.md) — 40个答辩问题、直接回答、依据和限制。
+- [`midterm_one_minute_summary.md`](midterm_one_minute_summary.md) / [`midterm_three_minute_summary.md`](midterm_three_minute_summary.md) — 压缩汇报版本。
+- [`midterm_defense_checklist.md`](midterm_defense_checklist.md) — 数据、测试、图表、措辞和Git交付检查。
 
-**Phase 2E—2J 与 Phase 3A 均已完成，CORE MIDTERM EXPERIMENTS 已冻结。** 下一阶段是 Phase 3B midterm defense package。
+**Phase 2E—2J、Phase 3A 与 Phase 3B 均已完成，CORE MIDTERM EXPERIMENTS 已冻结。** 下一阶段是 Final Midterm Readiness Audit。
 
 ## C. Phase 1 empirical results
 
@@ -76,6 +80,8 @@ README.md
 → phase2c_estimation_preflight.md
 → phase2d_bayesian_estimation.md
 → midterm_report_2026.md
+→ midterm_slides_2026.md
+→ midterm_defense_qa.md
 → research_master_plan.md
 → midterm_plan_2026_11.md
 ```
