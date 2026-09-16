@@ -14,7 +14,8 @@
 - Phase 2F posterior historical decomposition 已完成；shock reconstruction、decomposition identity 和 critical sensitivity gates 全部通过。
 - Phase 2G strict Structural OOS 已完成：H1 优于 RW，H3/H6 优于 AR，三期限均优于 unrestricted VAR，但 BVAR 仍是最强预测 challenger；结果定位为 competitive forecasting 而非 forecast dominance。
 - Phase 2H key robustness / external validation 已完成：physical inventory 与 latent `n_t` 同向且显著跟踪，direct route-cost changes 与 `c_t` 高度同步；inventory correlation magnitude 对 `rho_n` 敏感。
-- M1 真实数据估计仍未启动；下一阶段为 preliminary spot-futures extension。
+- Phase 2I preliminary spot-futures extension 已完成：36 个 GFEX 5-minute contracts 通过只读 audit，roll-safe volume-main series 覆盖 2023-07—2025-09；daily/monthly diagnostics 提供 preliminary futures-leading evidence，但 I(1) gate 未通过，不能声称 cointegration / VECM，basis–inventory rank relation 不稳健。
+- M1 真实数据估计仍未启动且中期前不再启动；下一阶段为 Phase 2J midterm evidence freeze。
 
 项目实际进度已超过原中期计划约第 6 周（10 月中旬）的任务深度；posterior mixing 已通过，但 prior/fixed-assumption sensitivity 与 inventory-price weak direction 必须继续随结构结果报告。
 
@@ -34,7 +35,8 @@
 | Phase 2F Historical decomposition | **COMPLETE** | episode attribution stable；numerical audits PASS | complete |
 | Phase 2G Structural OOS | **COMPLETE** | strict expanding-window MAP OOS；H1 U2=0.914, H3=1.240, H6=1.131 | key robustness / external validation |
 | Phase 2H External validation | **COMPLETE** | inventory Pearson median 0.650 baseline；cost-route Pearson 0.988 | complete with `rho_n` magnitude warning |
-| Preliminary spot-futures | **NEXT** | existing GFEX data must be located/audited; no redownload | core results frozen |
+| Phase 2I Preliminary spot-futures | **COMPLETE** | 36 contracts；535 daily / 27 monthly observations；lead-lag peaks at +1；no justified cointegration/VECM | complete with short-sample / timing / `rho_n` warnings |
+| Phase 2J Midterm evidence freeze | **NEXT** | evidence matrix、claim registry、figure/table/reproducibility manifests | freeze core midterm experiments |
 
 ## 3. Data Freeze v1
 
@@ -176,7 +178,9 @@ No provider may be silently spliced into the SMM canonical price series.
 
 Phase 2E artifact recovery/sensitivity and Phase 2F historical decomposition are complete. Phase 2G then ran a strict expanding-window structural OOS with training-only scaling and release-safe Output/Battery treatment. Structural M0 has U2 `0.914 / 1.240 / 1.131` at H1/H3/H6: it beats RW at H1, AR at H3/H6, and VAR at all horizons, but not BVAR. The result supports a `mechanism + competitive forecasting` contribution, not universal forecast superiority.
 
-The key robustness round is now complete. Baseline latent inventory pressure has Pearson correlation `0.650` with log SMM monthly-mean inventory (28 months), remaining positive under `rho_n=.50/.95` but with large magnitude shifts; the cost state has Pearson `0.988` with SMM spodumene-route production-cost dlog (35 months). The next task is a preliminary spot-futures extension using already-held GFEX data only.
+The key robustness round is complete. Baseline latent inventory pressure has Pearson correlation `0.650` with log SMM monthly-mean inventory (28 months), remaining positive under `rho_n=.50/.95` but with large magnitude shifts; the cost state has Pearson `0.988` with SMM spodumene-route production-cost dlog (35 months).
+
+Phase 2I then used only the already-held 28.7 MB five-minute GFEX files. The deterministic volume-main series has 535 frozen-window trading days and seven audited switches. July 2023 is explicitly treated as a partial listing month and excluded from comparable monthly-return inference. Monthly and daily return correlations both peak at lag `+1` (`0.710` monthly Pearson; `0.475` daily Pearson), and HAC lag tests point from futures to subsequent spot assessments rather than the reverse. This is preliminary price-discovery evidence, not a definitive timing claim. The 27-month price levels fail the fixed I(1) gate, so Engle–Granger and VECM are not run. Contemporaneous basis–inventory Pearson medians are positive (`0.119 / 0.187 / 0.399` for `rho_n=.50/.80/.95`), but Spearman direction is not stable.
 
 ## 11. Timeline to midterm
 
@@ -188,7 +192,8 @@ Current revised sequence:
 - **complete:** Phase 2F historical decomposition of major episodes;
 - **complete:** Phase 2G strict structural OOS;
 - **complete:** Phase 2H key robustness / external validation;
-- **next:** preliminary spot-futures extension using existing GFEX data;
+- **complete:** Phase 2I preliminary spot-futures extension using existing GFEX data;
+- **next:** Phase 2J midterm evidence / claim / figure / table freeze;
 - **by 2026-11-10:** freeze major experiments and switch to result organization / midterm materials.
 
 ## 12. Source-of-truth order
@@ -204,9 +209,9 @@ When historical documents conflict, use this order:
 
 ## 13. Current decision
 
-**Stop broad data expansion. Keep Data Freeze v1 immutable. Phase 2E—2H are complete. Preliminary spot-futures extension is next.**
+**Stop broad data expansion. Keep Data Freeze v1 immutable. Phase 2E—2I are complete. Phase 2J evidence freeze is next.**
 
-Structural OOS and the key external-validation round have now been run. Futures estimation and `M1` real-data estimation have not yet been run.
+Structural OOS, key external validation, and the bounded preliminary spot-futures extension have now been run. A full structural futures model and `M1` real-data estimation have not been run and are outside the remaining pre-midterm scope.
 
 ## 14. Repository lineage clarification
 

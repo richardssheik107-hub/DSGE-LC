@@ -32,7 +32,7 @@ Primary model：`M0_CORE5`
 - sample: 2021-01—2025-09，N=57
 - selected estimation specification: `M0_FULL14`
 
-Phase 2D—2H 已完成：posterior convergence、IRF/FEVD、historical decomposition、strict Structural OOS 与关键 external validation 均通过各自 gate。外部验证显示 latent inventory-pressure 与 physical inventory 同向，但 magnitude 对 `rho_n` 敏感；cost state 与 direct route-cost changes 高度一致。当前立即目标是 preliminary spot-futures extension。
+Phase 2D—2I 已完成：posterior convergence、IRF/FEVD、historical decomposition、strict Structural OOS、关键 external validation 与 preliminary spot-futures extension 均通过各自 operational gate。外部验证显示 latent inventory-pressure 与 physical inventory 同向，但 magnitude 对 `rho_n` 敏感；cost state 与 direct route-cost changes 高度一致。期现结果提供 preliminary futures-leading evidence，但不支持在当前短样本上强行做 cointegration / VECM，basis–inventory rank relation 也不稳健。当前立即目标是 Phase 2J midterm evidence freeze。
 
 ### 2.2 长期模型愿景
 
@@ -63,7 +63,8 @@ Phase 1A-1  Descriptive diagnostics
 → Phase 2F    Historical Decomposition                                         [COMPLETE]
 → Phase 2G    Strict Structural OOS Forecast                                    [COMPLETE]
 → Phase 2H    Key robustness / external validation                            [COMPLETE]
-→ Preliminary Spot-Futures Extension                                           [NEXT]
+→ Phase 2I    Preliminary Spot-Futures Extension                               [COMPLETE]
+→ Phase 2J    Midterm Evidence / Claim / Figure Freeze                         [NEXT]
 → Capacity / Mixed-Frequency / Stochastic-Cycle extensions only if justified
 ```
 
@@ -206,6 +207,10 @@ Phase 2H 已完成该 external validation。Baseline `n_t` 与 log monthly-mean 
 `F_{t,T} = S_t exp[(r_t+s_t-y_t)(T-t)] + RP_t`
 
 候选机制：inventory → convenience yield → basis；expectations / hedging / speculation → futures risk premium；spot-futures lead-lag / price discovery。期货/期权高频数据已存在，不重复大规模下载。
+
+Phase 2I 已按中期边界完成。自动发现并选择 36 个 5-minute GFEX LC contracts（28.7 MB），没有读取 6.77 GB tick 数据进入主分析，也没有下载或提交 raw data。volume-main series 在 Data Freeze window 内覆盖 535 个交易日、7 次换月；所有换月均使用新合约前一交易日价格形成 roll-safe return。
+
+Monthly overlap 为 27 个 price months；2023-07 是 partial listing month，不进入 comparable monthly-return inference。monthly/daily Pearson lead-lag 都在 `+1` 达峰值，分别约 `0.710 / 0.475`；daily HAC lag tests 在 1–5 阶均支持 futures-to-subsequent-spot，而 reverse direction 不显著。该结果只定位为 preliminary price-discovery evidence，因为 SMM 报价缺少 intraday timestamp 且历史很短。固定 stationarity rule 不支持把 levels 视为 I(1)，因此不运行 Engle–Granger / VECM。basis 与 inventory-state 的 Pearson 为正但 magnitude 对 `rho_n` 敏感，Spearman direction 不稳定，不能写成稳健 carry/inventory mechanism。
 
 ## 12. Mixed-frequency / cycle / nonlinear extensions
 

@@ -25,8 +25,9 @@
 - [`phase2f_historical_decomposition.md`](phase2f_historical_decomposition.md) — posterior shock reconstruction、历史分解、episode attribution 与 sensitivity。
 - [`phase2g_structural_oos.md`](phase2g_structural_oos.md) — strict expanding-window structural OOS、RW/AR/VAR/BVAR 对比与 leakage audit。
 - [`phase2h_external_validation.md`](phase2h_external_validation.md) — SMM inventory / route-cost external validation 与 inventory-persistence sensitivity。
+- [`phase2i_spot_futures.md`](phase2i_spot_futures.md) — 5-minute GFEX contract audit、roll-safe main contract、期现 basis、lead-lag 与 inventory sensitivity。
 
-**Phase 2E—2H 均已完成。** 下一阶段是 preliminary spot-futures extension。
+**Phase 2E—2I 均已完成。** 下一阶段是 Phase 2J midterm evidence / claim / figure / table freeze。
 
 ## C. Phase 1 empirical results
 
