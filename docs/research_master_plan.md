@@ -65,8 +65,8 @@ Phase 1A-1  Descriptive diagnostics
 → Phase 2C    Constrained MLE / profile / curvature / weak-ID preflight
 → Phase 2D    Bayesian posterior + convergence / posterior identification   [COMPLETE]
 → Posterior IRF + FEVD                                                      [CURRENT]
-→ Historical Decomposition
-→ Structural OOS Forecast
+→ Historical Decomposition                 COMPLETE
+→ Structural OOS Forecast                  NEXT
 → Preliminary Spot-Futures Extension
 → Capacity / Mixed-Frequency / Stochastic-Cycle extensions only if justified
 ```

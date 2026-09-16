@@ -20,9 +20,11 @@
 - [`phase2b_kalman_likelihood_validation.md`](phase2b_kalman_likelihood_validation.md) — Kalman filter、RTS smoother、likelihood 和 numerical audit。
 - [`phase2c_estimation_preflight.md`](phase2c_estimation_preflight.md) — constrained MLE、multi-start、profile、Hessian/OPG 和 weak-ID 结论。
 - [`phase2d_bayesian_estimation.md`](phase2d_bayesian_estimation.md) — proper prior、z-space MCMC、Jacobian、多链收敛、prior/fixed-assumption sensitivity 与 posterior identification。
-- [`phase2e_posterior_irf_fevd.md`](phase2e_posterior_irf_fevd.md) — baseline posterior IRF/FEVD 与 missing-sensitivity-artifact review gate。
+- [`phase2e_artifact_recovery.md`](phase2e_artifact_recovery.md) — 六套 sensitivity posterior deterministic recovery 与完整 integrity audit。
+- [`phase2e_posterior_irf_fevd.md`](phase2e_posterior_irf_fevd.md) — 完整 posterior IRF/FEVD sensitivity propagation 与 structural-results gate。
+- [`phase2f_historical_decomposition.md`](phase2f_historical_decomposition.md) — posterior shock reconstruction、历史分解、episode attribution 与 sensitivity。
 
-**Phase 2D 已完成；Phase 2E 当前为 REQUIRES STRUCTURAL REVIEW。** Baseline IRF/FEVD 已通过，但 sensitivity posterior artifacts 缺失，Historical decomposition 继续受阻。
+**Phase 2E 与 Phase 2F 均已完成。** 下一阶段是 Structural OOS Forecast；本轮没有启动。
 
 ## C. Phase 1 empirical results
 

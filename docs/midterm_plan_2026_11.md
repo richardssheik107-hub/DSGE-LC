@@ -16,7 +16,7 @@
 | W4 9/30—10/6 | RW/AR/VAR/BVAR | **COMPLETE AHEAD OF SCHEDULE** |
 | W5 10/7—10/13 | 结构模型框架 | **COMPLETE AHEAD OF SCHEDULE** |
 | W6 10/14—10/20 | State-space / Kalman / 初步估计 | **COMPLETE AHEAD OF SCHEDULE** |
-| W7 10/21—10/27 | Bayesian + IRF / FEVD | **Bayesian COMPLETE；IRF / FEVD NEXT** |
+| W7 10/21—10/27 | Bayesian + IRF / FEVD | **COMPLETE** |
 | W8 10/28—11/3 | 历史分解 / 预测 | **NOT STARTED** |
 | W9 11/4—11/10 | 稳健性 / 期现扩展 | **NOT STARTED** |
 | W10 | 中期整理 | **NOT STARTED** |
@@ -84,7 +84,7 @@ Phase 2D 已通过，不再把 MCMC mixing 当作当前 blocker。现在风险�
 
 只有该 structural consistency gate PASS，才进入 historical decomposition。
 
-### Then — Historical decomposition
+### Historical decomposition — COMPLETE
 
 重点解释：
 
@@ -94,7 +94,7 @@ Phase 2D 已通过，不再把 MCMC mixing 当作当前 blocker。现在风险�
 
 如果线性 MVP 对极端行情幅度解释不足，先诚实记录 limitation，再决定是否需要局部 robustness，而不是立即引入大型非线性模型。
 
-### Then — Structural OOS
+### Next — Structural OOS
 
 继续遵守 Phase 1B 的严格时间顺序原则，与 Random Walk、AR、VAR、BVAR 进行可比 OOS 评估。
 

@@ -10,7 +10,8 @@
 - Phase 1A-1、1A-2、1B 已完成，数据诊断、机制预检和 RW/AR/VAR/BVAR 基线均已形成。
 - Phase 2A、2B、2C、2D 已完成：结构 MVP、Kalman/likelihood、constrained MLE 和 Bayesian posterior convergence / identification 均已通过阶段门槛。
 - 当前主模型是 `M0_CORE5`；当前估计规格是 `M0_FULL14`。
-- Phase 2E baseline posterior IRF/FEVD numerical and core-sign checks pass, but six required sensitivity posterior draw artifacts are missing. Current status is **REQUIRES STRUCTURAL REVIEW**。
+- Phase 2E 已修复 sensitivity artifact persistence gap，六套 posterior IRF/FEVD sensitivity propagation 全部完成并通过。
+- Phase 2F posterior historical decomposition 已完成；shock reconstruction、decomposition identity 和 critical sensitivity gates 全部通过。
 - 历史分解、结构预测和 M1 真实数据估计仍处于后续 gate，尚未开始。
 
 项目实际进度已超过原中期计划约第 6 周（10 月中旬）的任务深度；posterior mixing 已通过，但 prior/fixed-assumption sensitivity 与 inventory-price weak direction 必须继续随结构结果报告。
@@ -28,8 +29,10 @@
 | Phase 2C | **COMPLETE** | `M0_FULL14` selected；synthetic + real multi-start pass | complete |
 | Phase 2D | **COMPLETE** | Bayesian posterior convergence PASS；sensitivity completed | complete with warnings |
 | Posterior IRF / FEVD | **REQUIRES STRUCTURAL REVIEW** | baseline computed; sensitivity propagation blocked | recover existing sensitivity artifacts without resampling |
-| Historical decomposition | **GATED** | not run | posterior structural results PASS |
-| Structural OOS / futures | **LATER** | not run | core structural model stable |
+| Phase 2E IRF / FEVD | **COMPLETE** | core price signs stable；all FEVD shifts LOW | complete |
+| Phase 2F Historical decomposition | **COMPLETE** | episode attribution stable；numerical audits PASS | complete |
+| Structural OOS | **NEXT** | not run | compare with RW / AR / VAR / BVAR |
+| Futures | **LATER** | not run | core structural OOS complete |
 
 ## 3. Data Freeze v1
 
@@ -167,9 +170,9 @@ Provider and usage layers remain separated:
 
 No provider may be silently spliced into the SMM canonical price series.
 
-## 10. Immediate next phase — posterior structural results
+## 10. Immediate next phase — Structural OOS
 
-Next action is to locate/recover the six already-generated Phase 2D sensitivity posterior artifacts. They must not be silently regenerated in Phase 2E. After recovery, rerun only draw-by-draw sensitivity propagation and retain the `a_c`, inventory-price, prior and fixed-assumption warnings. Historical decomposition remains blocked.
+Phase 2E artifact recovery and sensitivity propagation are complete. Phase 2F historical decomposition is also complete: the 2021--2022 model-implied positive contribution is led by cost, 2023 negative pressure is broad with cost the largest negative net component, and 2024--2025 negative fundamentals are partly offset by a positive price residual. The next task is strict Structural OOS comparison against RW / AR / VAR / BVAR.
 
 ## 11. Timeline to midterm
 
@@ -177,9 +180,9 @@ The original schedule targeted State-Space + Kalman + likelihood by about 2026-1
 
 Current revised sequence:
 
-- **now:** recover existing Phase 2D sensitivity posterior artifacts and complete the Phase 2E robustness gate;
-- **then:** historical decomposition of major episodes;
-- **then:** structural OOS and robustness;
+- **complete:** Phase 2E artifact recovery and full posterior IRF/FEVD sensitivity;
+- **complete:** Phase 2F historical decomposition of major episodes;
+- **next:** structural OOS and robustness;
 - **early November:** preliminary spot-futures extension if the core model is already stable;
 - **by 2026-11-10:** freeze major experiments and switch to result organization / midterm materials.
 
@@ -196,9 +199,9 @@ When historical documents conflict, use this order:
 
 ## 13. Current decision
 
-**Stop broad data expansion. Keep Data Freeze v1 immutable. Phase 2D is complete. Phase 2E requires structural review because sensitivity posterior artifacts are missing.**
+**Stop broad data expansion. Keep Data Freeze v1 immutable. Phase 2E and Phase 2F are complete. Structural OOS is next.**
 
-Phase 2D did not run IRF, FEVD, historical decomposition, shock decomposition, structural OOS forecasting, or `M1` real-data estimation.
+No structural OOS forecasting, futures estimation or `M1` real-data estimation has yet been run.
 
 ## 14. Repository lineage clarification
 
