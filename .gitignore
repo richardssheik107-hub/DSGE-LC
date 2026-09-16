@@ -33,6 +33,7 @@ outputs/phase1/
 outputs/phase2/
 outputs/midterm/
 outputs/repository_audit/
+outputs/revisions/
 
 # Local audit products containing commercial-derived detail
 data/metadata/dongwu_smm_lc_spot_reconciliation.csv
