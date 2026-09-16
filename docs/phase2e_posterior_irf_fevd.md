@@ -6,7 +6,7 @@ Propagate the converged Phase 2D baseline posterior through structural IRFs and 
 
 ## 2. Frozen Model and Posterior Source
 
-The model remains `M0_CORE5/M0_FULL14`, `OBS_MIXED4`, 2021-01--2025-09 (`N=57`), with `rho_n=0.80` and `battery_sd=0.25`. The baseline artifact contains 4 chains, 18,000 production draws per chain and 72,000 finite, in-support, stable draws. Six required sensitivity draw artifacts are missing: both prior alternatives, both battery-noise alternatives and both `rho_n` alternatives. Their Phase 2D summary CSVs cannot replace posterior draws, and MCMC was not rerun.
+The model remains `M0_CORE5/M0_FULL14`, `OBS_MIXED4`, 2021-01--2025-09 (`N=57`), with `rho_n=0.80` and `battery_sd=0.25`. The baseline artifact contains 4 chains, 18,000 production draws per chain and 72,000 finite, in-support, stable draws. Six sensitivity artifacts were recovered by deterministic replay because the original Phase 2D runner did not persist its already-completed sensitivity chains. Baseline MCMC was not rerun. Every replay stopping count, convergence diagnostic and posterior summary matches the original record; provenance is documented in `phase2e_artifact_recovery.md`.
 
 ## 3. Shock Definition and Scaling
 
@@ -66,19 +66,19 @@ Median price peak horizons are demand 1, cost 0, supply 1 and residual 0. Median
 
 ## 15. Prior Sensitivity
 
-Not computable: `PRIOR_FLAT_BOUNDED` and `PRIOR_MODERATE_SHRINK` posterior draw artifacts are missing. Status: `MISSING_SENSITIVITY_POSTERIOR_ARTIFACT`.
+Both prior alternatives preserve the positive Demand/Cost and negative Supply impact directions for price. The largest prior-related price-FEVD change is only about 0.022, classified LOW. At 12 months the residual share is 0.632 under flat bounded and 0.670 under moderate shrink, versus 0.653 baseline. Flat-prior changes in `rho_p`, `rho_d` and `b_c` alter amplitudes but do not overturn the core price-response story.
 
 ## 16. Battery Measurement Sensitivity
 
-Not computable for `battery_sd=.10/.50`. Phase 2D's `rho_d/sigma_d` warning therefore remains unresolved at the structural-result level.
+The `battery_sd=.50` posterior materially changes demand-channel amplitudes: Demand-to-inventory at month 1 shifts by 2.95 baseline IRF SDs, while Demand-to-price reaches MODERATE shifts at longer horizons (0.88 SD at month 12 and 0.99 SD at month 18). Its 12-month demand FEVD share falls from 0.071 to 0.055 and residual share rises to 0.674; all FEVD share changes remain LOW and the Demand-to-price sign remains positive. `battery_sd=.10` produces smaller, mostly LOW/MODERATE amplitude shifts without a core sign reversal.
 
 ## 17. Inventory Persistence Sensitivity
 
-Not computable for `rho_n=.50/.95`. Baseline inventory-mediated responses cannot be declared robust given Phase 2D's `b_n` sensitivity.
+Inventory paths are strongly assumption-sensitive, as expected. Under `rho_n=.95`, Supply-to-inventory remains large at long horizons and Demand-to-inventory decays slowly; under `rho_n=.50`, both decay much faster. Very large standardized shifts at months 18--24 partly reflect a near-zero baseline IRF SD and must not be read as large price effects. Core price-impact signs remain unchanged. The largest price-FEVD share change across all alternatives is 0.033, and the 12-month residual shares are 0.625 (`rho_n=.50`) and 0.642 (`rho_n=.95`).
 
 ## 18. Weak Channels
 
-`a_c` remains near-zero/boundary-concentrated and `b_n/b_q/rho_p` remain a weak direction. A stable imposed coefficient sign is not strong magnitude identification.
+`a_c` remains near-zero/boundary-concentrated and Cost-to-future-Supply remains sign-ambiguous. `b_n/b_q/rho_p` remain a weak direction, and inventory persistence assumptions materially change inventory paths. A stable imposed coefficient sign is not strong magnitude identification.
 
 ## 19. Residual Price-Shock Share
 
@@ -86,12 +86,12 @@ The 12-month residual share median is `0.653`, 90% interval `[0.473,0.808]`; com
 
 ## 20. What Is NOT Yet Historical Interpretation
 
-No monthly state/shock reconstruction, historical attribution, structural forecast, `M1` estimation or futures extension is produced. Results are model-conditional, not causal proof or episode attribution.
+No monthly state/shock reconstruction or historical attribution is included in Phase 2E. No structural forecast, `M1` estimation or futures extension is produced. Results are model-conditional, not causal proof or episode attribution.
 
 ## 21. Limitations
 
-The model is a linear semi-structural MVP in standardized transformed units with 57 observations. Baseline integration is complete, but sensitivity propagation is blocked. Summary tables, medians or newly resampled chains cannot substitute for the missing artifacts.
+The model is a linear semi-structural MVP in standardized transformed units with 57 observations. Sensitivity propagation uses every production draw independently by specification. Inventory IRFs are sensitive to fixed `rho_n`, and demand amplitudes are sensitive to battery measurement noise. The residual price shock remains economically unlabeled.
 
 ## 22. Phase Decision
 
-**PHASE 2E READY FOR HISTORICAL DECOMPOSITION: NO.** Baseline numerical and core sign gates pass with a weak-`a_c` warning, but mandatory sensitivity artifacts are absent. Status: **REQUIRES STRUCTURAL REVIEW — MISSING_SENSITIVITY_POSTERIOR_ARTIFACT**. Historical decomposition remains gated.
+**PHASE 2E READY FOR HISTORICAL DECOMPOSITION: YES.** All six artifacts pass integrity and replay-consistency audits; all six posterior IRF/FEVD propagations are complete; maximum FEVD identity error is `8.53e-14`; and no alternative posterior reverses a core Demand/Cost/Supply price-impact direction. Status: **PASS_WITH_WARNING — AMPLITUDE_AND_INVENTORY_SENSITIVITY**. Historical decomposition may proceed.

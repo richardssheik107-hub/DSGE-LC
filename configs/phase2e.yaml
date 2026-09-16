@@ -22,11 +22,11 @@
   "battery_sd": 0.25,
   "seed": 20260915,
   "sensitivity_artifacts": {
-    "PRIOR_FLAT_BOUNDED": null,
-    "PRIOR_MODERATE_SHRINK": null,
-    "BATTERY_SD_010": null,
-    "BATTERY_SD_050": null,
-    "RHO_N_050": null,
-    "RHO_N_095": null
+    "PRIOR_FLAT_BOUNDED": "outputs/phase2/phase2d/prior_flat_bounded_posterior_draws.npz",
+    "PRIOR_MODERATE_SHRINK": "outputs/phase2/phase2d/prior_moderate_shrink_posterior_draws.npz",
+    "BATTERY_SD_010": "outputs/phase2/phase2d/battery_sd_010_posterior_draws.npz",
+    "BATTERY_SD_050": "outputs/phase2/phase2d/battery_sd_050_posterior_draws.npz",
+    "RHO_N_050": "outputs/phase2/phase2d/rho_n_050_posterior_draws.npz",
+    "RHO_N_095": "outputs/phase2/phase2d/rho_n_095_posterior_draws.npz"
   }
 }

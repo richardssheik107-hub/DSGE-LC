@@ -14,6 +14,7 @@ from src.structural.mcmc import PosteriorEvaluation,PosteriorTarget,extend_chain
 from src.structural.mcmc_diagnostics import acceptance_summary,convergence_pass,diagnostic_table
 from src.structural.measurement import build_measurements,load_frozen_panel
 from src.structural.parameter_transform import PARAMETER_ORDER,ParameterTransform,load_phase2a_bounds
+from src.structural.posterior_artifacts import save_posterior_artifact
 from src.structural.posterior_diagnostics import (covariance_weak_directions,identification_classifications,observable_moments,
     posterior_correlation,posterior_summary,prior_posterior_contraction,sensitivity_shift,spectral_radius_summary)
 from src.structural.priors import draw_stable_prior,effective_prior_audit,prior_specs,theta_from_array
@@ -106,7 +107,7 @@ def run_chains(target,starts,cfg,workers,warmup=None,production=None,label="post
 
 
 def save_raw_baseline(results):
-    np.savez_compressed(OUT/"baseline_posterior_draws.npz",z=np.stack([r["z"] for r in results]),theta=np.stack([r["theta"] for r in results]),components=np.stack([r["components"] for r in results]),accepted=np.stack([r["accepted"] for r in results]))
+    return save_posterior_artifact(OUT/"baseline_posterior_draws.npz",results,specification="PRIOR_BASELINE_WEAK",rho_n=.80,battery_sd=.25,seed=20260915,force=True)
 
 
 def spec_outputs(results,diagnostics,bounds,cfg):
@@ -214,10 +215,12 @@ def main():
     sens_rows=[];sens_convergence=[]
     for label in ("PRIOR_FLAT_BOUNDED","PRIOR_MODERATE_SHRINK"):
         pt=PosteriorTarget(transform,y,specs[label],cfg["rho_n_fixed"],cfg["battery_sd_fixed"],cfg["numerical_guard_abs_z"]);res,diag,passed=run_chains(pt,starts,cfg,args.workers,label=label,initial_chol=proposal_preconditioner(pt,starts[0]));_,_,summary,sradius,_=spec_outputs(res,diag,bounds,cfg);sens_rows.extend(sensitivity_shift(base_summary,summary,label));sens_convergence.append({"specification":label,"converged":passed,"max_rhat":max(r["rhat"] for r in diag),"min_bulk_ess":min(r["bulk_ess"] for r in diag),"min_tail_ess":min(r["tail_ess"] for r in diag),**sradius})
+        save_posterior_artifact(OUT/(label.lower()+"_posterior_draws.npz"),res,specification=label,rho_n=cfg["rho_n_fixed"],battery_sd=cfg["battery_sd_fixed"],seed=cfg["seed"],force=True)
     pd.DataFrame(sens_rows).to_csv(OUT/"prior_sensitivity_summary.csv",index=False)
     fixed_rows=[];fixed_convergence=[];fixed_correlation_rows=[];weak_pairs=(("b_n","b_q"),("b_n","rho_p"),("b_q","rho_p"))
     for item in cfg["fixed_sensitivity"]:
         ft=PosteriorTarget(transform,y,baseline_prior,item["rho_n"],item["battery_sd"],cfg["numerical_guard_abs_z"]);res,diag,passed=run_chains(ft,starts,cfg,args.workers,label=item["name"],initial_chol=proposal_preconditioner(ft,starts[0]));ftheta,_,summary,sradius,_=spec_outputs(res,diag,bounds,cfg);fixed_rows.extend({**r,"rho_n":item["rho_n"],"battery_sd":item["battery_sd"]} for r in sensitivity_shift(base_summary,summary,item["name"]));fixed_convergence.append({"specification":item["name"],"converged":passed,"max_rhat":max(r["rhat"] for r in diag),"min_bulk_ess":min(r["bulk_ess"] for r in diag),"min_tail_ess":min(r["tail_ess"] for r in diag),**sradius})
+        save_posterior_artifact(OUT/(item["name"].lower()+"_posterior_draws.npz"),res,specification=item["name"],rho_n=item["rho_n"],battery_sd=item["battery_sd"],seed=cfg["seed"],force=True)
         fcorr,_=posterior_correlation(ftheta,PARAMETER_ORDER,cfg["posterior_correlation_flag"])
         for left,right in weak_pairs:
             i,j=PARAMETER_ORDER.index(left),PARAMETER_ORDER.index(right);fixed_correlation_rows.append({"specification":item["name"],"parameter_1":left,"parameter_2":right,"baseline_correlation":corr[i,j],"sensitivity_correlation":fcorr[i,j],"correlation_change":fcorr[i,j]-corr[i,j]})
