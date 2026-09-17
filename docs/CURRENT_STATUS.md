@@ -1,12 +1,13 @@
 # 当前研究状态
 
-更新：2026-09-16。实证版本为f121588（R1完成）；本次为GitHub-only文献核验与导师稿R2整理，未重新访问Windows设备、商业数据或后验。
+更新：2026-09-17。实证版本仍为f121588（R1完成）；用户重新授权本地工作区后，R2已只读复核原私有产物、完成导师全图讨论版。本次未重估或扩样。
 
 ## 当前判定
 
 - TECHNICAL_REVISION_COMPLETE_WITH_INTERPRETATION_LIMITS：R1原判定保留。
 - ADVISOR_TEXT_DRAFT_READY_WITH_LIMITS：九章导师审阅文本已形成并正式入库。
-- ADVISOR_FULL_FIGURE_DRAFT_READY：待授权本地完整图表合成/实排。
+- ADVISOR_FULL_FIGURE_DRAFT_READY_WITH_LIMITS：YES，本地完整图版和中性A4 DOCX/PDF已逐页验收，待学生本人核对后发送导师；私有文件不在公共Git。
+- STUDENT_REVIEW_PENDING：YES，文献全文、推导、身份与学校规则须学生确认。
 - THESIS_SUBMISSION_READY：NO，导师/学院要求未验收。
 
 [导师初稿](thesis/advisor_draft.md) · [审阅说明](thesis/advisor_review_note.md) · [20项文献登记](references/verified_literature_20260916.md) · [7—10工作日补全计划](plans/advisor_draft_completion.md)。
@@ -17,9 +18,9 @@
 
 ## 本次新增及其边界
 
-新增九章正文、中英文摘要、模型矩阵附录、参数/诊断/FEVD/预测/期现汇总表，核对20项研究来源的题录/摘要/官方正文与使用边界。不是精读20篇全文，不自动确认生猪修改稿发表状态，不把参考作者学校当学生学校。
+九章正文、中英文摘要、模型矩阵附录、20项文献登记，以及11张真实图、13张Word可编辑表、20段展示型公式均已纳入本地导师稿。20项题录/摘要/官方正文有分层核验，但不是精读20篇全文；生猪修改稿发表状态和学生学校仍不可推定。
 
-上次中断的blob未进入main；本次重新核对并使用修订正文。完整私有IRF、价格和逐月HD图仍由本地Codex按[图清单](thesis/figure_completion_manifest.md)补齐。新引用和原始实证分开，未增加新数据/估计。
+前序GitHub-only阶段的blob问题已由后续提交解决；本地私有IRF、价格和逐月HD等见[图清单](thesis/figure_completion_manifest.md)与[R2图版验收](audits/r2_full_figure_draft.md)。新引用和原始实证分开，未增加新数据/估计。
 
 ## 可保留的主要结果
 
@@ -27,7 +28,7 @@
 
 ## 下一步
 
-本地Codex补R1全图版、核对引用与数值、导出DOCX/PDF并视觉检查；学生独立阅读全文和推导，尽快给导师第一轮审阅。导师决定半结构范围和必要对照，不为毕业自动加M1/混频/周期/TVP。A06/A09—A12仍有开放项。
+学生独立核对本地DOCX/PDF、阅读全文中实际依赖的材料并解释推导，尽快给导师第一轮审阅。导师决定半结构范围和必要对照，不为毕业自动加M1/混频/周期/TVP。A06/A09—A12仍有开放项，A10的中性导师图版部分已完成。
 
 原研究环境705 passed、0 failed、4 skipped及隔离44 passed是R1既有记录；本轮没有重新运行全量研究测试，后续文稿测试单列。Data Freeze记录hash为9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5，本轮未改数据。
 
@@ -38,6 +39,10 @@
 已加入[完整 R2 执行提示词](thesis/CODEX_R2_COMPLETION_PROMPT.md)和[交接说明](thesis/CODEX_R2_HANDOFF.md)，并同步论文目录与近期计划入口。用户可在已授权的本地 Codex 工作区安全同步 main 后直接读取执行。
 
 本次仅上传任务文件及更新入口，不改变以上研究准备度，不重跑模型，不声称已经生成或推送完整私有图版、DOCX/PDF。原论文正文、文献登记、数据和后验保持不变；下一步仍是实际完成 R2 图文合成与审阅准备。
+
+## 2026-09-17：R2 本地图版与文档实排
+
+`R2_20260917_095514` 已只读校验冻结输入与R1最终registry，输出11张真实图、13张可编辑表、20段展示型Word公式。中性A4论文PDF29页、导师说明PDF1页，全部页面渲染并视觉检查；本地Word文件可批注。失效旧机制/后验图未沿用，图表与页码复核详见[R2验收](audits/r2_full_figure_draft.md)。本轮实际全仓测试717 passed、0 failed、4 skipped（可选ArviZ依赖），不是R1历史705加总。私有图/DOCX/PDF保持ignored；私人备份恢复尚无已批准位置，A11不关闭。学校送审与导师认可仍为NO。
 
 ## 2026-09-17：R2 本地执行进度
 
