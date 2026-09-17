@@ -1,27 +1,31 @@
 # Research-agent rules
 
-Read docs/CURRENT_STATUS.md, docs/thesis/README.md and docs/plans/advisor_draft_completion.md before acting. R1 A01—A05 technical corrections are already completed/resolved with limitations; do not restart the old audit merely because an archived plan says OPEN.
+Read docs/CURRENT_STATUS.md, docs/thesis/README.md and docs/plans/r3_reference_style_completion.md before acting. R1 technical corrections are already completed/resolved with limitations; do not restart the old audit because an archived plan says OPEN.
 
-## Current priority
+## Current priority: R3 writing and visual style
 
-Complete the R2 teacher-reviewable scholarly draft: actual R1 private figures/tables, citation traceability, editable DOCX/PDF, visual QA and student/advisor feedback. The new text is docs/thesis/advisor_draft.md; older midterm/phase memos are historical evidence. Publication status of the hog manuscript and the student's school are unconfirmed.
+The user requested reference-paper organization and figure/table formatting. Current editorial source is docs/thesis/reference_style_manuscript.md (five sections). The former docs/thesis/advisor_draft.md and R2 builders/tests remain an immutable-by-default historical reproduction path; do not force the new manuscript back to nine chapters or silently rewrite both sources.
+
+R3 follows the supplied hog manuscript's general organization and common layout, not its wording, identity, results, theoretical claims, broken references or disputed numerical explanations. It is not a school-template certification.
+
+Run scripts/build_r3_reference_figures.py against certified R1/R2 inputs, then scripts/build_r3_reference_draft.py, and inspect every full PDF page locally. New code/text and a labelled text-only preview are not full-figure acceptance. Do not count omitted private assets as completed. Fix actual layout defects without changing results.
 
 ## Scientific safety
 
 - Model is monthly semi-structural M0_CORE5/M0_FULL14, not full DSGE, mixed frequency or joint futures pricing.
 - Preserve original data/posterior/config/output versions. Do not rerun MCMC for writing/plot fixes.
-- Do not use common-support scalers with legacy posterior, marginal medians as additive shares, model-imposed signs as causal evidence, residual as speculation, or historical OOS as prospective.
-- Use R1 final source registry; no old mismatched monthly +1=.710 as current lead finding.
-- Do not tune samples/priors/rho_n/battery noise/roll rules to beautify conclusions.
-- New literature does not create new empirical evidence. Distinguish abstract/metadata verification from full-text reading.
-- No fabricated missing plots, values, references, adviser approval, school identity or graduation guarantee.
+- Do not mix common-support scalers with legacy posterior, marginal medians with additive shares, imposed signs with causal evidence, residual with speculation, or historical OOS with prospective tests.
+- Use R1 final sources; old mismatched monthly +1=.710 is not a current leading result.
+- Do not tune sample/prior/rho_n/battery noise/roll rules for attractive stories.
+- Preserve limitations while moving repetitive engineering logs to audit notes/appendices. New citations do not create empirical evidence.
+- No fabricated figures, missing values, reference metadata, adviser approval, school identity or graduation guarantee.
 
 ## Access/Git
 
-This ChatGPT task is GitHub-only. Do not reconnect Windows remotely. An explicitly authorized local Codex task may use its existing workspace. Preserve unexplained local modifications/untracked data, no hard reset/force push/broad git add. Push only validated explicit files and re-check remote.
+This ChatGPT task is GitHub-only; do not reconnect Windows remotely. An explicitly authorized local Codex task may use its existing workspace. Preserve unknown local modifications/untracked data. No hard reset, force push or broad git add. Push validated explicit files and verify remote.
 
-Raw commercial data, posterior arrays, original reference manuscripts, credentials and private result figures remain untracked/ignored. Permission to read is not permission to republish. Tests reported separately: portable writing tests versus prior authorized full pipeline. Missing data or SKIP is not PASS.
+Raw commercial data, posterior arrays, original reference manuscripts, credentials and private figures/documents remain ignored. Reading permission is not public redistribution permission. Report portable publication tests separately from authorized full-pipeline tests. Missing data/SKIP is not PASS.
 
-## Deliverables
+## Readiness
 
-Text-review readiness, full-figure draft readiness and school-submission readiness are separate. Student must understand and review all writing, follow actual institutional AI rules and get adviser feedback; no false originality declarations. Finalization_tasks entries needing author/teacher/school confirmation stay open. No new M1/mixed-frequency/cycle/TVP/option/tick project unless separately authorized.
+R2 historical readiness, R3 source readiness, R3 full-figure visual acceptance and school submission readiness are different states. Student must understand the material, review actual literature and follow their own institution's rules. Keep author/teacher/school confirmation tasks open. No automatic new M1/mixed-frequency/cycle/TVP/option/tick project.

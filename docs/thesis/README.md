@@ -1,25 +1,21 @@
-# 导师审阅初稿 R2
+# 论文稿件与排版入口
 
-入口：[九章正文](advisor_draft.md) · [给导师的审阅说明](advisor_review_note.md) · [导师反馈台账](advisor_feedback_tracker.md) · [文献证据登记](../references/verified_literature_20260916.md) · [图版来源清单](figure_completion_manifest.md) · [R2逐页验收](../audits/r2_full_figure_draft.md) · [最终交接](../audits/r2_final_handoff.md) · [近期完成计划](../plans/advisor_draft_completion.md)。
+## 当前写作版：R3 参考式研究稿
 
-2026-09-16：以R1已完成的实证为基础整理学术初稿，不改变模型、数据、prior和后验。此前中断时只创建Git blob的稿件未进入main；本轮正文正式入库，采用修正后的学校身份/发表状态说明。
+**[五部分新正文](reference_style_manuscript.md)** · [例文写法/版式对照](reference_style_map.md) · [本地合成计划](../plans/r3_reference_style_completion.md) · [修改与验证](../audits/r3_reference_style_revision.md)
 
-## 实际完成边界
+用户要求学习生猪例文的写法及图表格式后，当前文稿改为五部分：引言、文献综述、理论与模型、实证分析、结论与启示。正文保留自己的R1结论，移除反复出现的工程日志；重要限制仍位于相关方法和结果旁，完整诊断放附录。
 
-正文含中英文摘要、九章、显式A/B/H矩阵与来源附录、20项有核验层级的参考文献。`outputs/thesis/R2_20260917_095514/` 的本地导师讨论版含11张真实图、13张可编辑表和20段展示型Word公式；论文DOCX/PDF与1页审阅说明已实排逐页检查。可以用于导师第一轮阅读研究问题、模型范围和主要结果，但不是学校送审终稿。
+样式代码：`src/publication/reference_style.py`；配置：`configs/hog_reference_style.json`。图生成：`scripts/build_r3_reference_figures.py`；Word/PDF：`scripts/build_r3_reference_draft.py`。宽图表、三线表和中文灰度图针对实际印刷宽度设计，不以把旧大图缩小完成。
 
-已有20项引用不等于20篇全文均已精读。[18]卷期页码已由两家作者机构页面交叉核定；其 DOI/全文、关键全文阅读、[17]参考稿发表状态、学生实际学校和格式要求仍有明确任务。无依据不填造。
+本轮已完成源码和文字校样，不声称新的私有八图完整稿已在用户本机运行。真实图版要按照计划读取现有R1/R2结果，不能补造轨迹。当前不是学校最终模板。
 
-私有图表及包含图版的DOCX/PDF不在GitHub；重绘图均读取冻结R1汇总并保留来源hash。未用参数中位数IRF或模拟历史曲线填补原图。主文仍采用LEGACY正式变换与R1结果，不将共同支持期scaler写成新后验稳健性。
+## 历史版本：R2 九章导师初稿
 
-## 学生与导师
+[旧九章正文](advisor_draft.md)、[给导师说明](advisor_review_note.md)、[原图清单](figure_completion_manifest.md)、[原逐页验收](../audits/r2_full_figure_draft.md)、[原交接](../audits/r2_final_handoff.md)保持原样，便于复现本地 `R2_20260917_095514` 的11图/13表/20公式稿。旧R2代码和测试继续对应旧源，不要求它解析新R3标记。
 
-学生须独立核对文献、公式和所有结果，确认AI辅助使用符合实际院校规定。本稿不代签原创性声明，不推定某校政策，不承诺自动达到毕业标准。导师讨论就绪、图表完整、学院提交就绪分开管理。
+R2完整提示词/交接为历史任务：[CODEX_R2_COMPLETION_PROMPT.md](CODEX_R2_COMPLETION_PROMPT.md)、[CODEX_R2_HANDOFF.md](CODEX_R2_HANDOFF.md)。当前不要从头重做该任务，直接执行R3合成计划。
 
-本地Codex已完成图文合成与逐页视觉验收；私有备份恢复因缺少已批准位置仍开放。学生需先检查身份字段、公式和文献再发送导师，不要重新做R1或增加模型。
+## 共享资料与核对
 
-## Codex 执行入口（2026-09-17）
-
-完整任务已入库：[CODEX_R2_COMPLETION_PROMPT.md](CODEX_R2_COMPLETION_PROMPT.md)。来源与启动说明见[CODEX_R2_HANDOFF.md](CODEX_R2_HANDOFF.md)。
-
-上述提示词和交接说明是任务来源；2026-09-17本地执行已生成新Word/PDF及图版。原句“此次只交接文件”仅描述 `0190c5a` 的历史交接提交，不代表当前状态。完整图版可供学生核对后导师讨论，学校提交仍为NO。
+[文献证据登记](../references/verified_literature_20260916.md)、[参考稿方法对照](../references/hog_paper_comparison.md)、[导师反馈台账](advisor_feedback_tracker.md)。文献登记不是全部全文精读；参考稿发表状态和学生实际院校仍待确认。正文重写不代表导师认可或AI规范验收，学生须独立理解和核对。商业图、完整Word/PDF、原稿和后验不推送公共Git。
