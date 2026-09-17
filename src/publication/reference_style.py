@@ -24,7 +24,7 @@ BACK='R3BACKMATTER'
 def load_profile(path):
     p=json.loads(Path(path).read_text(encoding='utf-8'))
     width=p['page_mm'][0]-p['margins_mm']['left']-p['margins_mm']['right']
-    if p['body_columns']!=2 or p['figure_width_mm']>width:
+    if p['body_columns'] not in (1,2) or p['figure_width_mm']>width:
         raise ValueError('Invalid reference layout profile')
     return p
 
@@ -173,7 +173,7 @@ def polish(path,profile,fonts,preview=False):
     for p in paras:
         text=p.text.strip();pf=p.paragraph_format
         if text==BODY:
-            _boundary(p,base,cols,profile['column_gap_mm']);cols=2;continue
+            _boundary(p,base,cols,profile['column_gap_mm']);cols=profile['body_columns'];continue
         if text==BACK:
             if stack:raise ValueError('Unclosed wide block')
             _boundary(p,base,cols,profile['column_gap_mm']);cols=1;continue

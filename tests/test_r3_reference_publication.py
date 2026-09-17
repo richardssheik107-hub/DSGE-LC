@@ -12,7 +12,7 @@ from docx.oxml.ns import qn
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from src.publication.reference_style import load_profile,installed_fonts,template,three_line_table,wrap_markdown,polish,BEGIN,END
+from src.publication.reference_style import load_profile,installed_fonts,template,three_line_table,wrap_markdown,polish,BEGIN,END,BODY
 from scripts.build_r3_reference_draft import prepare
 from scripts import build_r3_reference_figures as plots
 DRAFT=ROOT/'docs/thesis/reference_style_manuscript.md'
@@ -123,4 +123,13 @@ def test_profile_matches_reference_page_geometry():
     p=load_profile(PROFILE)
     assert p['page_mm']==[210,297]
     assert p['margins_mm']['left']==p['margins_mm']['right']==31.75
-    assert p['body_columns']==2 and p['table_font_pt']>=9
+    assert p['body_columns']==1 and p['table_font_pt']>=9
+
+
+def test_body_section_remains_single_column(tmp_path):
+    profile=load_profile(PROFILE);fonts=installed_fonts(profile)
+    path=tmp_path/'single_column.docx';template(profile,fonts,path)
+    doc=Document(path);doc.add_paragraph(BODY);doc.add_paragraph('正文保持单栏。');doc.save(path)
+    polish(path,profile,fonts)
+    doc=Document(path)
+    assert all(int(section._sectPr.xpath('./w:cols')[0].get(qn('w:num'),'1'))==1 for section in doc.sections)

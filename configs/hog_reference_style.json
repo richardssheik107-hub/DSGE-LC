@@ -1,9 +1,9 @@
 {
-  "version":"R3_REFERENCE_STYLE_1",
+  "version":"R3_REFERENCE_STYLE_2_SINGLE_COLUMN",
   "source":"User-supplied 35-page hog manuscript; measured OOXML geometry and visible table/figure layout",
   "page_mm":[210,297],
   "margins_mm":{"top":25.4,"bottom":25.4,"left":31.75,"right":31.75},
-  "body_columns":2,
+  "body_columns":1,
   "column_gap_mm":7.5,
   "body_font_pt":10.5,
   "line_spacing_pt":17.5,
