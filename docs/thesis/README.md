@@ -1,21 +1,16 @@
-# 论文稿件与排版入口
+# 稿件版本与学位论文工作区
 
-## 当前写作版：R3 参考式研究稿
+2026-09-17。当前工作是以已完成R1/R3为基线深化学位论文；不是再次执行旧R2/R3交接。
 
-**[五部分新正文](reference_style_manuscript.md)** · [例文写法/版式对照](reference_style_map.md) · [本地合成计划](../plans/r3_reference_style_completion.md) · [当前单栏版复核](../audits/r3_single_column_layout.md) · [导师审阅说明](r3_advisor_review_note.md)
+| 文件/版本 | 角色 | 当前操作 |
+|---|---|---|
+| [reference_style_manuscript.md](reference_style_manuscript.md) | R3五部分短稿，单栏16页本地图版已有验收 | 保留风格和已验收结果，可立即给导师讨论范围 |
+| [advisor_draft.md](advisor_draft.md) | R2历史九章长稿 | 保留复现，不同时手工更新数字 |
+| [degree_thesis_blueprint.md](degree_thesis_blueprint.md) | 新八章学位稿的研究/写作蓝图 | 当前唯一新写作设计，不冒充正文 |
+| degree_thesis.md | 后续学位论文主源 | 还未创建；D07明确初始化，结果从同一registry引用 |
 
-用户要求学习生猪例文的写法及图表格式后，当前文稿改为五部分：引言、文献综述、理论与模型、实证分析、结论与启示。正文保留自己的R1结论，移除反复出现的工程日志；重要限制仍位于相关方法和结果旁，完整诊断放附录。
+当前计划：[学位深化](../plans/thesis_deepening_2026_2028.md) · [比较协议](../protocols/thesis_comparison_protocol_v1.md) · [文献补读](../references/literature_expansion_20260917.md) · [当前状态](../CURRENT_STATUS.md)。
 
-样式代码：`src/publication/reference_style.py`；配置：`configs/hog_reference_style.json`。图生成：`scripts/build_r3_reference_figures.py`；Word/PDF：`scripts/build_r3_reference_draft.py`。宽图表、三线表和中文灰度图针对实际印刷宽度设计，不以把旧大图缩小完成。
+[原20项引用](../references/verified_literature_20260916.md)、[生猪方法对照](../references/hog_paper_comparison.md)、[例文体例](reference_style_map.md)继续保留。学习结构和风格，不复制参考稿身份、数字或未实现方法。
 
-本轮已在授权本地以已验收R1/R2来源生成八张真实图、可编辑Word与16页PDF，并按用户要求将正文改为单栏，逐页核验图表、公式与分页。当前私人产物位于被gitignore保护的 `outputs/thesis/R3_20260917_SINGLE_COLUMN/`，不推送公共Git。此前双栏版保留，不再作为当前稿；当前仍不是学校最终模板。
-
-## 历史版本：R2 九章导师初稿
-
-[旧九章正文](advisor_draft.md)、[给导师说明](advisor_review_note.md)、[原图清单](figure_completion_manifest.md)、[原逐页验收](../audits/r2_full_figure_draft.md)、[原交接](../audits/r2_final_handoff.md)保持原样，便于复现本地 `R2_20260917_095514` 的11图/13表/20公式稿。旧R2代码和测试继续对应旧源，不要求它解析新R3标记。
-
-R2完整提示词/交接为历史任务：[CODEX_R2_COMPLETION_PROMPT.md](CODEX_R2_COMPLETION_PROMPT.md)、[CODEX_R2_HANDOFF.md](CODEX_R2_HANDOFF.md)。当前不要从头重做该任务，直接执行R3合成计划。
-
-## 共享资料与核对
-
-[文献证据登记](../references/verified_literature_20260916.md)、[参考稿方法对照](../references/hog_paper_comparison.md)、[导师反馈台账](advisor_feedback_tracker.md)。文献登记不是全部全文精读；参考稿发表状态和学生实际院校仍待确认。正文重写不代表导师认可或AI规范验收，学生须独立理解和核对。商业图、完整Word/PDF、原稿和后验不推送公共Git。
+旧CODEX_R2提示词、R3出版计划只用于复现或对应版式修补，不能把当前深化工作回退为重复合成。实际学校模板、学生理解、导师批准、作者稿发表状态和私人恢复仍单独验收。

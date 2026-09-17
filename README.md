@@ -1,34 +1,54 @@
-# DSGE-LC
+# DSGE-LC · 碳酸锂价格波动与定价机制
 
-《碳酸锂价格波动的影响因素与定价机制研究》。当前实际方法为**M0_CORE5月度半结构状态空间**，不是完整DSGE、真正混频或联合期现结构定价。
+**当前基线：R1已验收实证 + R3单栏研究短稿。当前任务：学位论文深化。**
 
-## 当前入口：导师审阅初稿 R2
+科学/稿件基点为 `0128c1aee9e553bc16ef2025ed4f29eaea3e9850`。本轮以该版本完成仓库审计与计划更新，没有重估模型、改数据或重新生成私人论文。实际方法是M0_CORE5月度半结构状态空间，不是完整DSGE、混频或联合期现结构定价。
 
-- [九章论文正文](docs/thesis/advisor_draft.md)：中英文摘要、模型/矩阵、后验/结构/预测/期现结果、结论与文献。
-- [给导师的审阅说明](docs/thesis/advisor_review_note.md)：先确认题目与理论范围，避免无限扩展。
-- [20项文献证据登记](docs/references/verified_literature_20260916.md)：核验题录/摘要/正文层级，不冒充全部全文精读。
-- [真实图版与来源清单](docs/thesis/figure_completion_manifest.md)、[R2逐页验收](docs/audits/r2_full_figure_draft.md)、[导师反馈台账](docs/thesis/advisor_feedback_tracker.md)与[近期完成计划](docs/plans/advisor_draft_completion.md)。
+## 当前入口
 
-**当前：本地完整图版导师讨论稿已验收，学生核对后可送导师；学校送审仍未就绪。** 中性A4文件在忽略的 `outputs/thesis/R2_20260917_095514/`：论文DOCX/PDF、审阅说明DOCX/PDF、逐图来源清单。私有图和商业派生文档不在公共Git。不保证毕业合格，不代替学生理解和导师审批。旧中期报告保留，R2正文是新的学术组织版本，不无痕覆盖历史实证。
+- [当前状态](docs/CURRENT_STATUS.md)：区分基线验收、新任务和学校就绪。
+- [本轮全仓审计](docs/audits/2026_09_17_baseline_repository_audit.md)：范围、发现和已完成更新。
+- [8—10周深化及定稿计划](docs/plans/thesis_deepening_2026_2028.md)。
+- [新比较协议草案](docs/protocols/thesis_comparison_protocol_v1.md)：当前均未执行。
+- [文献补读与8条候选](docs/references/literature_expansion_20260917.md)。
+- [八章学位论文蓝图](docs/thesis/degree_thesis_blueprint.md)。
 
-## 实证基础与R1边界
+## 保留的研究资产
 
-数据/Phase1、M0设计、Kalman/MLE/Bayesian、IRF/FEVD、条件HD、递归历史OOS、库存/成本对照、期现扩展已有结果。R1已修正诊断、加总、单位、门槛和期现收益定义；七套原后验通过、未重采样。实际明细见[当前状态](docs/CURRENT_STATUS.md)、[R1最终验收](docs/audits/r1_final_validation.md)、[任务台账](docs/plans/correction_backlog.md)。
+| 版本 | 用途与实际状态 |
+|---|---|
+| R1 | 后验诊断、HD/FEVD、单位、期现和预测/外部修正已完成；保留弱识别与解释限制 |
+| R2 | 历史九章稿和11图/13表本地图版；保留复现，不再双写 |
+| R3 | [五部分短稿](docs/thesis/reference_style_manuscript.md)，单栏16页、8图、7表、12式的本地验收已有记录；本轮未重渲染 |
+| 学位论文深化 | 文献/理论、三个结构测量对照、期货信息预测增量、完整学位稿；现为PLANNED |
 
-主要限制：a_c接近零；n是标准化压力不是吨库存；需求与库存依赖固定假设；残差约65%；后期六项历史歧义；结构预测不普遍胜RW/BVAR；月频峰值转同期；外部成本同源。不要在写作时重新写成强因果、预测冠军或稳定价格发现。
+v1核心2020-01—2025-09共69个月，结构样本2021-01—2025-09共57期。记录SHA256：`9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5`。私人CSV/NPZ/PDF不在Git，本轮没有重新计算其hash。
 
-## 数据与模型
+保留结论边界：12月FEVD均值需求8.91%、成本21.30%、供给4.90%、残差64.89%；结构U2为0.914/1.240/1.131，只H1优于RW且均未胜BVAR；库存水平共动对rho_n敏感；成本对照含共同矿价；后期六项HD歧义；月频期现峰在同期，日频仅初步领先相关。新增比较不会被要求把这些结果调漂亮。
 
-核心69个月（2020-01—2025-09），结构57个月（2021-01—2025-09）；状态[d,c,q,n,p]，观测[spot,ore_cost,output,battery]，四冲击。基线rho_n=.80、battery_sd=.25。LEGACY spot/ore scaler68期，数量同比57期；共同支持期scaler只有构建，未估计。
+## 后续顺序
 
-v1记录SHA256：`9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5`。R2在用户授权的本地工作区核验了原面板、七套NPZ/sidecar及R1最终来源；商业观测、NPZ和生成结果不上传公共Git。R1历史705 passed/4 skipped与隔离44 passed单列；R2实际全仓717 passed/4 skipped，不互相相加。
+```text
+D00 基线与治理审计（本轮完成）
+→ D01 文献与理论映射
+→ D02 比较协议冻结与合成验证
+→ D03 库存必要性 / D04 成本反馈 / D05 测量尺度
+  + D06 日频期货预测信息增量
+→ D07 学位论文整合与导师反馈
+→ D08 环境、私人备份与学校提交验收
+```
 
-## 导航
+不把原R3短稿重新排一遍当成新增学术工作；不默认加入M1、周期、TVP、混频和期权。现阶段即可送R3给导师确认范围，不等全部扩展完成才沟通。
 
-[文档索引](docs/README.md) · [研究审计](docs/audits/2026_09_16_research_audit.md) · [参考稿对照](docs/references/hog_paper_comparison.md) · [定稿总计划](docs/plans/thesis_finalization_2026_2028.md) · [复现指南](docs/REPRODUCIBILITY.md)。
+## 复现与治理
 
-src为可复用模型，scripts为执行/审计入口，configs为版本化设定，tests区分便携与授权集成，data保存可公开数据/元数据。不得以git add .、force push或删除untracked处理同步；原始商业数据、参考全文和凭证不提交。
+[文档索引](docs/README.md) · [源码结构](docs/repository_architecture.md) · [R1原修正台账](docs/plans/correction_backlog.md) · [复现指南](docs/REPRODUCIBILITY.md)
 
-## 接下来
+```bash
+python scripts/audit_thesis_governance.py --check-git-baseline
+python -m pytest -q tests/test_thesis_governance.py
+```
 
-R1不用重做 → R2本地完整图文已完成 → 学生核对与关键全文阅读 → 导师审阅 → 必要且有限的补实验 → 版本化扩样/前瞻检验 → 学校终稿。2028毕业是规划假设，不是拖延当前完整稿的理由，具体日期由学院确认。
+新治理测试16项已在审计沙箱通过；只查计划/依赖和失败反例，不验证科学结果。R1 705/4 skipped、R2 717/4 skipped、R3定向14项均为各自历史记录，本轮不重跑、不相加。
+
+Git只提交明确的代码/配置/审计/文献元数据；不提交私人数据和图版。期刊体例、文献数量或测试数量均不构成学位资格。最终毕业日期、学位点要求、导师审批和学生内容核对分别管理。

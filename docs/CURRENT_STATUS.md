@@ -1,38 +1,41 @@
-# 当前研究与稿件状态
+# 当前研究与学位论文状态
 
-更新：2026-09-17。R3参考式研究稿已按用户要求改为单栏正文；本地生成八张真实图、可编辑 Word 与 16 页 PDF，并完成逐页视觉验收。实证仍采用已完成 R1，不改变模型、数据、先验或后验。
+更新2026-09-17。基点 `0128c1aee9e553bc16ef2025ed4f29eaea3e9850`；当前管理状态：**BASELINE_PINNED_THESIS_DEEPENING_PLANNED**。
 
-## 当前执行入口
+## 1. 当前判断
 
-**新稿：[reference_style_manuscript.md](thesis/reference_style_manuscript.md)**
+现有技术闭环与R3研究短稿可以继续使用，但学位论文所需的文献定位、理论展开和机制增量尚需深化。此次审计不是再次宣布R1失败，也不是认定只剩排版。用户已提出新的学位论文目标，旧“只做出版收尾”的任务范围不再覆盖全部后续工作。
 
-[例文体例对照](thesis/reference_style_map.md) · [R3本地合成计划](plans/r3_reference_style_completion.md) · [当前单栏版复核](audits/r3_single_column_layout.md)
+## 2. 分层状态
 
-R3按“引言—文献综述—理论与模型—实证分析—结论与启示”组织，当前采用单栏正文、三线表、中文图注与灰度线型。它是参考式研究稿，不自动等同学校学位论文模板或毕业篇幅要求。
-
-## 阶段分开判定
-
-| 版本/层次 | 状态 |
+| 层次 | 状态及来源 |
 |---|---|
-| R1技术修正 | TECHNICAL_REVISION_COMPLETE_WITH_INTERPRETATION_LIMITS，保持原验收 |
-| R2九章文本与本地完整图版 | 历史已完成，11图/13表/20展示公式；本轮未改旧源和产物 |
-| R3五部分文本与排版/绘图代码 | 已完成并进入本次提交 |
-| R3无私有图的文字校样 | 已实际渲染并检查代表性页；不是完整论文图版 |
-| R3真实八图、表2及完整Word/PDF | 当前单栏版 `R3_20260917_SINGLE_COLUMN` 已生成；16页逐页验收通过，私人产物未上传 |
-| 学生核对、导师意见、学校提交 | 仍待实际流程，THESIS_SUBMISSION_READY=NO |
+| R1科学修正 | TECHNICAL_REVISION_COMPLETE_WITH_INTERPRETATION_LIMITS；见[r1_final_validation](audits/r1_final_validation.md) |
+| R2长稿与图版 | 历史版本；不改旧源/旧输出 |
+| R3参考式短稿 | 单栏16页、8图、7表、12式，本地验收见[r3_single_column_layout](audits/r3_single_column_layout.md)；本轮不重新渲染 |
+| 当前全仓治理审计 | [本轮审计](audits/2026_09_17_baseline_repository_audit.md)完成；16项新增治理单测通过 |
+| 学位论文新研究 | D01—D08为计划，4个实验均PROTOCOL_DRAFT_NOT_RUN |
+| 学位长稿 | 只有[蓝图](thesis/degree_thesis_blueprint.md)，degree_thesis.md尚未创建，不声称完整稿已写 |
+| 正式提交 | THESIS_SUBMISSION_READY=NO；学生/导师/学校验收仍独立 |
 
-旧 `docs/thesis/advisor_draft.md` 和R2 runner保留给历史复现；后续风格修改使用新R3正文，不在两个源中双写。本次清理了过去追加段落造成的“已经完整图版/仍待R2合成”并存描述；历史经过见R2审计与交接记录。
+## 3. 下一步
 
-## 不变的研究边界
+[D01文献补读](references/literature_expansion_20260917.md)及理论—方程—观测映射；并行将R3交导师确认半结构范围。然后按[协议](protocols/thesis_comparison_protocol_v1.md)完成D02设计冻结与合成测试，才执行库存必要性、成本反馈、测量尺度和期货信息预测比较。
 
-M0_CORE5/M0_FULL14是月度半结构模型，不是完整DSGE、混频或期现联合结构定价。核心69个月为2020-01—2025-09，结构57个月为2021-01—2025-09；LEGACY scaler保留，共同57期仅构建未估计。七套R1后验复核通过，后期六项历史对照有歧义。
+[完整计划](plans/thesis_deepening_2026_2028.md)是现行路线。A01—A12维持[历史修正台账](plans/correction_backlog.md)，新D00—D08由 `configs/thesis_workplan.json` 管理；不把旧CLOSED当成新增估计完成。
 
-12月FEVD均值为需求8.91%、成本21.30%、供给4.90%、残差64.89%；结构U2为0.914/1.240/1.131，只H1优于RW且均未胜BVAR。库存水平共动受rho_n影响，成本0.988含共同矿价；同端点月频以同期为峰，日频+1相关为初步描述。新排版不改变这些结果。
+## 4. 不变的科学基线
 
-v1记录hash：`9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5`。R3在本地只读核验并使用已验收来源，不重估、不修改商业序列或posterior；公共Git只提交生成代码与审计文本。
+M0_CORE5/M0_FULL14：5状态、4创新、14自由参数；rho_n=.80、battery_sd=.25；核心69个月、结构57期；LEGACY价格/矿价scaler68期，数量同比57期。COMMON57只构建未估计。
 
-## 当前验收与后续
+记录core SHA256为 `9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5`；Git对象快照见 `configs/research_baseline_20260917.json`。本轮不访问Windows，不重新计算私人hash，不重采样，也不对原科学函数作无痕修补。
 
-R3定向测试实际14 passed；旧R2全仓717 passed/4 skipped与R1历史记录不在本轮重跑，也不与14项相加。八图、七张数据表、12个编号公式及单栏16页PDF已实际检查；Word渲染和进程清理情况见[单栏版复核](audits/r3_single_column_layout.md)。
+FEVD后验均值8.91/21.30/4.90/64.89%，结构U2 0.914/1.240/1.131；后期历史歧义、库存rho_n敏感、成本同源、月频同期峰与非前瞻OOS限制均保留。新模型是否改善这些问题尚无结果。
 
-下一步是学生核对和导师审阅，不重启R1或增加M1、混频、周期、TVP、期权。文本审阅和本地完整图版已就绪，学校提交尚未就绪。20项文献仍有分层阅读和作者发表状态待确认；学校、AI规则、导师批准、私人备份位置和学院日期不能推定。长期2028-06主规划/2027-06备用仅为计划假设，不影响当前尽快送导师讨论。
+## 5. 稿件入口
+
+- 短稿与风格基线：`docs/thesis/reference_style_manuscript.md`。
+- 历史R2长稿：`docs/thesis/advisor_draft.md`。
+- 新学位长稿：先依据蓝图初始化，再使用 `docs/thesis/degree_thesis.md`；不要同时人工维护三套结果数字。
+
+学校模板与论文长度、参考数量、AI规定和答辩日期不能由短稿版式或规划字数推定。2028-06主规划/2027-06备用保持假设，当前就推进导师沟通和深化，不等毕业前才完成研究。

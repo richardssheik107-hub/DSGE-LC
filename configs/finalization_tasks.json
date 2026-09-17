@@ -1,10 +1,14 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "updated": "2026-09-17",
   "audit_base_commit": "674020c37ce093139c778798cd91f739435d8da8",
   "r1_5_evidence_commit": "ef2eb3785b8dad58b7d4532298f5a184972b8260",
   "r1_6_acceptance_evidence": "docs/audits/r1_final_validation.md",
   "status": "TECHNICAL_REVISION_COMPLETE_WITH_INTERPRETATION_LIMITS",
+  "status_scope": "R1_SCIENTIFIC_REVISION_NOT_OVERALL_THESIS_COMPLETION",
+  "current_research_baseline_commit": "0128c1aee9e553bc16ef2025ed4f29eaea3e9850",
+  "current_work_stage": "BASELINE_PINNED_THESIS_DEEPENING_PLANNED",
+  "new_task_registry": "configs/thesis_workplan.json",
   "advisor_text_draft_ready": true,
   "advisor_full_figure_draft_ready_with_limits": true,
   "student_review_pending": true,
@@ -13,13 +17,16 @@
     "run_id": "R2_20260917_095514",
     "audit": "docs/audits/r2_full_figure_draft.md",
     "source_manifest_local": "outputs/thesis/R2_20260917_095514/文件与结果来源清单.json",
-    "thesis_pdf_pages": 29,
-    "advisor_note_pdf_pages": 1,
-    "figures": 11,
-    "editable_tables": 13,
-    "display_equation_paragraphs": 20,
-    "school_template_confirmed": false,
-    "private_backup_restoration_confirmed": false
+    "thesis_pdf_pages": 29, "advisor_note_pdf_pages": 1,
+    "figures": 11, "editable_tables": 13, "display_equation_paragraphs": 20,
+    "school_template_confirmed": false, "private_backup_restoration_confirmed": false
+  },
+  "r3_research_paper": {
+    "run_id": "R3_20260917_SINGLE_COLUMN", "audit": "docs/audits/r3_single_column_layout.md",
+    "source": "docs/thesis/reference_style_manuscript.md", "pdf_pages": 16,
+    "figures": 8, "data_tables": 7, "numbered_equations": 12,
+    "layout": "single_column", "acceptance_basis": "REPORTED_LOCAL_RUN_NOT_RERENDERED_THIS_AUDIT",
+    "degree_thesis_equivalent": false
   },
   "status_semantics": {
     "OPEN": "尚未开始或尚无足够关闭证据",
@@ -29,26 +36,26 @@
     "RESOLVED_WITH_DOCUMENTED_LIMITATION": "本轮任务已验收，但结论范围或来源限制必须随结果呈现",
     "BLOCKED": "必要外部输入缺失，无法安全继续"
   },
-  "graduation_target_assumption": "2028-06",
-  "earlier_plan_contingency": "2027-06",
-  "advisor_complete_draft_target": "2027-02-28",
-  "formal_deadlines_confirmed": false,
+  "graduation_target_assumption": "2028-06", "earlier_plan_contingency": "2027-06",
+  "advisor_complete_draft_target": "2027-02-28", "formal_deadlines_confirmed": false,
   "full_pipeline_rerun_in_this_update": false,
   "historical_initial_portable_audit_tests_passed": 8,
   "historical_r1_6_full_test": {"stage":"R1-6","passed":705,"skipped":4,"failed":0,"command":"py -3.13 -B -m pytest -q tests -rs"},
   "latest_authorized_full_test": {"stage":"R2-2","passed":717,"skipped":4,"failed":0,"command":"py -3.13 -B -m pytest -q tests -rs","skip_reason":"optional independent audit dependency (1) and ArviZ unavailable in this environment (3)"},
+  "historical_r3_targeted_test": {"passed":14,"scope":"PUBLICATION_ONLY","evidence":"docs/audits/r3_single_column_layout.md"},
+  "this_audit_governance_tests": {"passed":16,"failed":0,"scope":"NEW_PORTABLE_METADATA_TESTS_ONLY_NOT_ADDITIVE"},
   "tasks": [
     {"id":"A01","priority":"P0","status":"RESOLVED_WITH_DOCUMENTED_LIMITATION","title":"Independent ESS/MCSE and stored-posterior re-audit","evidence":"docs/audits/r1_posterior_diagnostics.md","limitation":"baseline provenance PASS_RECONSTRUCTED, not an original sidecar"},
     {"id":"A02","priority":"P0","status":"RESOLVED_WITH_DOCUMENTED_LIMITATION","title":"Historical sensitivity classifier and complete readiness gate","evidence":"docs/audits/r1_historical_and_fevd.md","limitation":"six late-window comparisons AMBIGUOUS; interpretation review required"},
     {"id":"A03","priority":"P0","status":"RESOLVED_WITH_DOCUMENTED_LIMITATION","title":"Matched spot/futures return definitions and date intervals","evidence":"docs/audits/r1_spot_futures_alignment.md","limitation":"short-sample descriptive lead-lag, not causal or tradable"},
-    {"id":"A04","priority":"P0","status":"CLOSED","title":"Scaler fitting support and historical units","evidence":"docs/audits/r1_measurement_and_units.md","limitation":"COMMON_SUPPORT_57_SCALER constructed only; no new posterior"},
+    {"id":"A04","priority":"P0","status":"CLOSED","title":"Scaler fitting support and historical units","evidence":"docs/audits/r1_measurement_and_units.md","limitation":"COMMON_SUPPORT_57_SCALER constructed only; new posterior is D05, not this closed task"},
     {"id":"A05","priority":"P1","status":"CLOSED","title":"Posterior additivity and signed displays","evidence":"docs/audits/r1_historical_and_fevd.md","limitation":"marginal FEVD medians are not additive; zero-variance H1 inventory is undefined"},
-    {"id":"A06","priority":"P1","status":"IN_PROGRESS","title":"Measurement, inventory-index meaning and theory alignment","evidence":"docs/audits/r1_measurement_and_units.md","remaining":"advisor acceptance of semi-structural scope and final theory wording"},
-    {"id":"A07","priority":"P1","status":"RESOLVED_WITH_DOCUMENTED_LIMITATION","title":"Forecast convergence, estimand and information set","evidence":"docs/audits/r1_forecast_and_external_validation.md","limitation":"retrospective recursive OOS with release approximation, not prospective real-time validation"},
+    {"id":"A06","priority":"P1","status":"IN_PROGRESS","title":"Measurement, inventory-index meaning and theory alignment","evidence":"docs/audits/r1_measurement_and_units.md","remaining":"advisor scope confirmation and D01 theory mapping"},
+    {"id":"A07","priority":"P1","status":"RESOLVED_WITH_DOCUMENTED_LIMITATION","title":"Forecast convergence, estimand and information set","evidence":"docs/audits/r1_forecast_and_external_validation.md","limitation":"retrospective recursive OOS; new futures forecast increment is D06, not completed here"},
     {"id":"A08","priority":"P1","status":"RESOLVED_WITH_DOCUMENTED_LIMITATION","title":"External validation uncertainty and independence","evidence":"docs/audits/r1_forecast_and_external_validation.md","limitation":"inventory changes weak; cost route shares input; intervals are not full joint uncertainty"},
-    {"id":"A09","priority":"P1","status":"IN_PROGRESS","title":"Reference-paper mapping and advisor scope confirmation","evidence":"docs/audits/r2_literature_preflight.md","remaining":"advisor method-scope confirmation, key full-text reading, [17] publication status and [18] DOI/full text"},
-    {"id":"A10","priority":"P1","status":"IN_PROGRESS","title":"Citation, thesis prose and formatted deliverables","evidence":"docs/audits/r2_full_figure_draft.md","remaining":"student content check, advisor feedback, school format and AI rules; neutral full-figure advisor DOCX/PDF are complete"},
+    {"id":"A09","priority":"P1","status":"IN_PROGRESS","title":"Reference-paper mapping and advisor scope confirmation","evidence":"docs/audits/r2_literature_preflight.md","remaining":"key full-text reading, reference version, advisor scope; D01 candidates are not completed citations"},
+    {"id":"A10","priority":"P1","status":"IN_PROGRESS","title":"Citation, thesis prose and formatted deliverables","evidence":"docs/audits/r3_single_column_layout.md","remaining":"degree-thesis expansion D07, student/advisor review, applicable school format and AI rules; R2/R3 publication history retained"},
     {"id":"A11","priority":"P1","status":"IN_PROGRESS","title":"Environment, test tiers and private artifact restoration","evidence":"docs/REPRODUCIBILITY.md","remaining":"clean-environment lock and licensed private artifact backup/recovery drill"},
-    {"id":"A12","priority":"MANAGEMENT","status":"OPEN","title":"Confirm graduation and school submission deadlines","remaining":"obtain advisor/school dates; 2028-06 remains an assumption, 2027-06 an earlier contingency"}
+    {"id":"A12","priority":"MANAGEMENT","status":"OPEN","title":"Confirm graduation and school submission deadlines","remaining":"obtain actual degree-category and school dates; 2028-06 assumption and 2027-06 contingency"}
   ]
 }
