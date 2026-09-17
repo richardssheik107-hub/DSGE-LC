@@ -10,6 +10,21 @@ R1-6 修订：2026-09-16。旧版见 Git 提交 `ef2eb3785b8dad58b7d4532298f5a18
 
 历史 611 项是早期阶段记录，最初便携审计 8 项是另一环境记录，不能相加。R1-6 在授权研究环境运行完整 `tests/` 得到 **705 passed、0 failed、4 skipped**；跳过 1 项独立审计依赖和 3 项 ArviZ 项，具体见[最终验收](audits/r1_final_validation.md)。单独的 R1-1 隔离 ArviZ 目标测试为 44 passed；该环境缺全仓依赖，不能把其全仓收集失败写成完整回归 PASS。
 
+## R2 导师讨论版出版（2026-09-17）
+
+本地完整图版 `R2_20260917_095514` 已从冻结R1汇总、原图片和canonical Markdown生成，不重估模型、不读取逐draw数组用于重算。本地来源清单在 `outputs/thesis/R2_20260917_095514/文件与结果来源清单.json`，包含输入及最终Word/PDF哈希；该目录被Git忽略，涉及商业派生图像，仅授权导师讨论。公开索引见[R2图版审计](audits/r2_full_figure_draft.md)。新运行必须选择唯一 `R2_YYYYMMDD_HHMMSS`，生成器拒绝无来源记录的覆盖。
+
+```powershell
+$r2RunId = 'R2_YYYYMMDD_HHMMSS'  # use a fresh timestamp
+py -3.13 -B scripts/build_r2_figures.py --run-id $r2RunId
+py -3.13 -B scripts/build_r2_advisor_documents.py --run-id $r2RunId
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/export_r2_word_pdf.ps1 -RunDirectory "outputs/thesis/$r2RunId"
+py -3.13 -B scripts/finalize_r2_artifacts.py --run-id $r2RunId
+py -3.13 -B -m pytest -q tests -rs
+```
+
+本机为Windows+Word；`render_docx.py` 因缺LibreOffice未能运行，故采用Word COM保存/更新目录/导出，再用Poppler渲染PDF逐页检查。Word脚本仅识别并清理本任务启动的自动化进程，不关闭用户手动文档。正式学校模板未确认，不将此版视为送审格式。R2本轮实际全仓 **717 passed、0 failed、4 skipped**；4项原因与上段R1环境一致但属于不同运行，不相加。新测试包括R2真实图生成、DOCX可编辑结构、冻结数值、A/B矩阵、20项引用闭合；没有重新运行MCMC或长期实验。私人备份/恢复演练仍待已批准位置。
+
 ## 环境
 
 原研究记录 Python 3.13；R1 授权研究环境为 Python 3.13.7、NumPy 2.3.2、SciPy 1.16.2、pandas 2.3.2、pytest 9.1.0，见[R1-0](audits/r1_preflight.md)。`requirements.txt` 是最低依赖声明，不是严格 lock；`GroupBy.apply(include_groups=...)` 需要 pandas≥2.2。R1-1 独立诊断另用 ArviZ 0.22.0 的隔离 Python 3.13 环境，确切包清单和输入哈希保存在私有审计输出。两环境不得混写成原 Phase 2D 的历史依赖锁。

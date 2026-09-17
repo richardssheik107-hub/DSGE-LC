@@ -12,8 +12,8 @@
 | A06 | P1 | IN_PROGRESS（R1-4操作定义完成） | 月度/同比/库存指数定义与产业推导 | [R1-4审计](../audits/r1_measurement_and_units.md)已固定方程-观测-状态-单位和符号限制；导师方法范围与最终论文表述仍待确认 |
 | A07 | P1 | RESOLVED_WITH_DOCUMENTED_LIMITATION（历史复核/未来防护） | OOS成功状态、预测目标与同键公平比较 | [R1-5审计](../audits/r1_forecast_and_external_validation.md)：旧 86/86 起点优化成功、56 完整键真值一致、15 指标复算；未收敛解未来禁入；真前瞻验证仍属未来研究 |
 | A08 | P1 | RESOLVED_WITH_DOCUMENTED_LIMITATION（解释降级） | 外部验证加入时间样本误差与filtered对照 | [R1-5审计](../audits/r1_forecast_and_external_validation.md)：同 draw 滤波/平滑、原水平/log/变化/去趋势、固定 2,000×3/6 月配对块；高成本相关有同源成分，库存变化量区间跨零 |
-| A09 | P1 | IN_PROGRESS | 核心参考稿映射已写；实际理论章节与导师确认待做 | 不宣称已实现四部门/混频/联合期现；引用正式版本可追踪 |
-| A10 | P1 | IN_PROGRESS | R1 已同步11份中期源稿，仍需引文核实、正式图表/公式/格式 | 无待核验关键引用；正式DOCX/PPTX实排；导师反馈逐条闭合 |
+| A09 | P1 | IN_PROGRESS | 核心参考稿映射与R2理论章节已写；[18]卷期页码由两家作者机构交叉确认；导师范围仍待确认 | [R2文献预检](../audits/r2_literature_preflight.md)；[17]正式发表状态、[18] DOI/全文及关键方法文献页节仍待核 |
+| A10 | P1 | IN_PROGRESS（导师讨论版完成，学校版未完成） | R2本地11图、13张Word原生表、29页论文PDF和审阅说明已逐页验收；R1中期源稿保持历史 | [R2图版验收](../audits/r2_full_figure_draft.md)；学生核对、学校模板/引用及AI规则、导师意见逐条闭合后才可判提交就绪 |
 | A11 | P1 | IN_PROGRESS | pandas最低版本已修；构建便携/集成分层和私有artifact备份 | 干净环境执行记录、依赖锁、数据/scaler/code绑定、恢复演练 |
 | A12 | 管理 | OPEN | 2027/2028日期与学院流程统一 | 导师/学院实际日期登记；此前不阻塞当前P0 |
 
@@ -30,3 +30,5 @@
 本轮独立入口：`python scripts/audit_posterior_independent.py`；它只检查收敛和最小artifact元数据，不替代A01的核心代码修补、支持区间/稳定性或全链验收。
 
 R1-6 的 85 条结果登记、10 条主张修订和11份中期源稿同步见[主张复核](../audits/r1_claim_revision.md)；旧准备度/检查表仅作历史快照。R1-6 不自动关闭 A06/A09—A12 的导师、文献、学校与许可数据恢复事项。
+
+2026-09-17 R2-2已完成本地导师全图版和文档实排，详见[R2验收](../audits/r2_full_figure_draft.md)。A10的出版子项完成不等于A10整体关闭；A06、A09、A11、A12及导师/学院确认仍有独立外部证据要求。R2未重开已完成的A01—A05，也未把4项可选依赖SKIP记为通过。

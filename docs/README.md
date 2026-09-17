@@ -1,10 +1,12 @@
 # 文档导航
 
-R1-6 导航修订：2026-09-16。旧版见 Git 提交 `ef2eb3785b8dad58b7d4532298f5a184972b8260`。阶段历史 memo 保留，R1-6 结果登记及 11 份中期源稿已按[最终验收](audits/r1_final_validation.md)同步；当前结论以 R1 审计和[最新状态](CURRENT_STATUS.md)为准，正式提交仍不就绪。
+导航更新：2026-09-17。旧版见 Git 提交 `ef2eb3785b8dad58b7d4532298f5a184972b8260`。阶段历史 memo 保留，R1-6 结果登记及11份中期源稿已按[最终验收](audits/r1_final_validation.md)同步；R2本地导师全图讨论版已按[逐页验收](audits/r2_full_figure_draft.md)完成。当前判定以[最新状态](CURRENT_STATUS.md)为准，学校正式提交仍不就绪。
 
 ## 当前入口（优先阅读）
 
 - [CURRENT_STATUS](CURRENT_STATUS.md)：当前判定、已做/未做边界。
+- [R2论文目录](thesis/README.md)：九章正文、导师说明、真实图版来源及反馈台账。
+- [R2文献预检](audits/r2_literature_preflight.md)、[图版验收](audits/r2_full_figure_draft.md)与[最终交接](audits/r2_final_handoff.md)：真实引用层级、本地DOCX/PDF、逐页检查与准备度。
 - [R1 阶段状态](audits/r1_stage_status.md)：R1-0—R1-6 实际证据、技术与解释分级。
 - [全论文与仓库审计](audits/2026_09_16_research_audit.md)：代码、口径、结论及复现问题。
 - [生猪参考稿对照](references/hog_paper_comparison.md)：35页修改稿的实际方法、差异与核对事项。
@@ -44,7 +46,7 @@ R1 的机器可核中间表及结果登记位于 Git 忽略的 `outputs/revision
 
 [证据矩阵](midterm_evidence_matrix.md) · [原论断登记](midterm_claim_registry.md) · [图清单](midterm_figure_manifest.md) · [表清单](midterm_table_manifest.md) · [结果摘要](midterm_result_digest.md) · [复现记录](midterm_reproducibility_manifest.md)
 
-R1-6 的受影响文件已在开头标明修订日期、范围、受影响结论及 Git 旧版定位，并在正文替换过时强结论。正式 DOCX/PPTX、学校格式、引文正式版本及导师反馈仍需单独验收。图文件存在不等于图内结果已最终验收。
+R1-6 的受影响文件已在开头标明修订日期、范围、受影响结论及 Git 旧版定位，并在正文替换过时强结论。R2论文DOCX/PDF已在本地实排，但学校格式、关键引文全文及导师反馈仍需单独验收。中期PPTX的正式学校版仍待要求明确；图文件存在不等于图内结果已最终验收。
 
 ## 计划与历史
 

@@ -1,11 +1,26 @@
 {
   "schema_version": 2,
-  "updated": "2026-09-16",
+  "updated": "2026-09-17",
   "audit_base_commit": "674020c37ce093139c778798cd91f739435d8da8",
   "r1_5_evidence_commit": "ef2eb3785b8dad58b7d4532298f5a184972b8260",
   "r1_6_acceptance_evidence": "docs/audits/r1_final_validation.md",
   "status": "TECHNICAL_REVISION_COMPLETE_WITH_INTERPRETATION_LIMITS",
+  "advisor_text_draft_ready": true,
+  "advisor_full_figure_draft_ready_with_limits": true,
+  "student_review_pending": true,
   "thesis_submission_ready": false,
+  "r2_advisor_draft": {
+    "run_id": "R2_20260917_095514",
+    "audit": "docs/audits/r2_full_figure_draft.md",
+    "source_manifest_local": "outputs/thesis/R2_20260917_095514/文件与结果来源清单.json",
+    "thesis_pdf_pages": 29,
+    "advisor_note_pdf_pages": 1,
+    "figures": 11,
+    "editable_tables": 13,
+    "display_equation_paragraphs": 20,
+    "school_template_confirmed": false,
+    "private_backup_restoration_confirmed": false
+  },
   "status_semantics": {
     "OPEN": "尚未开始或尚无足够关闭证据",
     "IN_PROGRESS": "已有部分可核工作，仍有明确待办",
@@ -20,7 +35,8 @@
   "formal_deadlines_confirmed": false,
   "full_pipeline_rerun_in_this_update": false,
   "historical_initial_portable_audit_tests_passed": 8,
-  "latest_authorized_full_test": {"stage":"R1-6","passed":705,"skipped":4,"failed":0,"command":"py -3.13 -B -m pytest -q tests -rs"},
+  "historical_r1_6_full_test": {"stage":"R1-6","passed":705,"skipped":4,"failed":0,"command":"py -3.13 -B -m pytest -q tests -rs"},
+  "latest_authorized_full_test": {"stage":"R2-2","passed":717,"skipped":4,"failed":0,"command":"py -3.13 -B -m pytest -q tests -rs","skip_reason":"optional independent audit dependency (1) and ArviZ unavailable in this environment (3)"},
   "tasks": [
     {"id":"A01","priority":"P0","status":"RESOLVED_WITH_DOCUMENTED_LIMITATION","title":"Independent ESS/MCSE and stored-posterior re-audit","evidence":"docs/audits/r1_posterior_diagnostics.md","limitation":"baseline provenance PASS_RECONSTRUCTED, not an original sidecar"},
     {"id":"A02","priority":"P0","status":"RESOLVED_WITH_DOCUMENTED_LIMITATION","title":"Historical sensitivity classifier and complete readiness gate","evidence":"docs/audits/r1_historical_and_fevd.md","limitation":"six late-window comparisons AMBIGUOUS; interpretation review required"},
@@ -30,8 +46,8 @@
     {"id":"A06","priority":"P1","status":"IN_PROGRESS","title":"Measurement, inventory-index meaning and theory alignment","evidence":"docs/audits/r1_measurement_and_units.md","remaining":"advisor acceptance of semi-structural scope and final theory wording"},
     {"id":"A07","priority":"P1","status":"RESOLVED_WITH_DOCUMENTED_LIMITATION","title":"Forecast convergence, estimand and information set","evidence":"docs/audits/r1_forecast_and_external_validation.md","limitation":"retrospective recursive OOS with release approximation, not prospective real-time validation"},
     {"id":"A08","priority":"P1","status":"RESOLVED_WITH_DOCUMENTED_LIMITATION","title":"External validation uncertainty and independence","evidence":"docs/audits/r1_forecast_and_external_validation.md","limitation":"inventory changes weak; cost route shares input; intervals are not full joint uncertainty"},
-    {"id":"A09","priority":"P1","status":"IN_PROGRESS","title":"Reference-paper mapping and advisor scope confirmation","evidence":"docs/references/hog_paper_comparison.md","remaining":"advisor method-scope confirmation and verified formal source-version mapping"},
-    {"id":"A10","priority":"P1","status":"IN_PROGRESS","title":"Citation, thesis prose and formatted deliverables","remaining":"verify key references, obtain advisor feedback, render and inspect final DOCX/PPTX against school format"},
+    {"id":"A09","priority":"P1","status":"IN_PROGRESS","title":"Reference-paper mapping and advisor scope confirmation","evidence":"docs/audits/r2_literature_preflight.md","remaining":"advisor method-scope confirmation, key full-text reading, [17] publication status and [18] DOI/full text"},
+    {"id":"A10","priority":"P1","status":"IN_PROGRESS","title":"Citation, thesis prose and formatted deliverables","evidence":"docs/audits/r2_full_figure_draft.md","remaining":"student content check, advisor feedback, school format and AI rules; neutral full-figure advisor DOCX/PDF are complete"},
     {"id":"A11","priority":"P1","status":"IN_PROGRESS","title":"Environment, test tiers and private artifact restoration","evidence":"docs/REPRODUCIBILITY.md","remaining":"clean-environment lock and licensed private artifact backup/recovery drill"},
     {"id":"A12","priority":"MANAGEMENT","status":"OPEN","title":"Confirm graduation and school submission deadlines","remaining":"obtain advisor/school dates; 2028-06 remains an assumption, 2027-06 an earlier contingency"}
   ]
