@@ -179,10 +179,12 @@ def polish(path,profile,fonts,preview=False):
             _boundary(p,base,cols,profile['column_gap_mm']);cols=1;continue
         if text==BEGIN:
             if stack:raise ValueError('Nested wide blocks')
-            stack.append(cols);_boundary(p,base,cols,profile['column_gap_mm']);cols=1;continue
+            stack.append(cols);_boundary(p,base,cols,profile['column_gap_mm'])
+            cols=1;continue
         if text==END:
             if not stack:raise ValueError('Unexpected wide end')
-            _boundary(p,base,cols,profile['column_gap_mm']);cols=stack.pop();continue
+            _boundary(p,base,cols,profile['column_gap_mm'])
+            cols=stack.pop();continue
         if text.startswith('R3EQNUMBER_'):
             if last_math is None:raise ValueError('Equation number without math')
             number=text.split('_',1)[1]
@@ -209,10 +211,14 @@ def polish(path,profile,fonts,preview=False):
             pf.first_line_indent=Pt(0);pf.line_spacing=1.15;pf.space_after=Pt(5)
             for r in p.runs:r.font.size=Pt(profile['note_font_pt'])
         elif p._p.xpath('.//w:drawing'):
-            pf.first_line_indent=Pt(0);pf.keep_with_next=True;pf.space_after=Pt(0)
+            # An exact 17.5 pt body line spacing clips large inline drawings.
+            # A proportional line lets Word reserve the image's actual height.
+            pf.first_line_indent=Pt(0);pf.keep_with_next=False;pf.space_after=Pt(0)
+            pf.line_spacing=1.0
             p.alignment=WD_ALIGN_PARAGRAPH.CENTER
         elif p.style.name.startswith('Heading'):
             pf.first_line_indent=Pt(0);pf.keep_with_next=True;pf.page_break_before=False
+            if text.startswith('附录：'):pf.page_break_before=True
         elif p.style.name not in ('Title','Subtitle'):
             p.style='Normal'
             p.alignment=WD_ALIGN_PARAGRAPH.JUSTIFY
@@ -225,7 +231,27 @@ def polish(path,profile,fonts,preview=False):
                 if rf is not None:rf.set(qn('w:eastAsia'),fonts['body'])
     if stack:raise ValueError('Unclosed wide block')
     body.remove(body.sectPr);body.append(_section(base,cols,profile['column_gap_mm']))
+    data_table_count=len(doc.tables)
     for t in doc.tables:three_line_table(t,profile,full)
+    # Keep each large image, caption and note in one unsplittable Word row.
+    # A bare image paragraph can be clipped at a continuous section boundary
+    # even though the drawing remains embedded in the DOCX/PDF.
+    for index,p in enumerate(paras):
+        if not p._p.xpath('.//w:drawing'):continue
+        if index+2>=len(paras) or not re.match(r'^图\s*\d+\s',paras[index+1].text.strip()):
+            raise ValueError('Figure caption does not follow drawing')
+        if not paras[index+2].text.strip().startswith('注：'):
+            raise ValueError('Figure note does not follow caption')
+        frame=doc.add_table(rows=1,cols=1)
+        frame.autofit=False;frame.columns[0].width=Mm(full)
+        frame.cell(0,0).width=Mm(full)
+        frame._tbl.tblPr.append(OxmlElement('w:tblBorders'))
+        frame.rows[0]._tr.get_or_add_trPr().append(OxmlElement('w:cantSplit'))
+        p._p.addprevious(frame._tbl)
+        cell=frame.cell(0,0)
+        for item in paras[index:index+3]:cell._tc.append(item._p)
+        for empty in list(cell._tc.xpath('./w:p')):
+            if not empty.xpath('.//w:drawing') and not ''.join(empty.itertext()).strip():cell._tc.remove(empty)
     # Pandoc may inherit a colored title border from a default style.
     for root in (doc.element,doc.styles.element):
         for node in list(root.xpath('.//w:pBdr')):node.getparent().remove(node)
@@ -234,5 +260,5 @@ def polish(path,profile,fonts,preview=False):
             h=s.header.paragraphs[0];h.text='排版校样｜省略私有图表，非完整论文图版';h.alignment=WD_ALIGN_PARAGRAPH.CENTER
             for r in h.runs:r.font.size=Pt(8)
     doc.save(path)
-    return {'tables':len(doc.tables),'figures':len(doc.inline_shapes),'equations':equations,
+    return {'tables':data_table_count,'figures':len(doc.inline_shapes),'equations':equations,
             'fonts':fonts,'profile':profile['version'],'visual_review':'PENDING'}

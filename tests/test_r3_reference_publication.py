@@ -12,7 +12,7 @@ from docx.oxml.ns import qn
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from src.publication.reference_style import load_profile,installed_fonts,template,three_line_table,wrap_markdown,BEGIN,END
+from src.publication.reference_style import load_profile,installed_fonts,template,three_line_table,wrap_markdown,polish,BEGIN,END
 from scripts.build_r3_reference_draft import prepare
 from scripts import build_r3_reference_figures as plots
 DRAFT=ROOT/'docs/thesis/reference_style_manuscript.md'
@@ -72,6 +72,25 @@ def test_table_is_native_fixed_width_and_three_line(tmp_path):
     assert t.rows[-1].cells[0]._tc.xpath('./w:tcPr/w:tcBorders/w:bottom')[0].get(qn('w:val'))=='single'
     assert t.rows[1].cells[0]._tc.xpath('./w:tcPr/w:tcBorders/w:left')[0].get(qn('w:val'))=='nil'
     assert all(c.paragraphs[0].style.name=='Normal' for r in t.rows for c in r.cells)
+
+
+def test_full_width_figure_reserves_image_height_and_keeps_caption(tmp_path):
+    profile=load_profile(PROFILE);fonts=installed_fonts(profile)
+    image=tmp_path/'figure.png';Image.new('RGB',(800,400),'white').save(image)
+    path=tmp_path/'figure.docx';template(profile,fonts,path);doc=Document(path)
+    doc.add_paragraph(BEGIN)
+    doc.add_picture(str(image))
+    doc.add_paragraph('图1 测试图注')
+    doc.add_paragraph('注：测试图注与图保持在同一单元。')
+    doc.add_paragraph(END)
+    doc.save(path)
+    result=polish(path,profile,fonts)
+    rendered=Document(path)
+    figure=rendered.tables[-1].cell(0,0)
+    assert result['figures']==1 and len(figure.paragraphs)==3
+    assert figure.paragraphs[0].paragraph_format.line_spacing==1.0
+    assert figure.paragraphs[1].text=='图1 测试图注'
+    assert figure.paragraphs[2].text.startswith('注：')
 
 
 def test_feved_wrong_sum_rejected(tmp_path):

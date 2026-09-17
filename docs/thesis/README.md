@@ -2,13 +2,13 @@
 
 ## 当前写作版：R3 参考式研究稿
 
-**[五部分新正文](reference_style_manuscript.md)** · [例文写法/版式对照](reference_style_map.md) · [本地合成计划](../plans/r3_reference_style_completion.md) · [修改与验证](../audits/r3_reference_style_revision.md)
+**[五部分新正文](reference_style_manuscript.md)** · [例文写法/版式对照](reference_style_map.md) · [本地合成计划](../plans/r3_reference_style_completion.md) · [完整图版逐页验收](../audits/r3_full_figure_visual_acceptance.md) · [导师审阅说明](r3_advisor_review_note.md)
 
 用户要求学习生猪例文的写法及图表格式后，当前文稿改为五部分：引言、文献综述、理论与模型、实证分析、结论与启示。正文保留自己的R1结论，移除反复出现的工程日志；重要限制仍位于相关方法和结果旁，完整诊断放附录。
 
 样式代码：`src/publication/reference_style.py`；配置：`configs/hog_reference_style.json`。图生成：`scripts/build_r3_reference_figures.py`；Word/PDF：`scripts/build_r3_reference_draft.py`。宽图表、三线表和中文灰度图针对实际印刷宽度设计，不以把旧大图缩小完成。
 
-本轮已完成源码和文字校样，不声称新的私有八图完整稿已在用户本机运行。真实图版要按照计划读取现有R1/R2结果，不能补造轨迹。当前不是学校最终模板。
+本轮已在授权本地以已验收R1/R2来源生成八张真实图、可编辑Word与16页PDF，并逐页核验图表、公式与分页。私人产物位于被gitignore保护的 `outputs/thesis/R3_20260917_150517_FINAL/`，不推送公共Git。当前仍不是学校最终模板。
 
 ## 历史版本：R2 九章导师初稿
 

@@ -94,11 +94,12 @@ def main():
     subprocess.run(['pandoc',str(md),'--from=markdown+tex_math_dollars+pipe_tables','--to=docx','--standalone','-M','date=',
         '--reference-doc='+str(reference),'--resource-path='+str(ROOT),'--output='+str(docx)],check=True,cwd=ROOT)
     report=polish(docx,profile,fonts,args.preview_text_only)
-    report.update({'run_id':args.run_id,'source_sha256':digest(SOURCE),'style_sha256':digest(profile_path),'docx_sha256':digest(docx),
+    report.update({'run_id':args.run_id,'source_sha256':digest(SOURCE),'style_sha256':digest(profile_path),
                    'scope':'LAYOUT_PREVIEW_ONLY' if args.preview_text_only else 'PRIVATE_FULL_FIGURE_GENERATED',
                    'omitted':omitted,'school_submission_ready':False,'no_estimation':True})
     if args.render_pdf:
         pdf=render_pdf(docx);report['pdf_sha256']=digest(pdf)
+    report['docx_sha256']=digest(docx)
     if not args.preview_text_only and before!=input_checks():raise RuntimeError('Frozen inputs changed')
     (out/'publication_manifest.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({'docx':str(docx),'scope':report['scope'],'visual_review':'PENDING'},ensure_ascii=False))
