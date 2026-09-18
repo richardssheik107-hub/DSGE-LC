@@ -1,45 +1,45 @@
 # DSGE-LC · 碳酸锂价格波动与定价机制
 
-**当前：保留R1/R3基线，先完成碳酸锂自己的“主体—决策—方程—闭合—观测”设计。** 2026-09-18的详细文献研究已形成，不是给原五条式子补几条引用就宣布微观基础完成。
+**当前：D01产业文献与经济方程设计。原R1实证和R3短稿保留，候选产业模型未估计。**
 
-## 当前阅读顺序
+## 本轮已经落地的研究资料
 
-1. [五条方程的五项核查](docs/research/equation_foundations_20260918.md)
-2. [带假设和变换的自有推导](docs/theory/lithium_partial_equilibrium_v1.md)
-3. [18项原始来源与实际阅读层级](docs/references/equation_evidence_20260918.md)
-4. [下一次组会的方程讨论稿](docs/thesis/supervisor_equation_discussion_20260918.md)
-5. [机制设计门槛与下一步](docs/plans/equation_design_gate_20260918.md)
+1. [45项来源地图](docs/references/industry_literature_map_20260918.md)：34项学术研究、8项政策、3项官方数据/模型说明；有分层阅读记录，不是45篇全文精读。
+2. [12张重点阅读卡](docs/research/industry_model_reading_cards_20260918.md)：哪些原假设可借鉴、哪些不适用于中国月度LC、哪些数学对象仍待全文核对。
+3. [28组模块化候选关系](docs/theory/lithium_modular_equation_blueprint_v2.md)：主体决策、成本/投入、产能、贸易、寿命回收、库存、价格、政策与观测。不是28个自由状态方程，不同时强加互斥闭合。
+4. [给导师的产业模型讨论稿](docs/thesis/supervisor_industry_model_expansion_20260918.md)。
+5. [从阅读到选模的下一步](docs/plans/industry_literature_to_model_20260918.md)及[交付审计](docs/audits/2026_09_18_industry_literature_expansion.md)。
 
-## 实际状态
+资料JSON在`data/metadata/industry_literature_library_20260918.json`，公式登记在`configs/industry_equation_blueprint_v2.json`。新增来源与原20/18记录有重叠，不相加、不自动插入原论文。
 
-| 内容 | 状态 |
+## 原五式审查仍是基础
+
+[逐式五问](docs/research/equation_foundations_20260918.md) · [局部自有推导v1](docs/theory/lithium_partial_equilibrium_v1.md) · [原18来源](docs/references/equation_evidence_20260918.md) · [机制设计门槛](docs/plans/equation_design_gate_20260918.md)
+
+p/c是标准化月度涨幅，q/d是标准化同比；n是增长失衡指数，不是吨数库存。SC6×汇率是元/吨精矿，不是元/吨LC成本。材料制造、装车和采购不直接等同；再生、原矿进口与成品产量不能重复加总。政策应进入可说明的行为/约束，不能一项文件一个自由价格冲击。
+
+## 已有资产与未完成边界
+
+| 对象 | 状态 |
 |---|---|
-| R1实证/统计修正 | 已验收且保留限制，未在本轮重跑 |
-| R2历史长稿 | 保留，不双写 |
-| R3短稿与版式 | [原稿](docs/thesis/reference_style_manuscript.md)保留，单栏16页、8图、7表、12式为既有记录 |
-| D01文献与经济基础 | IN_PROGRESS；本轮新增逐式检索、自有示例与20项合成测试，不等于新模型实证完成 |
-| D02及新比较 | 仍待机制/测量和合成门槛；不得把旧draw换名当新模型 |
-| 学位长稿/正式提交 | 蓝图已登记、长稿未初始化；学校提交NO |
+| R1 | 数值和诊断修正已验收，解释限制保持；本轮未重跑 |
+| R2/R3 | 历史长稿及单栏16页短稿/图版保留；不写入尚未估计的新结果 |
+| D01 | IN_PROGRESS；本轮完成45来源登记、12卡、28组候选、27项便携检查；全文/工程数据/闭合选择/导师范围尚未全部完成 |
+| D02及新实证 | 仍未冻结/运行；不能只按公式数量增加参数 |
+| 最终论文 | 未形成已批准新模型；学校提交NO |
 
-## 本轮关键边界
+科学基点`0128c1aee9e553bc16ef2025ed4f29eaea3e9850`。v1核心69个月2020-01—2025-09、结构57期；记录hash `9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5`。当前M0为月度半结构，不是完整CGE/DSGE或期现联合定价。
 
-p/c是标准化月度涨幅，q/d是标准化同比增长；n是增长失衡指数而非吨数库存；矿价×FX是元/吨精矿，不是元/吨LC成本。需先明确需求移位与实际用量、短期生产与慢投资、期初库存与净补库、均衡价格与评估报价。当前M0为月度半结构基线，不是完整CGE、DSGE、混频或期现联合定价。
+本轮GitHub-only，未读取Windows、商业CSV/NPZ/PDF，未重新计算私人哈希；不重采样、不改src/structural。新E25示例仅为条件内点代数，不是已校准产业均衡或政策因果结果。
 
-本次新增的二次调整成本和局部均衡推导仅为**未估计示例**，没有替换原方程。用单位和算子反例防止不成立的解释；不能用新增测试数认定学位要求已满足。
-
-## 保护资产与来源
-
-v1核心2020-01—2025-09共69个月，结构2021-01—2025-09共57期；记录hash `9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5`。本轮GitHub-only，未读取商业CSV/NPZ/PDF、未重算私人hash、未改原M0/先验/后验。历史测试分别保留，不能相加成当前测试数。
-
-现行R1结果仍含：成本FEVD均值约21.30%、价格残差约64.89%；结构预测只H1优于RW且未胜BVAR；后期历史歧义；库存rho_n敏感；路线成本同源；同端点月频峰值在同期。新设计不得以降低残差或保留旧故事为目标。
-
-## 导航与检查
-
-[当前状态](docs/CURRENT_STATUS.md) · [前次全仓审计](docs/audits/2026_09_17_baseline_repository_audit.md) · [本轮交付](docs/audits/2026_09_18_equation_research.md) · [长期深化计划](docs/plans/thesis_deepening_2026_2028.md) · [比较草案](docs/protocols/thesis_comparison_protocol_v1.md) · [学位稿蓝图](docs/thesis/degree_thesis_blueprint.md) · [复现指南](docs/REPRODUCIBILITY.md)
+## 执行入口
 
 ```bash
-python -m pytest -q tests/test_equation_foundations.py
+python scripts/audit_industry_library.py
+PYTHONPATH=. python -m pytest -q tests/test_industry_library_and_blueprint.py
 python scripts/audit_thesis_governance.py --check-git-baseline
 ```
 
-第一条为新增20项合成/登记测试，不读私人数据；第二条是已有计划治理检查，不给理论或论文评分。显式提交代码/文档，不上传商业文件、原始论文、凭证或私人图版。导师范围和学院验收保持独立。
+前两条本轮运行：45来源/28关系登记PASS，27项新增便携测试PASS、编译PASS。最后一条是既有治理入口，不声称本轮重新执行旧全仓或私人验证。测试数不与历史20/705/717等相加。
+
+[当前状态](docs/CURRENT_STATUS.md) · [文档导航](docs/README.md) · [长期计划](docs/plans/thesis_deepening_2026_2028.md) · [旧比较草案](docs/protocols/thesis_comparison_protocol_v1.md) · [R3短稿](docs/thesis/reference_style_manuscript.md) · [学位稿蓝图](docs/thesis/degree_thesis_blueprint.md)

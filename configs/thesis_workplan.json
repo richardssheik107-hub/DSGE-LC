@@ -1,25 +1,25 @@
 {
-  "schema_version": 1,
-  "date": "2026-09-18",
-  "baseline_id": "BASELINE_R1_R3_20260917",
-  "baseline_commit": "0128c1aee9e553bc16ef2025ed4f29eaea3e9850",
-  "status": "EQUATION_FOUNDATIONS_REVIEW_IN_PROGRESS",
-  "scope": "LITERATURE_AND_ILLUSTRATIVE_ALGEBRA_NO_NEW_EMPIRICAL_RUN",
-  "short_paper_source": "docs/thesis/reference_style_manuscript.md",
-  "historical_long_draft": "docs/thesis/advisor_draft.md",
-  "degree_thesis_blueprint": "docs/thesis/degree_thesis_blueprint.md",
-  "degree_thesis_source_after_initialization": "docs/thesis/degree_thesis.md",
-  "degree_thesis_source_created": false,
-  "thesis_submission_ready": false,
-  "planned_experiments": [
+  "schema_version":1,
+  "date":"2026-09-18",
+  "baseline_id":"BASELINE_R1_R3_20260917",
+  "baseline_commit":"0128c1aee9e553bc16ef2025ed4f29eaea3e9850",
+  "status":"EQUATION_FOUNDATIONS_REVIEW_IN_PROGRESS",
+  "scope":"LITERATURE_AND_CANDIDATE_MODULAR_ALGEBRA_NO_NEW_EMPIRICAL_RUN",
+  "short_paper_source":"docs/thesis/reference_style_manuscript.md",
+  "historical_long_draft":"docs/thesis/advisor_draft.md",
+  "degree_thesis_blueprint":"docs/thesis/degree_thesis_blueprint.md",
+  "degree_thesis_source_after_initialization":"docs/thesis/degree_thesis.md",
+  "degree_thesis_source_created":false,
+  "thesis_submission_ready":false,
+  "planned_experiments":[
     {"id":"CMP_NOINV4","state_count":4,"free_parameter_count":13,"status":"PROTOCOL_DRAFT_NOT_RUN","task":"D03","requires_new_estimation":true,"result_evidence":[]},
     {"id":"CMP_COSTFEEDBACK15","state_count":5,"free_parameter_count":15,"status":"PROTOCOL_DRAFT_NOT_RUN","task":"D04","requires_new_estimation":true,"result_evidence":[]},
     {"id":"ROB_COMMON57","state_count":5,"free_parameter_count":14,"status":"PROTOCOL_DRAFT_NOT_RUN","task":"D05","requires_new_estimation":true,"result_evidence":[]},
     {"id":"FUT_DAILY_INCREMENT","status":"PROTOCOL_DRAFT_NOT_RUN","task":"D06","requires_new_estimation":true,"result_evidence":[]}
   ],
-  "tasks": [
+  "tasks":[
     {"id":"D00","title":"Audit and pin present baseline","status":"COMPLETE","depends_on":[],"evidence":["docs/audits/2026_09_17_baseline_repository_audit.md"]},
-    {"id":"D01","title":"Literature mapping and theory-to-equation argument","status":"IN_PROGRESS","depends_on":["D00"],"evidence":["docs/research/equation_foundations_20260918.md","docs/theory/lithium_partial_equilibrium_v1.md","docs/references/equation_evidence_20260918.md","docs/audits/2026_09_18_equation_research.md"],"remaining":"Key full-text reading, actor/product boundary, closure and measurement design, actual supervisor scope decision; illustrative derivation is not an estimated model."},
+    {"id":"D01","title":"Literature mapping and theory-to-equation argument","status":"IN_PROGRESS","depends_on":["D00"],"evidence":["docs/research/equation_foundations_20260918.md","docs/theory/lithium_partial_equilibrium_v1.md","docs/references/equation_evidence_20260918.md","docs/audits/2026_09_18_equation_research.md","docs/references/industry_literature_map_20260918.md","docs/research/industry_model_reading_cards_20260918.md","docs/theory/lithium_modular_equation_blueprint_v2.md","docs/audits/2026_09_18_industry_literature_expansion.md"],"remaining":"Read key full mathematical texts, complete partial bibliographies, choose product/actor boundary and exclusive closures with actual supervisor record, obtain engineering and measurement evidence; new model not estimated."},
     {"id":"D02","title":"Freeze comparison designs and validate dimension-specific interfaces","status":"PLANNED","depends_on":["D01"],"evidence":[]},
     {"id":"D03","title":"Inventory necessity comparison","status":"PLANNED","depends_on":["D02"],"evidence":[]},
     {"id":"D04","title":"Cost feedback identification sensitivity","status":"PLANNED","depends_on":["D02"],"evidence":[]},
@@ -28,16 +28,29 @@
     {"id":"D07","title":"Integrate degree-thesis chapters and adviser review","status":"PLANNED","depends_on":["D03","D04","D05","D06"],"evidence":[]},
     {"id":"D08","title":"Licensed backup, environment reproduction and school submission checks","status":"PLANNED","depends_on":["D07"],"evidence":[]}
   ],
-  "gates": {
+  "gates":{
     "D02":["written_protocol_commit","parameter_order_by_model","units_and_prior_scale_checked","synthetic_validation","no_real_result_selection","actor_and_product_boundary","market_closure_documented","whole_equation_observation_operator","supervisor_scope_record"],
     "posterior":{"chains":4,"max_rhat":1.01,"min_bulk_ess":400,"min_tail_ess":400,"max_mean_mcse_over_sd":0.05}
   },
-  "scheduling":{"week_origin":"actual_D01_start_not_assumed_calendar_start","target_weeks":[8,10],"advisor_short_paper_review":"now_in_parallel","earlier_degree_contingency":"2027-06","degree_target_assumption":"2028-06","school_dates_confirmed":false,"current_priority":"equation foundations before empirical comparison; see equation_design_gate_20260918.md"},
+  "scheduling":{"week_origin":"actual_D01_start_not_assumed_calendar_start","target_weeks":[8,10],"advisor_short_paper_review":"now_in_parallel","earlier_degree_contingency":"2027-06","degree_target_assumption":"2028-06","school_dates_confirmed":false,"current_priority":"source reading, commodity boundary and exclusive closure before new estimation; see industry_literature_to_model_20260918.md"},
   "literature_budget_not_requirement":{"candidate_records":[60,80],"potential_used_references":[45,65],"mandatory_minimum":null,"full_text_reading_not_yet_complete":true},
   "success_not_required":["positive_significance","beating_BVAR","low_residual_share","preserving_old_lead_lag_peak"],
   "separate_future_scope":["M1_capacity","mixed_frequency","TVP","Markov_switching","Harvey_cycle","options","tick_microstructure","joint_futures_pricing","data_freeze_v2_as_main_sample"],
   "status_definitions":{"PLANNED":"No empirical result claimed","COMPLETE":"Deliverables with evidence, not thesis approval","BLOCKED":"Cannot safely proceed","OMITTED_WITH_REASON":"Explicit evidence-based scope decision, never silent disappearance","IN_PROGRESS":"Execution begun; empirical acceptance not implied"},
   "plan":"docs/plans/thesis_deepening_2026_2028.md",
   "protocol":"docs/protocols/thesis_comparison_protocol_v1.md",
-  "equation_design_gate":{"status":"PENDING_MODEL_CHOICE","document":"docs/plans/equation_design_gate_20260918.md","review":"docs/research/equation_foundations_20260918.md","discussion":"docs/thesis/supervisor_equation_discussion_20260918.md","as_of":"2026-09-18","source_records":18,"new_synthetic_tests_passed":20,"new_real_estimation":false,"supervisor_approval_evidence":null,"current_protocol_remains_draft":true}
+  "equation_design_gate":{"status":"PENDING_MODEL_CHOICE","document":"docs/plans/equation_design_gate_20260918.md","review":"docs/research/equation_foundations_20260918.md","discussion":"docs/thesis/supervisor_equation_discussion_20260918.md","as_of":"2026-09-18","source_records":18,"new_synthetic_tests_passed":20,"new_real_estimation":false,"supervisor_approval_evidence":null,"current_protocol_remains_draft":true,"counts_scope":"previous_five_equation_batch_not_added_to_new_collection"},
+  "industry_literature_expansion":{
+    "as_of":"2026-09-18","starts_at":"c6cd7b8668d7d12994f3a783be6657a7b6aa5fc1",
+    "ledger":"data/metadata/industry_literature_library_20260918.json",
+    "map":"docs/references/industry_literature_map_20260918.md",
+    "reading_cards":"docs/research/industry_model_reading_cards_20260918.md",
+    "blueprint":"configs/industry_equation_blueprint_v2.json",
+    "plan":"docs/plans/industry_literature_to_model_20260918.md",
+    "total_unique_records":45,"academic_records":34,"policy_records":8,"official_other_records":3,
+    "full_text_read_count":0,"priority_reading_cards":12,"candidate_relation_groups":28,
+    "new_portable_tests_passed":27,"all_old_tests_rerun":false,
+    "new_empirical_estimation":false,"model_choice":"PENDING",
+    "existing_sources_overlap":true,"automatic_manuscript_reference_insertion":false
+  }
 }
