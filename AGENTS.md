@@ -1,37 +1,29 @@
-# Active research-agent instructions — master's rebuild
+# Active instructions: capacity/storage theory candidate
 
-Effective 2026-09-19. User decision: restart from the research question, following the hog manuscript's research workflow, NOT its short-paper layout. Do not resume patching old M0 experiments. The current goal is early rounds of equations for supervisor discussion, then a newly specified and independently estimated master's thesis.
+Effective 2026-09-19. User explicitly authorised the two necessary theoretical expansions before experiments: capacity investment with construction delay and endogenous storage. They are now derived and locally solved, not empirically estimated. Do not resume old M0 patches or add optional trade/recycling/futures/mixed-frequency mechanisms by default.
 
-## Read in this order
+Read docs/CURRENT_STATUS.md, docs/rebuild/MASTER_PLAN.md, configs/masters_rebuild_plan_v1.json, and docs/rebuild/two_step_v1/{EQUATIONS,STATE_SPACE,SOURCES,VALIDATION}. Current model ID is RB_CAPACITY_STORAGE_V1. NEXT_WORK_PACKAGE.md is now scope/measurement/identification discussion, not another instruction to start deriving the same two modules.
 
-1. docs/CURRENT_STATUS.md
-2. docs/rebuild/MASTER_PLAN.md
-3. configs/masters_rebuild_plan_v1.json
-4. docs/rebuild/EQUATION_ROUNDS.md and docs/rebuild/NEXT_WORK_PACKAGE.md
-5. configs/repository_lifecycle_20260919.json
+## Scientific boundaries
 
-These supersede operational instructions in historical A/D plans, R2/R3 prompts, phase reports, and old configs. configs/thesis_workplan.json and configs/finalization_tasks.json are preserved historical records, not active task queues. No automatic NOINV4, COSTFEEDBACK15, COMMON57 or futures-increment runs.
+26 numbered groups are not 26 independent equations. Interior sequence count is L+8, memory state dimension L+4; the two-period six-state fixture is purely synthetic, NOT lithium construction-time evidence. Price, material output and capacity shadow value are equilibrium outputs. No arbitrary new investment/inventory AR innovations.
 
-## Current task
+The new producer replaces the single-period FOC and gQ^2 cost with intertemporal Q/J decisions and gamma Q^2/(2K). Endogenous storage replaces given-J E24; old C0 closed-form price does not apply. Log inventory service is an explicit own assumption informed by operational storage theory. A no-service positive-cost deterministic reference cannot support positive interior stock; do not silently set service to zero while retaining the interior solver.
 
-RB01/RB02: research question/commodity boundary and the first equation discussion packet. Read selected primary mathematical sources, recheck C0 assumptions and timing, state/control/output distinctions, reference levels, whole-equation observation mapping and minimum independent data. Then draft capacity-investment and storage alternatives; do not run new MCMC. Draft-ready is not sent, supervisor-reviewed or approved.
+The potential formulation requires price-taking, common beta/expectations, no unaccounted wedges and fixed outside flows. Riccati solves a first-order INTERIOR approximation, not a global constrained model or a fitted state matrix. Never drop future expectation terms, clip invalid levels to claim equilibrium, or confuse deterministic reference with stochastic mean. Inactive capacity must still have a documented productive role if claiming positive investment.
 
-Existing C0 and the 28-relation library are reusable candidates, not accepted main-model results. AR processes are assumptions, not profit-optimization deductions. E24 makes inventory an accounting state; zero physical loss gives a unit root. The state matrices operate on deviations around a valid conditional reference point, not zero physical levels. Current cost state is not automatically an engineering-cost residual. A control realized at t can enter the next state as memory; state representation is not unique.
+## What is permitted next
 
-## Theory and estimation gates
-
-All adopted equations need source role, original page/section where used, units, timing, independent condition count and measurement. E23 replaces E24; E14 replaces single-period E10/E11. Do not discard forward expectations to manufacture A/B/C. Capacity queues need construction timing and initial projects. Inactive capacity with no productive role cannot simply be claimed to induce investment. Interior formulas require valid levels/constraints; a linear matrix is not a global constrained solver.
-
-Before real estimation: actual supervisor scope record AND data/observation, solution/constraints, identification, synthetic recovery and protocol gates. Approval is not an identification proof. Do not claim later experiments will necessarily be quick. No forced equation/state count or forced forecasting/significance wins. Long master's chapters are flexible and need no five-chapter restriction.
+Supervisor discussion, source/engineering checks, product and observation mapping, local/nonlinear feasibility investigation, parameter identification and synthetic recovery. Formal real-data estimation remains blocked until actual supervisor scope evidence AND technical/protocol gates. Draft-ready does not mean sent or approved. Do not promise later estimation must be quick. Long master's structure is flexible; no fixed chapter or equation count.
 
 ## Preserve and separate
 
-Snapshot before rebuild: c6a61b72e1c21acb042be47b13c6138854c8d8df, branch archive/pre-masters-rebuild-20260919. Legacy scientific baseline: 0128c1aee9e553bc16ef2025ed4f29eaea3e9850. Keep data/v1, original src/structural, priors/posteriors, R1 corrections and R2/R3 results traceable. They need not appear in the new thesis. Never rename old draws as new results. New data transforms, model IDs, code and output paths are independent.
+New theoretical code lives in src/rebuild_theory. Preserve existing data, src/structural, src/theory_audit, priors/posteriors and R1/R2/R3 records. New model IDs, observation transformations and results are separate; never relabel old draws. Old A/D/phase ledgers are historical, not current queues. Fixed predecessor is df0e66dcb57eae5e326168a059c3010492d94670; full pre-rebuild c6a61b72e1c21acb042be47b13c6138854c8d8df remains accessible.
 
-LC/LiOH/LCE/elemental Li and product grades differ. SC6*FX is CNY/t concentrate, not CNY/tLC. Installation, battery production, material manufacture, purchases and use differ. Finished LC imports, ore inputs and already-counted recycled output must not be counted twice. Same-data derived J/I cannot be treated as independent observations without their error mapping. Policy targets are not realized coefficients; no unsupported causal policy claims.
+LC grades, LC/LiOH/LCE, ore/finished imports, installation/manufacturing/use, annual capacity/monthly output differ. Same-source I and differenced J are not independent measurements. No double-counted recycled output. Sources motivate mechanisms, not industry parameter values or unsupported causal claims.
 
-## Execution and evidence
+## Execution
 
-This chat is GitHub-only; do not reconnect Windows. An authorized local agent must preserve unknown workspace changes. No hard reset, force push, broad git add, untracked-file deletion, credentials, proprietary data, paper originals or private outputs committed. Archive obsolete instructions rather than erase scientific history.
+GitHub-only chat: do not reconnect Windows. Preserve unknown local changes. No hard reset, force push, broad git add, untracked deletion, credentials, proprietary data, original papers or private outputs committed. Archive/supersede conflicting instructions rather than erase history.
 
-Current portable check: python scripts/audit_masters_rebuild.py; python -m pytest -q tests/test_masters_rebuild.py. Historical tests have their original scope. Run only what is reported; no summing past test counts, no treating pasted commands as executed tests. Commit explicit paths, compare parent/changed files, fast-forward only, verify remote head and preserved objects. Update status with actual evidence only. Do not claim a local full checkout, private hashes, new estimation, school acceptance or supervisor approval unless actually verified.
+Actual current tests: PYTHONPATH=. python -m pytest -q tests/test_capacity_storage_v1.py; python scripts/check_capacity_storage_v1.py. Report only executed commands and scope, never add historical counts. Update explicit paths, compare diff, fast-forward only and verify remote head/protected objects. No claiming full checkout, private hashes, parameter recovery, estimation, advisor or school acceptance without evidence.

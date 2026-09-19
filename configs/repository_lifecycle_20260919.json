@@ -92,5 +92,18 @@
   ],
   "private_data_deleted": false,
   "history_rewritten": false,
-  "full_scientific_suite_rerun": false
+  "full_scientific_suite_rerun": false,
+  "latest_theory_snapshot": {
+    "commit": "df0e66dcb57eae5e326168a059c3010492d94670",
+    "branch": "archive/pre-capacity-storage-20260919"
+  },
+  "current_theory": "docs/rebuild/two_step_v1/EQUATIONS.md",
+  "superseded_theory_entrypoints": [
+    {
+      "path": "docs/rebuild/R1_BASELINE_EQUATIONS.md",
+      "old_blob_sha": "3fceb814e9e2334a81813ea82c3d2e62e86cfe5a",
+      "snapshot_commit": "df0e66dcb57eae5e326168a059c3010492d94670",
+      "role": "PREDECESSOR_NOT_JOINTLY_IMPOSED"
+    }
+  ]
 }

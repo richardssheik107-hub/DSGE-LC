@@ -3,7 +3,7 @@
   "workflow_id": "MASTERS_REBUILD_20260919",
   "date": "2026-09-19",
   "active": true,
-  "status": "THEORY_DESIGN_IN_PROGRESS",
+  "status": "CAPACITY_STORAGE_THEORY_READY_FOR_DISCUSSION",
   "origin": "USER_REQUEST_RESTART_FROM_RESEARCH_QUESTION",
   "reviewed_commit": "c6a61b72e1c21acb042be47b13c6138854c8d8df",
   "legacy_scientific_commit": "0128c1aee9e553bc16ef2025ed4f29eaea3e9850",
@@ -11,8 +11,8 @@
   "next_work_package": "docs/rebuild/NEXT_WORK_PACKAGE.md",
   "research_question": "碳酸锂价格形成及波动持续性如何由需求、成本、生产与候选投资/储存机制共同解释？",
   "current_focus": [
-    "RB01",
-    "RB02"
+    "RB05",
+    "RB06"
   ],
   "legacy_model_required_in_new_thesis": false,
   "old_results_relabelled": false,
@@ -37,7 +37,7 @@
     "approved_model_id": null,
     "approved_spec_commit": null,
     "first_discussion_after": "RB02",
-    "packet_status": "DRAFT_R1_BASELINE_READY_NOT_SENT"
+    "packet_status": "DRAFT_TWO_STEP_LOCAL_SOLUTION_READY_NOT_SENT"
   },
   "estimation_gate": {
     "status": "PENDING",
@@ -117,20 +117,32 @@
     {
       "id": "RB03",
       "title": "R2-K产能投资候选",
-      "status": "PLANNED",
+      "status": "IN_PROGRESS",
       "depends_on": [
         "RB02"
       ],
-      "evidence": []
+      "evidence": [
+        "docs/rebuild/two_step_v1/EQUATIONS.md",
+        "docs/rebuild/two_step_v1/STATE_SPACE.md",
+        "docs/rebuild/two_step_v1/VALIDATION.md"
+      ],
+      "theory_deliverable_status": "CANDIDATE_DERIVATION_AND_LOCAL_SOLUTION_COMPLETE",
+      "remaining": "Supervisor choice, product/data/parameter identification; not empirical acceptance."
     },
     {
       "id": "RB04",
       "title": "R2-I库存候选与R3联立收束",
-      "status": "PLANNED",
+      "status": "IN_PROGRESS",
       "depends_on": [
         "RB02"
       ],
-      "evidence": []
+      "evidence": [
+        "docs/rebuild/two_step_v1/EQUATIONS.md",
+        "docs/rebuild/two_step_v1/STATE_SPACE.md",
+        "docs/rebuild/two_step_v1/VALIDATION.md"
+      ],
+      "theory_deliverable_status": "CANDIDATE_DERIVATION_AND_LOCAL_SOLUTION_COMPLETE",
+      "remaining": "Supervisor choice, product/data/parameter identification; not empirical acceptance."
     },
     {
       "id": "RB05",
@@ -140,7 +152,8 @@
         "RB03",
         "RB04"
       ],
-      "evidence": []
+      "evidence": [],
+      "next_action": "Scope discussion and minimum input/observation audit; do not start estimation."
     },
     {
       "id": "RB06",
@@ -149,7 +162,8 @@
       "depends_on": [
         "RB05"
       ],
-      "evidence": []
+      "evidence": [],
+      "next_action": "Scope discussion and minimum input/observation audit; do not start estimation."
     },
     {
       "id": "RB07",
@@ -226,8 +240,8 @@
   },
   "schedule": {
     "type": "WORK_PACKAGE_BUDGET_NOT_DEADLINE",
-    "early_discussion": "after 2-3 focused R0/R1 work packages",
-    "extension_budget": "approximately 1-2 work weeks; review and data dependencies explicit",
+    "early_discussion": "Two-step packet now ready for student review and actual supervisor discussion.",
+    "extension_budget": "This two-step candidate derivation and local solution are delivered; no additional mechanism expansion queued.",
     "formal_school_deadline": null
   },
   "required_files": [
@@ -237,7 +251,14 @@
     "docs/rebuild/SUPERVISOR_PACKET.md",
     "docs/rebuild/THESIS_OUTLINE.md",
     "docs/rebuild/NEXT_WORK_PACKAGE.md",
-    "docs/rebuild/REPOSITORY_AUDIT.md"
+    "docs/rebuild/REPOSITORY_AUDIT.md",
+    "docs/rebuild/two_step_v1/EQUATIONS.md",
+    "docs/rebuild/two_step_v1/STATE_SPACE.md",
+    "docs/rebuild/two_step_v1/SOURCES.md",
+    "docs/rebuild/two_step_v1/VALIDATION.md"
   ],
-  "validation_scope": "WORKFLOW_METADATA_AND_LOCAL_C0_BOUNDARY_CHECKS_NOT_EMPIRICAL_VALIDATION"
+  "validation_scope": "CANDIDATE_CAPACITY_STORAGE_DERIVATION_AND_LOCAL_SYNTHETIC_SOLUTION_NOT_EMPIRICAL",
+  "current_theory_candidate": "RB_CAPACITY_STORAGE_V1",
+  "latest_theory_source_commit": "df0e66dcb57eae5e326168a059c3010492d94670",
+  "theory_advance_authorization": "User requested two necessary theory expansions before experiments; open data and supervisor gates are retained."
 }
