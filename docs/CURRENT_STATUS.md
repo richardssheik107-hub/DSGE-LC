@@ -1,8 +1,20 @@
 # 当前研究与学位论文状态
 
+## 2026-09-19第二次补充：C0 状态方程推导完成，观测与识别尚未冻结
+
+基于 C0_1P1D_CONDITIONAL_V1，本轮已经把“主体行为如何生成状态方程”完整写出：[状态空间推导](theory/c0_state_space_derivation_v1.md) · [导师短稿](thesis/supervisor_state_equation_note_20260919.md) · [候选配置](../configs/c0_state_space_candidate_v1.json) · [审计](audits/2026_09_19_c0_state_space_derivation.md)。
+
+候选扩展状态为 [z_demand, c_unit_cost, q_reference, i_physical]。需求环境和单位成本环境采用最小持久过程；参考产量由生产商一阶条件、当期清算价格和上一期产量共同决定；库存由物理递推进入状态。E24 下库存是会计 state 而不是价格反馈 state，价格和材料产出是当期均衡输出。
+
+由此得到显式 A(theta)、B(theta)、C(theta)，所有系数可追溯到 g、kappa、a、b、rho_d、rho_c 等原始参数。理论审计代码位于 src/theory_audit/c0_state_space.py，10项便携合成检查PASS。
+
+该结果只证明当前内点代数与矩阵映射一致，不证明真实参数识别、商品口径匹配或新模型估计成立。没有修改 src/structural、M0先验/后验、数据和论文实证结果。
+
+D01仍IN_PROGRESS，D02仍未冻结。下一门槛从“能否写出状态方程”推进到“完整观测算子与输入覆盖”：核 P/Q/R/Y/a/alpha/m/Uother/N/月末I 的同商品定义、时间覆盖与独立来源，再决定成本是否保留潜在 state、需求代理如何锚定、最终状态数和自由参数数目。
+
 ## 2026-09-19最新补充：已有具体推荐，尚未正式冻结
 
-本轮核对起点`main@cf787f5d73cb707a48970cf16353ff7258244183`。D01仍为IN_PROGRESS，总状态仍为EQUATION_FOUNDATIONS_REVIEW_IN_PROGRESS。新增[公式取舍与旧实验衔接方案](plans/model_selection_and_experiment_bridge_20260919.md)、[选择配置](../configs/model_selection_20260919.json)和[交付核查](audits/2026_09_19_model_selection_bridge.md)。
+本轮核对起点main@cf787f5d73cb707a48970cf16353ff7258244183。D01仍为IN_PROGRESS，总状态仍为EQUATION_FOUNDATIONS_REVIEW_IN_PROGRESS。新增[公式取舍与旧实验衔接方案](plans/model_selection_and_experiment_bridge_20260919.md)、[选择配置](../configs/model_selection_20260919.json)和[交付核查](audits/2026_09_19_model_selection_bridge.md)。
 
 **首选建议：保留M0基线，新增C0_1P1D_CONDITIONAL_V1。** 选择一个参考锂盐生产块、一个直接LC耗用材料块；库存先核算，采用E24给定净补库，由清算推出价格，不另加独立价格AR。未建模路线通过R进入总量；不把SC6赋给全行业，也不把装车当材料制造。2路线/2材料示例不再视为第一轮必须估计的最低维度。
 
@@ -14,7 +26,7 @@
 
 ## 2026-09-18批次记录（原文保留）
 
-更新2026-09-18；本轮开始`main@c6cd7b8668d7d12994f3a783be6657a7b6aa5fc1`。状态继续 **EQUATION_FOUNDATIONS_REVIEW_IN_PROGRESS**，没有用文献数量或公式数量替代新模型验收。
+更新2026-09-18；本轮开始main@c6cd7b8668d7d12994f3a783be6657a7b6aa5fc1。状态继续 **EQUATION_FOUNDATIONS_REVIEW_IN_PROGRESS**，没有用文献数量或公式数量替代新模型验收。
 
 ## 本轮完成
 
@@ -46,6 +58,6 @@
 
 M0_CORE5/M0_FULL14，5状态4创新14自由参数；rho_n=.80、battery_sd=.25。核心69个月、结构57期；旧价格/矿价月差分scaler68期、产量/装车同比57期。新蓝图的大写物理量与旧标准化状态不能混用。
 
-记录核心hash`9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5`，本轮未读私人文件重新计算。原FEVD均值8.91/21.30/4.90/64.89、结构U2 .914/1.240/1.131、后期历史歧义和外部验证限制不变，不因新引文升级为因果结果。
+记录核心hash9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5，本轮未读私人文件重新计算。原FEVD均值8.91/21.30/4.90/64.89、结构U2 .914/1.240/1.131、后期历史歧义和外部验证限制不变，不因新引文升级为因果结果。
 
 下一步优先精读12项及补数学对象，核对LC产品/品级、材料层、工艺投入与投产/库存数据，取得导师范围记录后冻结D02。旧四项比较仍是半结构限制检验，不能代替新产业基础。2027/2028日期仍是既有规划假设。

@@ -2,13 +2,27 @@
 
 **当前：D01产业文献与经济方程设计。原R1实证和R3短稿保留，候选产业模型未估计。**
 
+## 2026-09-19：状态方程已从 C0 机制中推导
+
+[完整状态空间推导](docs/theory/c0_state_space_derivation_v1.md) · [给导师的短稿](docs/thesis/supervisor_state_equation_note_20260919.md) · [候选配置](configs/c0_state_space_candidate_v1.json) · [本轮审计](docs/audits/2026_09_19_c0_state_space_derivation.md)
+
+现在可以明确说明：状态方程不是先手写矩阵。先由生产商和材料制造商的一阶条件、E24净补库闭合和LC市场清算得到价格与产量，再定义需求环境、同单位成本、调整惯性产量和物理库存的跨期过程，得到候选
+
+\[
+x_t=A(\theta)x_{t-1}+B(\theta)\varepsilon_t+C(\theta)u_t.
+\]
+
+扩展会计状态候选为 [z_demand, c_unit_cost, q_reference, i_physical]；其中库存目前是 E24 下的会计 state，不反馈价格，价格和材料产出是均衡输出而非独立 AR 状态。
+
+新增理论审计代码 10 项便携合成检查通过；没有接入估计器、没有新后验、没有冻结最终状态数/参数数，也没有改变 M0 科学基线。
+
 ## 2026-09-19：公式取舍与原实验衔接
 
 [完整选模方案](docs/plans/model_selection_and_experiment_bridge_20260919.md) · [机器可读选择](configs/model_selection_20260919.json) · [本轮核查](docs/audits/2026_09_19_model_selection_bridge.md)
 
-建议保留M0全部原实验，新设计收敛为一个参考锂盐生产块、一个直接耗用LC的材料制造块和给定净补库的清算：`C0_1P1D_CONDITIONAL_V1`，选择E24，不同时启用E23。旧总产量映射为参考产量加其他产出；旧装车不直接等于材料产出。先核商品品级、工程、库存和观测，再新估计。
+建议保留M0全部原实验，新设计收敛为一个参考锂盐生产块、一个直接耗用LC的材料制造块和给定净补库的清算：C0_1P1D_CONDITIONAL_V1，选择E24，不同时启用E23。旧总产量映射为参考产量加其他产出；旧装车不直接等于材料产出。先核商品品级、工程、库存和观测，再新估计。
 
-状态为 **RECOMMENDED_NOT_FROZEN**，不是已批准或已估计。16项新增便携设计/合成代数检查通过；原27项与研究全套未重跑，测试数不相加。运行：`PYTHONPATH=. python -m pytest -q tests/test_model_selection_bridge.py`。
+状态为 **RECOMMENDED_NOT_FROZEN**，不是已批准或已估计。16项新增便携设计/合成代数检查通过；原27项与研究全套未重跑，测试数不相加。运行：PYTHONPATH=. python -m pytest -q tests/test_model_selection_bridge.py。
 
 以下保留2026-09-18批次的原说明；其中“本轮”指该历史批次。
 
@@ -20,7 +34,7 @@
 4. [给导师的产业模型讨论稿](docs/thesis/supervisor_industry_model_expansion_20260918.md)。
 5. [从阅读到选模的下一步](docs/plans/industry_literature_to_model_20260918.md)及[交付审计](docs/audits/2026_09_18_industry_literature_expansion.md)。
 
-资料JSON在`data/metadata/industry_literature_library_20260918.json`，公式登记在`configs/industry_equation_blueprint_v2.json`。新增来源与原20/18记录有重叠，不相加、不自动插入原论文。
+资料JSON在data/metadata/industry_literature_library_20260918.json，公式登记在configs/industry_equation_blueprint_v2.json。新增来源与原20/18记录有重叠，不相加、不自动插入原论文。
 
 ## 原五式审查仍是基础
 
@@ -38,17 +52,15 @@ p/c是标准化月度涨幅，q/d是标准化同比；n是增长失衡指数，�
 | D02及新实证 | 仍未冻结/运行；不能只按公式数量增加参数 |
 | 最终论文 | 未形成已批准新模型；学校提交NO |
 
-科学基点`0128c1aee9e553bc16ef2025ed4f29eaea3e9850`。v1核心69个月2020-01—2025-09、结构57期；记录hash `9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5`。当前M0为月度半结构，不是完整CGE/DSGE或期现联合定价。
+科学基点0128c1aee9e553bc16ef2025ed4f29eaea3e9850。v1核心69个月2020-01—2025-09、结构57期；记录hash 9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5。当前M0为月度半结构，不是完整CGE/DSGE或期现联合定价。
 
 本轮GitHub-only，未读取Windows、商业CSV/NPZ/PDF，未重新计算私人哈希；不重采样、不改src/structural。新E25示例仅为条件内点代数，不是已校准产业均衡或政策因果结果。
 
 ## 执行入口
 
-```bash
-python scripts/audit_industry_library.py
-PYTHONPATH=. python -m pytest -q tests/test_industry_library_and_blueprint.py
-python scripts/audit_thesis_governance.py --check-git-baseline
-```
+    python scripts/audit_industry_library.py
+    PYTHONPATH=. python -m pytest -q tests/test_industry_library_and_blueprint.py
+    python scripts/audit_thesis_governance.py --check-git-baseline
 
 前两条本轮运行：45来源/28关系登记PASS，27项新增便携测试PASS、编译PASS。最后一条是既有治理入口，不声称本轮重新执行旧全仓或私人验证。测试数不与历史20/705/717等相加。
 
