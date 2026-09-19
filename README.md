@@ -1,67 +1,36 @@
-# DSGE-LC · 碳酸锂价格波动与定价机制
+# DSGE-LC｜碳酸锂价格机制：硕士论文重建
 
-**当前：D01产业文献与经济方程设计。原R1实证和R3短稿保留，候选产业模型未估计。**
+**当前主线：从研究问题重新建立产业模型。先做几轮状态方程并与导师讨论，再进入新估计；不再修补旧 M0，不复制生猪稿的五部分论文结构。**
 
-## 2026-09-19：状态方程已从 C0 机制中推导
+## 从这里开始
 
-[完整状态空间推导](docs/theory/c0_state_space_derivation_v1.md) · [给导师的短稿](docs/thesis/supervisor_state_equation_note_20260919.md) · [候选配置](configs/c0_state_space_candidate_v1.json) · [本轮审计](docs/audits/2026_09_19_c0_state_space_derivation.md)
+[新版完整计划](docs/rebuild/MASTER_PLAN.md) · [前期方程迭代](docs/rebuild/EQUATION_ROUNDS.md) · [导师讨论包](docs/rebuild/SUPERVISOR_PACKET.md) · [硕士论文提纲](docs/rebuild/THESIS_OUTLINE.md)
 
-现在可以明确说明：状态方程不是先手写矩阵。先由生产商和材料制造商的一阶条件、E24净补库闭合和LC市场清算得到价格与产量，再定义需求环境、同单位成本、调整惯性产量和物理库存的跨期过程，得到候选
+研究问题与产业边界 → 主体目标和约束 → 基础方程 → 产能/库存候选扩展 → 导师范围确认 → 观测、均衡解与识别 → 新估计 → 动态解释和检验 → 长篇毕业论文。
 
-\[
-x_t=A(\theta)x_{t-1}+B(\theta)\varepsilon_t+C(\theta)u_t.
-\]
+## 下一步具体做什么
 
-扩展会计状态候选为 [z_demand, c_unit_cost, q_reference, i_physical]；其中库存目前是 E24 下的会计 state，不反馈价格，价格和材料产出是均衡输出而非独立 AR 状态。
+执行 [RB01/RB02工作包](docs/rebuild/NEXT_WORK_PACKAGE.md)：把[研究问题草案](docs/rebuild/RESEARCH_CHARTER.md)、现有 C0 的来源/时序/状态映射、最低数据接口整理为首轮可讨论材料。之后优先做产能投资和储存两轮候选，不以凑满28条公式为目标。
 
-新增理论审计代码 10 项便携合成检查通过；没有接入估计器、没有新后验、没有冻结最终状态数/参数数，也没有改变 M0 科学基线。
+现有 C0 是候选起点，不是已批准主模型。价格是均衡输出，E24下库存只记账；成本/需求AR是设定。真正的跨期投资或内生储存会替换原闭合并改变求解。模型维度、样本和参数不受旧M0绑定。
 
-## 2026-09-19：公式取舍与原实验衔接
+## 状态与执行权限
 
-[完整选模方案](docs/plans/model_selection_and_experiment_bridge_20260919.md) · [机器可读选择](configs/model_selection_20260919.json) · [本轮核查](docs/audits/2026_09_19_model_selection_bridge.md)
+[当前状态](docs/CURRENT_STATUS.md) · [唯一当前任务台账](configs/masters_rebuild_plan_v1.json) · [仓库生命周期](configs/repository_lifecycle_20260919.json) · [本次梳理记录](docs/rebuild/REPOSITORY_AUDIT.md)
 
-建议保留M0全部原实验，新设计收敛为一个参考锂盐生产块、一个直接耗用LC的材料制造块和给定净补库的清算：C0_1P1D_CONDITIONAL_V1，选择E24，不同时启用E23。旧总产量映射为参考产量加其他产出；旧装车不直接等于材料产出。先核商品品级、工程、库存和观测，再新估计。
+新版计划和讨论草案已建立；导师尚未审阅，新估计未启动。导师同意范围之后，还要通过数据、解和识别/合成预检，才能放开批量实验。
 
-状态为 **RECOMMENDED_NOT_FROZEN**，不是已批准或已估计。16项新增便携设计/合成代数检查通过；原27项与研究全套未重跑，测试数不相加。运行：PYTHONPATH=. python -m pytest -q tests/test_model_selection_bridge.py。
+```bash
+python scripts/audit_masters_rebuild.py
+python -m pytest -q tests/test_masters_rebuild.py
+```
 
-以下保留2026-09-18批次的原说明；其中“本轮”指该历史批次。
+这两项是当前工作流/边界检查，不是新实证验收。
 
-## 本轮已经落地的研究资料
+## 旧工作放在哪里
 
-1. [45项来源地图](docs/references/industry_literature_map_20260918.md)：34项学术研究、8项政策、3项官方数据/模型说明；有分层阅读记录，不是45篇全文精读。
-2. [12张重点阅读卡](docs/research/industry_model_reading_cards_20260918.md)：哪些原假设可借鉴、哪些不适用于中国月度LC、哪些数学对象仍待全文核对。
-3. [28组模块化候选关系](docs/theory/lithium_modular_equation_blueprint_v2.md)：主体决策、成本/投入、产能、贸易、寿命回收、库存、价格、政策与观测。不是28个自由状态方程，不同时强加互斥闭合。
-4. [给导师的产业模型讨论稿](docs/thesis/supervisor_industry_model_expansion_20260918.md)。
-5. [从阅读到选模的下一步](docs/plans/industry_literature_to_model_20260918.md)及[交付审计](docs/audits/2026_09_18_industry_literature_expansion.md)。
+完整重整前快照位于 `archive/pre-masters-rebuild-20260919`，固定提交 `c6a61b72e1c21acb042be47b13c6138854c8d8df`。旧数据、模型实现、R1修正和R2/R3稿件保留原身份；过时操作计划已改为短入口，不再安排下一步。
 
-资料JSON在data/metadata/industry_literature_library_20260918.json，公式登记在configs/industry_equation_blueprint_v2.json。新增来源与原20/18记录有重叠，不相加、不自动插入原论文。
+旧 `configs/thesis_workplan.json`、`configs/finalization_tasks.json`、`configs/phase*` 和旧运行脚本仅为历史复现。四项旧比较已经退出当前队列，既不自动执行，也不改写成已完成。复用工具/资料须审核，旧实验不是新论文必须保留的内容。
 
-## 原五式审查仍是基础
-
-[逐式五问](docs/research/equation_foundations_20260918.md) · [局部自有推导v1](docs/theory/lithium_partial_equilibrium_v1.md) · [原18来源](docs/references/equation_evidence_20260918.md) · [机制设计门槛](docs/plans/equation_design_gate_20260918.md)
-
-p/c是标准化月度涨幅，q/d是标准化同比；n是增长失衡指数，不是吨数库存。SC6×汇率是元/吨精矿，不是元/吨LC成本。材料制造、装车和采购不直接等同；再生、原矿进口与成品产量不能重复加总。政策应进入可说明的行为/约束，不能一项文件一个自由价格冲击。
-
-## 已有资产与未完成边界
-
-| 对象 | 状态 |
-|---|---|
-| R1 | 数值和诊断修正已验收，解释限制保持；本轮未重跑 |
-| R2/R3 | 历史长稿及单栏16页短稿/图版保留；不写入尚未估计的新结果 |
-| D01 | IN_PROGRESS；本轮完成45来源登记、12卡、28组候选、27项便携检查；全文/工程数据/闭合选择/导师范围尚未全部完成 |
-| D02及新实证 | 仍未冻结/运行；不能只按公式数量增加参数 |
-| 最终论文 | 未形成已批准新模型；学校提交NO |
-
-科学基点0128c1aee9e553bc16ef2025ed4f29eaea3e9850。v1核心69个月2020-01—2025-09、结构57期；记录hash 9146b3c858aa0f1be5fa59720b0446515f0a21c60fa032712f76dd248aeab7f5。当前M0为月度半结构，不是完整CGE/DSGE或期现联合定价。
-
-本轮GitHub-only，未读取Windows、商业CSV/NPZ/PDF，未重新计算私人哈希；不重采样、不改src/structural。新E25示例仅为条件内点代数，不是已校准产业均衡或政策因果结果。
-
-## 执行入口
-
-    python scripts/audit_industry_library.py
-    PYTHONPATH=. python -m pytest -q tests/test_industry_library_and_blueprint.py
-    python scripts/audit_thesis_governance.py --check-git-baseline
-
-前两条本轮运行：45来源/28关系登记PASS，27项新增便携测试PASS、编译PASS。最后一条是既有治理入口，不声称本轮重新执行旧全仓或私人验证。测试数不与历史20/705/717等相加。
-
-[当前状态](docs/CURRENT_STATUS.md) · [文档导航](docs/README.md) · [长期计划](docs/plans/thesis_deepening_2026_2028.md) · [旧比较草案](docs/protocols/thesis_comparison_protocol_v1.md) · [R3短稿](docs/thesis/reference_style_manuscript.md) · [学位稿蓝图](docs/thesis/degree_thesis_blueprint.md)
+[文档导航](docs/README.md) · [代码与目录边界](docs/repository_architecture.md) · [28关系如何选用](configs/equation_roadmap_v1.json)

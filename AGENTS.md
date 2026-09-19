@@ -1,34 +1,37 @@
-# Research-agent rules
+# Active research-agent instructions — master's rebuild
 
-Read docs/CURRENT_STATUS.md, configs/thesis_workplan.json, docs/plans/equation_design_gate_20260918.md and docs/plans/industry_literature_to_model_20260918.md first. Scientific baseline remains 0128c1aee9e553bc16ef2025ed4f29eaea3e9850; R1 corrections and R3 publication stay protected. This literature expansion starts at c6cd7b8, not a new empirical run.
+Effective 2026-09-19. User decision: restart from the research question, following the hog manuscript's research workflow, NOT its short-paper layout. Do not resume patching old M0 experiments. The current goal is early rounds of equations for supervisor discussion, then a newly specified and independently estimated master's thesis.
 
-## Current priority: D01 literature, actors, units and closure
+## Read in this order
 
-Read the 45-source ledger/map, 12 reading cards and docs/theory/lithium_modular_equation_blueprint_v2.md. It is an original CANDIDATE relation library, not a replica of a cited paper, a calibrated industry system, 28 latent states or 28 free parameters. D01 stays IN_PROGRESS: selected-section reading is not full-text completion or supervisor approval.
+1. docs/CURRENT_STATUS.md
+2. docs/rebuild/MASTER_PLAN.md
+3. configs/masters_rebuild_plan_v1.json
+4. docs/rebuild/EQUATION_ROUNDS.md and docs/rebuild/NEXT_WORK_PACKAGE.md
+5. configs/repository_lifecycle_20260919.json
 
-Source IDs L/R/T/O/P belong to this batch. The previous 18-source and manuscript 20-reference lists overlap; do not sum them or add candidates to the thesis as fully verified citations. Metadata, abstract, visible sections, official text/code and full-text levels must remain separate. Missing author/year fields and unread mathematical objects remain unresolved.
+These supersede operational instructions in historical A/D plans, R2/R3 prompts, phase reports, and old configs. configs/thesis_workplan.json and configs/finalization_tasks.json are preserved historical records, not active task queues. No automatic NOINV4, COSTFEEDBACK15, COMMON57 or futures-increment runs.
 
-NOINV4, COSTFEEDBACK15, COMMON57 and daily futures increment remain PROTOCOL_DRAFT_NOT_RUN. Review those legacy restriction tests after the new economic-design gate; no automatic large CGE/DSGE/M1/mixed-frequency/cycle/TVP/options run.
+## Current task
 
-## Economic and numerical boundaries
+RB01/RB02: research question/commodity boundary and the first equation discussion packet. Read selected primary mathematical sources, recheck C0 assumptions and timing, state/control/output distinctions, reference levels, whole-equation observation mapping and minimum independent data. Then draft capacity-investment and storage alternatives; do not run new MCMC. Draft-ready is not sent, supervisor-reviewed or approved.
 
-- Old p/c are standardized monthly log changes, q/d are year-on-year log changes. A new level-based economic equation must have a whole-equation/observation mapping, not just renamed inputs.
-- n is a growth-imbalance index, not physical tonnes; rho=.8 is not material survival.
-- SC6 times FX is CNY/t concentrate. Convert route inputs/yields to CNY/t actual LC before forming any matched cost margin. TEA average annualized cost is not automatically short-run MC.
-- LC/LiOH/LCE/elemental Li and product grades differ. LCE conversion does not establish market substitutability. Actual LC production already including recycled LC must not add recycling twice; ore imports already processed into Q are not finished-product imports.
-- Battery manufacture, installation, materials use, purchases and in-use stock are different stages. End-of-life cohorts need pre-sample history; second use delays recycling; internal scrap loops cannot become extra new resource.
-- Single-period production E10/E11 and forward-looking E14 are alternatives. Given net inventory additions E24 and optimal storage E23 are alternatives. Count independent conditions, not all definitions and their derived closed-form expression twice.
-- Policy issue/publication/effectiveness dates differ. Guidance is not automatically a binding constraint, targets are not realized coefficients, after-sample 2026 implementation is not a 2020–2025 dummy. Preserve P05 date conflict.
-- C0 interior formula only applies when all assumed interiors hold. Capacity/stockout requires another solution method; forward expectations cannot be deleted to manufacture an A matrix. Equation count and synthetic tests do not prove identification.
-- Preserve original v1/scalers/prior/posterior/structural code/results. New targets require separate IDs and estimation. Do not retag old draws or feed new dimensions to hard-coded M0 interfaces.
-- Retain R1 additive mean summaries, initial/mean components, fixed-assumption warnings and retrospective/prospective boundaries. No significance or forecasting victory targets.
+Existing C0 and the 28-relation library are reusable candidates, not accepted main-model results. AR processes are assumptions, not profit-optimization deductions. E24 makes inventory an accounting state; zero physical loss gives a unit root. The state matrices operate on deviations around a valid conditional reference point, not zero physical levels. Current cost state is not automatically an engineering-cost residual. A control realized at t can enter the next state as memory; state representation is not unique.
 
-## Sources, access and completion
+## Theory and estimation gates
 
-Use primary sources, not a discovery service's metadata alone. Do not claim exact equations from blank HTML math, failed PDF screenshots or inaccessible full text. Own derivations must be labelled as such. Do not run unknown engineering macros or download large bundles without a justified need. Full texts and proprietary data are not committed.
+All adopted equations need source role, original page/section where used, units, timing, independent condition count and measurement. E23 replaces E24; E14 replaces single-period E10/E11. Do not discard forward expectations to manufacture A/B/C. Capacity queues need construction timing and initial projects. Inactive capacity with no productive role cannot simply be claimed to induce investment. Interior formulas require valid levels/constraints; a linear matrix is not a global constrained solver.
 
-The meeting-assistant summary is not verbatim supervisor approval or a confirmed mandate for full CGE. Actual adviser scope and school requirements remain independent decisions.
+Before real estimation: actual supervisor scope record AND data/observation, solution/constraints, identification, synthetic recovery and protocol gates. Approval is not an identification proof. Do not claim later experiments will necessarily be quick. No forced equation/state count or forced forecasting/significance wins. Long master's chapters are flexible and need no five-chapter restriction.
 
-This ChatGPT task is GitHub-only; no Windows reconnection. Authorized local Codex may use its workspace after preserving unknown changes. No force push, hard reset, broad git add, untracked deletion, credentials or private figure/data uploads. Do not claim private hashes recomputed unless actually read.
+## Preserve and separate
 
-For this batch: python scripts/audit_industry_library.py; PYTHONPATH=. python -m pytest -q tests/test_industry_library_and_blueprint.py. These are ledger and synthetic C0 checks, not empirical recovery. Existing governance tests have separate scope. Per completed package update evidence/status, commit/push and verify remote. No unsupported background work, no summed historical test counts and no graduation guarantee.
+Snapshot before rebuild: c6a61b72e1c21acb042be47b13c6138854c8d8df, branch archive/pre-masters-rebuild-20260919. Legacy scientific baseline: 0128c1aee9e553bc16ef2025ed4f29eaea3e9850. Keep data/v1, original src/structural, priors/posteriors, R1 corrections and R2/R3 results traceable. They need not appear in the new thesis. Never rename old draws as new results. New data transforms, model IDs, code and output paths are independent.
+
+LC/LiOH/LCE/elemental Li and product grades differ. SC6*FX is CNY/t concentrate, not CNY/tLC. Installation, battery production, material manufacture, purchases and use differ. Finished LC imports, ore inputs and already-counted recycled output must not be counted twice. Same-data derived J/I cannot be treated as independent observations without their error mapping. Policy targets are not realized coefficients; no unsupported causal policy claims.
+
+## Execution and evidence
+
+This chat is GitHub-only; do not reconnect Windows. An authorized local agent must preserve unknown workspace changes. No hard reset, force push, broad git add, untracked-file deletion, credentials, proprietary data, paper originals or private outputs committed. Archive obsolete instructions rather than erase scientific history.
+
+Current portable check: python scripts/audit_masters_rebuild.py; python -m pytest -q tests/test_masters_rebuild.py. Historical tests have their original scope. Run only what is reported; no summing past test counts, no treating pasted commands as executed tests. Commit explicit paths, compare parent/changed files, fast-forward only, verify remote head and preserved objects. Update status with actual evidence only. Do not claim a local full checkout, private hashes, new estimation, school acceptance or supervisor approval unless actually verified.
