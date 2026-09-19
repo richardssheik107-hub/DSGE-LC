@@ -2,6 +2,16 @@
 
 **当前：D01产业文献与经济方程设计。原R1实证和R3短稿保留，候选产业模型未估计。**
 
+## 2026-09-19：公式取舍与原实验衔接
+
+[完整选模方案](docs/plans/model_selection_and_experiment_bridge_20260919.md) · [机器可读选择](configs/model_selection_20260919.json) · [本轮核查](docs/audits/2026_09_19_model_selection_bridge.md)
+
+建议保留M0全部原实验，新设计收敛为一个参考锂盐生产块、一个直接耗用LC的材料制造块和给定净补库的清算：`C0_1P1D_CONDITIONAL_V1`，选择E24，不同时启用E23。旧总产量映射为参考产量加其他产出；旧装车不直接等于材料产出。先核商品品级、工程、库存和观测，再新估计。
+
+状态为 **RECOMMENDED_NOT_FROZEN**，不是已批准或已估计。16项新增便携设计/合成代数检查通过；原27项与研究全套未重跑，测试数不相加。运行：`PYTHONPATH=. python -m pytest -q tests/test_model_selection_bridge.py`。
+
+以下保留2026-09-18批次的原说明；其中“本轮”指该历史批次。
+
 ## 本轮已经落地的研究资料
 
 1. [45项来源地图](docs/references/industry_literature_map_20260918.md)：34项学术研究、8项政策、3项官方数据/模型说明；有分层阅读记录，不是45篇全文精读。

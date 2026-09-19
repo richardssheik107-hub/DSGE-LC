@@ -1,5 +1,19 @@
 # 当前研究与学位论文状态
 
+## 2026-09-19最新补充：已有具体推荐，尚未正式冻结
+
+本轮核对起点`main@cf787f5d73cb707a48970cf16353ff7258244183`。D01仍为IN_PROGRESS，总状态仍为EQUATION_FOUNDATIONS_REVIEW_IN_PROGRESS。新增[公式取舍与旧实验衔接方案](plans/model_selection_and_experiment_bridge_20260919.md)、[选择配置](../configs/model_selection_20260919.json)和[交付核查](audits/2026_09_19_model_selection_bridge.md)。
+
+**首选建议：保留M0基线，新增C0_1P1D_CONDITIONAL_V1。** 选择一个参考锂盐生产块、一个直接LC耗用材料块；库存先核算，采用E24给定净补库，由清算推出价格，不另加独立价格AR。未建模路线通过R进入总量；不把SC6赋给全行业，也不把装车当材料制造。2路线/2材料示例不再视为第一轮必须估计的最低维度。
+
+选择状态为RECOMMENDED_NOT_FROZEN，导师批准证据为空，完整状态和自由参数数目尚未冻结。先核同商品品级、路线成本和产量、材料耗用、贸易/库存覆盖及整式观测，再做识别和新估计。原thesis_workplan与28关系库保留原版本，不把本建议伪装成已完成D02。
+
+本轮16项便携设计/合成代数检查PASS，测试编译PASS；使用原E25核查器的逐字节相同本地镜像，Git blob SHA匹配。未运行原27项、全仓研究测试、MCMC、私人数据/后验或论文渲染；不重新计算私人哈希。四项旧比较仍为PROTOCOL_DRAFT_NOT_RUN。
+
+下一工作包是对方案列出的P/Q/R/Y/a/alpha/m/Uother/N/月末I逐项建可用性与口径表，而非立即扩模型或扩样。下方2026-09-18状态原文作为历史批次保留，其中的PENDING不表示今天没有提出推荐，也不等于今天已经获得批准。
+
+## 2026-09-18批次记录（原文保留）
+
 更新2026-09-18；本轮开始`main@c6cd7b8668d7d12994f3a783be6657a7b6aa5fc1`。状态继续 **EQUATION_FOUNDATIONS_REVIEW_IN_PROGRESS**，没有用文献数量或公式数量替代新模型验收。
 
 ## 本轮完成

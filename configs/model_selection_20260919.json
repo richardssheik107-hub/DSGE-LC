@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-09-19",
+  "reviewed_commit": "cf787f5d73cb707a48970cf16353ff7258244183",
+  "scientific_baseline_commit": "0128c1aee9e553bc16ef2025ed4f29eaea3e9850",
+  "status": "RECOMMENDED_NOT_FROZEN",
+  "proposed_model_id": "C0_1P1D_CONDITIONAL_V1",
+  "model_class": "CONDITIONAL_SHORT_RUN_PARTIAL_EQUILIBRIUM",
+  "document": "docs/plans/model_selection_and_experiment_bridge_20260919.md",
+  "optimizing_blocks": [
+    "reference_lc_producer",
+    "direct_lc_using_material_manufacturer"
+  ],
+  "inventory_role": "ACCOUNTING_WITH_EXTERNALLY_GIVEN_NET_STOCK_ADDITION",
+  "current_endogenous": [
+    "Q_reference",
+    "Y_material",
+    "P_lc"
+  ],
+  "independent_current_conditions": [
+    "supply_foc",
+    "material_foc",
+    "lc_clearing"
+  ],
+  "state_count": null,
+  "free_parameter_count": null,
+  "conditional_behavior_parameters": [
+    "g",
+    "kappa",
+    "b"
+  ],
+  "fixed_design_restrictions": {
+    "downstream_adjustment_zeta": 0,
+    "independent_price_ar": false
+  },
+  "selected_closure": "E24",
+  "excluded_closure": "E23",
+  "conditional_inputs": [
+    "m_reference",
+    "A_material",
+    "v_non_lc",
+    "a_lc_intensity",
+    "K_reference",
+    "Y_capacity",
+    "R_other_lc_output",
+    "N_finished_lc_imports_net",
+    "U_other_lc_use",
+    "J_net_stock_addition",
+    "initial_physical_inventory",
+    "physical_loss_rate"
+  ],
+  "supply_accounting": "Q_reference + R_other_once",
+  "old_total_output_observes": "Q_reference + R_other_once",
+  "old_battery_installation_is_direct_material_output": false,
+  "old_pressure_is_physical_inventory": false,
+  "recycling_in_R_counted_once": true,
+  "equation_roles": {
+    "core_behavior": [
+      "E03",
+      "E04",
+      "E10",
+      "E11"
+    ],
+    "cost_accounting_closure_observation": [
+      "E05",
+      "E07",
+      "E09",
+      "E12",
+      "E17",
+      "E22",
+      "E24",
+      "E27"
+    ],
+    "derived_not_independent": [
+      "E25"
+    ],
+    "external_mapping_or_boundary": [
+      "E01",
+      "E02",
+      "E06",
+      "E26"
+    ],
+    "deferred": [
+      "E08",
+      "E13",
+      "E14",
+      "E15",
+      "E16",
+      "E18",
+      "E19",
+      "E20",
+      "E21",
+      "E23"
+    ],
+    "estimation_gate": [
+      "E28"
+    ]
+  },
+  "baseline_model": "M0_CORE5",
+  "baseline_estimation": "M0_FULL14",
+  "baseline_state_count": 5,
+  "baseline_free_parameter_count": 14,
+  "baseline_core_months": 69,
+  "baseline_structural_months": 57,
+  "old_draws_reused_as_new_posterior": false,
+  "old_results_relabelled": false,
+  "new_empirical_estimation": false,
+  "identification_verified": false,
+  "synthetic_parameter_recovery_run": false,
+  "supervisor_approval_evidence": null,
+  "thesis_submission_ready": false,
+  "legacy_comparisons": {
+    "CMP_NOINV4": "PROTOCOL_DRAFT_NOT_RUN",
+    "CMP_COSTFEEDBACK15": "PROTOCOL_DRAFT_NOT_RUN",
+    "ROB_COMMON57": "PROTOCOL_DRAFT_NOT_RUN",
+    "FUT_DAILY_INCREMENT": "PROTOCOL_DRAFT_NOT_RUN"
+  },
+  "gates_remaining": [
+    "product_grade_alignment",
+    "reference_route_cost_and_output_scope",
+    "material_manufacturing_and_lc_intensity",
+    "other_output_trade_use_and_inventory_coverage",
+    "whole_equation_observation_mapping",
+    "free_parameter_and_input_process_registry",
+    "corner_feasibility_and_solver",
+    "identification_and_synthetic_recovery",
+    "supervisor_scope_record",
+    "new_protocol_and_experiment_registration"
+  ],
+  "validation_scope": "PORTABLE_DESIGN_AND_CONDITIONAL_ALGEBRA_ONLY",
+  "protected_unchanged": [
+    "src/structural",
+    "configs/research_baseline_20260917.json",
+    "configs/thesis_workplan.json",
+    "configs/industry_equation_blueprint_v2.json",
+    "data",
+    "docs/thesis",
+    "original_priors_and_posteriors"
+  ],
+  "next_work_package": "Audit named C0 inputs and observation coverage without changing Data Freeze v1."
+}
