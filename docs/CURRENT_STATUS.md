@@ -6,8 +6,8 @@
 
 - RB00：仓库入口与计划重整完成。旧路线保存在固定快照，数据和科学结果不删除。
 - RB01：研究问题与边界草案已经起草，仍需原文、单位及导师范围核对。
-- RB02—RB04：现有 C0 可作基础候选；完整复核、投资/产能、内生库存和联合系统尚未完成。
-- 导师包：DRAFT_NOT_SENT；没有导师批准记录。
+- RB02：第一次导师讨论的基础方程集已形成，状态为IN_PROGRESS；来源/时序/成本与需求锚、观测映射仍需继续复核。RB03—RB04的投资/产能、内生库存和联合系统尚未完成。
+- 导师包：R1基础方程讨论稿已就绪但仍为DRAFT_NOT_SENT；没有导师批准记录。
 - 新实证：未启动；没有新后验、IRF/FEVD/HD或预测结果。
 
 详见 [完整计划](rebuild/MASTER_PLAN.md)、[方程轮次](rebuild/EQUATION_ROUNDS.md)、[下一包](rebuild/NEXT_WORK_PACKAGE.md)、[实际验证](rebuild/REPOSITORY_AUDIT.md)。

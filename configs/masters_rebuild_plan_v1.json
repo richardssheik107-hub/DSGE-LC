@@ -37,7 +37,7 @@
     "approved_model_id": null,
     "approved_spec_commit": null,
     "first_discussion_after": "RB02",
-    "packet_status": "DRAFT_NOT_SENT"
+    "packet_status": "DRAFT_R1_BASELINE_READY_NOT_SENT"
   },
   "estimation_gate": {
     "status": "PENDING",
@@ -106,11 +106,13 @@
     {
       "id": "RB02",
       "title": "R1基础方程与状态推导复核",
-      "status": "PLANNED",
+      "status": "IN_PROGRESS",
       "depends_on": [
         "RB01"
       ],
-      "evidence": []
+      "evidence": [
+        "docs/rebuild/R1_BASELINE_EQUATIONS.md"
+      ]
     },
     {
       "id": "RB03",
