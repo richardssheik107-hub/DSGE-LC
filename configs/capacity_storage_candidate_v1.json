@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "model_id": "RB_CAPACITY_STORAGE_V1",
-  "as_of": "2026-09-19",
+  "as_of": "2026-09-20",
   "source_commit": "df0e66dcb57eae5e326168a059c3010492d94670",
   "status": "CANDIDATE_THEORY_AND_LOCAL_SOLUTION_NOT_ESTIMATED",
   "model_class": "DYNAMIC_STOCHASTIC_PARTIAL_EQUILIBRIUM",
@@ -204,5 +204,8 @@
     "docs/rebuild/two_step_v1/STATE_SPACE.md",
     "docs/rebuild/two_step_v1/SOURCES.md",
     "docs/rebuild/two_step_v1/VALIDATION.md"
-  ]
+  ],
+  "data_identification_registry": "configs/model_data_identification_v1.json",
+  "data_identification_status_registry": "configs/model_data_identification_status_v1.json",
+  "data_identification_status": "REGISTER_AND_SYNTHETIC_PREFLIGHT_COMPLETE_REAL_GATES_OPEN"
 }

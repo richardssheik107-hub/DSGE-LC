@@ -2,7 +2,7 @@
 
 **当前：已形成投资—建设—产能及内生库存的联合候选、26组模型关系和可执行局部状态求解。先与导师讨论，再通过数据/观测/识别验收后真实估计；不回到旧M0修补。**
 
-[导师讨论包](docs/rebuild/SUPERVISOR_PACKET.md) · [完整经济方程](docs/rebuild/two_step_v1/EQUATIONS.md) · [状态矩阵怎样求出](docs/rebuild/two_step_v1/STATE_SPACE.md) · [参考依据](docs/rebuild/two_step_v1/SOURCES.md)
+[模型—数据—参数总表](docs/rebuild/data_id_v1/REVIEW.md) · [识别预检](docs/rebuild/data_id_v1/IDENTIFICATION.md) · [机器参数分类](configs/model_data_identification_v1.json) · [完整经济方程](docs/rebuild/two_step_v1/EQUATIONS.md) · [状态矩阵怎样求出](docs/rebuild/two_step_v1/STATE_SPACE.md) · [参考依据](docs/rebuild/two_step_v1/SOURCES.md)
 
 ## 已经前推的两步
 
@@ -23,7 +23,7 @@ python scripts/check_capacity_storage_v1.py
 
 [新版完整计划](docs/rebuild/MASTER_PLAN.md) · [当前状态](docs/CURRENT_STATUS.md) · [下一工作包](docs/rebuild/NEXT_WORK_PACKAGE.md) · [长篇论文结构](docs/rebuild/THESIS_OUTLINE.md)
 
-先讨论容量相关成本、库存服务分支、商品边界及实际L；同步核最低数据和独立参数。之后完成观测、识别/参数恢复和协议；不继续无上限扩展。
+变量/参数总表与合成识别预检已完成。下一步合法取得K和需求P0数据、解决商品/成本口径，冻结缩减后的观测与参数集，再做正式识别和合成参数恢复；不继续无上限扩展。
 
 ## 历史与版本
 

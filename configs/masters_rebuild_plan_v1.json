@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "workflow_id": "MASTERS_REBUILD_20260919",
-  "date": "2026-09-19",
+  "date": "2026-09-20",
   "active": true,
-  "status": "CAPACITY_STORAGE_THEORY_READY_FOR_DISCUSSION",
+  "status": "MODEL_DATA_PARAMETER_AUDIT_COMPLETE_WITH_BLOCKERS",
   "origin": "USER_REQUEST_RESTART_FROM_RESEARCH_QUESTION",
   "reviewed_commit": "c6a61b72e1c21acb042be47b13c6138854c8d8df",
   "legacy_scientific_commit": "0128c1aee9e553bc16ef2025ed4f29eaea3e9850",
@@ -158,12 +158,21 @@
     {
       "id": "RB06",
       "title": "数据、观测、均衡解、识别与合成验收B",
-      "status": "PLANNED",
+      "status": "IN_PROGRESS",
       "depends_on": [
         "RB05"
       ],
-      "evidence": [],
-      "next_action": "Scope discussion and minimum input/observation audit; do not start estimation."
+      "evidence": [
+        "docs/rebuild/data_id_v1/REVIEW.md",
+        "docs/rebuild/data_id_v1/IDENTIFICATION.md",
+        "scripts/audit_identification_v1.py",
+        "docs/rebuild/MODEL_DATA_IDENTIFICATION.md",
+        "configs/model_data_identification_v1.json",
+        "configs/model_data_identification_status_v1.json"
+      ],
+      "next_action": "Acquire/validate P0 sources and freeze reduced estimable specification; no real estimation.",
+      "data_parameter_audit_status": "COMPLETE_WITH_P0_BLOCKERS",
+      "remaining": "P0 authorized K and demand data; product/cost/observation freeze; formal local identification and synthetic parameter recovery."
     },
     {
       "id": "RB07",
@@ -255,10 +264,32 @@
     "docs/rebuild/two_step_v1/EQUATIONS.md",
     "docs/rebuild/two_step_v1/STATE_SPACE.md",
     "docs/rebuild/two_step_v1/SOURCES.md",
-    "docs/rebuild/two_step_v1/VALIDATION.md"
+    "docs/rebuild/two_step_v1/VALIDATION.md",
+    "docs/rebuild/data_id_v1/REVIEW.md",
+    "docs/rebuild/data_id_v1/IDENTIFICATION.md",
+    "docs/rebuild/MODEL_DATA_IDENTIFICATION.md",
+    "configs/model_data_identification_v1.json",
+    "configs/model_data_identification_status_v1.json"
   ],
-  "validation_scope": "CANDIDATE_CAPACITY_STORAGE_DERIVATION_AND_LOCAL_SYNTHETIC_SOLUTION_NOT_EMPIRICAL",
+  "validation_scope": "THEORY_PLUS_REGISTER_AND_SYNTHETIC_IDENTIFICATION_PREFLIGHT_NOT_EMPIRICAL",
   "current_theory_candidate": "RB_CAPACITY_STORAGE_V1",
   "latest_theory_source_commit": "df0e66dcb57eae5e326168a059c3010492d94670",
-  "theory_advance_authorization": "User requested two necessary theory expansions before experiments; open data and supervisor gates are retained."
+  "theory_advance_authorization": "User requested two necessary theory expansions before experiments; open data and supervisor gates are retained.",
+  "model_data_identification": {
+    "status": "REGISTER_AND_SYNTHETIC_PREFLIGHT_COMPLETE_REAL_GATES_OPEN",
+    "report": "docs/rebuild/data_id_v1/REVIEW.md",
+    "executive_table": "docs/rebuild/MODEL_DATA_IDENTIFICATION.md",
+    "registry": "configs/model_data_identification_v1.json",
+    "status_registry": "configs/model_data_identification_status_v1.json",
+    "structural_parameters_classified": 20,
+    "state_observability_fixture": "5/6 with P,Q,I,m; 6/6 when independent K is added",
+    "continuous_input_moment_jacobian_fixture": "15/19 at synthetic fixture; not final identification proof",
+    "empirical_estimation_ready": false,
+    "p0_blockers": [
+      "K_capacity",
+      "Y_or_LC_consumption",
+      "product_boundary",
+      "m_cost_bridge"
+    ]
+  }
 }

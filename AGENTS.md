@@ -2,7 +2,7 @@
 
 Effective 2026-09-19. User explicitly authorised the two necessary theoretical expansions before experiments: capacity investment with construction delay and endogenous storage. They are now derived and locally solved, not empirically estimated. Do not resume old M0 patches or add optional trade/recycling/futures/mixed-frequency mechanisms by default.
 
-Read docs/CURRENT_STATUS.md, docs/rebuild/MASTER_PLAN.md, configs/masters_rebuild_plan_v1.json, and docs/rebuild/two_step_v1/{EQUATIONS,STATE_SPACE,SOURCES,VALIDATION}. Current model ID is RB_CAPACITY_STORAGE_V1. NEXT_WORK_PACKAGE.md is now scope/measurement/identification discussion, not another instruction to start deriving the same two modules.
+Read docs/CURRENT_STATUS.md, docs/rebuild/data_id_v1/REVIEW.md, docs/rebuild/data_id_v1/IDENTIFICATION.md, configs/model_data_identification_v1.json, docs/rebuild/MASTER_PLAN.md, configs/masters_rebuild_plan_v1.json, and docs/rebuild/two_step_v1/{EQUATIONS,STATE_SPACE,SOURCES,VALIDATION}. Current model ID is RB_CAPACITY_STORAGE_V1. NEXT_WORK_PACKAGE.md is now scope/measurement/identification discussion, not another instruction to start deriving the same two modules.
 
 ## Scientific boundaries
 
@@ -14,7 +14,7 @@ The potential formulation requires price-taking, common beta/expectations, no un
 
 ## What is permitted next
 
-Supervisor discussion, source/engineering checks, product and observation mapping, local/nonlinear feasibility investigation, parameter identification and synthetic recovery. Formal real-data estimation remains blocked until actual supervisor scope evidence AND technical/protocol gates. Draft-ready does not mean sent or approved. Do not promise later estimation must be quick. Long master's structure is flexible; no fixed chapter or equation count.
+The register and synthetic identification preflight are complete. Next: legally obtain/validate P0 K and demand data, freeze product/cost/observation mapping and reduced parameterization, then run formal identification and synthetic parameter recovery. Supervisor discussion and source/engineering checks remain allowed. Formal real-data estimation remains blocked until actual supervisor scope evidence AND technical/protocol gates. Draft-ready does not mean sent or approved. Do not promise later estimation must be quick. Long master's structure is flexible; no fixed chapter or equation count.
 
 ## Preserve and separate
 
