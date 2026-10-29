@@ -1,5 +1,0 @@
-canonical_name,candidate,source,start,end,frequency,unit,definition,coverage,pros,cons,recommended
-lc_spot,OPD candidate,OPD Global Economic and Financial Data Platform,,,,,Battery-grade Li2CO3 >=99.5%; China,,,Requires authenticated catalog verification,PENDING
-lc_output_total,OPD candidate,OPD Global Economic and Financial Data Platform,,,,,China total lithium carbonate output,,,Requires authenticated catalog verification,PENDING
-spodumene_price,OPD candidate,OPD Global Economic and Financial Data Platform,,,,,Spodumene concentrate 6% Li2O; basis-specific,,,Requires authenticated catalog verification,PENDING
-battery_install_total_gwh,OPD candidate,OPD Global Economic and Financial Data Platform,,,,,China power battery installation total,,,Requires authenticated catalog verification,PENDING

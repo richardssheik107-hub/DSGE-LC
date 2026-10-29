@@ -1,5 +1,0 @@
-﻿variable,target_end,months_missing_before,new_candidates,accepted_secondary,still_missing,canonical_status,next_action
-lc_spot,2026-06,2025-12;2026-04;2026-05;2026-06,2025-12;2026-04;2026-05,,2025-12;2026-04;2026-05;2026-06,V1_UNCHANGED; SECONDARY_CANDIDATES_REQUIRE_REVIEW,Confirm unit directly and review known-month differences; obtain complete 2026-06 month
-spodumene_price,2026-06,2025-10;2025-11;2025-12;2026-01;2026-02;2026-04;2026-05;2026-06,,,2025-10;2025-11;2025-12;2026-01;2026-02;2026-04;2026-05;2026-06,NO_MATCHING_SC6_CIF_CHINA_SERIES,Obtain definition-matched SMM SC6 CIF China export
-lc_output,2026-06,2025-10;2025-11;2025-12;2026-03;2026-04;2026-05;2026-06,,,2025-10;2025-11;2025-12;2026-03;2026-04;2026-05;2026-06,NO_CANONICAL_OUTPUT_FILL,Obtain exact monthly SMM China total LC output series
-battery_install,2026-06,,2026-07,2026-03;2026-04;2026-05;2026-06,,COMPLETE_THROUGH_2026-06; JULY_CANDIDATE_ONLY,Retain 2026-07 outside Data Freeze v1 and register for a future candidate panel

@@ -1,0 +1,231 @@
+{
+  "model_id": "LC_V2_REVIEW_20261029",
+  "symbols": [
+    {
+      "symbol": "P_t",
+      "meaning": "现货价格",
+      "unit": "人民币/吨",
+      "timing": "本期均衡结果"
+    },
+    {
+      "symbol": "F_t",
+      "meaning": "t报价、t+1结算合约价格",
+      "unit": "人民币/吨",
+      "timing": "本期均衡结果；非F_(t+1)"
+    },
+    {
+      "symbol": "Q_t",
+      "meaning": "同口径国内总产量",
+      "unit": "吨/月",
+      "timing": "本期决策"
+    },
+    {
+      "symbol": "D_t^s",
+      "meaning": "当期灵活耗用",
+      "unit": "吨/月",
+      "timing": "本期决策"
+    },
+    {
+      "symbol": "D_t",
+      "meaning": "实际耗用，不含补库存",
+      "unit": "吨/月",
+      "timing": "D^s+C_(t−1)"
+    },
+    {
+      "symbol": "C_t",
+      "meaning": "下一月耗用承诺",
+      "unit": "吨",
+      "timing": "本期新承诺；下期执行"
+    },
+    {
+      "symbol": "I_t",
+      "meaning": "期末库存",
+      "unit": "吨",
+      "timing": "本期决策；下期留存alpha_I"
+    },
+    {
+      "symbol": "N_t",
+      "meaning": "成品净进口",
+      "unit": "吨/月",
+      "timing": "外部状态映射，可为负"
+    },
+    {
+      "symbol": "J_t",
+      "meaning": "启动的新增名义能力",
+      "unit": "吨/月",
+      "timing": "本期启动；不是投资金额"
+    },
+    {
+      "symbol": "K_t^M",
+      "meaning": "成熟能力",
+      "unit": "吨/月",
+      "timing": "期初状态"
+    },
+    {
+      "symbol": "K_t^e",
+      "meaning": "有效能力",
+      "unit": "吨/月",
+      "timing": "成熟＋爬坡加权"
+    },
+    {
+      "symbol": "B_t^(h)",
+      "meaning": "距离首次投产h期的能力",
+      "unit": "吨/月",
+      "timing": "h=1..L−1"
+    },
+    {
+      "symbol": "Z_t^(a)",
+      "meaning": "已投产的第a个爬坡阶段能力",
+      "unit": "吨/月",
+      "timing": "a=0..R−1"
+    },
+    {
+      "symbol": "X_t^B",
+      "meaning": "在建能力总和",
+      "unit": "吨/月",
+      "timing": "B的和，不另加独立AR"
+    },
+    {
+      "symbol": "h_t^I,h_t^D,h_t^f",
+      "meaning": "三类期货净多头",
+      "unit": "吨",
+      "timing": "正多负空；不是实物耗用"
+    },
+    {
+      "symbol": "h",
+      "meaning": "非融资持货费用率",
+      "unit": "人民币/吨/期",
+      "timing": "与h_t^i不同"
+    },
+    {
+      "symbol": "m_t",
+      "meaning": "基础可变成本",
+      "unit": "人民币/吨",
+      "timing": "工程锚约束，不含重复CAPEX"
+    },
+    {
+      "symbol": "p_t^J",
+      "meaning": "单位启动能力基础费用",
+      "unit": "人民币/(吨/月)",
+      "timing": "能力尺度验收后校准"
+    },
+    {
+      "symbol": "mu_t^P",
+      "meaning": "下期现货条件均值",
+      "unit": "人民币/吨",
+      "timing": "同一价格政策产生"
+    },
+    {
+      "symbol": "v_t^P",
+      "meaning": "下期现货条件方差",
+      "unit": "(人民币/吨)^2",
+      "timing": "必须正且有限"
+    },
+    {
+      "symbol": "W^M,W^Z,W^B",
+      "meaning": "能力/项目边际价值",
+      "unit": "人民币/(吨/月)",
+      "timing": "由优化产生；不是外部AR"
+    },
+    {
+      "symbol": "z_t",
+      "meaning": "五类外部状态",
+      "unit": "无量纲",
+      "timing": "订单、成本、建设、进口、风险承担"
+    },
+    {
+      "symbol": "L",
+      "meaning": "建设月数",
+      "unit": "正整数",
+      "timing": "L=1无建设队列"
+    },
+    {
+      "symbol": "R",
+      "meaning": "爬坡阶段数",
+      "unit": "非负整数",
+      "timing": "R=0直接成熟"
+    },
+    {
+      "symbol": "g_a",
+      "meaning": "各爬坡阶段可用比例",
+      "unit": "无量纲",
+      "timing": "正且不减，不默认50%"
+    }
+  ],
+  "parameters": [
+    {
+      "symbol": "beta",
+      "meaning": "月度折现",
+      "constraint": "0<beta<1",
+      "treatment": "外部校准"
+    },
+    {
+      "symbol": "delta",
+      "meaning": "投产后退出率",
+      "constraint": "0<=delta<1",
+      "treatment": "工程校准"
+    },
+    {
+      "symbol": "ell",
+      "meaning": "库存损耗",
+      "constraint": "0<=ell<1",
+      "treatment": "库存资料"
+    },
+    {
+      "symbol": "eta_s,eta_c",
+      "meaning": "需求弹性绝对值",
+      "constraint": ">0",
+      "treatment": "分组与总量识别后估计"
+    },
+    {
+      "symbol": "omega",
+      "meaning": "承诺规模比例",
+      "constraint": "0<omega<1",
+      "treatment": "采购/排产资料，非随意常数"
+    },
+    {
+      "symbol": "alpha,nu",
+      "meaning": "负荷幅度与曲率",
+      "constraint": ">0",
+      "treatment": "成本/有效产能约束"
+    },
+    {
+      "symbol": "kappa",
+      "meaning": "调产成本",
+      "constraint": ">=0",
+      "treatment": "成本锚后估计"
+    },
+    {
+      "symbol": "chi",
+      "meaning": "当期开工凸性",
+      "constraint": ">0",
+      "treatment": "项目资料与动态检验"
+    },
+    {
+      "symbol": "omega_B",
+      "meaning": "在建拥挤",
+      "constraint": ">=0",
+      "treatment": "新假设，待证；0为基准"
+    },
+    {
+      "symbol": "xi,I0",
+      "meaning": "库存服务强度与正偏移",
+      "constraint": "xi>=0,I0>0",
+      "treatment": "与h、ell不同时随意自由估"
+    },
+    {
+      "symbol": "a_I,a_D,a_f",
+      "meaning": "有效风险厌恶",
+      "constraint": ">0",
+      "treatment": "通常先识别总风险容量"
+    },
+    {
+      "symbol": "mathsf R,mathsf Sigma",
+      "meaning": "外部状态过程",
+      "constraint": "稳定/有限矩/可行域",
+      "treatment": "不可用任意无界冲击强行保证正量"
+    }
+  ],
+  "industry_parameter_values": {},
+  "note": "本分支不登记未经校准的行业数值；测试中的数字仅检查恒等式。"
+}

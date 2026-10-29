@@ -1,5 +1,0 @@
-﻿variable,raw_start,raw_end,processed_start,processed_end,frequency,expected_months,observed_months,missing_months,partial_months,recommended_start,recommended_end,status
-lc_spot,2017-01-03,2025-10-10,2017-01,2025-09,monthly,105,105,,2025-10,2020-01,2025-09,A_CORE
-lc_output,2018-08-31,2025-09-30,2018-08,2025-09,monthly,86,86,,,2020-01,2025-09,A_CORE
-spodumene_price,2017-01-03,2025-10-10,2019-07,2025-09,monthly,75,75,,2025-10,2020-01,2025-09,A_CORE
-battery_install,2020-01,2026-02,2020-01,2026-02,monthly,74,74,,,2020-01,2026-02,A_CORE

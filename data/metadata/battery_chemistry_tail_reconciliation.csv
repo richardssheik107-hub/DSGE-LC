@@ -1,6 +1,0 @@
-﻿month,workbook_total_gwh,workbook_lfp_gwh,workbook_ncm_gwh,lfp_plus_ncm_gwh,implied_other_or_rounding_gwh,existing_total_gwh,difference_vs_existing_gwh,total_reconciliation_status,chemistry_reconciliation_status
-2026-03,56.5,45.8,10.7,56.5,0,56.5,0,EXACT_MATCH,EXACT_COMPONENT_SUM
-2026-04,62.4,50.8,11.5,62.3,0.1,62.4,0,EXACT_MATCH,OTHER_CHEMISTRIES_OR_ROUNDING
-2026-05,71.9,58.4,13.4,71.8,0.1,71.9,0,EXACT_MATCH,OTHER_CHEMISTRIES_OR_ROUNDING
-2026-06,76.5,63.7,12.7,76.4,0.1,76.5,0,EXACT_MATCH,OTHER_CHEMISTRIES_OR_ROUNDING
-2026-07,74.6,63.1,11.1,74.2,0.4,,,NEW_TAIL_CANDIDATE,OTHER_CHEMISTRIES_OR_ROUNDING

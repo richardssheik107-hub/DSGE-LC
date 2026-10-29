@@ -1,29 +1,31 @@
-# Active instructions: capacity/storage theory candidate
+# 当前协作约束：方程重建，不恢复旧实验路线
 
-Effective 2026-09-19. User explicitly authorised the two necessary theoretical expansions before experiments: capacity investment with construction delay and endogenous storage. They are now derived and locally solved, not empirically estimated. Do not resume old M0 patches or add optional trade/recycling/futures/mixed-frequency mechanisms by default.
+先读README.md、project.json、docs/01_scope.md、docs/02_agents.md、docs/03_equations.md、docs/05_evidence.md、docs/07_roadmap.md。唯一当前候选为LC_V2_REVIEW_20261029。旧RB_CAPACITY_STORAGE_V1、C0、M0和phase2/R1/R2/R3仅在归档分支保留。
 
-Read docs/CURRENT_STATUS.md, docs/rebuild/data_id_v1/REVIEW.md, docs/rebuild/data_id_v1/IDENTIFICATION.md, configs/model_data_identification_v1.json, docs/rebuild/MASTER_PLAN.md, configs/masters_rebuild_plan_v1.json, and docs/rebuild/two_step_v1/{EQUATIONS,STATE_SPACE,SOURCES,VALIDATION}. Current model ID is RB_CAPACITY_STORAGE_V1. NEXT_WORK_PACKAGE.md is now scope/measurement/identification discussion, not another instruction to start deriving the same two modules.
+## 工作顺序
 
-## Scientific boundaries
+经济问题与商品边界 → 主体/时点 → 目标与约束 → 最优条件 → 两市场清算 → 一致预期 → 状态与观测 → 可行性与识别 → 实验。不要以公式数量、状态维数或PPT精美程度代替经济合理性。
 
-26 numbered groups are not 26 independent equations. Interior sequence count is L+8, memory state dimension L+4; the two-period six-state fixture is purely synthetic, NOT lithium construction-time evidence. Price, material output and capacity shadow value are equilibrium outputs. No arbitrary new investment/inventory AR innovations.
+## 来源与假设
 
-The new producer replaces the single-period FOC and gQ^2 cost with intertemporal Q/J decisions and gamma Q^2/(2K). Endogenous storage replaces given-J E24; old C0 closed-form price does not apply. Log inventory service is an explicit own assumption informed by operational storage theory. A no-service positive-cost deterministic reference cannot support positive interior stock; do not silently set service to zero while retaining the interior solver.
+- 引文必须有标题、作者、期刊/工作论文类型、年份、DOI或机构入口、核查层级与准确定位。只读摘要不能登记为已核原式。
+- 区分文献机制、本文函数、定义、数学推导。不得把本文拥挤成本说成Pothen原式，也不得把全球年度弹性直接设为中国月度参数。
+- 不上传未获授权论文全文、导师未发表稿、商业数据或个人凭据。生猪稿只借鉴研究组织，具体公式/维度不能自动移植。
+- 会议助手评价不是导师原话；未核听录音。论文中的“最新版”须当次核实，不继承聊天中的未核实断言。
 
-The potential formulation requires price-taking, common beta/expectations, no unaccounted wedges and fixed outside flows. Riccati solves a first-order INTERIOR approximation, not a global constrained model or a fitted state matrix. Never drop future expectation terms, clip invalid levels to claim equilibrium, or confuse deterministic reference with stochastic mean. Inactive capacity must still have a documented productive role if claiming positive investment.
+## 模型纪律
 
-## What is permitted next
+- 以docs/03_equations.md的E01—E31为唯一规范方程；修改必须同步registry、symbols、推导、证据和状态维数。
+- Q为拟定同口径总产量，D为实际耗用；旧R与其他耗用不重复加入。C是下期耗用承诺，不是库存。金融持仓不计入物量账。
+- F为本期报价、下一期结算的单期价格风险合约，结算/交割口径简化尚未获验收。不直接代表全部广期所期限合约。
+- 生产者不开放无限制风险中性期货账户；三类交易主体一期均值—方差逐期进入/退出。不能称为完整无限期风险厌恶企业优化。
+- E24替代旧库存Euler式；E27/E28为推导关系，不重复施加。真实条件均值、风险中性期望、合同点价和信息份额不能混同。
+- 预期均值与方差须由同一政策函数产生。不得用另一条外生价格预测伪造闭合。不得直接复用旧共同剩余/Riccati目标。
+- 正价格、二阶矩、零库存、产能上界、项目时点均须检查；不得clip非法路径后声称均衡。均值—方差金融项不能在无风险一阶近似中悄悄消失。
+- 在建交叉成本不自动保证联合凸性；条件计数不证明存在唯一。风险承受参数可能只识别总和。导师确认、数据验收、完整求解和识别仍未通过。
 
-The register and synthetic identification preflight are complete. Next: legally obtain/validate P0 K and demand data, freeze product/cost/observation mapping and reduced parameterization, then run formal identification and synthetic parameter recovery. Supervisor discussion and source/engineering checks remain allowed. Formal real-data estimation remains blocked until actual supervisor scope evidence AND technical/protocol gates. Draft-ready does not mean sent or approved. Do not promise later estimation must be quick. Long master's structure is flexible; no fixed chapter or equation count.
+## 操作与报告
 
-## Preserve and separate
+只运行并报告本分支检查。先运行python scripts/check_project.py和python -m unittest discover -s tests -v。明确区分代数检查、均衡求解、参数恢复和真实估计。
 
-New theoretical code lives in src/rebuild_theory. Preserve existing data, src/structural, src/theory_audit, priors/posteriors and R1/R2/R3 records. New model IDs, observation transformations and results are separate; never relabel old draws. Old A/D/phase ledgers are historical, not current queues. Fixed predecessor is df0e66dcb57eae5e326168a059c3010492d94670; full pre-rebuild c6a61b72e1c21acb042be47b13c6138854c8d8df remains accessible.
-
-LC grades, LC/LiOH/LCE, ore/finished imports, installation/manufacturing/use, annual capacity/monthly output differ. Same-source I and differenced J are not independent measurements. No double-counted recycled output. Sources motivate mechanisms, not industry parameter values or unsupported causal claims.
-
-## Execution
-
-GitHub-only chat: do not reconnect Windows. Preserve unknown local changes. No hard reset, force push, broad git add, untracked deletion, credentials, proprietary data, original papers or private outputs committed. Archive/supersede conflicting instructions rather than erase history.
-
-Actual current tests: PYTHONPATH=. python -m pytest -q tests/test_capacity_storage_v1.py; python scripts/check_capacity_storage_v1.py. Report only executed commands and scope, never add historical counts. Update explicit paths, compare diff, fast-forward only and verify remote head/protected objects. No claiming full checkout, private hashes, parameter recovery, estimation, advisor or school acceptance without evidence.
+归档分支archive/pre-equation-restart-20261029约定不再修改。禁止force push、删除历史分支、git reset --hard、git clean以及未知本地文件清理。新写入使用明确路径、查看差异、检查远端头，并以预期SHA的非强制快进提交。没有实际执行就不得声称GitHub、代码、实验或审阅已经完成。

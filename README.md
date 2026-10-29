@@ -1,32 +1,42 @@
-# DSGE-LC｜碳酸锂硕士论文：产能与库存两步理论扩展
+# DSGE-LC｜碳酸锂期现定价：方程重建工作台
 
-**当前：已形成投资—建设—产能及内生库存的联合候选、26组模型关系和可执行局部状态求解。先与导师讨论，再通过数据/观测/识别验收后真实估计；不回到旧M0修补。**
+**当前阶段：经济机制与方程审核；当前候选：`LC_V2_REVIEW_20261029`。尚未通过导师设定确认、整体随机均衡求解或真实数据估计。**
 
-[模型—数据—参数总表](docs/rebuild/data_id_v1/REVIEW.md) · [识别预检](docs/rebuild/data_id_v1/IDENTIFICATION.md) · [机器参数分类](configs/model_data_identification_v1.json) · [完整经济方程](docs/rebuild/two_step_v1/EQUATIONS.md) · [状态矩阵怎样求出](docs/rebuild/two_step_v1/STATE_SPACE.md) · [参考依据](docs/rebuild/two_step_v1/SOURCES.md)
+本次按2026年10月16日、10月23日讨论及后续V2草案重置主分支。先回答“谁决定什么、如何交易、为何形成价格”，再审核文献与假设，最后讨论状态空间。项目名沿用DSGE-LC；当前模型定位是**动态部分均衡**，不是已经完成的宏观DSGE。
 
-## 已经前推的两步
+## 从这里开始
 
-生产者不只决定本月产量，也决定经过L期建设形成的能力。库存不再外给净补库，而根据持有成本、运营服务和未来价格选择。旧单期生产FOC、E24和C0闭式价格不与新系统重复施加。
+| 阅读顺序 | 文件 | 解决的问题 |
+|---|---|---|
+| 1 | [研究范围与导师问题](docs/01_scope.md) | 到底研究什么，先解决哪三项质疑？ |
+| 2 | [主体、时点与传递图](docs/02_agents.md) | 实物、价格信息和风险敞口如何联系？ |
+| 3 | [31组候选关系式](docs/03_equations.md) | 每个目标、约束、清算与状态关系是什么？ |
+| 4 | [关键推导与闭合审查](docs/04_derivations.md) | 哪些是推导，哪些仍需证明与检验？ |
+| 5 | [文献原式与借鉴边界](docs/05_evidence.md) | 原文支持什么，本文改动了什么？ |
+| 6 | [数据与识别要求](docs/06_data.md) | 需要什么观测，哪些参数不能一起估？ |
+| 7 | [审核任务与推进门槛](docs/07_roadmap.md) | 下一步交付什么，何时才能进入实验？ |
 
-状态一般为L+4维；L=2的**纯演示**为6维，不代表真实行业建设期。26个编号含目标、定义、约束和推导；该示例有10项独立经济条件，并非26个状态。
+状态的机器记录在[project.json](project.json)，方程索引在[model/registry.json](model/registry.json)，符号与参数在[model/symbols.json](model/symbols.json)，书目信息在[references/library.json](references/library.json)。
 
-## 实际运行
+## 当前核心思路
+
+同口径碳酸锂的生产、实际耗用与库存共同清算；新增能力经过建设与爬坡形成未来供给。库存销售敞口、下一期采购承诺及金融风险承担共同形成一期期货风险溢价，期货报价再进入留货和新采购安排。**风险分担反馈不等于已经证明期货具有信息优势。**
+
+V2保留原有生产、库存和投资的研究积累，但不沿用旧线性需求、旧固定状态维度或旧Riccati求解器的完成状态。常弹性、幂次负荷成本、在建拥挤、爬坡、采购承诺和一期均值—方差均为需审查的候选设定。
+
+## 本分支能运行什么
+
+只含文档、来源与局部数学关系的检查；没有完整均衡求解器、估计器或真实数据结果。以下命令仅用Python标准库：
 
 ```bash
-PYTHONPATH=. python -m pytest -q tests/test_capacity_storage_v1.py
-python scripts/check_capacity_storage_v1.py
+python scripts/check_project.py
+python -m unittest discover -s tests -v
 ```
 
-本次49项合成检查通过，覆盖参考点、建设时序、局部策略、逐系数Euler残差和有效域。没有真实校准、MCMC、全局约束解或新预测结果。具体数字见[验证记录](docs/rebuild/two_step_v1/VALIDATION.md)。
+通过这些检查不代表行业假设正确、随机均衡存在唯一、参数已识别或导师已认可。[检查范围](docs/09_validation.md)
 
-## 下一步
+## 历史怎样处理
 
-[新版完整计划](docs/rebuild/MASTER_PLAN.md) · [当前状态](docs/CURRENT_STATUS.md) · [下一工作包](docs/rebuild/NEXT_WORK_PACKAGE.md) · [长篇论文结构](docs/rebuild/THESIS_OUTLINE.md)
+旧实验、旧配置、旧代码、旧数据及旧文稿已从当前工作树撤下，完整保存在[清理前快照](https://github.com/richardssheik107-hub/DSGE-LC/tree/archive/pre-equation-restart-20261029)，固定提交`82f0e7fe5f0e7f33a7c6cb318829ef70beefcbf7`。**没有改写提交历史，也不触碰任何用户本地未跟踪数据。**
 
-变量/参数总表与合成识别预检已完成。下一步合法取得K和需求P0数据、解决商品/成本口径，冻结缩减后的观测与参数集，再做正式识别和合成参数恢复；不继续无上限扩展。
-
-## 历史与版本
-
-新理论代码在src/rebuild_theory；旧src/structural、data、src/theory_audit及论文结果保留原身份。原R1基础长清单改为前身入口，完整原文见固定提交df0e66dcb57eae5e326168a059c3010492d94670。旧A/D台账和四项M0比较不恢复当前执行权限。
-
-[唯一当前工作台账](configs/masters_rebuild_plan_v1.json) · [联合候选注册](configs/capacity_storage_candidate_v1.json) · [文档导航](docs/README.md)
+[清理清单与恢复方法](docs/08_migration.md)记录旧路径、对象哈希和选择性恢复方式。历史资料是可复用资产，不再是当前执行指令。不得恢复旧的49项检查、识别秩、后验或预测指标作为V2结果。

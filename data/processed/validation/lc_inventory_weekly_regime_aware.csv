@@ -1,3 +1,0 @@
-﻿date,inventory_smelter,inventory_downstream,inventory_other,inventory_old_total,inventory_up_down_total,inventory_full_chain_total,inventory_regime,methodology_start_date,source_url,quality_flag
-2026-05-14,,,,101418,,,LEGACY_SAMPLE,,https://news.smm.cn/news/103907167,TOTAL_ONLY
-2026-05-21,18374,42729,76157,,61103,137260,EXPANDED_SAMPLE_2026,2026-05-21,https://news.smm.cn/news/103914978,OK; EXPANDED_OTHER_SAMPLE

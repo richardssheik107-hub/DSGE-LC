@@ -1,6 +1,0 @@
-variable,period,canonical_value,public_value,difference,difference_pct,definition_match,source_grade,status
-lc_output,2025-07,81530.0,81530,0.0,0.0,True,SOURCE_C,EXACT_MATCH
-lc_output,2025-08,85240.0,85240,0.0,0.0,True,SOURCE_C,EXACT_MATCH
-lc_output,2025-09,87260.0,87260,0.0,0.0,True,SOURCE_C,EXACT_MATCH
-battery_install,2026-01,42.0,42.0,0.0,0.0,True,SOURCE_B,EXACT_MATCH
-battery_install,2026-02,26.3,26.3,0.0,0.0,True,SOURCE_B,EXACT_MATCH

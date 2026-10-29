@@ -1,0 +1,446 @@
+{
+  "model_id": "LC_V2_REVIEW_20261029",
+  "status": "candidate_not_approved",
+  "note": "每组不是一个独立标量方程；来源指机制而非逐字抄用；依赖中的理性预期循环有意保留。",
+  "equations": [
+    {
+      "id": "E01",
+      "name": "外部环境递推",
+      "basis": "assumption",
+      "source_ids": [],
+      "depends_on": [],
+      "canonical": "docs/03_equations.md#e01",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E02",
+      "name": "环境映射与工程成本锚",
+      "basis": "assumption_and_measurement",
+      "source_ids": [
+        "COST25",
+        "ENG26"
+      ],
+      "depends_on": [
+        "E01"
+      ],
+      "canonical": "docs/03_equations.md#e02",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E03",
+      "name": "常弹性净收益",
+      "basis": "assumption",
+      "source_ids": [
+        "D24",
+        "D25"
+      ],
+      "depends_on": [
+        "E02"
+      ],
+      "canonical": "docs/03_equations.md#e03",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E04",
+      "name": "当期灵活耗用",
+      "basis": "derived",
+      "source_ids": [
+        "D24",
+        "D25"
+      ],
+      "depends_on": [
+        "E03"
+      ],
+      "canonical": "docs/03_equations.md#e04",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E05",
+      "name": "实际耗用与数据映射",
+      "basis": "definition_and_measurement",
+      "source_ids": [
+        "D25"
+      ],
+      "depends_on": [
+        "E04"
+      ],
+      "canonical": "docs/03_equations.md#e05",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E06",
+      "name": "生产成本",
+      "basis": "assumption",
+      "source_ids": [
+        "PIND94",
+        "COST25"
+      ],
+      "depends_on": [],
+      "canonical": "docs/03_equations.md#e06",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E07",
+      "name": "投资成本与在建负荷",
+      "basis": "assumption",
+      "source_ids": [
+        "POT13"
+      ],
+      "depends_on": [
+        "E10"
+      ],
+      "canonical": "docs/03_equations.md#e07",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E08",
+      "name": "生产者长期目标",
+      "basis": "objective",
+      "source_ids": [
+        "PIND94"
+      ],
+      "depends_on": [
+        "E06",
+        "E07",
+        "E10",
+        "E11",
+        "E12"
+      ],
+      "canonical": "docs/03_equations.md#e08",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E09",
+      "name": "生产FOC与产能边界",
+      "basis": "derived_kkt",
+      "source_ids": [
+        "PIND94"
+      ],
+      "depends_on": [
+        "E06",
+        "E08"
+      ],
+      "canonical": "docs/03_equations.md#e09",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E10",
+      "name": "建设队列",
+      "basis": "physical_assumption",
+      "source_ids": [
+        "POT13",
+        "BUILD24"
+      ],
+      "depends_on": [],
+      "canonical": "docs/03_equations.md#e10",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E11",
+      "name": "爬坡队列",
+      "basis": "physical_assumption",
+      "source_ids": [
+        "POT13",
+        "BUILD24"
+      ],
+      "depends_on": [
+        "E10"
+      ],
+      "canonical": "docs/03_equations.md#e11",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E12",
+      "name": "成熟与有效产能",
+      "basis": "physical_assumption",
+      "source_ids": [
+        "BUILD24"
+      ],
+      "depends_on": [
+        "E11"
+      ],
+      "canonical": "docs/03_equations.md#e12",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E13",
+      "name": "单位有效能力服务",
+      "basis": "derived",
+      "source_ids": [],
+      "depends_on": [
+        "E06",
+        "E09"
+      ],
+      "canonical": "docs/03_equations.md#e13",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E14",
+      "name": "成熟/爬坡影子价值",
+      "basis": "derived",
+      "source_ids": [],
+      "depends_on": [
+        "E12",
+        "E13"
+      ],
+      "canonical": "docs/03_equations.md#e14",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E15",
+      "name": "在建影子价值",
+      "basis": "derived",
+      "source_ids": [],
+      "depends_on": [
+        "E07",
+        "E10",
+        "E14"
+      ],
+      "canonical": "docs/03_equations.md#e15",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E16",
+      "name": "投资互补条件",
+      "basis": "derived_kkt",
+      "source_ids": [],
+      "depends_on": [
+        "E07",
+        "E08",
+        "E15"
+      ],
+      "canonical": "docs/03_equations.md#e16",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E17",
+      "name": "一致条件矩",
+      "basis": "equilibrium_requirement",
+      "source_ids": [],
+      "depends_on": [
+        "E30"
+      ],
+      "canonical": "docs/03_equations.md#e17",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E18",
+      "name": "库存净持有成本",
+      "basis": "assumption",
+      "source_ids": [
+        "PIND94"
+      ],
+      "depends_on": [],
+      "canonical": "docs/03_equations.md#e18",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E19",
+      "name": "持货者目标",
+      "basis": "objective",
+      "source_ids": [
+        "ELV19",
+        "FIN25",
+        "BAKER21"
+      ],
+      "depends_on": [
+        "E17",
+        "E18"
+      ],
+      "canonical": "docs/03_equations.md#e19",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E20",
+      "name": "未来采购者目标",
+      "basis": "objective",
+      "source_ids": [
+        "ELV19",
+        "FIN25"
+      ],
+      "depends_on": [
+        "E03",
+        "E17"
+      ],
+      "canonical": "docs/03_equations.md#e20",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E21",
+      "name": "金融投资者目标",
+      "basis": "objective",
+      "source_ids": [
+        "ELV19",
+        "FIN25"
+      ],
+      "depends_on": [
+        "E02",
+        "E17"
+      ],
+      "canonical": "docs/03_equations.md#e21",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E22",
+      "name": "三类最优持仓",
+      "basis": "derived",
+      "source_ids": [
+        "ELV19"
+      ],
+      "depends_on": [
+        "E19",
+        "E20",
+        "E21"
+      ],
+      "canonical": "docs/03_equations.md#e22",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E23",
+      "name": "新采购承诺",
+      "basis": "derived",
+      "source_ids": [],
+      "depends_on": [
+        "E20",
+        "E22"
+      ],
+      "canonical": "docs/03_equations.md#e23",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E24",
+      "name": "套保库存互补条件",
+      "basis": "derived_kkt",
+      "source_ids": [],
+      "depends_on": [
+        "E19",
+        "E22"
+      ],
+      "canonical": "docs/03_equations.md#e24",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E25",
+      "name": "现货清算",
+      "basis": "identity",
+      "source_ids": [
+        "PIND94"
+      ],
+      "depends_on": [
+        "E05"
+      ],
+      "canonical": "docs/03_equations.md#e25",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E26",
+      "name": "期货清算与结算",
+      "basis": "clearing",
+      "source_ids": [
+        "ELV19"
+      ],
+      "depends_on": [
+        "E22"
+      ],
+      "canonical": "docs/03_equations.md#e26",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E27",
+      "name": "风险溢价推导",
+      "basis": "derived_redundant",
+      "source_ids": [
+        "ELV19"
+      ],
+      "depends_on": [
+        "E22",
+        "E26"
+      ],
+      "canonical": "docs/03_equations.md#e27",
+      "review": "PENDING",
+      "independent_clearing_restriction": false
+    },
+    {
+      "id": "E28",
+      "name": "正库存合并式",
+      "basis": "derived_redundant",
+      "source_ids": [],
+      "depends_on": [
+        "E24",
+        "E27"
+      ],
+      "canonical": "docs/03_equations.md#e28",
+      "review": "PENDING",
+      "independent_clearing_restriction": false
+    },
+    {
+      "id": "E29",
+      "name": "状态向量",
+      "basis": "derived_definition",
+      "source_ids": [],
+      "depends_on": [
+        "E01",
+        "E05",
+        "E09",
+        "E10",
+        "E11",
+        "E12"
+      ],
+      "canonical": "docs/03_equations.md#e29",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E30",
+      "name": "政策与预期固定点",
+      "basis": "equilibrium_requirement",
+      "source_ids": [],
+      "depends_on": [
+        "E17",
+        "E29"
+      ],
+      "canonical": "docs/03_equations.md#e30",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    },
+    {
+      "id": "E31",
+      "name": "观测映射",
+      "basis": "measurement_assumption",
+      "source_ids": [],
+      "depends_on": [
+        "E25",
+        "E30"
+      ],
+      "canonical": "docs/03_equations.md#e31",
+      "review": "PENDING",
+      "independent_clearing_restriction": null
+    }
+  ]
+}

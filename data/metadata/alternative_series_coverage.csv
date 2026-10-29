@@ -1,7 +1,0 @@
-﻿variable,provider,start,end,frequency,obs_count,missing,definition,recommended_use,status
-lc_spot_mysteel,Mysteel,2025-01,2026-05,monthly,10,8,"Battery-grade LC, China, ex-factory tax-included, monthly mean",ROBUSTNESS,PARTIAL_PUBLIC_COVERAGE
-spodumene_mysteel,Mysteel,2025-01,2026-04,monthly,9,9,Spodumene concentrate 6% Li2O CIF China USD/t monthly mean,ROBUSTNESS,PARTIAL_PUBLIC_COVERAGE
-lc_cost_spodumene_mysteel,Mysteel,2025-01-24,2026-03-20,weekly,12,0,Disclosed Australian SC6 route LC production cost,VALIDATION_ONLY,SPARSE_PUBLIC_POINTS
-lc_margin_spodumene_mysteel,Mysteel,2025-01-24,2026-03-20,weekly,12,0,Disclosed Australian SC6 route spot profit,VALIDATION_ONLY,SPARSE_PUBLIC_POINTS
-spodumene_concentrate_import_smm_filtered,SMM,2025-10,2026-06,monthly,8,1,China Customs total further filtered by SMM,ROBUSTNESS,DIRECT_AND_DERIVED
-lc_inventory_full_chain_total,SMM,2026-05-21,2026-05-21,weekly,1,1,Regime-aware full-chain total; never spliced across breaks,VALIDATION_ONLY,METHODOLOGY_BREAK

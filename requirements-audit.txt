@@ -1,3 +1,0 @@
-# Optional independent diagnostic environment; not a historical experiment lock.
--r requirements-dev.txt
-arviz>=0.21
