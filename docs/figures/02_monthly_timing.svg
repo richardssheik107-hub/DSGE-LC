@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1050" viewBox="0 0 1400 1050" role="img">
+<title>02  Monthly timing and simultaneous clearing</title><desc>Old contracts are predetermined; their settlement price P_t is still the current joint-equilibrium price.</desc>
+<defs>
+<marker id="arrow-ink" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#344C5C"/></marker>
+<marker id="arrow-policy" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8067AB"/></marker>
+<marker id="arrow-time" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#557F68"/></marker>
+</defs>
+<rect width="1400" height="1050" fill="#FFFFFF"/>
+<g font-family="DejaVu Sans, Arial, sans-serif">
+<text x="70" y="48" fill="#17384B" font-size="29" text-anchor="start" font-weight="700">02  Monthly timing and simultaneous clearing</text>
+<text x="70" y="79" fill="#5D7280" font-size="14" text-anchor="start" font-weight="400">Old contracts are predetermined; their settlement price P_t is still the current joint-equilibrium price.</text>
+<rect x="270" y="110" width="860" height="72" rx="13" fill="#F2F5F8" stroke="#7B8E9D" stroke-width="1.8"/>
+<text x="700.0" y="152.0" fill="#2C4152" font-size="20" text-anchor="middle" font-weight="400">Enter t: inherit z_t, Q_-, I_-, C_-, K, B, Z  (E29)</text>
+<rect x="270" y="222" width="860" height="82" rx="13" fill="#F2F5F8" stroke="#7B8E9D" stroke-width="1.8"/>
+<text x="700.0" y="256.5" fill="#2C4152" font-size="18" text-anchor="middle" font-weight="400">Existing commitments are consumed; old futures settle at P_t.</text>
+<text x="700.0" y="283.5" fill="#2C4152" font-size="18" text-anchor="middle" font-weight="400">In the baseline, settlement wealth adds no new state.</text>
+<rect x="270" y="344" width="860" height="72" rx="13" fill="#F1ECF8" stroke="#8067AB" stroke-width="1.8"/>
+<text x="700.0" y="386.0" fill="#3D2D58" font-size="19" text-anchor="middle" font-weight="400">Common information and the same-policy conditional distribution</text>
+<rect x="150" y="463" width="1100" height="249" rx="20" fill="#FAFCFD" stroke="#90B4C3" stroke-width="1.7"/>
+<text x="700" y="495" fill="#236C8A" font-size="19" text-anchor="middle" font-weight="700">ALL CURRENT DECISIONS AND BOTH MARKETS CLEAR JOINTLY</text>
+<rect x="190" y="520" width="320" height="137" rx="13" fill="#F0F7FB" stroke="#236C8A" stroke-width="1.8"/>
+<text x="350.0" y="582.0" fill="#173F52" font-size="20" text-anchor="middle" font-weight="400">Real choices</text>
+<text x="350.0" y="609.0" fill="#173F52" font-size="20" text-anchor="middle" font-weight="400">Q, J, D_s, I, C</text>
+<rect x="540" y="520" width="320" height="137" rx="13" fill="#F0F7FB" stroke="#236C8A" stroke-width="1.8"/>
+<text x="700.0" y="582.0" fill="#173F52" font-size="22" text-anchor="middle" font-weight="400">Joint equilibrium</text>
+<text x="700.0" y="609.0" fill="#173F52" font-size="22" text-anchor="middle" font-weight="400">P and F</text>
+<rect x="890" y="520" width="320" height="137" rx="13" fill="#FFF5E8" stroke="#B27B35" stroke-width="1.8"/>
+<text x="1050.0" y="582.0" fill="#6A4A1A" font-size="20" text-anchor="middle" font-weight="400">Risk choices</text>
+<text x="1050.0" y="609.0" fill="#6A4A1A" font-size="20" text-anchor="middle" font-weight="400">h_I, h_D, h_f</text>
+<path d="M 510 561 L 540 561" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<path d="M 540 615 L 510 615" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<path d="M 860 561 L 890 561" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<path d="M 890 615 L 860 615" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<text x="700" y="693" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">E04, E09, E16, E22–E27  |  Neither P nor F is supplied first as an external input.</text>
+<path d="M 700 182 L 700 222" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<path d="M 700 304 L 700 344" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<path d="M 500 416 L 500 439 L 350 439 L 350 520" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<path d="M 900 416 L 900 439 L 1050 439 L 1050 520" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<rect x="270" y="758" width="860" height="74" rx="13" fill="#ECF5EF" stroke="#57886A" stroke-width="1.8"/>
+<text x="700.0" y="788.5" fill="#2C5039" font-size="18" text-anchor="middle" font-weight="400">Update Q, I, C memory and construction/ramp-up queues</text>
+<text x="700.0" y="815.5" fill="#2C5039" font-size="18" text-anchor="middle" font-weight="400">E10–E12, E29–E30</text>
+<path d="M 700 712 L 700 758" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<rect x="270" y="881" width="360" height="74" rx="13" fill="#F1ECF8" stroke="#8067AB" stroke-width="1.8"/>
+<text x="450.0" y="911.5" fill="#3D2D58" font-size="18" text-anchor="middle" font-weight="400">New shock → z_(t+1)</text>
+<text x="450.0" y="938.5" fill="#3D2D58" font-size="18" text-anchor="middle" font-weight="400">E01</text>
+<rect x="770" y="881" width="360" height="74" rx="13" fill="#ECF5EF" stroke="#57886A" stroke-width="1.8"/>
+<text x="950.0" y="911.5" fill="#2C5039" font-size="17" text-anchor="middle" font-weight="400">Enter t+1: C_t is committed</text>
+<text x="950.0" y="938.5" fill="#2C5039" font-size="17" text-anchor="middle" font-weight="400">Old F_t settles at P_(t+1)</text>
+<path d="M 450 832 L 450 881" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<path d="M 630 918 L 770 918" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<rect x="652.1" y="893" width="95.8" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="700" y="906" fill="#526D7E" font-size="14" text-anchor="middle" font-weight="400">next state</text>
+<path d="M 1130 918 L 1280 918 L 1280 146 L 1130 146" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<rect x="1158.35" y="852" width="67.3" height="23" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="1192" y="866" fill="#526D7E" font-size="15" text-anchor="middle" font-weight="400">repeat</text>
+<text x="700" y="1009" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">Thin arrows: events and state updates. Dashed arrows: simultaneous equilibrium dependencies.</text>
+</g>
+</svg>

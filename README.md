@@ -2,7 +2,9 @@
 
 **当前阶段：经济机制与方程审核；当前候选：`LC_V2_REVIEW_20261029`。尚未通过导师设定确认、整体随机均衡求解或真实数据估计。**
 
-本次按2026年10月16日、10月23日讨论及后续V2草案重置主分支。先回答“谁决定什么、如何交易、为何形成价格”，再审核文献与假设，最后讨论状态空间。项目名沿用DSGE-LC；当前模型定位是**动态部分均衡**，不是已经完成的宏观DSGE。
+2026年10月29日的重建版按此前讨论及V2草案整理方程；2026年11月5日进一步完成仓库审查、近期文献核验、结构闭合说明、三张流程图和条件市场子块。项目名沿用DSGE-LC；当前模型定位是**动态部分均衡**。本轮修订为 `CLOSURE_REVIEW_20261105`，原候选编号不变。
+
+**本轮成果入口：[完整审查报告](docs/12_review_20261105.md) · [结构闭合与证明](docs/10_closure.md) · [机制、时点、求解三张流程图](docs/11_flowcharts.md) · [22条证据卡](docs/13_literature_20261105.md)。**
 
 ## 从这里开始
 
@@ -15,8 +17,10 @@
 | 5 | [文献原式与借鉴边界](docs/05_evidence.md) | 原文支持什么，本文改动了什么？ |
 | 6 | [数据与识别要求](docs/06_data.md) | 需要什么观测，哪些参数不能一起估？ |
 | 7 | [审核任务与推进门槛](docs/07_roadmap.md) | 下一步交付什么，何时才能进入实验？ |
+| 8 | [结构闭合、条件唯一性与残差](docs/10_closure.md) | 七个独立条件、边界与预期固定点如何对应？ |
+| 9 | [完整流程图与箭头索引](docs/11_flowcharts.md) | 实物、风险分担、时间和计算如何闭环？ |
 
-状态的机器记录在[project.json](project.json)，方程索引在[model/registry.json](model/registry.json)，符号与参数在[model/symbols.json](model/symbols.json)，书目信息在[references/library.json](references/library.json)。
+状态的机器记录在[project.json](project.json)，方程索引在[model/registry.json](model/registry.json)，闭合结构在[model/closure_spec.json](model/closure_spec.json)，符号与参数在[model/symbols.json](model/symbols.json)，书目信息在[references/library.json](references/library.json)。
 
 ## 当前核心思路
 
@@ -26,17 +30,19 @@ V2保留原有生产、库存和投资的研究积累，但不沿用旧线性需
 
 ## 本分支能运行什么
 
-只含文档、来源与局部数学关系的检查；没有完整均衡求解器、估计器或真实数据结果。以下命令仅用Python标准库：
+包含文档一致性、局部数学关系和**给定产量及未来条件矩的两市场联立子块**。26项测试及三个合成市场例已运行；完整预期固定点、生产投资联立求解与真实数据估计尚待实现。以下命令仅用Python标准库：
 
 ```bash
 python scripts/check_project.py
 python -m unittest discover -s tests -v
+python scripts/check_closure.py
 ```
 
-通过这些检查不代表行业假设正确、随机均衡存在唯一、参数已识别或导师已认可。[检查范围](docs/09_validation.md)
+子块同时求P/F/I/C及持仓，检查原始FOC、库存互补条件和两市场清算。零方差时价格须满足F＝μ，头寸只返回连续极限选择；非唯一性明确记录。合成参数不作行业校准。[检查范围和运行结果](docs/09_validation.md)
 
 ## 历史怎样处理
 
 旧实验、旧配置、旧代码、旧数据及旧文稿已从当前工作树撤下，完整保存在[清理前快照](https://github.com/richardssheik107-hub/DSGE-LC/tree/archive/pre-equation-restart-20261029)，固定提交`82f0e7fe5f0e7f33a7c6cb318829ef70beefcbf7`。**没有改写提交历史，也不触碰任何用户本地未跟踪数据。**
 
 [清理清单与恢复方法](docs/08_migration.md)记录旧路径、对象哈希和选择性恢复方式。历史资料是可复用资产，不再是当前执行指令。不得恢复旧的49项检查、识别秩、后验或预测指标作为V2结果。
+

@@ -1,6 +1,6 @@
 # 当前协作约束：方程重建，不恢复旧实验路线
 
-先读README.md、project.json、docs/01_scope.md、docs/02_agents.md、docs/03_equations.md、docs/05_evidence.md、docs/07_roadmap.md。唯一当前候选为LC_V2_REVIEW_20261029。旧RB_CAPACITY_STORAGE_V1、C0、M0和phase2/R1/R2/R3仅在归档分支保留。
+先读README.md、project.json、docs/01_scope.md、docs/02_agents.md、docs/03_equations.md、docs/05_evidence.md、docs/07_roadmap.md、docs/10_closure.md和docs/11_flowcharts.md。唯一当前候选为LC_V2_REVIEW_20261029，闭合修订为CLOSURE_REVIEW_20261105。旧RB_CAPACITY_STORAGE_V1、C0、M0和phase2/R1/R2/R3仅在归档分支保留。
 
 ## 工作顺序
 
@@ -23,9 +23,12 @@
 - 预期均值与方差须由同一政策函数产生。不得用另一条外生价格预测伪造闭合。不得直接复用旧共同剩余/Riccati目标。
 - 正价格、二阶矩、零库存、产能上界、项目时点均须检查；不得clip非法路径后声称均衡。均值—方差金融项不能在无风险一阶近似中悄悄消失。
 - 在建交叉成本不自动保证联合凸性；条件计数不证明存在唯一。风险承受参数可能只识别总和。导师确认、数据验收、完整求解和识别仍未通过。
+- model/closure_spec.json区分七未知量约化表示与保留持仓的原始表示；E27不能在同一表示中重复施加。条件市场代码冻结Q、μ、v，仅是内层子块，不代表这些量在完整均衡中外生。
+- 无风险边界的头寸不唯一；库存服务ξ>0且P+h−βα_I F＝0时个体目标仍无界。图中风险溢价μ−F与当期基差F−P分开。
 
 ## 操作与报告
 
-只运行并报告本分支检查。先运行python scripts/check_project.py和python -m unittest discover -s tests -v。明确区分代数检查、均衡求解、参数恢复和真实估计。
+只运行并报告本分支检查。先运行python scripts/check_project.py、python -m unittest discover -s tests -v和python scripts/check_closure.py。明确区分代数检查、条件市场子块、完整均衡求解、参数恢复和真实估计。流程图源码与docs/11_flowcharts.md内嵌源码须同步；未运行专用Mermaid渲染器时不得声称渲染器验收通过。
 
 归档分支archive/pre-equation-restart-20261029约定不再修改。禁止force push、删除历史分支、git reset --hard、git clean以及未知本地文件清理。新写入使用明确路径、查看差异、检查远端头，并以预期SHA的非强制快进提交。没有实际执行就不得声称GitHub、代码、实验或审阅已经完成。
+

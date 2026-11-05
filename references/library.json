@@ -1,5 +1,5 @@
 {
-  "policy": "核验层级逐条记录；摘要不等于原式，未列为全部精读。",
+  "policy": "2026-11-05核验逐条记录；摘要、搜索正文、作者稿和期刊版分开；版本页码不得混用；全篇精读、图版核验和参数复算未完成者不宣称完成。",
   "items": [
     {
       "id": "D24",
@@ -12,14 +12,14 @@
       "doi": "10.1016/j.resconrec.2024.107664",
       "url": "https://pubs.usgs.gov/publication/70261914",
       "verification": "primary_metadata_and_abstract",
-      "locator": "USGS Publications Warehouse abstract",
+      "locator": "USGS / publisher metadata and abstract rechecked; full equations not accessed",
       "supports": "2SLS与锂需求弹性证据；需求有结构变化",
       "does_not_support": "不能直接固定中国月度分组弹性；不提供本文采购承诺或常弹性净收益积分原式",
-      "checked_on": "2026-10-29"
+      "checked_on": "2026-11-05"
     },
     {
       "id": "D25",
-      "authors": "L. R. Sullivan et al. (full author list pending)",
+      "authors": "Luke Robert Sullivan; Elizabeth A. Moore; Phuong Ho; Alison A. Wang; Gwyneth Margaux Tangog; Karan Bhuwalka; Elsa Olivetti; Richard Roth",
       "year": 2025,
       "title": "Analysis of the impact of automaker strategies on lithium price elasticity using a novel bottom-up demand model",
       "publication": "Resources, Conservation and Recycling",
@@ -27,15 +27,16 @@
       "pages": "108477",
       "doi": "10.1016/j.resconrec.2025.108477",
       "url": "https://www.sciencedirect.com/science/article/pii/S0921344925003556",
-      "verification": "primary_search_abstract",
-      "locator": "Publisher abstract; full-text HTTP 403 in this review",
-      "supports": "车企策略、技术选择和调整期限影响需求响应",
-      "does_not_support": "不证明omega、eta_s、eta_c已识别；正文式号未复核",
-      "checked_on": "2026-10-29"
+      "verification": "author_version_text_sections_checked",
+      "locator": "Author open version 2025-06-19, pp.11–13 Eqs.(3)–(6); p.17 Table 1; no visual equation verification",
+      "supports": "EV automaker strategy and horizon heterogeneity; constant-elasticity candidate as an approximation",
+      "does_not_support": "Does not identify Chinese monthly LC procurement share, eta_s or eta_c; table entries are scenario-model outcomes, not monthly estimates",
+      "checked_on": "2026-11-05",
+      "open_pdf": "https://phuongmho.github.io/LiDemand.pdf"
     },
     {
       "id": "COST25",
-      "authors": "Sabine M. Gallagher; N. A. Chowdhury; Q. Dai; J. S. Spangenberger",
+      "authors": "Sabine M. Gallagher; Nighat A. Chowdhury; Qiang Dai; Jeffrey S. Spangenberger",
       "year": 2025,
       "title": "Battery-Grade Lithium Materials: Virgin Production and Recycling, a Techno-Economic Comparison",
       "publication": "Advanced Energy Materials",
@@ -43,11 +44,11 @@
       "pages": "e01813",
       "doi": "10.1002/aenm.202501813",
       "url": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/aenm.202501813",
-      "verification": "primary_search_metadata_and_abstract",
-      "locator": "Publisher abstract and citation; full-text HTTP 403 in this review",
-      "supports": "工艺与投入成本核算；不同路线和资本设备条件",
-      "does_not_support": "平均总成本不是中国月度边际成本；不直接提供Q^(nu+1)/K^nu",
-      "checked_on": "2026-10-29"
+      "verification": "primary_fulltext_selected_sections_checked",
+      "locator": "Publisher HTML §§2.1–2.2, 4.1/Figure 3, 4.2.1–4.2.3; supplementary cost workbook not executed",
+      "supports": "Engineering production-route and input-cost accounting, regional/feedstock sensitivities",
+      "does_not_support": "Annualized capital and average total costs differ from short-run variable costs; not a source for power utilization cost or construction congestion",
+      "checked_on": "2026-11-05"
     },
     {
       "id": "BUILD24",
@@ -60,10 +61,10 @@
       "doi": "10.1016/j.resourpol.2024.105423",
       "url": "https://pubs.usgs.gov/publication/70261233",
       "verification": "primary_metadata_and_abstract",
-      "locator": "USGS abstract; publisher metadata",
+      "locator": "USGS / publisher abstract and metadata rechecked; global lithium mining projects; equations not accessed",
       "supports": "锂矿项目分阶段推进及价格等因素的作用",
       "does_not_support": "不直接给出锂盐加工厂的月度L或统一50%爬坡",
-      "checked_on": "2026-10-29"
+      "checked_on": "2026-11-05"
     },
     {
       "id": "FIN25",
@@ -75,11 +76,11 @@
       "pages": "100461",
       "doi": "10.1016/j.jcomm.2025.100461",
       "url": "https://www.sciencedirect.com/science/article/pii/S2405851325000054",
-      "verification": "primary_search_abstract",
-      "locator": "Publisher abstract/highlights; exact Eq.(5) from earlier discussion NOT reverified",
+      "verification": "primary_search_metadata_abstract_and_section_outline",
+      "locator": "Publisher indexed abstract, introduction and section outline; Eq.(5) NOT verified; full-text access failed",
       "supports": "实物与期货市场、投资者与风险溢价的均衡联系",
       "does_not_support": "不能称已核其具体式(5)；不提供本文全部滚动单商品方程",
-      "checked_on": "2026-10-29"
+      "checked_on": "2026-11-05"
     },
     {
       "id": "ELV19",
@@ -91,12 +92,24 @@
       "pages": "83-123",
       "doi": "10.1007/s00199-018-1115-y",
       "url": "https://link.springer.com/article/10.1007/s00199-018-1115-y",
-      "open_pdf": "https://www.ceremade.dauphine.fr/~ekeland/Articles/ELV%20Final.pdf",
-      "verification": "author_version_text_and_partial_visual",
-      "locator": "Author version 2017-04-26, §§3.3–3.5, printed pp.7–8, Eqs.(8)–(13); PDF page9 visually checked; PDF page8 screenshot failed, text checked",
+      "open_pdf": "https://www.ceremade.dauphine.fr/~ekeland/Articles/ELV.pdf",
+      "verification": "author_version_pdf_text",
+      "locator": "2018-01-26 author version: §3.3 pp.6–7 Eqs.(6)–(11), §3.4 p.8 Eq.(16), §3.5 pp.8–9 Eqs.(17)–(19). Separately rechecked 2017-04-26 version: Eqs.(8)–(13). Do not mix equation numbers.",
       "supports": "三类持仓：风险承担项加实物套保；期货清算与套保压力",
       "does_not_support": "期刊版页码不能沿用作者稿；不直接证明无限期滚动改写和便利服务假设",
-      "checked_on": "2026-10-29"
+      "checked_on": "2026-11-05",
+      "versions": [
+        {
+          "date": "2017-04-26",
+          "url": "https://www.ceremade.dauphine.fr/~ekeland/Articles/ELV%20Final.pdf",
+          "locator": "§§3.3–3.4, Eqs.(8)–(13)"
+        },
+        {
+          "date": "2018-01-26",
+          "url": "https://www.ceremade.dauphine.fr/~ekeland/Articles/ELV.pdf",
+          "locator": "§§3.3–3.5, Eqs.(6)–(19)"
+        }
+      ]
     },
     {
       "id": "BAKER21",
@@ -108,11 +121,12 @@
       "pages": "471-499",
       "doi": "10.1287/mnsc.2019.3445",
       "url": "https://pubsonline.informs.org/doi/abs/10.1287/mnsc.2019.3445",
-      "verification": "primary_publication_metadata",
-      "locator": "Publisher record; online 2020-05-28; exact equations pending",
-      "supports": "动态可储存商品与金融化的框架参考",
-      "does_not_support": "不作为本文滚动均值—方差目标已验证的证明",
-      "checked_on": "2026-10-29"
+      "verification": "author_version_pdf_text",
+      "locator": "Author version 2019-04-05, §2 pp.9–12; §2.2 pp.11–12 Eqs.(4)–(8); not journal-page numbers",
+      "supports": "Joint one-period mean-variance storage and futures choice; positive-stock and zero-stock branches; public information",
+      "does_not_support": "Does not validate LC calibration, endogenous capacity/investment or private-information price discovery; periodic profit objective is not full wealth dynamics",
+      "checked_on": "2026-11-05",
+      "open_pdf": "https://stevendbaker.com/papers/baker_oilSpeculation.pdf"
     },
     {
       "id": "PIND94",
@@ -148,7 +162,7 @@
     },
     {
       "id": "ENG26",
-      "authors": "I. G. Romani; R. Eggert",
+      "authors": "Ilenia Gaia Romani; Roderick Eggert",
       "year": 2026,
       "title": "From ores to outcomes: lessons for economists from science and engineering in the critical minerals scramble",
       "publication": "Oxford Review of Economic Policy",
@@ -156,11 +170,201 @@
       "pages": "56-71",
       "doi": "10.1093/oxrep/grag004",
       "url": "https://academic.oup.com/oxrep/article/42/1/56/8750861",
-      "verification": "primary_metadata_and_abstract",
-      "locator": "Publisher abstract; online 2026-08-04; issue Spring 2026",
+      "verification": "primary_search_body_sections_checked",
+      "locator": "Publisher indexed text, §II(ii) geology/costs, §II(iv) chemical forms, §III; direct open blocked; no PDF visual verification",
       "supports": "工程成本、累计可获得性与物质流有助经济建模",
       "does_not_support": "不直接给出本模型函数形式或中国参数",
-      "checked_on": "2026-10-29"
+      "checked_on": "2026-11-05"
+    },
+    {
+      "id": "ELAST25",
+      "authors": "Ensieh Shojaeddini; Elisa Alonso; Nedal T. Nassar; David G. Pineault; Sydney M. Allen; Jamie L. Brainard; Dalton M. McCaffrey; Timothy M. O’Brien; Abraham J. Padilla; John W. Ryter",
+      "year": 2025,
+      "title": "Understanding market sensitivity: estimation of supply and demand elasticities for non-fuel minerals",
+      "publication": "Mineral Economics",
+      "volume": "38",
+      "pages": "985–996",
+      "doi": "10.1007/s13563-025-00537-3",
+      "url": "https://link.springer.com/article/10.1007/s13563-025-00537-3",
+      "verification": "primary_fulltext_text_checked",
+      "locator": "Methodology Eqs.(1)–(3); Consumption vs. total demand elasticity; Primary vs. total supply; Comparison analysis p.994 / PDF page 10",
+      "supports": "Annual horizon and consumption/inventory/mine/refinery distinctions; elasticity comparison",
+      "does_not_support": "Global annual estimates are not Chinese monthly LC parameters; nu is not inverse supply elasticity",
+      "checked_on": "2026-11-05"
+    },
+    {
+      "id": "BPS24",
+      "authors": "Lukas Boer; Andrea Pescatori; Martin Stuermer",
+      "year": 2024,
+      "title": "Energy Transition Metals: Bottleneck for Net-Zero Emissions?",
+      "publication": "Journal of the European Economic Association",
+      "volume": "22(1)",
+      "pages": "200–229",
+      "doi": "10.1093/jeea/jvad039",
+      "url": "https://doi.org/10.1093/jeea/jvad039",
+      "verification": "primary_metadata_and_abstract",
+      "locator": "Journal metadata/abstract; published online 2023-06-14, issue February 2024",
+      "supports": "Metal-specific demand shocks and horizon-dependent supply response",
+      "does_not_support": "Journal equations not accessed; IMF 2021 pages and results cannot be attributed to journal version",
+      "related_version": "BPS21",
+      "checked_on": "2026-11-05"
+    },
+    {
+      "id": "BPS21",
+      "authors": "Lukas Boer; Andrea Pescatori; Martin Stuermer",
+      "year": 2021,
+      "title": "Energy Transition Metals",
+      "publication": "IMF Working Paper 2021/243",
+      "doi": "10.5089/9781513599373.001",
+      "url": "https://www.imf.org/-/media/files/publications/wp/2021/english/wpiea2021243-print-pdf.pdf",
+      "verification": "primary_working_paper_selected_text_checked",
+      "locator": "§2 data and §4.1, printed pp.22–24 / PDF pp.24–26, Figure 3",
+      "supports": "Long-horizon supply response and capacity expansion mechanism",
+      "does_not_support": "Not journal version; annual global mine-level responses do not identify monthly refining parameters",
+      "related_version": "BPS24",
+      "checked_on": "2026-11-05"
+    },
+    {
+      "id": "IEA26",
+      "authors": "International Energy Agency",
+      "year": 2026,
+      "title": "Global Critical Minerals Outlook 2026",
+      "publication": "IEA institutional report",
+      "doi": null,
+      "url": "https://www.iea.org/reports/global-critical-minerals-outlook-2026",
+      "verification": "official_report_html_sections_checked",
+      "locator": "Published 2026-07-16; Market overview and Outlook chapters; complete PDF not reviewed",
+      "supports": "Current industry demand/investment and primary supply boundaries",
+      "does_not_support": "Contained lithium/global mine supply and long-horizon scenarios are not monthly Chinese same-grade LC quantities",
+      "published_on": "2026-07-16",
+      "section_urls": [
+        "https://www.iea.org/reports/global-critical-minerals-outlook-2026/market-overview",
+        "https://www.iea.org/reports/global-critical-minerals-outlook-2026/outlook"
+      ],
+      "checked_on": "2026-11-05"
+    },
+    {
+      "id": "GY22",
+      "authors": "Itay Goldstein; Liyan Yang",
+      "year": 2022,
+      "title": "Commodity Financialization and Information Transmission",
+      "publication": "The Journal of Finance",
+      "volume": "77(5)",
+      "pages": "2613–2667",
+      "doi": "10.1111/jofi.13165",
+      "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/jofi.13165",
+      "verification": "primary_metadata_and_abstract",
+      "locator": "Publisher abstract and issue metadata; online 2022-06-14",
+      "supports": "Distinguishes financial speculators, financial hedgers, information transmission and production effects",
+      "does_not_support": "No equation-level verification in this review; common-information risk sharing does not establish price discovery",
+      "checked_on": "2026-11-05"
+    },
+    {
+      "id": "FEDS25",
+      "authors": "Shengwu Du; Travis D. Nesmith; Yang Heppe",
+      "year": 2025,
+      "title": "Does Financial Stress Affect Commodity Futures Traders’ Positions?",
+      "publication": "Federal Reserve Board FEDS 2025-082 (staff working paper)",
+      "doi": "10.17016/FEDS.2025.082",
+      "url": "https://www.federalreserve.gov/econres/feds/files/2025082pap.pdf",
+      "verification": "primary_pdf_text",
+      "locator": "Dated 2025-09-07; printed pp.17–18 Eq.(3), Table 4; abstract and data section",
+      "supports": "Financial stress and heterogeneous changes in trader positions/risk transfer",
+      "does_not_support": "US multi-commodity crisis evidence does not calibrate Chinese LC a_f; not Board policy or peer-reviewed journal evidence",
+      "checked_on": "2026-11-05"
+    },
+    {
+      "id": "GW26",
+      "authors": "Christophe Gouel; Brian D. Wright",
+      "year": 2026,
+      "title": "Storage and the Economics of Commodity Price Stabilization",
+      "publication": "Annual Review of Resource Economics",
+      "volume": "18",
+      "pages": "63–87",
+      "doi": "10.1146/annurev-resource-112624-121752",
+      "url": "https://www.annualreviews.org/content/journals/10.1146/annurev-resource-112624-121752",
+      "verification": "primary_metadata_and_abstract",
+      "locator": "October 2026 issue; review in advance 2026-06-12; abstract only",
+      "supports": "Recent rational-expectations storage review and role of explicit frictions",
+      "does_not_support": "Does not supply this model's offset-log convenience function or LC welfare conclusions",
+      "checked_on": "2026-11-05"
+    },
+    {
+      "id": "AMS26",
+      "authors": "Rómulo Alves; Yifan Ma; Marta Szymanowska",
+      "year": 2026,
+      "title": "The Information Content of Commodity Futures Markets",
+      "publication": "Management Science (advance online publication)",
+      "doi": "10.1287/mnsc.2023.00899",
+      "url": "https://pure.eur.nl/en/publications/the-information-content-of-commodity-futures-markets/",
+      "verification": "author_institution_metadata_and_abstract",
+      "locator": "Erasmus University record, online 2026-05-04; volume/pages not confirmed",
+      "supports": "Information content of industrial-metal futures and production expectations",
+      "does_not_support": "Does not establish Chinese LC futures price leadership or validate this model's information assumptions",
+      "checked_on": "2026-11-05"
+    },
+    {
+      "id": "FEDNOTE26",
+      "authors": "Erik Heitfield; Yang-Ho Park; Erfan Danesh",
+      "year": 2026,
+      "title": "Convenience Yields, Risk Premiums, and the Interpretation of Oil Futures Prices During Times of Geopolitical Conflict",
+      "publication": "Federal Reserve Board FEDS Notes (research note)",
+      "doi": null,
+      "url": "https://www.federalreserve.gov/econres/notes/feds-notes/convenience-yields-risk-premiums-and-the-interpretation-of-oil-futures-prices-during-geo-conflict-20261009.html",
+      "verification": "official_fulltext_html",
+      "locator": "2026-10-09; §§1,3,4 and Eq.(1)",
+      "supports": "Separates futures expectations, convenience yields and risk premia with changing risk-bearing conditions",
+      "does_not_support": "Oil events and reduced-form regression are not LC structural parameters or journal validation",
+      "published_on": "2026-10-09",
+      "checked_on": "2026-11-05"
+    },
+    {
+      "id": "GMS24",
+      "authors": "Christophe Gouel; Qingyin Ma; John Stachurski",
+      "year": 2024,
+      "title": "Interest rate dynamics and commodity prices",
+      "publication": "Journal of Economic Theory",
+      "volume": "222",
+      "pages": "105915",
+      "doi": "10.1016/j.jet.2024.105915",
+      "url": "https://doi.org/10.1016/j.jet.2024.105915",
+      "verification": "author_version_pdf_text_and_institution_metadata",
+      "locator": "Author version 2024-09-07 §2/Theorem 2.1; separate online appendix D Proposition D.1 and E Algorithm 1/Euler error",
+      "supports": "Policy fixed point, admissibility conditions, boundary solution and independent residual checks",
+      "does_not_support": "Existence/uniqueness and identification results do not automatically transfer to the investment-plus-hedging LC model",
+      "open_pdf": "https://johnstachurski.net/pdfs/cp_jet.pdf",
+      "supplement_url": "https://qingyin-ma.github.io/papers/cp_online_appendix.pdf",
+      "checked_on": "2026-11-05"
+    },
+    {
+      "id": "GFEXCLEAR25",
+      "authors": "Guangzhou Futures Exchange",
+      "year": 2025,
+      "title": "广州期货交易所结算规则 / General Clearing Rules of Guangzhou Futures Exchange",
+      "publication": "Official exchange rules; English reference translation published 2026-01-09",
+      "doi": null,
+      "url": "https://www.gfex.com.cn/en/TradingRules/202601/00e76b0dcdcc466abb0e9d798431a7f5.shtml",
+      "verification": "official_search_index_text",
+      "locator": "Released/effective 2025-05-09; Articles 6,16–19; Chinese original is binding",
+      "supports": "Daily mark-to-market, margin calls, physical delivery and cash settlement distinguished",
+      "does_not_support": "No current contract-specific margin percentage is certified; direct page open timed out",
+      "checked_on": "2026-11-05"
+    },
+    {
+      "id": "GFEXQA",
+      "authors": "Guangzhou Futures Exchange",
+      "year": "未核发布日期",
+      "title": "碳酸锂期货及期权40问",
+      "publication": "Official exchange educational document",
+      "doi": null,
+      "url": "https://www.gfex.com.cn/gfex/tslpzzl/202307/db1ea6ce118342ba886e5ef5b667ebe1/files/e57713398e094ca8af27b7ba49f82259.pdf",
+      "verification": "official_search_index_text",
+      "locator": "Q25 daily/rolling/one-time/EFP settlement prices; PDF open timed out; 202307 directory does not certify publication date",
+      "supports": "Settlement convention differs by delivery method; E26 is a simplified matched-contract assumption",
+      "does_not_support": "Not a full audit of 2026 amendments or current margins; no official PDF visual verification",
+      "checked_on": "2026-11-05"
     }
-  ]
+  ],
+  "review_date": "2026-11-05"
 }
+

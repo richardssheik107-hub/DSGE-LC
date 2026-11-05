@@ -119,7 +119,7 @@
       "symbol": "v_t^P",
       "meaning": "下期现货条件方差",
       "unit": "(人民币/吨)^2",
-      "timing": "必须正且有限"
+      "timing": "风险基线0<v<∞；v=0单独处理且头寸不唯一"
     },
     {
       "symbol": "W^M,W^Z,W^B",
@@ -150,6 +150,42 @@
       "meaning": "各爬坡阶段可用比例",
       "unit": "无量纲",
       "timing": "正且不减，不默认50%"
+    },
+    {
+      "symbol": "Pi(d epsilon|z)",
+      "meaning": "外部创新的完整条件概率核",
+      "unit": "概率",
+      "timing": "所有条件均值、方差与价值预期共同使用"
+    },
+    {
+      "symbol": "H_t",
+      "meaning": "净产业卖出套保敞口 alpha_I I_t-C_t",
+      "unit": "吨",
+      "timing": "本期内生组合，不是独立状态"
+    },
+    {
+      "symbol": "w_i,t",
+      "meaning": "风险承受份额 (1/a_i)/T",
+      "unit": "无量纲",
+      "timing": "清算后恢复持仓；v=0仅连续极限选取"
+    },
+    {
+      "symbol": "RP_t",
+      "meaning": "真实概率条件均值减期货报价 mu_t^P-F_t",
+      "unit": "人民币/吨",
+      "timing": "非当期基差"
+    },
+    {
+      "symbol": "Basis_t",
+      "meaning": "F_t-P_t；本项目采用期货减现货的符号约定",
+      "unit": "人民币/吨",
+      "timing": "当期价格差，不等于RP"
+    },
+    {
+      "symbol": "M_t",
+      "meaning": "条件市场子块净可用资源 Q+N+alpha_I I_lag-C_lag",
+      "unit": "吨",
+      "timing": "本月总量；非额外状态"
     }
   ],
   "parameters": [
@@ -198,7 +234,7 @@
     {
       "symbol": "chi",
       "meaning": "当期开工凸性",
-      "constraint": ">0",
+      "constraint": ">0；保留拥挤时可施加跨期充分界 chi>2 omega_B sum(beta^(k/2))",
       "treatment": "项目资料与动态检验"
     },
     {
@@ -227,5 +263,7 @@
     }
   ],
   "industry_parameter_values": {},
-  "note": "本分支不登记未经校准的行业数值；测试中的数字仅检查恒等式。"
+  "note": "本分支不登记未经校准的行业数值；测试中的数字仅检查恒等式。",
+  "revision": "CLOSURE_REVIEW_20261105"
 }
+

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1650" viewBox="0 0 1400 1650" role="img">
+<title>03  Full-solution workflow and acceptance gates</title><desc>Implementation plan | Only the conditional market block is implemented; the outer stochastic fixed point remains pending.</desc>
+<defs>
+<marker id="arrow-ink" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#344C5C"/></marker>
+<marker id="arrow-policy" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8067AB"/></marker>
+<marker id="arrow-time" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#557F68"/></marker>
+</defs>
+<rect width="1400" height="1650" fill="#FFFFFF"/>
+<g font-family="DejaVu Sans, Arial, sans-serif">
+<text x="70" y="48" fill="#17384B" font-size="29" text-anchor="start" font-weight="700">03  Full-solution workflow and acceptance gates</text>
+<text x="70" y="79" fill="#5D7280" font-size="14" text-anchor="start" font-weight="400">Implementation plan | Only the conditional market block is implemented; the outer stochastic fixed point remains pending.</text>
+<rect x="150" y="112" width="740" height="70" rx="13" fill="#F2F5F8" stroke="#7B8E9D" stroke-width="1.8"/>
+<text x="520.0" y="153.0" fill="#2C4152" font-size="18" text-anchor="middle" font-weight="400">Freeze commodity scope, units, monthly timing and research goal</text>
+<rect x="150" y="220" width="740" height="88" rx="13" fill="#F2F5F8" stroke="#7B8E9D" stroke-width="1.8"/>
+<text x="520.0" y="257.5" fill="#2C4152" font-size="17" text-anchor="middle" font-weight="400">Verify evidence and parameters; declare shock kernel and domain.</text>
+<text x="520.0" y="284.5" fill="#2C4152" font-size="17" text-anchor="middle" font-weight="400">Check feasibility and the investment-curvature restriction.</text>
+<rect x="150" y="348" width="740" height="70" rx="13" fill="#F2F5F8" stroke="#7B8E9D" stroke-width="1.8"/>
+<text x="520.0" y="389.0" fill="#2C4152" font-size="18" text-anchor="middle" font-weight="400">Initialize one policy G: prices, quantities and shadow values</text>
+<rect x="150" y="458" width="740" height="70" rx="13" fill="#F0F7FB" stroke="#236C8A" stroke-width="1.8"/>
+<text x="520.0" y="499.0" fill="#173F52" font-size="18" text-anchor="middle" font-weight="400">Generate all successor states s′ from candidate controls</text>
+<rect x="150" y="568" width="740" height="88" rx="13" fill="#F1ECF8" stroke="#8067AB" stroke-width="1.8"/>
+<text x="520.0" y="605.5" fill="#3D2D58" font-size="18" text-anchor="middle" font-weight="400">Same Φ, Π and G → μ_P, v_P, E Q′, E W′</text>
+<text x="520.0" y="632.5" fill="#3D2D58" font-size="18" text-anchor="middle" font-weight="400">Recompute expectations after changing controls.</text>
+<rect x="150" y="697" width="740" height="88" rx="13" fill="#F0F7FB" stroke="#236C8A" stroke-width="1.8"/>
+<text x="520.0" y="734.5" fill="#173F52" font-size="18" text-anchor="middle" font-weight="400">Solve current complementarity conditions R1–R7</text>
+<text x="520.0" y="761.5" fill="#173F52" font-size="18" text-anchor="middle" font-weight="400">together with shadow-value recursions E13–E15.</text>
+<rect x="150" y="826" width="740" height="70" rx="13" fill="#F0F7FB" stroke="#236C8A" stroke-width="1.8"/>
+<text x="520.0" y="867.0" fill="#173F52" font-size="19" text-anchor="middle" font-weight="400">Update price, quantity and value policies</text>
+<polygon points="520.0,936 740,989.0 520.0,1042 300,989.0" fill="#FFF5E8" stroke="#B27B35" stroke-width="1.8"/>
+<text x="520.0" y="982.5" fill="#6A4A1A" font-size="17" text-anchor="middle" font-weight="700">Policy change AND</text>
+<text x="520.0" y="1005.5" fill="#6A4A1A" font-size="17" text-anchor="middle" font-weight="700">economic residuals small?</text>
+<rect x="150" y="1090" width="740" height="88" rx="13" fill="#ECF5EF" stroke="#57886A" stroke-width="1.8"/>
+<text x="520.0" y="1127.5" fill="#2C5039" font-size="18" text-anchor="middle" font-weight="400">Recompute original FOC/KKT, both clearing conditions</text>
+<text x="520.0" y="1154.5" fill="#2C5039" font-size="18" text-anchor="middle" font-weight="400">and value recursions at independent state points.</text>
+<rect x="150" y="1218" width="740" height="88" rx="13" fill="#ECF5EF" stroke="#57886A" stroke-width="1.8"/>
+<text x="520.0" y="1255.5" fill="#2C5039" font-size="17" text-anchor="middle" font-weight="400">Check boundaries, bounded objectives, finite moments,</text>
+<text x="520.0" y="1282.5" fill="#2C5039" font-size="17" text-anchor="middle" font-weight="400">successor-domain invariance and commitment feasibility.</text>
+<polygon points="520.0,1347 740,1400.0 520.0,1453 300,1400.0" fill="#FFF5E8" stroke="#B27B35" stroke-width="1.8"/>
+<text x="520.0" y="1393.5" fill="#6A4A1A" font-size="17" text-anchor="middle" font-weight="700">Numerical equilibrium</text>
+<text x="520.0" y="1416.5" fill="#6A4A1A" font-size="17" text-anchor="middle" font-weight="700">acceptance passed?</text>
+<rect x="150" y="1501" width="740" height="88" rx="13" fill="#ECF5EF" stroke="#57886A" stroke-width="1.8"/>
+<text x="520.0" y="1538.5" fill="#2C5039" font-size="17" text-anchor="middle" font-weight="400">Proceed to synthetic parameter recovery and identification.</text>
+<text x="520.0" y="1565.5" fill="#2C5039" font-size="17" text-anchor="middle" font-weight="400">Real-data estimation has separate evidence and data gates.</text>
+<path d="M 520 182 L 520 220" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<path d="M 520 308 L 520 348" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<path d="M 520 418 L 520 458" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<path d="M 520 528 L 520 568" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<path d="M 520 656 L 520 697" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<path d="M 520 785 L 520 826" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<path d="M 520 896 L 520 936" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<path d="M 520 1042 L 520 1090" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<path d="M 520 1178 L 520 1218" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<path d="M 520 1306 L 520 1347" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<path d="M 520 1453 L 520 1501" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<rect x="529.0" y="1057" width="42" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="550" y="1070" fill="#526D7E" font-size="14" text-anchor="middle" font-weight="400">yes</text>
+<rect x="529.0" y="1467" width="42" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="550" y="1480" fill="#526D7E" font-size="14" text-anchor="middle" font-weight="400">yes</text>
+<path d="M 300 989 L 76 989 L 76 493 L 150 493" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<rect x="213.0" y="964" width="42" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="234" y="977" fill="#526D7E" font-size="14" text-anchor="middle" font-weight="400">no</text>
+<rect x="45.77" y="736" width="60.459999999999994" height="21" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="76" y="748" fill="#526D7E" font-size="13" text-anchor="middle" font-weight="400">repeat</text>
+<rect x="1000" y="697" width="315" height="150" rx="13" fill="#F1ECF8" stroke="#8067AB" stroke-width="1.8"/>
+<text x="1157.5" y="740.5" fill="#3D2D58" font-size="15" text-anchor="middle" font-weight="400">IMPLEMENTED INNER BLOCK</text>
+<text x="1157.5" y="767.5" fill="#3D2D58" font-size="15" text-anchor="middle" font-weight="400">Fix Q and μ_P, v_P;</text>
+<text x="1157.5" y="794.5" fill="#3D2D58" font-size="15" text-anchor="middle" font-weight="400">solve the market subproblem.</text>
+<text x="1157.5" y="821.5" fill="#3D2D58" font-size="15" text-anchor="middle" font-weight="400">Not the full policy fixed point.</text>
+<path d="M 1000 772 L 890 772" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<rect x="1000" y="1188" width="315" height="150" rx="13" fill="#FFF5E8" stroke="#B27B35" stroke-width="1.8"/>
+<text x="1157.5" y="1231.5" fill="#6A4A1A" font-size="15" text-anchor="middle" font-weight="400">Record failure and diagnose.</text>
+<text x="1157.5" y="1258.5" fill="#6A4A1A" font-size="15" text-anchor="middle" font-weight="400">Numerical issue: revise</text>
+<text x="1157.5" y="1285.5" fill="#6A4A1A" font-size="15" text-anchor="middle" font-weight="400">approximation or initial policy.</text>
+<text x="1157.5" y="1312.5" fill="#6A4A1A" font-size="15" text-anchor="middle" font-weight="400">Economic issue: explicit revision.</text>
+<path d="M 740 1400 L 952 1400 L 952 1263 L 1000 1263" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<rect x="901.0" y="1375" width="42" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="922" y="1388" fill="#526D7E" font-size="14" text-anchor="middle" font-weight="400">no</text>
+<path d="M 1315 1230 L 1350 1230 L 1350 383 L 890 383" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<rect x="1055.05" y="357" width="169.89999999999998" height="23" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="1140" y="371" fill="#526D7E" font-size="15" text-anchor="middle" font-weight="400">numerical revision</text>
+<path d="M 1315 1207 L 1380 1207 L 1380 264 L 890 264" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<rect x="1006.31" y="238" width="263.38" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="1138" y="251" fill="#526D7E" font-size="14" text-anchor="middle" font-weight="400">scope / domain / model revision</text>
+<text x="700" y="1625" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">No clipping of invalid paths, no independent price forecasts, and no jump from inner-block success to estimation.</text>
+</g>
+</svg>

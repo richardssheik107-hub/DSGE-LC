@@ -1,0 +1,78 @@
+flowchart TB
+    S["期初状态 s_t 与本期外部状态 z_t"]
+
+    subgraph MKT["同一月份：两个市场联立"]
+        direction LR
+        subgraph PHY["实物市场"]
+            direction TB
+            A["净进口 N；损耗后旧库存；旧承诺 C_-"]
+            QD["生产 Q；灵活耗用 D_s"]
+            P["现货清算 P"]
+            I["期末实物库存 I"]
+            A ==>|"E25"| P
+            QD ==>|"E25"| P
+            I ==>|"E25"| P
+            P -.->|"E04、E09"| QD
+            P -.->|"E24"| I
+        end
+        subgraph RISK["一期风险分担"]
+            direction TB
+            C["新采购承诺 C：下月耗用"]
+            H["净卖出套保敞口 H = α_I I - C"]
+            T["有限风险承受能力 T"]
+            F["期货清算 F"]
+            C -.->|"E22"| H
+            H -.->|"E27"| F
+            T -.->|"E27"| F
+            F -.->|"E23"| C
+        end
+    end
+
+    subgraph CAP["投资与未来供给"]
+        direction TB
+        W["能力与在建项目影子价值 W"]
+        J["启动新能力 J"]
+        BZ["建设队列 B；投产爬坡 Z"]
+        K["有效生产能力 K_e"]
+        W -.->|"E16"| J
+        J -->|"E10"| BZ
+        BZ -->|"E11—E12"| K
+    end
+
+    subgraph EXP["同一政策形成预期闭环"]
+        direction TB
+        SN["后继状态 s'：记忆、队列与新冲击"]
+        GP["同一价格、数量与价值政策 G(s')"]
+        EM["条件量 μ_P、v_P、E Q'、E W'"]
+        SN -.->|"政策评价"| GP
+        GP -.->|"E17、E30：同一概率核"| EM
+    end
+
+    S -.->|"E01—E02、E29"| A
+    S -.->|"需求与成本"| QD
+    S -.->|"E02"| T
+    S -.->|"建设成本与既有队列"| J
+    I -.->|"E22"| H
+    F -.->|"E24"| I
+    QD -.->|"E13：能力边际服务"| W
+    K -.->|"E06—E09"| QD
+    QD -->|"Q 的一期记忆"| SN
+    I -->|"I 的一期记忆"| SN
+    C -->|"C 的一期记忆"| SN
+    BZ -->|"能力队列更新"| SN
+    K -->|"成熟能力更新"| SN
+    EM -.->|"μ_P、v_P"| F
+    EM -.->|"E Q'"| QD
+    EM -.->|"E W'：E14—E16"| W
+
+    classDef market fill:#e6f1f7,stroke:#126782,stroke-width:2px,color:#103448;
+    classDef physical fill:#f5fafc,stroke:#6b8fa0,color:#183745;
+    classDef risk fill:#fff5e9,stroke:#b57931,color:#614415;
+    classDef expectation fill:#eeeaf8,stroke:#7860a4,color:#33264e;
+    classDef capital fill:#eaf4ec,stroke:#51855e,color:#25482e;
+    class P,F market;
+    class A,QD,I,S physical;
+    class C,H,T risk;
+    class SN,GP,EM expectation;
+    class W,J,BZ,K capital;
+

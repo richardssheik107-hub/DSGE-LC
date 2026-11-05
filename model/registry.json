@@ -11,7 +11,8 @@
       "depends_on": [],
       "canonical": "docs/03_equations.md#e01",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_20261105": "明确创新条件核；32点有界分支仅为计算基准，不证明经济域不变。"
     },
     {
       "id": "E02",
@@ -19,7 +20,9 @@
       "basis": "assumption_and_measurement",
       "source_ids": [
         "COST25",
-        "ENG26"
+        "ENG26",
+        "FEDS25",
+        "IEA26"
       ],
       "depends_on": [
         "E01"
@@ -34,7 +37,8 @@
       "basis": "assumption",
       "source_ids": [
         "D24",
-        "D25"
+        "D25",
+        "ELAST25"
       ],
       "depends_on": [
         "E02"
@@ -63,7 +67,8 @@
       "name": "实际耗用与数据映射",
       "basis": "definition_and_measurement",
       "source_ids": [
-        "D25"
+        "D25",
+        "ELAST25"
       ],
       "depends_on": [
         "E04"
@@ -78,7 +83,8 @@
       "basis": "assumption",
       "source_ids": [
         "PIND94",
-        "COST25"
+        "COST25",
+        "BPS24"
       ],
       "depends_on": [],
       "canonical": "docs/03_equations.md#e06",
@@ -97,7 +103,8 @@
       ],
       "canonical": "docs/03_equations.md#e07",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_20261105": "补跨期凸性充分界；新设拥挤项未获得原式或行业参数验证。"
     },
     {
       "id": "E08",
@@ -130,7 +137,8 @@
       ],
       "canonical": "docs/03_equations.md#e09",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_20261105": "七条件表示用有界变分不等式；在K_e>0时恢复lambda=max(P-MC_d,0)、mu_Q=max(MC_d-P,0)，代入E13，不额外增加自由函数。"
     },
     {
       "id": "E10",
@@ -138,7 +146,8 @@
       "basis": "physical_assumption",
       "source_ids": [
         "POT13",
-        "BUILD24"
+        "BUILD24",
+        "IEA26"
       ],
       "depends_on": [],
       "canonical": "docs/03_equations.md#e10",
@@ -198,7 +207,8 @@
       ],
       "canonical": "docs/03_equations.md#e14",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_20261105": "补无泡沫基础价值选取与有界政策下的终值条件。"
     },
     {
       "id": "E15",
@@ -232,20 +242,24 @@
       "id": "E17",
       "name": "一致条件矩",
       "basis": "equilibrium_requirement",
-      "source_ids": [],
+      "source_ids": [
+        "GMS24"
+      ],
       "depends_on": [
         "E30"
       ],
       "canonical": "docs/03_equations.md#e17",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_20261105": "同一政策产生所有条件矩；v=0为另行处理的退化边界。"
     },
     {
       "id": "E18",
       "name": "库存净持有成本",
       "basis": "assumption",
       "source_ids": [
-        "PIND94"
+        "PIND94",
+        "GW26"
       ],
       "depends_on": [],
       "canonical": "docs/03_equations.md#e18",
@@ -267,7 +281,8 @@
       ],
       "canonical": "docs/03_equations.md#e19",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_20261105": "xi>0时k=0也无界；补全库存目标有限性的全部边界。"
     },
     {
       "id": "E20",
@@ -315,7 +330,8 @@
       ],
       "canonical": "docs/03_equations.md#e22",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_20261105": "原除法FOC仅v>0；清算后无除v形式见E27。"
     },
     {
       "id": "E23",
@@ -362,21 +378,25 @@
       "name": "期货清算与结算",
       "basis": "clearing",
       "source_ids": [
-        "ELV19"
+        "ELV19",
+        "GFEXCLEAR25",
+        "GFEXQA"
       ],
       "depends_on": [
         "E22"
       ],
       "canonical": "docs/03_equations.md#e26",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_20261105": "到期支付为模型假设；GFEX来源用于制度差异，不为完全匹配假设背书。"
     },
     {
       "id": "E27",
       "name": "风险溢价推导",
       "basis": "derived_redundant",
       "source_ids": [
-        "ELV19"
+        "ELV19",
+        "FEDNOTE26"
       ],
       "depends_on": [
         "E22",
@@ -384,7 +404,8 @@
       ],
       "canonical": "docs/03_equations.md#e27",
       "review": "PENDING",
-      "independent_clearing_restriction": false
+      "independent_clearing_restriction": false,
+      "audit_20261105": "七未知量系统可选作替代清算式，不能与原持仓清算重复；补风险份额表示。"
     },
     {
       "id": "E28",
@@ -420,27 +441,37 @@
       "id": "E30",
       "name": "政策与预期固定点",
       "basis": "equilibrium_requirement",
-      "source_ids": [],
+      "source_ids": [
+        "GMS24"
+      ],
       "depends_on": [
         "E17",
         "E29"
       ],
       "canonical": "docs/03_equations.md#e30",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_20261105": "完整积分固定点、后继状态几乎处处可行；条件子块已检查，动态外层未实现。"
     },
     {
       "id": "E31",
       "name": "观测映射",
       "basis": "measurement_assumption",
-      "source_ids": [],
+      "source_ids": [
+        "ELAST25",
+        "GFEXQA",
+        "AMS26"
+      ],
       "depends_on": [
         "E25",
         "E30"
       ],
       "canonical": "docs/03_equations.md#e31",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_20261105": "文献矿端/年度数据和实际GFEX结算价不直接等于模型观测。"
     }
-  ]
+  ],
+  "revision": "CLOSURE_REVIEW_20261105",
+  "closure_specification": "model/closure_spec.json"
 }

@@ -2,7 +2,7 @@
   "project": "DSGE-LC",
   "model_id": "LC_V2_REVIEW_20261029",
   "stage": "EQUATION_REVIEW",
-  "updated_on": "2026-10-29",
+  "updated_on": "2026-11-05",
   "canonical_equations": "docs/03_equations.md",
   "equation_groups": 31,
   "approved_by_supervisor": false,
@@ -16,14 +16,23 @@
   "state_dimension": "n_z + L + R + 3; n_z=5 gives L+R+8",
   "gates": {
     "scope_and_timing": "PENDING_REVIEW",
-    "literature_and_functions": "PENDING_REVIEW",
-    "equilibrium_and_boundaries": "NOT_PASSED",
+    "literature_and_functions": "EVIDENCE_EXPANDED_PENDING_REVIEW",
+    "equilibrium_and_boundaries": "CONDITIONAL_MARKET_CHECKED_DYNAMIC_NOT_PASSED",
     "measurement_and_licence": "NOT_PASSED",
     "identification_and_recovery": "NOT_STARTED",
     "real_estimation": "BLOCKED"
   },
   "checks": [
     "python scripts/check_project.py",
-    "python -m unittest discover -s tests -v"
-  ]
+    "python -m unittest discover -s tests -v",
+    "python scripts/check_closure.py"
+  ],
+  "revision": "CLOSURE_REVIEW_20261105",
+  "review_base_commit": "7a6f167b7460ce58f648a424009a699ecd1fa50c",
+  "closure_specification_written": true,
+  "conditional_market_block_checked": true,
+  "dynamic_fixed_point_implemented": false,
+  "closure_document": "docs/10_closure.md",
+  "flowcharts_document": "docs/11_flowcharts.md"
 }
+

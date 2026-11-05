@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1040" viewBox="0 0 1400 1040" role="img">
+<title>01  Economic mechanisms and expectations</title><desc>LC_V2_REVIEW_20261029 | 2026-11-05 | Structural candidate; full stochastic equilibrium is not yet solved</desc>
+<defs>
+<marker id="arrow-ink" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#344C5C"/></marker>
+<marker id="arrow-policy" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8067AB"/></marker>
+<marker id="arrow-time" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#557F68"/></marker>
+</defs>
+<rect width="1400" height="1040" fill="#FFFFFF"/>
+<g font-family="DejaVu Sans, Arial, sans-serif">
+<text x="70" y="48" fill="#17384B" font-size="29" text-anchor="start" font-weight="700">01  Economic mechanisms and expectations</text>
+<text x="70" y="79" fill="#5D7280" font-size="14" text-anchor="start" font-weight="400">LC_V2_REVIEW_20261029 | 2026-11-05 | Structural candidate; full stochastic equilibrium is not yet solved</text>
+<rect x="80" y="108" width="1240" height="78" rx="13" fill="#F2F5F8" stroke="#7B8E9D" stroke-width="1.8"/>
+<text x="700.0" y="153.0" fill="#2C4152" font-size="20" text-anchor="middle" font-weight="400">Inherited state: z, Q_-, I_-, C_-, K, B, Z   |   E01–E02, E29</text>
+<rect x="80" y="235" width="550" height="260" rx="13" fill="#F0F7FB" stroke="#236C8A" stroke-width="1.8"/>
+<text x="355.0" y="266" fill="#173F52" font-size="21" text-anchor="middle" font-weight="700">PHYSICAL MARKET</text>
+<text x="355.0" y="298" fill="#173F52" font-size="18" text-anchor="middle" font-weight="400">Production Q and flexible use D_s</text>
+<text x="355.0" y="325" fill="#173F52" font-size="18" text-anchor="middle" font-weight="400">Spot P clears: Q + N + α_I I_-</text>
+<text x="355.0" y="352" fill="#173F52" font-size="18" text-anchor="middle" font-weight="400">= D_s + C_- + I</text>
+<text x="355.0" y="379" fill="#173F52" font-size="18" text-anchor="middle" font-weight="400">Inventory I responds to P and F</text>
+<text x="355.0" y="406" fill="#173F52" font-size="18" text-anchor="middle" font-weight="400">E04, E09, E24, E25</text>
+<rect x="770" y="235" width="550" height="260" rx="13" fill="#FFF5E8" stroke="#B27B35" stroke-width="1.8"/>
+<text x="1045.0" y="266" fill="#6A4A1A" font-size="21" text-anchor="middle" font-weight="700">RISK SHARING</text>
+<text x="1045.0" y="298" fill="#6A4A1A" font-size="18" text-anchor="middle" font-weight="400">New commitment C: next-month use</text>
+<text x="1045.0" y="325" fill="#6A4A1A" font-size="18" text-anchor="middle" font-weight="400">Net hedge H = α_I I − C</text>
+<text x="1045.0" y="352" fill="#6A4A1A" font-size="18" text-anchor="middle" font-weight="400">F = μ_P − (v_P / T) H</text>
+<text x="1045.0" y="379" fill="#6A4A1A" font-size="18" text-anchor="middle" font-weight="400">Three futures positions sum to zero</text>
+<text x="1045.0" y="406" fill="#6A4A1A" font-size="18" text-anchor="middle" font-weight="400">E19–E27</text>
+<rect x="80" y="630" width="550" height="240" rx="13" fill="#ECF5EF" stroke="#57886A" stroke-width="1.8"/>
+<text x="355.0" y="661" fill="#2C5039" font-size="21" text-anchor="middle" font-weight="700">INVESTMENT AND CAPACITY</text>
+<text x="355.0" y="693" fill="#2C5039" font-size="18" text-anchor="middle" font-weight="400">Capacity service → project values W</text>
+<text x="355.0" y="720" fill="#2C5039" font-size="18" text-anchor="middle" font-weight="400">J → construction B → ramp-up Z → K_e</text>
+<text x="355.0" y="747" fill="#2C5039" font-size="18" text-anchor="middle" font-weight="400">New projects change future supply</text>
+<text x="355.0" y="774" fill="#2C5039" font-size="18" text-anchor="middle" font-weight="400">E06–E16</text>
+<rect x="770" y="630" width="550" height="240" rx="13" fill="#F1ECF8" stroke="#8067AB" stroke-width="1.8"/>
+<text x="1045.0" y="661" fill="#3D2D58" font-size="21" text-anchor="middle" font-weight="700">CONSISTENT EXPECTATIONS</text>
+<text x="1045.0" y="693" fill="#3D2D58" font-size="18" text-anchor="middle" font-weight="400">s′ = Φ(s, G(s), ε′)</text>
+<text x="1045.0" y="720" fill="#3D2D58" font-size="18" text-anchor="middle" font-weight="400">Same policy and shock weights:</text>
+<text x="1045.0" y="747" fill="#3D2D58" font-size="18" text-anchor="middle" font-weight="400">μ_P, v_P, E Q′, E W′</text>
+<text x="1045.0" y="774" fill="#3D2D58" font-size="18" text-anchor="middle" font-weight="400">E17, E29–E30</text>
+<path d="M 355 186 L 355 235" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<path d="M 1045 186 L 1045 235" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<path d="M 630 315 L 770 315" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<rect x="669.2" y="286" width="61.599999999999994" height="24" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="700" y="301" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">I → H</text>
+<path d="M 770 435 L 630 435" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<rect x="669.2" y="406" width="61.599999999999994" height="24" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="700" y="421" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">F → I</text>
+<path d="M 245 495 L 245 630" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<rect x="195.96" y="543" width="98.08" height="24" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="245" y="558" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">Q/K_e → W</text>
+<path d="M 465 630 L 465 495" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<rect x="425.08" y="572" width="79.84" height="24" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="465" y="587" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">K_e → Q</text>
+<path d="M 1155 495 L 1155 630" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<rect x="1119.64" y="541" width="70.72" height="24" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="1155" y="556" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">C → s′</text>
+<path d="M 935 630 L 935 495" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<rect x="872.28" y="572" width="125.44" height="24" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="935" y="587" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">μ_P, v_P → F</text>
+<path d="M 630 475 L 682 475 L 682 674 L 770 674" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<rect x="635.525" y="593" width="92.94999999999999" height="23" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="682" y="607" fill="#526D7E" font-size="15" text-anchor="middle" font-weight="400">Q, I → s′</text>
+<path d="M 630 786 L 770 786" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<rect x="644.12" y="762" width="111.75999999999999" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="700" y="775" fill="#526D7E" font-size="14" text-anchor="middle" font-weight="400">K, B, Z → s′</text>
+<path d="M 770 718 L 630 718" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<rect x="673.76" y="691" width="52.48" height="24" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="700" y="706" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">E W′</text>
+<path d="M 990 870 L 990 930 L 40 930 L 40 407 L 80 407" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<rect x="142.4" y="906" width="335.2" height="24" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="310" y="921" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">E Q′ closes production expectations</text>
+<text x="700" y="978" fill="#445F6F" font-size="16" text-anchor="middle" font-weight="400">C is a future-use commitment. I is physical inventory. Financial positions do not enter the material balance.</text>
+<text x="700" y="1008" fill="#657985" font-size="14" text-anchor="middle" font-weight="400">Dashed arrows: price, risk or policy dependence. Solid arrows: state/time update. Detailed mapping: docs/11_flowcharts.md.</text>
+</g>
+</svg>

@@ -1,0 +1,140 @@
+{
+  "model_id": "LC_V2_REVIEW_20261029",
+  "revision": "CLOSURE_REVIEW_20261105",
+  "canonical": "docs/03_equations.md",
+  "details": "docs/10_closure.md",
+  "scope": "Formal closure specification and fixed-Q/fixed-continuation market validation; NOT a full stochastic equilibrium solver.",
+  "reduced_unknowns": [
+    "Q",
+    "J",
+    "D_s",
+    "C",
+    "I",
+    "P",
+    "F"
+  ],
+  "independent_conditions": [
+    {
+      "id": "R1",
+      "canonical": [
+        "E09"
+      ],
+      "kind": "bounded_variational_inequality",
+      "unknown": "Q"
+    },
+    {
+      "id": "R2",
+      "canonical": [
+        "E16"
+      ],
+      "kind": "complementarity",
+      "unknown": "J"
+    },
+    {
+      "id": "R3",
+      "canonical": [
+        "E04"
+      ],
+      "kind": "equality",
+      "unknown": "D_s"
+    },
+    {
+      "id": "R4",
+      "canonical": [
+        "E23"
+      ],
+      "kind": "equality",
+      "unknown": "C"
+    },
+    {
+      "id": "R5",
+      "canonical": [
+        "E24"
+      ],
+      "kind": "complementarity",
+      "unknown": "I"
+    },
+    {
+      "id": "R6",
+      "canonical": [
+        "E25"
+      ],
+      "kind": "goods_clearing",
+      "unknown": "P"
+    },
+    {
+      "id": "R7",
+      "canonical": [
+        "E27"
+      ],
+      "kind": "reduced_futures_clearing",
+      "unknown": "F"
+    }
+  ],
+  "alternative_original_conditions": [
+    "E09",
+    "E16",
+    "E04",
+    "E23",
+    "E24",
+    "E25",
+    "E22",
+    "E26"
+  ],
+  "derived_checks_by_representation": {
+    "reduced_seven_unknowns": ["E22", "E26", "E28"],
+    "original_ten_unknowns_with_positions": ["E27", "E28"],
+    "note": "Reduced form uses E27 as R7, reconstructs E22 positions and checks E26. Original form imposes E22/E26 and checks E27. Never impose both clearing representations independently."
+  },
+  "recovered_production_multipliers": "For K_e>0 and R1 satisfied: lambda=max(P-MC_d,0), mu_Q=max(MC_d-P,0); substitute lambda into E13; not additional free functions.",
+  "recovered_positions": "For v>0: hI=-alpha_I*I+wI*H, hD=C+wD*H, hf=wf*H; H=alpha_I*I-C; wi=(1/ai)/T.",
+  "zero_variance": "Require F=mu for bounded financial choice; positions not unique; displayed shares are a continuous-limit selection only.",
+  "expectation_sources": {
+    "mean_price": "same P policy evaluated on Phi(s,G(s),epsilon)",
+    "price_variance": "same weighted centered square prices",
+    "future_production": "same Q policy and same Phi/Pi",
+    "future_shadow_values": "same W policies and same Phi/Pi"
+  },
+  "candidate_innovation_kernel": {
+    "type": "independent_symmetric_two_point",
+    "dimensions": 5,
+    "values": [
+      -1,
+      1
+    ],
+    "branches": 32,
+    "weight": 0.03125,
+    "empirically_calibrated": false
+  },
+  "admissibility": [
+    "nonempty policy-invariant state domain almost surely",
+    "K_e>0; P>0; F>0",
+    "K_e+N+alpha_I*I_lag-C_lag>0 necessary",
+    "finite price second moments",
+    "finite individual objectives",
+    "no-bubble shadow values and appropriate transversality",
+    "no clipping of invalid quantities or prices"
+  ],
+  "investment_sufficient_convexity": "chi > 2*omega_B*sum(beta**(k/2) for k=1..L-1); sufficient, not necessary; omega_B=0 restricted baseline",
+  "conditional_subproblem": {
+    "fixed": [
+      "Q",
+      "mu",
+      "v",
+      "other current parameters"
+    ],
+    "requires": "M=Q+N+alpha_I*I_lag-C_lag>0",
+    "solves": [
+      "I",
+      "P",
+      "F",
+      "D_s",
+      "C"
+    ],
+    "code": "model/conditional_market.py",
+    "dynamic_equilibrium_claim": false
+  },
+  "full_equilibrium_solved": false,
+  "parameter_calibration_performed": false,
+  "state_dimension": "n_z + L + R + 3; n_z=5 gives L+R+8"
+}
