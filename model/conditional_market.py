@@ -1,4 +1,4 @@
-"""Conditional two-market block for LC_V2_REVIEW_20261029.
+"""Conditional two-market block for LC_V2_MACRO_REVIEW_20261030.
 
 This is NOT a dynamic rational-expectations solver. Current production q and
 the next-price mean and variance are supplied, not solved. Production,
@@ -7,6 +7,9 @@ fixed point must be verified elsewhere before calling a result an equilibrium.
 
 Quantities and prices in the accompanying checks are synthetic and normalized.
 No industry parameter defaults or data estimates are provided here.
+The legacy API name beta denotes the supplied current b_t > 0.
+It does not assert constant future discounting or b_t < 1; long-run discount
+conditions belong to the complete dynamic model.
 """
 from dataclasses import dataclass
 import math
@@ -72,8 +75,8 @@ def _validate(x):
     for name in ("q", "inventory_lag", "commitment_lag", "variance", "h", "xi"):
         if getattr(x, name) < 0:
             raise ValueError(f"{name} must be nonnegative")
-    if not 0 < x.beta < 1:
-        raise ValueError("beta must lie strictly between zero and one")
+    if not x.beta > 0:
+        raise ValueError("beta (the current b_t) must be strictly positive")
     if not 0 < x.alpha_I <= 1:
         raise ValueError("alpha_I must lie in (0, 1]")
     available = x.q + x.net_imports + x.alpha_I*x.inventory_lag - x.commitment_lag

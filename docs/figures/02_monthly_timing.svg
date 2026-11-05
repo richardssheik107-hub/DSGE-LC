@@ -6,16 +6,17 @@
 <marker id="arrow-time" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#557F68"/></marker>
 </defs>
 <rect width="1400" height="1050" fill="#FFFFFF"/>
-<g font-family="DejaVu Sans, Arial, sans-serif">
+<g font-family="Arial">
 <text x="70" y="48" fill="#17384B" font-size="29" text-anchor="start" font-weight="700">02  Monthly timing and simultaneous clearing</text>
 <text x="70" y="79" fill="#5D7280" font-size="14" text-anchor="start" font-weight="400">Old contracts are predetermined; their settlement price P_t is still the current joint-equilibrium price.</text>
 <rect x="270" y="110" width="860" height="72" rx="13" fill="#F2F5F8" stroke="#7B8E9D" stroke-width="1.8"/>
-<text x="700.0" y="152.0" fill="#2C4152" font-size="20" text-anchor="middle" font-weight="400">Enter t: inherit z_t, Q_-, I_-, C_-, K, B, Z  (E29)</text>
+<text x="700.0" y="139.5" fill="#2C4152" font-size="18" text-anchor="middle" font-weight="400">Enter t: observe 4 macro + 5 industry states; compute current b_t.</text>
+<text x="700.0" y="166.5" fill="#2C4152" font-size="18" text-anchor="middle" font-weight="400">Inherit Q_-, I_-, C_-, K, B, Z  |  E01–E02, E29</text>
 <rect x="270" y="222" width="860" height="82" rx="13" fill="#F2F5F8" stroke="#7B8E9D" stroke-width="1.8"/>
 <text x="700.0" y="256.5" fill="#2C4152" font-size="18" text-anchor="middle" font-weight="400">Existing commitments are consumed; old futures settle at P_t.</text>
-<text x="700.0" y="283.5" fill="#2C4152" font-size="18" text-anchor="middle" font-weight="400">In the baseline, settlement wealth adds no new state.</text>
+<text x="700.0" y="283.5" fill="#2C4152" font-size="18" text-anchor="middle" font-weight="400">Payoffs leave with old owners; new risk capital is wealth independent.</text>
 <rect x="270" y="344" width="860" height="72" rx="13" fill="#F1ECF8" stroke="#8067AB" stroke-width="1.8"/>
-<text x="700.0" y="386.0" fill="#3D2D58" font-size="19" text-anchor="middle" font-weight="400">Common information and the same-policy conditional distribution</text>
+<text x="700.0" y="386.0" fill="#3D2D58" font-size="19" text-anchor="middle" font-weight="400">Current b_t and common information; same-policy future distribution</text>
 <rect x="150" y="463" width="1100" height="249" rx="20" fill="#FAFCFD" stroke="#90B4C3" stroke-width="1.7"/>
 <text x="700" y="495" fill="#236C8A" font-size="19" text-anchor="middle" font-weight="700">ALL CURRENT DECISIONS AND BOTH MARKETS CLEAR JOINTLY</text>
 <rect x="190" y="520" width="320" height="137" rx="13" fill="#F0F7FB" stroke="#236C8A" stroke-width="1.8"/>
@@ -27,30 +28,42 @@
 <rect x="890" y="520" width="320" height="137" rx="13" fill="#FFF5E8" stroke="#B27B35" stroke-width="1.8"/>
 <text x="1050.0" y="582.0" fill="#6A4A1A" font-size="20" text-anchor="middle" font-weight="400">Risk choices</text>
 <text x="1050.0" y="609.0" fill="#6A4A1A" font-size="20" text-anchor="middle" font-weight="400">h_I, h_D, h_f</text>
-<path d="M 510 561 L 540 561" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
-<path d="M 540 615 L 510 615" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
-<path d="M 860 561 L 890 561" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
-<path d="M 890 615 L 860 615" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<path d="M 510.000 561.000 L 517.000 561.000 M 522.000 561.000 L 529.000 561.000 M 534.000 561.000 L 540.000 561.000" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="540.000,561.000 530.000,565.500 530.000,556.500" fill="#8067AB"/>
+<path d="M 540.000 615.000 L 533.000 615.000 M 528.000 615.000 L 521.000 615.000 M 516.000 615.000 L 510.000 615.000" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="510.000,615.000 520.000,610.500 520.000,619.500" fill="#8067AB"/>
+<path d="M 860.000 561.000 L 867.000 561.000 M 872.000 561.000 L 879.000 561.000 M 884.000 561.000 L 890.000 561.000" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="890.000,561.000 880.000,565.500 880.000,556.500" fill="#8067AB"/>
+<path d="M 890.000 615.000 L 883.000 615.000 M 878.000 615.000 L 871.000 615.000 M 866.000 615.000 L 860.000 615.000" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="860.000,615.000 870.000,610.500 870.000,619.500" fill="#8067AB"/>
 <text x="700" y="693" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">E04, E09, E16, E22–E27  |  Neither P nor F is supplied first as an external input.</text>
-<path d="M 700 182 L 700 222" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
-<path d="M 700 304 L 700 344" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
-<path d="M 500 416 L 500 439 L 350 439 L 350 520" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
-<path d="M 900 416 L 900 439 L 1050 439 L 1050 520" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 5" marker-end="url(#arrow-policy)"/>
+<path d="M 700 182 L 700 222" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="700.000,222.000 695.500,212.000 704.500,212.000" fill="#557F68"/>
+<path d="M 700 304 L 700 344" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="700.000,344.000 695.500,334.000 704.500,334.000" fill="#557F68"/>
+<path d="M 500.000 416.000 L 500.000 423.000 M 500.000 428.000 L 500.000 435.000 M 500.000 439.000 L 493.000 439.000 M 488.000 439.000 L 481.000 439.000 M 476.000 439.000 L 469.000 439.000 M 464.000 439.000 L 457.000 439.000 M 452.000 439.000 L 445.000 439.000 M 440.000 439.000 L 433.000 439.000 M 428.000 439.000 L 421.000 439.000 M 416.000 439.000 L 409.000 439.000 M 404.000 439.000 L 397.000 439.000 M 392.000 439.000 L 385.000 439.000 M 380.000 439.000 L 373.000 439.000 M 368.000 439.000 L 361.000 439.000 M 356.000 439.000 L 350.000 439.000 M 350.000 439.000 L 350.000 446.000 M 350.000 451.000 L 350.000 458.000 M 350.000 463.000 L 350.000 470.000 M 350.000 475.000 L 350.000 482.000 M 350.000 487.000 L 350.000 494.000 M 350.000 499.000 L 350.000 506.000 M 350.000 511.000 L 350.000 518.000" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="350.000,520.000 345.500,510.000 354.500,510.000" fill="#8067AB"/>
+<path d="M 900.000 416.000 L 900.000 423.000 M 900.000 428.000 L 900.000 435.000 M 900.000 439.000 L 907.000 439.000 M 912.000 439.000 L 919.000 439.000 M 924.000 439.000 L 931.000 439.000 M 936.000 439.000 L 943.000 439.000 M 948.000 439.000 L 955.000 439.000 M 960.000 439.000 L 967.000 439.000 M 972.000 439.000 L 979.000 439.000 M 984.000 439.000 L 991.000 439.000 M 996.000 439.000 L 1003.000 439.000 M 1008.000 439.000 L 1015.000 439.000 M 1020.000 439.000 L 1027.000 439.000 M 1032.000 439.000 L 1039.000 439.000 M 1044.000 439.000 L 1050.000 439.000 M 1050.000 439.000 L 1050.000 446.000 M 1050.000 451.000 L 1050.000 458.000 M 1050.000 463.000 L 1050.000 470.000 M 1050.000 475.000 L 1050.000 482.000 M 1050.000 487.000 L 1050.000 494.000 M 1050.000 499.000 L 1050.000 506.000 M 1050.000 511.000 L 1050.000 518.000" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="1050.000,520.000 1045.500,510.000 1054.500,510.000" fill="#8067AB"/>
 <rect x="270" y="758" width="860" height="74" rx="13" fill="#ECF5EF" stroke="#57886A" stroke-width="1.8"/>
 <text x="700.0" y="788.5" fill="#2C5039" font-size="18" text-anchor="middle" font-weight="400">Update Q, I, C memory and construction/ramp-up queues</text>
 <text x="700.0" y="815.5" fill="#2C5039" font-size="18" text-anchor="middle" font-weight="400">E10–E12, E29–E30</text>
-<path d="M 700 712 L 700 758" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<path d="M 700 712 L 700 758" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="700.000,758.000 695.500,748.000 704.500,748.000" fill="#557F68"/>
 <rect x="270" y="881" width="360" height="74" rx="13" fill="#F1ECF8" stroke="#8067AB" stroke-width="1.8"/>
-<text x="450.0" y="911.5" fill="#3D2D58" font-size="18" text-anchor="middle" font-weight="400">New shock → z_(t+1)</text>
+<text x="450.0" y="911.5" fill="#3D2D58" font-size="18" text-anchor="middle" font-weight="400">Joint innovations → x′, z_id′</text>
 <text x="450.0" y="938.5" fill="#3D2D58" font-size="18" text-anchor="middle" font-weight="400">E01</text>
 <rect x="770" y="881" width="360" height="74" rx="13" fill="#ECF5EF" stroke="#57886A" stroke-width="1.8"/>
 <text x="950.0" y="911.5" fill="#2C5039" font-size="17" text-anchor="middle" font-weight="400">Enter t+1: C_t is committed</text>
 <text x="950.0" y="938.5" fill="#2C5039" font-size="17" text-anchor="middle" font-weight="400">Old F_t settles at P_(t+1)</text>
-<path d="M 450 832 L 450 881" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
-<path d="M 630 918 L 770 918" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<path d="M 450 832 L 450 881" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="450.000,881.000 445.500,871.000 454.500,871.000" fill="#557F68"/>
+<path d="M 630 918 L 770 918" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="770.000,918.000 760.000,922.500 760.000,913.500" fill="#557F68"/>
 <rect x="652.1" y="893" width="95.8" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
 <text x="700" y="906" fill="#526D7E" font-size="14" text-anchor="middle" font-weight="400">next state</text>
-<path d="M 1130 918 L 1280 918 L 1280 146 L 1130 146" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-time)"/>
+<path d="M 1130 918 L 1280 918 L 1280 146 L 1130 146" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="1130.000,146.000 1140.000,141.500 1140.000,150.500" fill="#557F68"/>
 <rect x="1158.35" y="852" width="67.3" height="23" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
 <text x="1192" y="866" fill="#526D7E" font-size="15" text-anchor="middle" font-weight="400">repeat</text>
 <text x="700" y="1009" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">Thin arrows: events and state updates. Dashed arrows: simultaneous equilibrium dependencies.</text>

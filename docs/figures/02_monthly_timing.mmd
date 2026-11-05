@@ -1,7 +1,7 @@
 flowchart TB
-    ST["进入 t：继承 z_t、Q_-、I_-、C_-、K、B、Z"]
-    OLD["本期既定项：旧承诺耗用；旧头寸按 P_t 结算"]
-    INFO["共同信息集；同一政策的未来条件分布"]
+    ST["进入 t：观察4个宏观量与5个行业余项；继承实物记忆"]
+    OLD["旧承诺与旧头寸数量已定；结算使用本期联立 P_t"]
+    INFO["共同信息；本期 b_t；同一政策的未来条件分布"]
 
     subgraph NOW["本期同时决策与清算：不先外给 P 或 F"]
         direction TB
@@ -15,7 +15,7 @@ flowchart TB
     end
 
     MEMORY["记忆更新：Q、I、C；建设与爬坡推进"]
-    SHOCK["实现新冲击；更新 z_(t+1)"]
+    SHOCK["实现宏观与行业创新；更新 x、z_id"]
     NEXT["进入 t+1：C_t 成为既定耗用；合约按 P_(t+1) 结算"]
 
     ST --> OLD
@@ -35,4 +35,3 @@ flowchart TB
     class MEMORY,SHOCK,NEXT memory;
     class INFO information;
     class ST,OLD inherited;
-

@@ -1,18 +1,18 @@
 flowchart TB
     SCOPE["固定商品边界、单位、月度时点与研究目标"]
-    INPUT["核验文献与参数；声明冲击核、可行域和凸性条件"]
-    INIT["初始化同一政策 G：价格、数量与影子价值"]
-    NEXT["用候选控制生成全部后继状态 s'"]
-    MOM["同一 Φ、Π、G 计算 μ_P、v_P、E Q'、E W'"]
-    MCP["联立解 R1—R7 与 E13—E15 的价值递推"]
+    INPUT["核验九状态转移、创新核、利率支持、可行域与TVC"]
+    INIT["初始化同一时变政策 G_t：7+L+R个未知对象"]
+    NEXT["用候选控制与联合核生成后继状态 S'"]
+    MOM["同一 Φ、Π、G 计算条件量；续期采用 b_t"]
+    MCP["联立解七当期条件与L+R条价值递推 E14—E15"]
     UPDATE["更新价格、数量与价值政策"]
     CONV{"政策变化与经济残差均收敛？"}
-    CHECK["独立状态点重算原始 FOC/KKT、两市场与价值条件"]
-    DOMAIN["检查边界、目标有界、有限矩、后继域与承诺履约"]
+    CHECK["独立状态点重算全部原始FOC/KKT、清算与价值条件"]
+    DOMAIN["验有限矩、折现衰减/TVC、后继域与承诺履约"]
     PASS{"数值均衡验收通过？"}
     FAIL["记录失败位置与原因；显式修订"]
     IDENT["进入合成参数恢复与识别验收"]
-    INNER["本轮已实现：给定 Q 与条件矩的市场子块"]
+    CODE["已实现：完整条件评估器、共同确定性锚及市场内层"]
 
     SCOPE --> INPUT
     INPUT --> INIT
@@ -29,7 +29,8 @@ flowchart TB
     FAIL -->|"数值近似或初始化问题"| INIT
     FAIL -->|"口径、域或经济设定问题"| INPUT
     PASS -->|"是：随后仍需独立数据门槛"| IDENT
-    INNER -.->|"只覆盖其中的条件市场部分"| MCP
+    CODE -.->|"生成后继与内部积分"| MOM
+    CODE -.->|"可重算所有结构条件；不等于随机求解"| CHECK
 
     classDef setup fill:#f3f5f7,stroke:#7b8997,color:#2a3b4b;
     classDef solve fill:#e6f1f7,stroke:#126782,color:#103448;
@@ -40,5 +41,4 @@ flowchart TB
     class NEXT,MOM,MCP,UPDATE solve;
     class CHECK,DOMAIN,IDENT verify;
     class CONV,PASS,FAIL gate;
-    class INNER implemented;
-
+    class CODE implemented;

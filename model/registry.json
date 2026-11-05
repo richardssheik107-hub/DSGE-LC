@@ -1,35 +1,43 @@
 {
-  "model_id": "LC_V2_REVIEW_20261029",
+  "model_id": "LC_V2_MACRO_REVIEW_20261030",
   "status": "candidate_not_approved",
   "note": "每组不是一个独立标量方程；来源指机制而非逐字抄用；依赖中的理性预期循环有意保留。",
   "equations": [
     {
       "id": "E01",
-      "name": "外部环境递推",
+      "name": "四宏观与五行业余项联合递推",
       "basis": "assumption",
-      "source_ids": [],
+      "source_ids": [
+        "HNS24",
+        "BK26"
+      ],
       "depends_on": [],
       "canonical": "docs/03_equations.md#e01",
       "review": "PENDING",
       "independent_clearing_restriction": null,
-      "audit_20261105": "明确创新条件核；32点有界分支仅为计算基准，不证明经济域不变。"
+      "audit_20261105": "明确创新条件核；32点有界分支仅为计算基准，不证明经济域不变。",
+      "audit_1030_closure": "4+5状态；给出行业余项转移和标准化完整联合创新核；统计创新不自动解释为因果政策冲击。"
     },
     {
       "id": "E02",
-      "name": "环境映射与工程成本锚",
+      "name": "宏观映射、工程成本与随机路径折现",
       "basis": "assumption_and_measurement",
       "source_ids": [
         "COST25",
         "ENG26",
         "FEDS25",
-        "IEA26"
+        "IEA26",
+        "HNS24",
+        "BK26",
+        "GMS24"
       ],
       "depends_on": [
         "E01"
       ],
       "canonical": "docs/03_equations.md#e02",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_1030_closure": "保留附件b_t和d；补齐确定性tau路径与人民币/美元成本聚合映射；新增映射属于本文选择。"
     },
     {
       "id": "E03",
@@ -84,36 +92,45 @@
       "source_ids": [
         "PIND94",
         "COST25",
-        "BPS24"
+        "BPS24",
+        "BV04"
       ],
-      "depends_on": [],
+      "depends_on": [
+        "E02"
+      ],
       "canonical": "docs/03_equations.md#e06",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_1030_closure": "幂次负荷为perspective凸函数；工程资料不直接支持全部函数形状。"
     },
     {
       "id": "E07",
       "name": "投资成本与在建负荷",
       "basis": "assumption",
       "source_ids": [
-        "POT13"
+        "POT13",
+        "BV04"
       ],
       "depends_on": [
+        "E02",
         "E10"
       ],
       "canonical": "docs/03_equations.md#e07",
       "review": "PENDING",
       "independent_clearing_restriction": null,
-      "audit_20261105": "补跨期凸性充分界；新设拥挤项未获得原式或行业参数验证。"
+      "audit_20261105": "补跨期凸性充分界；新设拥挤项未获得原式或行业参数验证。",
+      "audit_1030_closure": "保留omega_B；完整跨期充分凸性界使用b_max而非平均b。"
     },
     {
       "id": "E08",
       "name": "生产者长期目标",
       "basis": "objective",
       "source_ids": [
-        "PIND94"
+        "PIND94",
+        "GMS24"
       ],
       "depends_on": [
+        "E02",
         "E06",
         "E07",
         "E10",
@@ -122,7 +139,8 @@
       ],
       "canonical": "docs/03_equations.md#e08",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_1030_closure": "个体状态与总量状态分离；b_t折现、Wq包络、有限目标与TVC。"
     },
     {
       "id": "E09",
@@ -152,7 +170,8 @@
       "depends_on": [],
       "canonical": "docs/03_equations.md#e10",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_1030_closure": "L=1无B；完成量为J，否则为B1；不在建设阶段折旧。"
     },
     {
       "id": "E11",
@@ -167,7 +186,8 @@
       ],
       "canonical": "docs/03_equations.md#e11",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_1030_closure": "R=0空队列；R>=1新完成量不预先折旧。"
     },
     {
       "id": "E12",
@@ -177,11 +197,13 @@
         "BUILD24"
       ],
       "depends_on": [
+        "E10",
         "E11"
       ],
       "canonical": "docs/03_equations.md#e12",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_1030_closure": "R=0时KM_next=(1-delta)KM+completion。"
     },
     {
       "id": "E13",
@@ -200,15 +222,20 @@
       "id": "E14",
       "name": "成熟/爬坡影子价值",
       "basis": "derived",
-      "source_ids": [],
+      "source_ids": [
+        "GMS24"
+      ],
       "depends_on": [
+        "E02",
+        "E08",
         "E12",
         "E13"
       ],
       "canonical": "docs/03_equations.md#e14",
       "review": "PENDING",
       "independent_clearing_restriction": null,
-      "audit_20261105": "补无泡沫基础价值选取与有界政策下的终值条件。"
+      "audit_20261105": "补无泡沫基础价值选取与有界政策下的终值条件。",
+      "audit_1030_closure": "全部WM/WZ用当前b_t；无泡沫展开用随机d；GMS提供方法而非本系统定理。"
     },
     {
       "id": "E15",
@@ -216,13 +243,15 @@
       "basis": "derived",
       "source_ids": [],
       "depends_on": [
+        "E02",
         "E07",
         "E10",
         "E14"
       ],
       "canonical": "docs/03_equations.md#e15",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_1030_closure": "每一在建阶段均含-omega_B J与正确续期价值；L=1空向量。"
     },
     {
       "id": "E16",
@@ -230,13 +259,16 @@
       "basis": "derived_kkt",
       "source_ids": [],
       "depends_on": [
+        "E02",
         "E07",
         "E08",
+        "E14",
         "E15"
       ],
       "canonical": "docs/03_equations.md#e16",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_1030_closure": "完整多期展开包含未来拥挤正成本和期望内部d_t,t+L。"
     },
     {
       "id": "E17",
@@ -276,13 +308,15 @@
         "BAKER21"
       ],
       "depends_on": [
+        "E02",
         "E17",
         "E18"
       ],
       "canonical": "docs/03_equations.md#e19",
       "review": "PENDING",
       "independent_clearing_restriction": null,
-      "audit_20261105": "xi>0时k=0也无界；补全库存目标有限性的全部边界。"
+      "audit_20261105": "xi>0时k=0也无界；补全库存目标有限性的全部边界。",
+      "audit_1030_closure": "当前b_t；风险厌恶按下期人民币定义；旧财富退出；xi>0且k=0仍无界。"
     },
     {
       "id": "E20",
@@ -293,12 +327,14 @@
         "FIN25"
       ],
       "depends_on": [
+        "E02",
         "E03",
         "E17"
       ],
       "canonical": "docs/03_equations.md#e20",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_1030_closure": "采购收益在t确定、t+1兑现；原始C和hD两个FOC；b_t整体正因子约去。"
     },
     {
       "id": "E21",
@@ -306,7 +342,8 @@
       "basis": "objective",
       "source_ids": [
         "ELV19",
-        "FIN25"
+        "FIN25",
+        "BK26"
       ],
       "depends_on": [
         "E02",
@@ -314,7 +351,8 @@
       ],
       "canonical": "docs/03_equations.md#e21",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_1030_closure": "每期风险资本外部给定，旧财富退出；均值方差直接偏好，不宣称无限期CARA自动等价。"
     },
     {
       "id": "E22",
@@ -352,12 +390,14 @@
       "basis": "derived_kkt",
       "source_ids": [],
       "depends_on": [
+        "E02",
         "E19",
         "E22"
       ],
       "canonical": "docs/03_equations.md#e24",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_1030_closure": "0<=I perp P+Gprime-b_t alpha_I F>=0，保留零库存和有限目标边界。"
     },
     {
       "id": "E25",
@@ -435,7 +475,8 @@
       ],
       "canonical": "docs/03_equations.md#e29",
       "review": "PENDING",
-      "independent_clearing_restriction": null
+      "independent_clearing_restriction": null,
+      "audit_1030_closure": "外部4+5、四个记忆/成熟状态、L-1建设、R爬坡，维数L+R+12；日历t非新增随机状态。"
     },
     {
       "id": "E30",
@@ -445,13 +486,23 @@
         "GMS24"
       ],
       "depends_on": [
+        "E01",
+        "E02",
+        "E09",
+        "E14",
+        "E15",
+        "E16",
         "E17",
+        "E24",
+        "E25",
+        "E27",
         "E29"
       ],
       "canonical": "docs/03_equations.md#e30",
       "review": "PENDING",
       "independent_clearing_restriction": null,
-      "audit_20261105": "完整积分固定点、后继状态几乎处处可行；条件子块已检查，动态外层未实现。"
+      "audit_20261105": "完整积分固定点、后继状态几乎处处可行；条件子块已检查，动态外层未实现。",
+      "audit_1030_closure": "7+L+R政策未知量及条件；同策略/转移/概率核生成全部续期矩；折现积、目标、TVC和不变域属于验收。"
     },
     {
       "id": "E31",
@@ -460,18 +511,27 @@
       "source_ids": [
         "ELAST25",
         "GFEXQA",
-        "AMS26"
+        "AMS26",
+        "HNS24",
+        "BK26"
       ],
       "depends_on": [
+        "E01",
+        "E02",
         "E25",
         "E30"
       ],
       "canonical": "docs/03_equations.md#e31",
       "review": "PENDING",
       "independent_clearing_restriction": null,
-      "audit_20261105": "文献矿端/年度数据和实际GFEX结算价不直接等于模型观测。"
+      "audit_20261105": "文献矿端/年度数据和实际GFEX结算价不直接等于模型观测。",
+      "audit_1030_closure": "固定H和已归一化尺度；声明独立高斯测量噪声候选；缺观测删行；不重复拟合自由结构转移。"
     }
   ],
-  "revision": "CLOSURE_REVIEW_20261105",
-  "closure_specification": "model/closure_spec.json"
+  "revision": "ALL_CONDITIONS_CLOSURE_20261105",
+  "closure_specification": "model/closure_spec.json",
+  "source_alignment": "docs/15_source_alignment_1030.md",
+  "complete_conditions": "docs/14_complete_conditions.md",
+  "policy_unknown_count": "7+L+R",
+  "state_dimension": "n_x + n_id + L + R + 3; n_x=4, n_id=5 gives L+R+12"
 }

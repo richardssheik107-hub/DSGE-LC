@@ -1,5 +1,5 @@
 {
-  "policy": "2026-11-05核验逐条记录；摘要、搜索正文、作者稿和期刊版分开；版本页码不得混用；全篇精读、图版核验和参数复算未完成者不宣称完成。",
+  "policy": "2026-11-05两轮核验：首轮仓库审查后，以10月30日已扩展模型继续核对全部条件。摘要、出版社索引选段、作者稿和期刊图版分级，准确页码仅属于指定版本。模型自身推导和新增闭合选择不登记成文献原式；不宣称全文精读或参数复算。",
   "items": [
     {
       "id": "D24",
@@ -27,12 +27,18 @@
       "pages": "108477",
       "doi": "10.1016/j.resconrec.2025.108477",
       "url": "https://www.sciencedirect.com/science/article/pii/S0921344925003556",
-      "verification": "author_version_text_sections_checked",
-      "locator": "Author open version 2025-06-19, pp.11–13 Eqs.(3)–(6); p.17 Table 1; no visual equation verification",
-      "supports": "EV automaker strategy and horizon heterogeneity; constant-elasticity candidate as an approximation",
-      "does_not_support": "Does not identify Chinese monthly LC procurement share, eta_s or eta_c; table entries are scenario-model outcomes, not monthly estimates",
+      "verification": "author_version_selected_text_and_page_images_checked",
+      "locator": "Author open version 2025-06-19: pp.11–13 Eqs.(3)–(6), p.17 Table 1 text checked; pp.12–13 visually checked, including Eqs.(4)–(6) and the short-run isoelastic interpretation. Other pages and numerical results not visually or computationally replicated.",
+      "supports": "EV电池需求的期限与技术差异；在文中10–80美元/kg LCE价格情景范围形成短期常弹性曲线。",
+      "does_not_support": "不覆盖全部工业锂需求，不识别中国月度采购份额或eta_s/eta_c；不能证明本文收益积分在零量及无限价格范围的边界；表中情景值不是月度计量估计。",
       "checked_on": "2026-11-05",
-      "open_pdf": "https://phuongmho.github.io/LiDemand.pdf"
+      "open_pdf": "https://phuongmho.github.io/LiDemand.pdf",
+      "model_mapping": [
+        "E03",
+        "E04",
+        "E05",
+        "E23"
+      ]
     },
     {
       "id": "COST25",
@@ -93,10 +99,10 @@
       "doi": "10.1007/s00199-018-1115-y",
       "url": "https://link.springer.com/article/10.1007/s00199-018-1115-y",
       "open_pdf": "https://www.ceremade.dauphine.fr/~ekeland/Articles/ELV.pdf",
-      "verification": "author_version_pdf_text",
-      "locator": "2018-01-26 author version: §3.3 pp.6–7 Eqs.(6)–(11), §3.4 p.8 Eq.(16), §3.5 pp.8–9 Eqs.(17)–(19). Separately rechecked 2017-04-26 version: Eqs.(8)–(13). Do not mix equation numbers.",
-      "supports": "三类持仓：风险承担项加实物套保；期货清算与套保压力",
-      "does_not_support": "期刊版页码不能沿用作者稿；不直接证明无限期滚动改写和便利服务假设",
+      "verification": "author_version_selected_pdf_text_checked",
+      "locator": "2018-01-26 author version: PDF/printed pp.6–7, §3.3 Eqs.(6)–(11); p.8 §3.4 Eq.(16); pp.8–9 §3.5 Eqs.(17)–(19) and Definition 1/2. The paragraph after downstream optimization fixes output revenue information at the decision date. The 2017-04-26 version has different equation numbers.",
+      "supports": "三类主体的原始均值—方差目标、套保与风险承担持仓及期货清算；加工者当前决定下期采购，收益函数在决策时已知。",
+      "does_not_support": "不直接证明无限期滚动、变动折现、便利服务或能力投资；随机下期成品收益一般破坏当前采购与金融分离；不能把代数解直接当满足正价格条件的均衡。",
       "checked_on": "2026-11-05",
       "versions": [
         {
@@ -109,6 +115,16 @@
           "url": "https://www.ceremade.dauphine.fr/~ekeland/Articles/ELV.pdf",
           "locator": "§§3.3–3.5, Eqs.(6)–(19)"
         }
+      ],
+      "model_mapping": [
+        "E19",
+        "E20",
+        "E21",
+        "E22",
+        "E23",
+        "E26",
+        "E27",
+        "E30"
       ]
     },
     {
@@ -121,12 +137,20 @@
       "pages": "471-499",
       "doi": "10.1287/mnsc.2019.3445",
       "url": "https://pubsonline.informs.org/doi/abs/10.1287/mnsc.2019.3445",
-      "verification": "author_version_pdf_text",
-      "locator": "Author version 2019-04-05, §2 pp.9–12; §2.2 pp.11–12 Eqs.(4)–(8); not journal-page numbers",
-      "supports": "Joint one-period mean-variance storage and futures choice; positive-stock and zero-stock branches; public information",
-      "does_not_support": "Does not validate LC calibration, endogenous capacity/investment or private-information price discovery; periodic profit objective is not full wealth dynamics",
+      "verification": "author_version_selected_pdf_text_checked",
+      "locator": "2019-04-05 author version: PDF/printed p.11 §2.2 Eqs.(4)–(6), p.12 Eqs.(7)–(8); household Eqs.(10),(14); pp.14–15 Definition 1 and Eqs.(18)–(21). These are author-version, not 2021 journal, page numbers.",
+      "supports": "借款融资下的滚动一期库存与期货联合选择、正库存和零库存分支；均衡同时要求主体优化、状态一致和两个市场清算。",
+      "does_not_support": "不识别LC参数、内生产能投资或私人信息机制；原文家庭仍处理结算收益，本文省略财富状态必须另明示退出分配及新风险资本独立于旧财富，不能由期货初始零成本推出。",
       "checked_on": "2026-11-05",
-      "open_pdf": "https://stevendbaker.com/papers/baker_oilSpeculation.pdf"
+      "open_pdf": "https://stevendbaker.com/papers/baker_oilSpeculation.pdf",
+      "model_mapping": [
+        "E19",
+        "E22",
+        "E24",
+        "E25",
+        "E26",
+        "E30"
+      ]
     },
     {
       "id": "PIND94",
@@ -138,11 +162,17 @@
       "pages": "141-159",
       "doi": "10.2307/2555858",
       "url": "https://web.mit.edu/rpindyck/www/Papers/Pindyck%20Inventories%20and%20the%20short-run%20dynamics%20of%20commodity%20prices%2C%20RAND%20Spring%201994.pdf",
-      "verification": "prior_project_locator_not_reverified",
-      "locator": "Earlier project record: p.147 Eq.(2); p.150 Eqs.(4),(6); original visual recheck pending",
-      "supports": "生产跨期调整、库存服务与物量关系的经典机制",
-      "does_not_support": "本文幂次负荷、正偏移对数服务、风险库存FOC不是原式",
-      "checked_on": "2026-10-29"
+      "verification": "primary_journal_selected_page_image_checked",
+      "locator": "Journal scan printed p.150 / PDF p.10 visually checked: cost Eq.(3), goods identity Eq.(4), discounted objective Eq.(5), production Eq.(6), and inventory Eq.(7). This is not a full-paper visual review.",
+      "supports": "生产跨期调整项的当前与下一期符号、预期贴现利润和物量账；原式(6)的beta_1是调整成本系数、R_1t是折现，原文y为产量而Q为销量。",
+      "does_not_support": "本文幂次有效产能负荷、建设爬坡、正偏移对数库存服务和套保库存KKT不是原式；原文库存式不能替代本项目E24。",
+      "checked_on": "2026-11-05",
+      "model_mapping": [
+        "E06",
+        "E08",
+        "E09",
+        "E25"
+      ]
     },
     {
       "id": "POT13",
@@ -154,11 +184,21 @@
       "pages": null,
       "doi": null,
       "url": "https://ftp.zew.de/pub/zew-docs/dp/dp13112.pdf",
-      "verification": "primary_pdf_text_not_full_visual",
-      "locator": "§3.2; Eqs.(3),(7); original screenshots failed in this review; full cumulative indices not certified",
-      "supports": "建设时滞与投产爬坡、投资累计依赖；作为成本替代的历史对照",
-      "does_not_support": "不是期刊论文；不提供LC月度50%、本文在建拥挤或幂次负荷原式",
-      "checked_on": "2026-10-29"
+      "verification": "primary_working_paper_selected_page_images_checked",
+      "locator": "Official ZEW Discussion Paper 13-112; printed pp.10–12 and 14 / PDF pp.12–14 and 16 visually checked. §3.2 Eqs.(3)–(10), especially investment-cost Eq.(7), and §3.4 demand Eq.(19). Some printed cumulative indices and symbols need interpretation; no corrected transcription is certified as the original.",
+      "supports": "有限年度、完全预见的稀土矿山模型中的建设滞后、首次投产爬坡、累计扩产影响未来成本，以及聚合常弹性需求。",
+      "does_not_support": "工作论文不等于最新期刊证据；不提供随机月度LC Bellman/TVC、本文在建拥挤omega_B J X_B或中国加工厂50%月度爬坡。原式(3)/(6)的累计索引及(8)的收益端符号不能未经辨析直接移植。",
+      "checked_on": "2026-11-05",
+      "model_mapping": [
+        "E03",
+        "E07",
+        "E10",
+        "E11",
+        "E12",
+        "E15",
+        "E16"
+      ],
+      "institution_record": "https://www.zew.de/en/publications/the-metal-resources-metro-model-a-dynamic-partial-equilibrium-model-for-metal-markets-applied-to-rare-earth-elements"
     },
     {
       "id": "ENG26",
@@ -328,13 +368,23 @@
       "pages": "105915",
       "doi": "10.1016/j.jet.2024.105915",
       "url": "https://doi.org/10.1016/j.jet.2024.105915",
-      "verification": "author_version_pdf_text_and_institution_metadata",
-      "locator": "Author version 2024-09-07 §2/Theorem 2.1; separate online appendix D Proposition D.1 and E Algorithm 1/Euler error",
-      "supports": "Policy fixed point, admissibility conditions, boundary solution and independent residual checks",
-      "does_not_support": "Existence/uniqueness and identification results do not automatically transfer to the investment-plus-hedging LC model",
+      "verification": "author_version_selected_pdf_text_and_institution_metadata",
+      "locator": "2024-09-07 author version: §2.1 PDF pp.6–7 Eqs.(4)–(8); p.8 Assumption 2.1 and Theorem 2.1; p.9 footnote 12; Appendix A PDF p.24 Eq.(A.1), Lemma A.1, Corollary A.1, and pp.24–25 Eq.(A.4)/function space. Separate online appendix D Proposition D.1 and E Algorithm 1/Euler error previously text-checked.",
+      "supports": "随机折现的长期乘积、折现算子谱半径、平稳库存价格固定点及定义域/误差检验；允许部分时期负净利率。",
+      "does_not_support": "原文下一期随机M与本模型当前可测b_t时点不同；exp(-delta)与1-delta不能混同。定理限于原库存模型与指定函数空间，不证明本文投资、套保、采购联合系统存在唯一，也不排除其范围外非平稳泡沫。",
       "open_pdf": "https://johnstachurski.net/pdfs/cp_jet.pdf",
       "supplement_url": "https://qingyin-ma.github.io/papers/cp_online_appendix.pdf",
-      "checked_on": "2026-11-05"
+      "checked_on": "2026-11-05",
+      "model_mapping": [
+        "E01",
+        "E08",
+        "E14",
+        "E15",
+        "E16",
+        "E17",
+        "E24",
+        "E30"
+      ]
     },
     {
       "id": "GFEXCLEAR25",
@@ -363,8 +413,72 @@
       "supports": "Settlement convention differs by delivery method; E26 is a simplified matched-contract assumption",
       "does_not_support": "Not a full audit of 2026 amendments or current margins; no official PDF visual verification",
       "checked_on": "2026-11-05"
+    },
+    {
+      "id": "HNS24",
+      "authors": "Shawkat Hammoudeh; Duc Khuong Nguyen; Ricardo M. Sousa",
+      "year": 2024,
+      "title": "China's monetary policy framework and global commodity prices",
+      "publication": "Energy Economics",
+      "volume": "138",
+      "pages": "107767",
+      "doi": "10.1016/j.eneco.2024.107767",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0140988324004754",
+      "verification": "primary_metadata_abstract_and_indexed_selected_text",
+      "locator": "October 2024 issue; publisher abstract and indexed methodology selections including policy-rule Eqs.(3)–(4), with metadata corroborated by Drexel University. Quarterly 1996Q1–2021Q4 sample. Direct publisher page returned 403; full PDF and estimation code not checked.",
+      "supports": "中国利率与M2政策冲击和全球商品价格、汇率/不确定性控制的研究背景，为已有宏观传导模块提供动机。",
+      "does_not_support": "季度全球商品BSVAR不识别中国月度LC的A_x、成本汇率载荷或风险厌恶系数；不能据此把本模型外生状态创新自动解释为已识别货币政策冲击。",
+      "checked_on": "2026-11-05",
+      "model_mapping": [
+        "E01",
+        "E02",
+        "E31"
+      ],
+      "institution_record": "https://researchdiscovery.drexel.edu/esploro/outputs/journalArticle/Chinas-monetary-policy-framework-and-global/991021894514804721"
+    },
+    {
+      "id": "BK26",
+      "authors": "Christoph E. Boehm; T. Niklas Kroner",
+      "year": 2026,
+      "title": "The U.S., Economic News, and the Global Financial Cycle",
+      "publication": "The Review of Economic Studies",
+      "volume": "93(1)",
+      "pages": "215–249",
+      "doi": "10.1093/restud/rdaf020",
+      "url": "https://academic.oup.com/restud/article-abstract/93/1/215/8105821",
+      "verification": "primary_metadata_and_abstract",
+      "locator": "January 2026 issue; first published 2025-04-04, corrected/typeset 2025-04-21. Oxford journal metadata, abstract and issue contents checked; full empirical equations and replication code not checked.",
+      "supports": "美国宏观新闻与全球风险资产及商品价格联动，摘要证据指向投资者风险承担能力渠道。",
+      "does_not_support": "不提供LC金融者a_f的指数函数或中国月度校准；不识别本模型gamma_zeta或证明共同信息模型具备私人信息价格发现机制。",
+      "checked_on": "2026-11-05",
+      "published_online": "2025-04-04",
+      "model_mapping": [
+        "E01",
+        "E02",
+        "E21",
+        "E27"
+      ]
+    },
+    {
+      "id": "BV04",
+      "authors": "Stephen Boyd; Lieven Vandenberghe",
+      "year": 2004,
+      "title": "Convex Optimization",
+      "publication": "Cambridge University Press (mathematics textbook)",
+      "doi": null,
+      "url": "https://web.stanford.edu/~boyd/cvxbook/",
+      "open_pdf": "https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf",
+      "verification": "author_hosted_book_selected_page_image_checked",
+      "locator": "§3.2.6, printed p.89 / PDF p.103 visually checked: perspective definition g(x,t)=t f(x/t), t>0, and proof that the transformation preserves convexity.",
+      "supports": "用透视变换检验Q^(nu+1)/K^nu在Q>=0、K>0上的联合凸性。",
+      "does_not_support": "不是锂行业成本实证；不直接给出本文在建拥挤的跨期凸性界、TVC或市场均衡唯一性。",
+      "checked_on": "2026-11-05",
+      "model_mapping": [
+        "E06",
+        "E07",
+        "E08"
+      ]
     }
   ],
   "review_date": "2026-11-05"
 }
-

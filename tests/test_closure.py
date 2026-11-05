@@ -19,6 +19,17 @@ def example():
 
 
 class ConditionalClosureChecks(unittest.TestCase):
+    def test_current_discount_at_or_above_one_is_not_rejected(self):
+        # The monthly current b_t can exceed one even when the full process
+        # has sufficient long-run discounting. This inner problem is finite.
+        for current_b in (1.0, 1.05):
+            x = replace(example(), beta=current_b)
+            result = solve_conditional_market(x)
+            residuals = original_condition_residuals(x, result)
+            self.assertLess(residuals["max_equality_or_kkt_residual"], 1e-9)
+            self.assertEqual(inventory_objective_status(
+                x, result.spot, result.futures)["status"], "finite_unique")
+
     def test_positive_inventory_satisfies_original_conditions(self):
         x = example()
         result = solve_conditional_market(x)

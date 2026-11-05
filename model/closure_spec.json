@@ -1,9 +1,9 @@
 {
-  "model_id": "LC_V2_REVIEW_20261029",
-  "revision": "CLOSURE_REVIEW_20261105",
+  "model_id": "LC_V2_MACRO_REVIEW_20261030",
+  "revision": "ALL_CONDITIONS_CLOSURE_20261105",
   "canonical": "docs/03_equations.md",
-  "details": "docs/10_closure.md",
-  "scope": "Formal closure specification and fixed-Q/fixed-continuation market validation; NOT a full stochastic equilibrium solver.",
+  "details": "docs/14_complete_conditions.md",
+  "scope": "All E01-E31 conditions specified; same-policy full residual evaluator and synthetic deterministic anchor; NOT a global stochastic equilibrium solver.",
   "reduced_unknowns": [
     "Q",
     "J",
@@ -82,8 +82,15 @@
     "E26"
   ],
   "derived_checks_by_representation": {
-    "reduced_seven_unknowns": ["E22", "E26", "E28"],
-    "original_ten_unknowns_with_positions": ["E27", "E28"],
+    "reduced_seven_unknowns": [
+      "E22",
+      "E26",
+      "E28"
+    ],
+    "original_ten_unknowns_with_positions": [
+      "E27",
+      "E28"
+    ],
     "note": "Reduced form uses E27 as R7, reconstructs E22 positions and checks E26. Original form imposes E22/E26 and checks E27. Never impose both clearing representations independently."
   },
   "recovered_production_multipliers": "For K_e>0 and R1 satisfied: lambda=max(P-MC_d,0), mu_Q=max(MC_d-P,0); substitute lambda into E13; not additional free functions.",
@@ -93,18 +100,22 @@
     "mean_price": "same P policy evaluated on Phi(s,G(s),epsilon)",
     "price_variance": "same weighted centered square prices",
     "future_production": "same Q policy and same Phi/Pi",
-    "future_shadow_values": "same W policies and same Phi/Pi"
+    "future_shadow_values": "same W policies and same Phi/Pi",
+    "multi_period": "same policy and transition on complete paths; d_t,s retained inside expectations"
   },
   "candidate_innovation_kernel": {
     "type": "independent_symmetric_two_point",
-    "dimensions": 5,
+    "dimensions": 9,
     "values": [
       -1,
       1
     ],
-    "branches": 32,
-    "weight": 0.03125,
-    "empirically_calibrated": false
+    "branches": 512,
+    "weight": 0.001953125,
+    "empirically_calibrated": false,
+    "standardized_mean": "zero",
+    "standardized_covariance": "I_9",
+    "degenerate_validation": "B=0 deterministic limit or explicit reduced-rank kernels for interface checks only"
   },
   "admissibility": [
     "nonempty policy-invariant state domain almost surely",
@@ -113,9 +124,11 @@
     "finite price second moments",
     "finite individual objectives",
     "no-bubble shadow values and appropriate transversality",
-    "no clipping of invalid quantities or prices"
+    "no clipping of invalid quantities or prices",
+    "1+i_bar+r>0 on the entire supported state domain",
+    "expected discount products decay sufficiently for full objectives, not only capacity values"
   ],
-  "investment_sufficient_convexity": "chi > 2*omega_B*sum(beta**(k/2) for k=1..L-1); sufficient, not necessary; omega_B=0 restricted baseline",
+  "investment_sufficient_convexity": "If b_t <= b_max < infinity, chi > 2*omega_B*sum(b_max**(k/2) for k=1..L-1). Sufficient not necessary; omega_B retained; discount convergence is a separate requirement.",
   "conditional_subproblem": {
     "fixed": [
       "Q",
@@ -132,9 +145,98 @@
       "C"
     ],
     "code": "model/conditional_market.py",
-    "dynamic_equilibrium_claim": false
+    "dynamic_equilibrium_claim": false,
+    "current_discount": "legacy beta argument means current b_t>0, no constant-future-rate claim"
   },
   "full_equilibrium_solved": false,
   "parameter_calibration_performed": false,
-  "state_dimension": "n_z + L + R + 3; n_z=5 gives L+R+8"
+  "state_dimension": "n_x + n_id + L + R + 3; n_x=4, n_id=5 gives L+R+12",
+  "reduced_policy_unknown_count": "7+L+R",
+  "exogenous_state_counts": {
+    "macro": 4,
+    "industry_residual": 5
+  },
+  "exogenous_state_order": [
+    "g",
+    "e",
+    "r",
+    "zeta",
+    "zA_id",
+    "zm_id",
+    "zJ_id",
+    "zN_id",
+    "zf_id"
+  ],
+  "value_unknowns": {
+    "mature": 1,
+    "construction": "L-1",
+    "ramp": "R",
+    "total": "L+R"
+  },
+  "value_conditions": [
+    {
+      "canonical": "E14",
+      "count": "1+R",
+      "objects": [
+        "W_M",
+        "W_Z"
+      ]
+    },
+    {
+      "canonical": "E15",
+      "count": "L-1",
+      "objects": [
+        "W_B"
+      ]
+    }
+  ],
+  "recovered_objects": [
+    "lambda",
+    "mu_Q",
+    "W_q",
+    "h_I",
+    "h_D",
+    "h_f"
+  ],
+  "optional_value_level_check": "Producer value V may be recovered and Bellman-checked; it is not an additional independent structural restriction on the minimal policy system.",
+  "time_index": "Calendar t and known deterministic tau(t); not an extra stochastic state.",
+  "macro_closure": {
+    "transition": "block diagonal Ax/Rid and Bx/Sigmaid in E01",
+    "tau": "known deterministic path; constant in stationary anchors",
+    "cost": "exp(zm)*(m_domestic+FX_bar*exp(e)*m_usd)",
+    "rate": "i_m=i_bar+r; b_t=1/(1+i_m)",
+    "wealth": "one-period cohorts exit; risk capital independent of old settlements"
+  },
+  "measurement_kernel": {
+    "type": "conditionally independent Gaussian with zero mean",
+    "covariance": "fixed Omega_obs_t >= 0",
+    "independent_of": "all structural innovations and initial state",
+    "observation_map": "fixed H_t after units, timing, scale and available-series selection",
+    "estimated": false
+  },
+  "discounting": {
+    "one_step": "current measurable b_t",
+    "path": "product(b_j,j=t..s-1)",
+    "sufficient_decay": "sup_S E[d_t,t+n] <= M*rho_d**n with M finite, rho_d<1",
+    "finite_state_operator": "diag(b) @ Pi",
+    "firm_sufficiency": "rho(K_b)<1 for bounded rewards",
+    "capacity_only": "rho((1-delta)*K_b)<1 is weaker and does not alone ensure the whole firm objective is finite"
+  },
+  "full_condition_evaluator": {
+    "code": "model/full_conditions.py",
+    "check": "scripts/check_full_conditions.py",
+    "continuation_moments": "internally computed from the same callback and kernel",
+    "checks": [
+      "raw production and investment KKT",
+      "Wq recovery",
+      "all WM/WZ/WB recursions",
+      "raw demand, procurement, inventory and three position FOC",
+      "goods and futures clearing",
+      "optional recovered V Bellman",
+      "all L/R boundary queues",
+      "finite-horizon discount and tail diagnostics"
+    ],
+    "global_policy_solver": false,
+    "finite_tail_diagnostic_is_infinite_horizon_proof": false
+  }
 }
