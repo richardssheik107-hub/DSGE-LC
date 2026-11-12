@@ -1,0 +1,10 @@
+{
+  "name": "dsge-lc-presentation",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Two-slide presentation layer, not an equilibrium solver",
+  "dependencies": {
+    "pptxgenjs": "4.0.0",
+    "mathjax-full": "3.2.1"
+  }
+}
