@@ -1,5 +1,5 @@
 {
-  "model_id": "LC_V2_REVIEW_20261029",
+  "model_id": "LC_V2_MACRO_REVIEW_20261030",
   "symbols": [
     {
       "symbol": "P_t",
@@ -119,19 +119,13 @@
       "symbol": "v_t^P",
       "meaning": "下期现货条件方差",
       "unit": "(人民币/吨)^2",
-      "timing": "必须正且有限"
+      "timing": "风险基线0<v<∞；v=0单独处理且头寸不唯一"
     },
     {
       "symbol": "W^M,W^Z,W^B",
       "meaning": "能力/项目边际价值",
       "unit": "人民币/(吨/月)",
       "timing": "由优化产生；不是外部AR"
-    },
-    {
-      "symbol": "z_t",
-      "meaning": "五类外部状态",
-      "unit": "无量纲",
-      "timing": "订单、成本、建设、进口、风险承担"
     },
     {
       "symbol": "L",
@@ -150,15 +144,105 @@
       "meaning": "各爬坡阶段可用比例",
       "unit": "无量纲",
       "timing": "正且不减，不默认50%"
+    },
+    {
+      "symbol": "H_t",
+      "meaning": "净产业卖出套保敞口 alpha_I I_t-C_t",
+      "unit": "吨",
+      "timing": "本期内生组合，不是独立状态"
+    },
+    {
+      "symbol": "w_i,t",
+      "meaning": "风险承受份额 (1/a_i)/T",
+      "unit": "无量纲",
+      "timing": "清算后恢复持仓；v=0仅连续极限选取"
+    },
+    {
+      "symbol": "RP_t",
+      "meaning": "真实概率条件均值减期货报价 mu_t^P-F_t",
+      "unit": "人民币/吨",
+      "timing": "非当期基差"
+    },
+    {
+      "symbol": "Basis_t",
+      "meaning": "F_t-P_t；本项目采用期货减现货的符号约定",
+      "unit": "人民币/吨",
+      "timing": "当期价格差，不等于RP"
+    },
+    {
+      "symbol": "M_t",
+      "meaning": "条件市场子块净可用资源 Q+N+alpha_I I_lag-C_lag",
+      "unit": "吨",
+      "timing": "本月总量；非额外状态"
+    },
+    {
+      "symbol": "x_t=(g,e,r,zeta)",
+      "meaning": "景气、人民币汇率对数偏离、月利率偏离、风险压力四个宏观状态",
+      "unit": "已归一化指标/对数/每月利率",
+      "timing": "期初已知，对LC部分均衡外生"
+    },
+    {
+      "symbol": "z_t^id",
+      "meaning": "需求、成本、开工、净进口、风险资本五个行业余项",
+      "unit": "归一化或对数",
+      "timing": "期初已知，有完整转移"
+    },
+    {
+      "symbol": "b_t",
+      "meaning": "当前月度折现1/(1+i_bar+r_t)",
+      "unit": "无量纲",
+      "timing": "t期已知；正但不必逐期小于1；长期衰减另验"
+    },
+    {
+      "symbol": "d_t,s",
+      "meaning": "t至s的随机路径折现乘积",
+      "unit": "无量纲",
+      "timing": "多期项保留在条件期望内"
+    },
+    {
+      "symbol": "tau(t)",
+      "meaning": "预先指定的确定性技术路径",
+      "unit": "归一化",
+      "timing": "日历索引，不新增随机状态；随机化必须扩维"
+    },
+    {
+      "symbol": "E_t^FX",
+      "meaning": "人民币/美元名义汇率",
+      "unit": "人民币/美元",
+      "timing": "只换算美元计价成本部分"
+    },
+    {
+      "symbol": "W_t^q",
+      "meaning": "旧产量记忆包络kappa*(Q_t-Q_lag)",
+      "unit": "人民币/吨",
+      "timing": "由当期选择恢复，产生下一期调产续值"
+    },
+    {
+      "symbol": "U_t",
+      "meaning": "首次完成能力价值，R>=1为WZ0，R=0为WM",
+      "unit": "人民币/(吨/月)",
+      "timing": "建设队列终端"
+    },
+    {
+      "symbol": "Pi(d epsilon|x,z)",
+      "meaning": "四宏观/五行业创新的完整联合概率核",
+      "unit": "概率",
+      "timing": "全部条件矩和价值递推共同使用"
+    },
+    {
+      "symbol": "V_t(a;S)",
+      "meaning": "价格接受生产者的价值水平",
+      "unit": "人民币",
+      "timing": "可在政策给定后恢复并校验Bellman；不新增独立结构限制"
+    },
+    {
+      "symbol": "H_t^obs,Omega_obs,t",
+      "meaning": "观测选择映射与测量误差协方差；Hobs与净敞口H不同",
+      "unit": "由观测单位固定",
+      "timing": "估计前给定选择和归一化；噪声候选独立高斯"
     }
   ],
   "parameters": [
-    {
-      "symbol": "beta",
-      "meaning": "月度折现",
-      "constraint": "0<beta<1",
-      "treatment": "外部校准"
-    },
     {
       "symbol": "delta",
       "meaning": "投产后退出率",
@@ -198,14 +282,14 @@
     {
       "symbol": "chi",
       "meaning": "当期开工凸性",
-      "constraint": ">0",
+      "constraint": ">0；保留拥挤时可施加充分界 chi>2 omega_B sum(b_max^(k/2))；价值收敛另验",
       "treatment": "项目资料与动态检验"
     },
     {
       "symbol": "omega_B",
       "meaning": "在建拥挤",
       "constraint": ">=0",
-      "treatment": "新假设，待证；0为基准"
+      "treatment": "10.30已有扩展，本轮保留；0仅为受限对照，非主模型替代"
     },
     {
       "symbol": "xi,I0",
@@ -215,17 +299,43 @@
     },
     {
       "symbol": "a_I,a_D,a_f",
-      "meaning": "有效风险厌恶",
+      "meaning": "按下一期人民币收益定义的有效风险厌恶",
       "constraint": ">0",
       "treatment": "通常先识别总风险容量"
     },
     {
-      "symbol": "mathsf R,mathsf Sigma",
-      "meaning": "外部状态过程",
-      "constraint": "稳定/有限矩/可行域",
-      "treatment": "不可用任意无界冲击强行保证正量"
+      "symbol": "A_x,R_id,B_x,Sigma_id",
+      "meaning": "四宏观及五行业余项的转移和冲击载荷",
+      "constraint": "转移稳定、完整核、支持可行且利率分母正",
+      "treatment": "需数据估计或另有来源；不把约化创新直接称因果冲击"
+    },
+    {
+      "symbol": "i_bar",
+      "meaning": "同货币口径月度基准净利率",
+      "constraint": "1+i_bar+r>0，另验完整目标期望折现衰减",
+      "treatment": "按观测年化/复利 convention 明确换算"
+    },
+    {
+      "symbol": "m_domestic,m_usd",
+      "meaning": "本地人民币与美元计价的每吨LC基准可变成本",
+      "constraint": "各非负、合计正",
+      "treatment": "路线工程锚；不重复CAPEX；独立随机投入价需要新增状态"
+    },
+    {
+      "symbol": "lambda_g,lambda_tau,gamma_zeta",
+      "meaning": "宏观/技术对需求及风险厌恶的映射载荷",
+      "constraint": "有限；宏观指标尺度固定",
+      "treatment": "参数值待识别，不从宏观文献机械移植"
+    },
+    {
+      "symbol": "beta",
+      "meaning": "旧条件市场API的兼容名称，数值含义为当前b_t",
+      "constraint": ">0；不表示未来b恒定",
+      "treatment": "历史常折现测试只是受限情形"
     }
   ],
   "industry_parameter_values": {},
-  "note": "本分支不登记未经校准的行业数值；测试中的数字仅检查恒等式。"
+  "note": "本分支不登记未经校准的行业数值；测试中的数字仅检查恒等式。",
+  "revision": "ALL_CONDITIONS_CLOSURE_20261105",
+  "state_dimension": "n_x + n_id + L + R + 3; n_x=4, n_id=5 gives L+R+12"
 }

@@ -1,0 +1,44 @@
+flowchart TB
+    SCOPE["固定商品边界、单位、月度时点与研究目标"]
+    INPUT["核验九状态转移、创新核、利率支持、可行域与TVC"]
+    INIT["初始化同一时变政策 G_t：7+L+R个未知对象"]
+    NEXT["用候选控制与联合核生成后继状态 S'"]
+    MOM["同一 Φ、Π、G 计算条件量；续期采用 b_t"]
+    MCP["联立解七当期条件与L+R条价值递推 E14—E15"]
+    UPDATE["更新价格、数量与价值政策"]
+    CONV{"政策变化与经济残差均收敛？"}
+    CHECK["独立状态点重算全部原始FOC/KKT、清算与价值条件"]
+    DOMAIN["验有限矩、折现衰减/TVC、后继域与承诺履约"]
+    PASS{"数值均衡验收通过？"}
+    FAIL["记录失败位置与原因；显式修订"]
+    IDENT["进入合成参数恢复与识别验收"]
+    CODE["已实现：完整条件评估器、共同确定性锚及市场内层"]
+
+    SCOPE --> INPUT
+    INPUT --> INIT
+    INIT --> NEXT
+    NEXT --> MOM
+    MOM --> MCP
+    MCP --> UPDATE
+    UPDATE --> CONV
+    CONV -->|"否：重新积分和求解"| NEXT
+    CONV -->|"是"| CHECK
+    CHECK --> DOMAIN
+    DOMAIN --> PASS
+    PASS -->|"否"| FAIL
+    FAIL -->|"数值近似或初始化问题"| INIT
+    FAIL -->|"口径、域或经济设定问题"| INPUT
+    PASS -->|"是：随后仍需独立数据门槛"| IDENT
+    CODE -.->|"生成后继与内部积分"| MOM
+    CODE -.->|"可重算所有结构条件；不等于随机求解"| CHECK
+
+    classDef setup fill:#f3f5f7,stroke:#7b8997,color:#2a3b4b;
+    classDef solve fill:#e6f1f7,stroke:#126782,color:#103448;
+    classDef verify fill:#eaf4ec,stroke:#51855e,color:#25482e;
+    classDef gate fill:#fff5e9,stroke:#b57931,color:#614415;
+    classDef implemented fill:#eeeaf8,stroke:#7860a4,stroke-width:2px,color:#33264e;
+    class SCOPE,INPUT,INIT setup;
+    class NEXT,MOM,MCP,UPDATE solve;
+    class CHECK,DOMAIN,IDENT verify;
+    class CONV,PASS,FAIL gate;
+    class CODE implemented;
