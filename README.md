@@ -21,6 +21,8 @@
 
 冻结复验发现原政策在少数可达状态上超出库存对偶容差。增补拟合点后已保存修正版，使用范围、两版对照和复算命令见[冻结政策复验](docs/17_frozen_policy_reaudit.md)。
 
+修正版的两组配对随机响应、精度诊断和组会图复现步骤见[行业需求和单位生产成本冲击](docs/18_stochastic_girf.md)。
+
 ## 随机均衡复算
 
 使用 Python 3.11 和 [数值依赖](requirements-stochastic.txt)。从本分支根目录执行：

@@ -33,6 +33,7 @@ STARTS = {
     "warm_0": ("预热起点 1", "#c45924", (0, (5, 3)), 1.75),
     "warm_1": ("预热起点 2", "#188676", (0, (2, 2)), 1.75),
 }
+PREMIUM_CHECK = "risk_premium_E27"
 
 
 def read_response(path):
@@ -45,7 +46,8 @@ def read_response(path):
             raise ValueError(f"{path} must contain {', '.join(sorted(fields))}")
         for row in reader:
             key = row["shock"], row["start_id"], row["variable"]
-            if key[0] not in SHOCKS or key[1] not in STARTS or key[2] not in VARIABLES:
+            if (key[0] not in SHOCKS or key[1] not in STARTS
+                    or key[2] not in (*VARIABLES, PREMIUM_CHECK)):
                 continue
             horizon = int(row["horizon"])
             response = float(row["girf_plus"])
@@ -72,6 +74,12 @@ def read_response(path):
             if set(values) != expected:
                 raise ValueError(f"{key}: expected complete months 0 through {last}")
             curves[key] = np.asarray([values[month] for month in months])
+        for start in STARTS:
+            key = shock, start, PREMIUM_CHECK
+            if key in grouped:
+                if set(grouped[key]) != expected:
+                    raise ValueError(f"{key}: incomplete E27 comparison")
+                curves[key] = np.asarray([grouped[key][month] for month in months])
         horizons[shock] = months
     return horizons, curves
 
@@ -125,6 +133,20 @@ def plot_panel(ax, shock, variable, months, curves):
     ax.tick_params(axis="both", length=0, pad=6, labelcolor="#45566a")
 
 
+def premium_diagnostic(shock, curves):
+    check_keys = [(shock, start, PREMIUM_CHECK) for start in STARTS]
+    if all(key in curves for key in check_keys):
+        actual = np.array([curves[shock, start, "risk_premium"][:, 0] for start in STARTS])
+        implied = np.array([curves[key][:, 0] for key in check_keys])
+        peak = np.max(np.abs(actual))
+        discrepancy = np.max(np.abs(actual - implied))
+        if discrepancy > peak:
+            return "风险溢价面板保留 E[P′] − F。它与 E27 隐含响应的差异大于响应本身，方向仅作数值诊断。"
+        if discrepancy > 0.05 * peak:
+            return "风险溢价响应接近政策的数值精度，结合 E27 隐含响应核对。"
+    return "风险溢价为下一期现货条件均价减当期期货价。阴影仅表征蒙特卡洛积分误差。"
+
+
 def plot_shock(output, shock, months, curves):
     title, innovation, stem = SHOCKS[shock]
     fig, axes = plt.subplots(2, 4, figsize=(16, 8.5))
@@ -154,12 +176,7 @@ def plot_shock(output, shock, months, curves):
         "使用合成参数作机制演示。",
         color="#546981", fontsize=10,
     )
-    premium_note = (
-        "风险溢价响应接近政策的数值精度，结合 E27 隐含响应核对。"
-        if shock == "zA_id" else
-        "风险溢价面板保留 E[P′] − F。它与 E27 隐含响应的差异大于响应本身，方向仅作数值诊断。"
-    )
-    fig.text(0.065, 0.026, premium_note, color="#546981", fontsize=10)
+    fig.text(0.065, 0.026, premium_diagnostic(shock, curves), color="#546981", fontsize=10)
     try:
         fig.savefig(output / f"{stem}.png", dpi=220)
         fig.savefig(output / f"{stem}.pdf", metadata={"Title": title})
