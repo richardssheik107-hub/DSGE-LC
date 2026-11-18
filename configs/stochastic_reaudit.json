@@ -1,0 +1,12 @@
+{
+  "source_config": "configs/stochastic_refined.json",
+  "source_policy": "results/stochastic_baseline/policy.npz",
+  "training_seed": 2026111819,
+  "local_points": 3400,
+  "local_radius_fraction": [0.78, 0.78, 0.78, 0.78, 0.78, 0.78, 0.78, 0.78, 0.78, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25],
+  "random_path_count": 192,
+  "random_path_horizon": 90,
+  "random_capture_periods": [8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88],
+  "constant_shock_capture_periods": [8, 24, 48],
+  "maximum_iterations": 20
+}
