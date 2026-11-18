@@ -3,7 +3,7 @@
   "revision": "ALL_CONDITIONS_CLOSURE_20261105",
   "canonical": "docs/03_equations.md",
   "details": "docs/14_complete_conditions.md",
-  "scope": "All E01-E31 conditions specified; same-policy full residual evaluator and synthetic deterministic anchor; NOT a global stochastic equilibrium solver.",
+  "scope": "All E01-E31 conditions specified. The evaluator, deterministic anchor and local stochastic projection have separate verification scopes.",
   "reduced_unknowns": [
     "Q",
     "J",
@@ -149,6 +149,12 @@
     "current_discount": "legacy beta argument means current b_t>0, no constant-future-rate claim"
   },
   "full_equilibrium_solved": false,
+  "local_stochastic_projection": {
+    "solver": "model/stochastic_equilibrium.py",
+    "validator": "model/stochastic_validation.py",
+    "configuration": "configs/stochastic_refined.json",
+    "scope": "Synthetic local policy approximation under a stationary technology path and the declared full Rademacher kernel."
+  },
   "parameter_calibration_performed": false,
   "state_dimension": "n_x + n_id + L + R + 3; n_x=4, n_id=5 gives L+R+12",
   "reduced_policy_unknown_count": "7+L+R",

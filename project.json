@@ -17,7 +17,7 @@
   "gates": {
     "scope_and_timing": "SOURCE_1030_ALIGNED_PENDING_ECONOMIC_REVIEW",
     "literature_and_functions": "PRIMARY_EVIDENCE_AND_ADAPTATIONS_DOCUMENTED",
-    "equilibrium_and_boundaries": "FULL_CONDITIONS_AND_SYNTHETIC_ANCHOR_CHECKED_STOCHASTIC_FIXED_POINT_NOT_PASSED",
+    "equilibrium_and_boundaries": "LOCAL_SYNTHETIC_STOCHASTIC_APPROXIMATION_PASSED_GLOBAL_DOMAIN_OPEN",
     "measurement_and_licence": "NOT_PASSED",
     "identification_and_recovery": "NOT_STARTED",
     "real_estimation": "BLOCKED"
@@ -32,7 +32,10 @@
   "review_base_commit": "7a6f167b7460ce58f648a424009a699ecd1fa50c",
   "closure_specification_written": true,
   "conditional_market_block_checked": true,
-  "dynamic_fixed_point_implemented": false,
+  "dynamic_fixed_point_implemented": true,
+  "stochastic_solver": "scripts/solve_stochastic_equilibrium.py",
+  "stochastic_validator": "scripts/validate_stochastic_equilibrium.py",
+  "stochastic_numeric_config": "configs/stochastic_refined.json",
   "closure_document": "docs/14_complete_conditions.md",
   "flowcharts_document": "docs/11_flowcharts.md",
   "source_version": "2026-10-30 user-provided expansion",

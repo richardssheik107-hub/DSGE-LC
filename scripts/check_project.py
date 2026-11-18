@@ -81,8 +81,10 @@ def main() -> int:
         errors.append('E27 must replace, not duplicate, original position clearing.')
     if closure.get('full_equilibrium_solved') or closure['conditional_subproblem'].get('dynamic_equilibrium_claim'):
         errors.append('Conditional closure was incorrectly marked as a full equilibrium.')
-    if status.get('dynamic_fixed_point_implemented') is not False:
-        errors.append('Dynamic fixed point implementation gate unexpectedly changed.')
+    if status.get('dynamic_fixed_point_implemented'):
+        for key in ('stochastic_solver', 'stochastic_validator', 'stochastic_numeric_config'):
+            if not status.get(key) or not (ROOT / status[key]).is_file():
+                errors.append(f'Missing stochastic fixed point artifact: {key}')
     for flag in ('approved_by_supervisor', 'full_equilibrium_solved', 'real_data_validated', 'parameters_identified', 'real_data_estimated', 'old_tests_inherited'):
         if status.get(flag) is not False:
             errors.append(f'Review gate unexpectedly changed: {flag}')

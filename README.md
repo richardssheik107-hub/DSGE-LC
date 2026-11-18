@@ -17,11 +17,23 @@
 | 全条件系统 | 每个状态7+L+R个政策未知量及同数独立条件；恢复乘子、记忆包络和头寸，避免重复施加消元式 |
 | 数学与观测 | 正值和可履约域、目标有限、随机折现算子、无泡沫/横截条件、固定观测映射与测量噪声候选 |
 
-这些是完整模型的条件和计算接口。完整高维随机政策固定点、真实行业参数校准与估计仍未通过；没有用条件数相等或确定性测试代替这些工作。具体范围见[验证记录](docs/09_validation.md)。
+在 2026-11-18 的本地数值基准中，已求得并独立核验 17 维状态上的 12 项随机政策近似。该结果限于指定合成参数、512 分支冲击和测试覆盖范围。数值方法、方程对照、失败尝试和剩余范围见[随机均衡求解记录](docs/16_stochastic_solution.md)。11 月 5 日的[历史验证记录](docs/09_validation.md)保留原有判定。
+
+## 随机均衡复算
+
+使用 Python 3.11 和 [数值依赖](requirements-stochastic.txt)。从本分支根目录执行：
+
+~~~bash
+python -m pip install -r requirements-stochastic.txt
+python scripts/solve_stochastic_equilibrium.py --config configs/stochastic_refined.json --output results/stochastic_reproduction
+python scripts/validate_stochastic_equilibrium.py --run-dir results/stochastic_reproduction --compare-policy results/stochastic_reproduction/policy_linear_degree3.npz --compare-policy results/stochastic_reproduction/policy_perturbed_degree4.npz
+~~~
+
+使用原配置和输出目录加 `--resume` 可从检查点继续。主政策、各精度与初值的候选、实际配置、迭代记录和验证报告存于本地输出目录。
 
 ## 复算入口
 
-以下命令仅依赖Python标准库：
+历史检查保留原含义。全量单测包括新增的 NumPy/SciPy 求解器测试：
 
 ~~~bash
 python scripts/check_project.py
