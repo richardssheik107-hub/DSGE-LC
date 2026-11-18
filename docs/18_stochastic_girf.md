@@ -2,6 +2,8 @@
 
 这两组实验展示合成参数下完整模型的联合响应。使用[冻结政策复验](17_frozen_policy_reaudit.md)发布的修正版主政策。P、F 和价格溢价均以归一化价格计，数量及产能也沿用模型归一化单位。图表可用于说明时点与反馈机制，无法据此推断真实碳酸锂价格的变动幅度。
 
+组会文件：[需求冲击图](presentations/girf/demand_girf.png) · [成本冲击图](presentations/girf/cost_girf.png) · [响应 CSV](presentations/girf/response.csv) · [一页中文讲稿](presentations/girf/meeting_brief_zh.pdf) · [校验摘要及文件哈希](presentations/girf/manifest.json)。
+
 ## 冲击与时点
 
 `zA_id` 和 `zm_id` 在外生状态向量中的零基索引分别为 4 和 5。两者的创新载荷都是 0.00025，状态持续系数分别为 0.53 和 0.55。需求规模 A（以及 A_s、A_c）乘以 exp(zA_id)，单位生产成本 m 乘以 exp(zm_id)。同一条件下，+1 相对于该状态转移的 AR 位置乘以 exp(0.00025)，即直接乘数约增加 0.025003%。+1 和 −1 的直接比例为 exp(0.0005)。

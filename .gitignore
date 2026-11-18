@@ -16,6 +16,7 @@ outputs/
 artifacts/
 results/
 *.pdf
+!/docs/presentations/girf/meeting_brief_zh.pdf
 *.docx
 *.pptx
 *.xlsx
