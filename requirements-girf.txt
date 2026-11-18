@@ -1,0 +1,4 @@
+-r requirements-stochastic.txt
+matplotlib==3.11.2
+reportlab==5.0.1
+pypdf==6.21.4
