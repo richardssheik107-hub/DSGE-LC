@@ -1,23 +1,26 @@
 {
   "project": "DSGE-LC",
-  "model_id": "LC_DSGE_DESIGN_20261126",
+  "model_id": "LC_DSGE_EQCHAIN_20261126",
   "updated_on": "2026-11-26",
-  "stage": "DESIGN_AND_CLOSURE_REVIEW",
+  "stage": "EQUATION_CHAIN_AND_DETERMINISTIC_ANCHOR",
   "user_direction": "Build a full DSGE, with the group hog manuscript as primary structural reference; archive obsolete work.",
   "primary_reference_id": "HOG-REF",
   "reference_registry": "references/library.json",
-  "canonical_equations": "docs/03_dsge_blueprint.md",
+  "canonical_equations": "docs/06_equation_chain.md",
   "model_specification": "model/dsge_specification.json",
   "current_documents": [
     "docs/01_repository_audit.md",
     "docs/02_group_paper_alignment.md",
     "docs/03_dsge_blueprint.md",
     "docs/04_implementation_plan.md",
-    "docs/05_validation_and_data.md"
+    "docs/05_validation_and_data.md",
+    "docs/06_equation_chain.md",
+    "docs/07_shock_transmission.md",
+    "docs/08_legacy_equation_map.md"
   ],
   "approved_by_supervisor": false,
   "full_dsge_solver_implemented": false,
-  "dsge_steady_state_solved": false,
+  "dsge_steady_state_solved": true,
   "full_dsge_equilibrium_solved": false,
   "real_data_validated": false,
   "parameters_identified": false,
@@ -28,9 +31,10 @@
   "archive_is_default_reference": false,
   "archive_in_default_test_discovery": false,
   "checks": [
-    "python scripts/check_repository.py"
+    "python scripts/check_repository.py",
+    "python scripts/validate_equation_chain.py"
   ],
-  "validation_document": "docs/validation/reorganization_20261126.json",
+  "validation_document": "docs/validation/equation_chain_20261126.json",
   "baseline_commits": {
     "previous_main": "90992297a09af4e2080d758c3624dca5746cc16d",
     "latest_stochastic_pe": "4c28915abf32a493ea11ddd262f3a30f57c458c6",
@@ -39,13 +43,18 @@
   },
   "gates": {
     "repository_reorganization": "PASSED_BYTE_PRESERVATION_AND_CURRENT_ENTRY_CHECK",
-    "group_source_mapping": "DOCUMENTED",
-    "budget_and_resource_candidate": "DERIVED_AND_INDEPENDENTLY_REVIEWED_NOT_CODED",
-    "complete_kkt_and_dimension": "NOT_IMPLEMENTED_OR_RANK_VERIFIED",
-    "deterministic_anchor": "NOT_SOLVED",
-    "positive_risk_equilibrium": "NOT_SOLVED",
+    "group_source_mapping": "DOCUMENTED_INCLUDING_SHOCK_ENTRIES",
+    "budget_and_resource_candidate": "DERIVED_CODED_AND_OFF_EQUILIBRIUM_IDENTITY_VERIFIED",
+    "complete_kkt_and_dimension": "NECESSARY_CONDITIONS_CODED_COUNTS_MATCH_FULL_DYNAMIC_RANK_NOT_VERIFIED",
+    "deterministic_anchor": "SYNTHETIC_STATIONARY_KKT_VERIFIED_AT_FIXED_WEALTH",
+    "positive_risk_equilibrium": "NOT_SOLVED_FROZEN_ANCHOR_REJECTED_AT_16_SUCCESSOR_STATES",
     "china_open_economy_extension": "INTERFACE_ONLY",
     "measurement_and_identification": "REQUIREMENTS_ONLY",
     "real_estimation": "NOT_STARTED"
-  }
+  },
+  "archive_validation_document": "docs/validation/reorganization_20261126.json",
+  "equation_chain_reconstructed": true,
+  "original_condition_evaluator_implemented": true,
+  "deterministic_stationary_kkt_anchor_solved": true,
+  "steady_state_scope": "Synthetic stationary KKT candidate at fixed wealth; global optimality and uniqueness not proved"
 }

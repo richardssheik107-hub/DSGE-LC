@@ -1,4 +1,4 @@
-"""Check active design metadata and frozen archive bytes; never run economic code."""
+"""Check equation metadata, numerical-evidence hashes and frozen archive bytes."""
 from pathlib import Path
 import hashlib
 import json
@@ -20,41 +20,67 @@ def main():
     manifest = read_json(status['archive_manifest'])
     validation = read_json(status['validation_document'])
 
+    historical = read_json(status['archive_validation_document'])
     if status['model_id'] != spec['model_id'] or validation['model_id'] != spec['model_id']:
         errors.append('Active model identifiers disagree.')
     if status['canonical_equations'] != spec['canonical_document']:
-        errors.append('Active canonical design paths disagree.')
-    if status['stage'] != 'DESIGN_AND_CLOSURE_REVIEW' or spec['status'] != 'DESIGN_NOT_IMPLEMENTED':
-        errors.append('Design status changed without revising this gate and its evidence.')
-    false_flags = (
-        'approved_by_supervisor', 'full_dsge_solver_implemented',
-        'dsge_steady_state_solved', 'full_dsge_equilibrium_solved',
-        'real_data_validated', 'parameters_identified',
-        'real_data_estimated', 'old_tests_inherited',
-        'archive_is_default_reference', 'archive_in_default_test_discovery',
-    )
-    for key in false_flags:
+        errors.append('Active canonical equation paths disagree.')
+    if status['stage'] != 'EQUATION_CHAIN_AND_DETERMINISTIC_ANCHOR':
+        errors.append('Model stage changed without revising this gate and evidence.')
+    if spec['status'] != 'EQUATIONS_IMPLEMENTED_DETERMINISTIC_KKT_VERIFIED':
+        errors.append('Specification implementation scope disagrees.')
+    for key in ('approved_by_supervisor', 'full_dsge_solver_implemented',
+                'full_dsge_equilibrium_solved', 'real_data_validated',
+                'parameters_identified', 'real_data_estimated', 'old_tests_inherited',
+                'archive_is_default_reference', 'archive_in_default_test_discovery'):
         if status.get(key) is not False:
             errors.append(f'Unsupported completed/inherited gate: {key}')
+    for key in ('equation_chain_reconstructed', 'original_condition_evaluator_implemented',
+                'deterministic_stationary_kkt_anchor_solved', 'dsge_steady_state_solved'):
+        if status.get(key) is not True:
+            errors.append(f'Implemented equation/anchor gate missing: {key}')
     for key in ('closed_form_pe_E27_inherited', 'legacy_tests_inherited',
                 'nonlinear_policy_solved', 'calibrated', 'estimated',
-                'independent_condition_count_verified'):
+                'independent_condition_count_verified', 'complete_dynamic_rank_verified',
+                'stochastic_policy_solver_implemented'):
         if spec.get(key) is not False:
-            errors.append(f'Unsupported model-specification gate: {key}')
+            errors.append(f'Unsupported specification completion: {key}')
     if spec['independent_condition_count'] is not None:
         errors.append('An unverified independent equation count was declared.')
-    if validation.get('dsge_results_inherited') is not False:
-        errors.append('Validation record inherits legacy DSGE results.')
-    if status['checks'] != ['python scripts/check_repository.py']:
-        errors.append('Default checks unexpectedly execute or discover historical work.')
+    if spec['structural_kkt_unknown_count'] != '36 + L + R' or spec['structural_kkt_condition_count'] != '36 + L + R':
+        errors.append('Documented necessary KKT count differs.')
+    if spec['shock_states'] != ['z_omega', 'z_m', 'z_pj', 'z_kappa']:
+        errors.append('Active shock definitions differ.')
+    if status['checks'] != ['python scripts/check_repository.py', 'python scripts/validate_equation_chain.py']:
+        errors.append('Default checks differ from current-only gates.')
+    for key in ('dsge_results_inherited', 'full_dsge_equilibrium_solved', 'full_dsge_solver_implemented', 'real_data_estimated'):
+        if validation.get(key) is not False:
+            errors.append(f'Unsupported validation result: {key}')
+    if not validation.get('passed') or not validation['original_equation_audit']['passed']:
+        errors.append('Current numerical validation did not pass.')
+    if validation['original_equation_audit']['max_abs_residual'] > 1e-8:
+        errors.append('Stationary KKT residual exceeds tolerance.')
+    if not validation['tests']['passed'] or validation['tests']['run'] < 17:
+        errors.append('Current economic regression evidence incomplete.')
+    if validation['anchor_selection']['global_optimum_proved'] is not False:
+        errors.append('Global optimality was not established.')
+    if not validation['frozen_anchor_positive_risk_probe']['candidate_rejected']:
+        errors.append('Failing positive-risk candidate was not rejected.')
+    for source, expected in validation['source_sha256'].items():
+        path = ROOT / source
+        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+            errors.append(f'Economic source changed after numerical evidence: {source}')
+    for source in spec['implementation_files']:
+        if source not in validation['source_sha256']:
+            errors.append(f'Implemented file absent from validation fingerprints: {source}')
 
     canonical = (ROOT / spec['canonical_document']).read_text(encoding='utf-8')
-    headings = re.findall(r'^### (G\d{2})｜(.+)$', canonical, re.M)
+    headings = re.findall(r'^### (E\d{2})｜(.+)$', canonical, re.M)
     groups = spec['equation_groups']
     if headings != [(g['id'], g['title']) for g in groups]:
-        errors.append('Design headings do not match the machine index.')
-    if [g['id'] for g in groups] != [f'G{i:02}' for i in range(1, 27)]:
-        errors.append('Expected G01--G26 design modules exactly once (not scalar equation count).')
+        errors.append('Canonical equation headings do not match the machine index.')
+    if [g['id'] for g in groups] != [f'E{i:02}' for i in range(1, 41)]:
+        errors.append('Expected E01--E40 groups exactly once, not a scalar equation count.')
     ids = {item['id'] for item in refs['items']}
     if len(ids) != len(refs['items']):
         errors.append('Duplicate reference IDs.')
@@ -68,8 +94,8 @@ def main():
     for group in groups:
         if not set(group['source_ids']) <= ids:
             errors.append(f'Unknown source in {group["id"]}')
-        if group['implementation_status'] != 'NOT_IMPLEMENTED':
-            errors.append(f'Implementation gate changed for {group["id"]}')
+        if not group.get('implementation_status'):
+            errors.append(f'Missing implementation scope for {group["id"]}')
 
     archive_root = (ROOT / status['archive_root']).resolve()
     if manifest['archive_root'] != status['archive_root'] or manifest['active_reference'] is not False:
@@ -115,7 +141,7 @@ def main():
 
     active_md = [ROOT / p for p in status['current_documents']]
     active_md += [ROOT / p for p in ('README.md', 'AGENTS.md', 'CHANGELOG.md',
-                  'data/README.md', 'model/README.md', 'references/README.md')]
+                  'data/README.md', 'model/README.md', 'model/dsge/README.md', 'references/README.md')]
     active_md += [archive_root / 'README.md']
     links = 0
     for path in active_md:
@@ -145,20 +171,22 @@ def main():
                 'docs/03_equations.md', 'scripts/check_project.py'):
         if (ROOT / old).exists():
             errors.append(f'Legacy active path remains: {old}')
-    for run in validation['frozen_pe_checks']['commands']:
+    for run in historical['frozen_pe_checks']['commands']:
         if run['exit_code'] != 0 or run['passed'] is not True:
             errors.append(f'Frozen baseline check was not successful: {run["command"]}')
 
     report = {
-        'scope': 'active design consistency and archive byte integrity only; no economic solver invoked',
-        'model_id': status['model_id'], 'design_modules': len(groups),
+        'scope': 'active equation consistency, existing numerical-evidence fingerprints and archive integrity; no economic solver invoked by this script',
+        'model_id': status['model_id'], 'equation_groups': len(groups),
         'independent_equation_count_verified': False,
         'reference_records': len(ids), 'primary_reference': status['primary_reference_id'],
         'active_markdown_files': len(active_md), 'local_links_checked': links,
         'archive_files_verified': len(archived_paths), 'archive_bytes_verified': archived_bytes,
         'excluded_metadata_records': len(manifest['excluded']),
         'historical_tests_executed_by_this_check': False,
-        'new_dsge_equilibrium_solved': False, 'errors': errors, 'passed': not errors,
+        'new_stochastic_dsge_equilibrium_solved': False,
+        'stationary_kkt_evidence_verified': not any('evidence' in e or 'Stationary' in e for e in errors),
+        'errors': errors, 'passed': not errors,
     }
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return int(bool(errors))

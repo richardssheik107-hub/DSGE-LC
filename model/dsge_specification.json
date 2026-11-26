@@ -1,7 +1,7 @@
 {
-  "model_id": "LC_DSGE_DESIGN_20261126",
-  "status": "DESIGN_NOT_IMPLEMENTED",
-  "canonical_document": "docs/03_dsge_blueprint.md",
+  "model_id": "LC_DSGE_EQCHAIN_20261126",
+  "status": "EQUATIONS_IMPLEMENTED_DETERMINISTIC_KKT_VERIFIED",
+  "canonical_document": "docs/06_equation_chain.md",
   "primary_structure_source": "HOG-REF",
   "model_class_target": "real DSGE with heterogeneous household owners and incomplete asset participation",
   "model_boundary_initial": "closed economy diagnostic; China application requires trade/payment extension",
@@ -16,262 +16,397 @@
   "shock_states": [
     "z_omega",
     "z_m",
+    "z_pj",
     "z_kappa"
   ],
-  "shock_kernel_status": "bounded finite-support candidate; numerical distribution and parameters not yet set",
-  "state_dimension": "n_z + L + R + 9",
-  "state_dimension_status": "uncompressed candidate with bond and futures clearing used; not a minimum-state theorem",
+  "shock_kernel_status": "Implemented: independent unit-variance symmetric two-point innovations; 16 equal branches for 4 positive scales; zero-scale deterministic collapse",
+  "state_dimension": "n_z + L + R + 9; n_z=4 => L+R+13",
+  "state_dimension_status": "Derived coordinate count after asset clearing; 18 at L=3,R=2; not minimum-state theorem",
   "independent_condition_count": null,
   "independent_condition_count_verified": false,
   "equation_groups": [
     {
-      "id": "G01",
-      "title": "真实计价与合约",
+      "id": "E01",
+      "title": "结构创新与同一概率核",
       "source_ids": [
         "HOG-REF",
-        "H90"
+        "SW07"
       ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
     },
     {
-      "id": "G02",
-      "title": "信息与决策顺序",
+      "id": "E02",
+      "title": "基本面映射与参数归属",
       "source_ids": [
         "HOG-REF",
         "LC-MEETING"
       ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
     },
     {
-      "id": "G03",
-      "title": "效用和所有者SDF",
+      "id": "E03",
+      "title": "由真实产出取代外给收益曲线",
+      "source_ids": [
+        "HOG-REF"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E04",
+      "title": "灵活LC耗用的一阶条件",
+      "source_ids": [
+        "HOG-REF"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E05",
+      "title": "实际耗用与数据桥",
+      "source_ids": [
+        "LC-MEETING"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E06",
+      "title": "生产真实资源成本",
+      "source_ids": [
+        "LC-MEETING"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E07",
+      "title": "开工资源与在建拥挤",
+      "source_ids": [
+        "LC-MEETING"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E08",
+      "title": "所有者原始动态问题与产量记忆",
       "source_ids": [
         "HOG-REF",
-        "H90"
+        "LC-MEETING"
       ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "PRIMITIVE_PROBLEM_DOCUMENTED_SDF_KKT_CODED_NO_BELLMAN_SOLVER"
     },
     {
-      "id": "G04",
-      "title": "劳动与债券最优条件",
-      "source_ids": [
-        "HOG-REF"
-      ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
-    },
-    {
-      "id": "G05",
-      "title": "四份预算",
-      "source_ids": [
-        "HOG-REF"
-      ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
-    },
-    {
-      "id": "G06",
-      "title": "非LC部门和最终组合器",
-      "source_ids": [
-        "HOG-REF"
-      ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
-    },
-    {
-      "id": "G07",
-      "title": "保留灵活耗用与提前排产",
+      "id": "E09",
+      "title": "产量选择与两侧产能约束",
       "source_ids": [
         "LC-MEETING"
       ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
     },
     {
-      "id": "G08",
-      "title": "当期下游选择",
-      "source_ids": [
-        "HOG-REF"
-      ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
-    },
-    {
-      "id": "G09",
-      "title": "跨期采购计划",
-      "source_ids": [
-        "LC-MEETING",
-        "ELV19"
-      ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
-    },
-    {
-      "id": "G10",
-      "title": "技术与真实成本",
-      "source_ids": [
-        "LC-MEETING"
-      ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
-    },
-    {
-      "id": "G11",
-      "title": "产量最优条件",
-      "source_ids": [
-        "LC-MEETING"
-      ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
-    },
-    {
-      "id": "G12",
-      "title": "建设队列",
+      "id": "E10",
+      "title": "剩余建设期队列",
       "source_ids": [
         "LC-MEETING",
         "KP82"
       ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
     },
     {
-      "id": "G13",
-      "title": "爬坡和成熟能力",
+      "id": "E11",
+      "title": "投用后的爬坡队列",
       "source_ids": [
         "LC-MEETING",
         "KP82"
       ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
     },
     {
-      "id": "G14",
-      "title": "影子价值与拥挤成本",
+      "id": "E12",
+      "title": "成熟能力与有效能力",
+      "source_ids": [
+        "LC-MEETING",
+        "KP82"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E13",
+      "title": "有效产能当期边际价值",
       "source_ids": [
         "LC-MEETING"
       ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
     },
     {
-      "id": "G15",
-      "title": "开工选择与终值",
+      "id": "E14",
+      "title": "成熟与爬坡能力的随机价值递推",
       "source_ids": [
-        "KP82",
         "LC-MEETING"
       ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
     },
     {
-      "id": "G16",
-      "title": "库存",
+      "id": "E15",
+      "title": "建设状态的价值与未来拥挤",
+      "source_ids": [
+        "LC-MEETING"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E16",
+      "title": "新开工互补条件",
+      "source_ids": [
+        "LC-MEETING",
+        "KP82"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E17",
+      "title": "同政策价格矩与风险溢价",
+      "source_ids": [
+        "LC-MEETING"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E18",
+      "title": "真实仓储成本与便利服务边界",
       "source_ids": [
         "DL92",
         "LC-MEETING"
       ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
     },
     {
-      "id": "G17",
-      "title": "LC实物清算",
+      "id": "E19",
+      "title": "库存收入归属与持续风险承担",
+      "source_ids": [
+        "LC-MEETING",
+        "H90"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "BUDGET_OWNERSHIP_CODED"
+    },
+    {
+      "id": "E20",
+      "title": "下一期采购计划与调整成本",
+      "source_ids": [
+        "LC-MEETING",
+        "ELV19"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "ADJUSTMENT_COST_CODED"
+    },
+    {
+      "id": "E21",
+      "title": "金融风险资本与抵押",
+      "source_ids": [
+        "H90",
+        "HK13"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E22",
+      "title": "三类期货头寸的最优条件",
+      "source_ids": [
+        "H90"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E23",
+      "title": "预定采购的随机最优条件",
+      "source_ids": [
+        "LC-MEETING",
+        "ELV19"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E24",
+      "title": "库存原始KKT及可保留的套利形式",
+      "source_ids": [
+        "DL92",
+        "LC-MEETING"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E25",
+      "title": "LC物量清算",
       "source_ids": [
         "LC-MEETING"
       ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
     },
     {
-      "id": "G18",
-      "title": "劳动和最终资源",
+      "id": "E26",
+      "title": "一期合约结算与头寸清算",
       "source_ids": [
-        "HOG-REF"
+        "H90",
+        "LC-MEETING"
       ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
     },
     {
-      "id": "G19",
-      "title": "债券和期货清算",
-      "source_ids": [
-        "H90"
-      ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
-    },
-    {
-      "id": "G20",
-      "title": "I与D的套保条件",
-      "source_ids": [
-        "H90"
-      ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
-    },
-    {
-      "id": "G21",
-      "title": "F的风险资本与抵押约束",
+      "id": "E27",
+      "title": "由新最优条件导出的期货定价",
       "source_ids": [
         "H90",
         "HK13"
       ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "PRICING_DIAGNOSTIC_DERIVED_FROM_FOC"
     },
     {
-      "id": "G22",
-      "title": "金融财富与定价分解",
+      "id": "E28",
+      "title": "正库存与期现联系的派生检查",
       "source_ids": [
-        "H90",
-        "HK13"
+        "DL92",
+        "LC-MEETING"
       ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "DERIVED_CHECK_NOT_INDEPENDENT"
     },
     {
-      "id": "G23",
-      "title": "最小结构冲击组",
-      "source_ids": [
-        "HOG-REF",
-        "SW07"
-      ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
-    },
-    {
-      "id": "G24",
-      "title": "状态必须包含风险分配",
+      "id": "E29",
+      "title": "包含财富分配的状态",
       "source_ids": [
         "HOG-REF",
         "SGU04"
       ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
     },
     {
-      "id": "G25",
-      "title": "可行性、独立性与终值",
+      "id": "E30",
+      "title": "政策固定点与条件残差",
       "source_ids": [
-        "BK80",
         "SGU04",
-        "AND11/12"
+        "LC-MEETING"
       ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITIONAL_EVALUATOR_IMPLEMENTED_NOT_POLICY_SOLVER"
     },
     {
-      "id": "G26",
-      "title": "观测和开放经济接口",
+      "id": "E31",
+      "title": "观测桥与结构状态分离",
       "source_ids": [
         "HOG-REF",
         "SW07"
       ],
-      "attribution": "project-specific candidate or derivation, using cited sources at their registered verification level",
-      "implementation_status": "NOT_IMPLEMENTED"
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "OBSERVATION_INTERFACE_DOCUMENTED_NOT_ESTIMATED"
+    },
+    {
+      "id": "E32",
+      "title": "家庭目标与随机贴现因子",
+      "source_ids": [
+        "HOG-REF",
+        "H90"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E33",
+      "title": "四份逐主体预算",
+      "source_ids": [
+        "HOG-REF"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E34",
+      "title": "劳动供需的最优条件",
+      "source_ids": [
+        "HOG-REF"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E35",
+      "title": "安全债券Euler、借款下界与市场清算",
+      "source_ids": [
+        "HOG-REF",
+        "HK13"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E36",
+      "title": "非LC最终部门",
+      "source_ids": [
+        "HOG-REF"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E37",
+      "title": "最终复合品与部门需求",
+      "source_ids": [
+        "HOG-REF"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E38",
+      "title": "劳动和最终资源清算",
+      "source_ids": [
+        "HOG-REF"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+    },
+    {
+      "id": "E39",
+      "title": "偿付、可行域和终值",
+      "source_ids": [
+        "SGU04",
+        "BK80"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "LOCAL_DOMAIN_CHECKS_AND_STATIONARY_TAIL_ARGUMENT_NOT_GLOBAL_PROOF"
+    },
+    {
+      "id": "E40",
+      "title": "均衡定义、条件计数与本轮计算范围",
+      "source_ids": [
+        "BK80",
+        "SGU04"
+      ],
+      "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
+      "implementation_status": "STRUCTURAL_COUNT_DERIVED_STATIONARY_KKT_CHECKED_NOT_FULL_RANK_PROOF"
     }
   ],
   "closed_form_pe_E27_inherited": false,
@@ -279,15 +414,33 @@
   "nonlinear_policy_solved": false,
   "calibrated": false,
   "estimated": false,
-  "required_pre_solver_decisions": [
-    "parameter and unit dictionary including fixed downstream operating-factor share",
-    "initial wealth allocation and W/I/D debt floors with counterparties",
-    "positive-consumption, solvency and forward-invariant domain",
-    "zero-inventory deterministic anchor and any real convenience-service extension",
-    "independent KKT system including Walras redundancy and zero-risk portfolio degeneracy",
-    "finite-positive-risk portfolio anchor or justified higher-order selection",
-    "transversality and no-Ponzi conditions under the chosen domain"
-  ],
   "legacy_baseline": "archive/2026-11-26_pre_dsge/frozen_pe_20261118",
-  "source_commit": "4c28915abf32a493ea11ddd262f3a30f57c458c6"
+  "source_commit": "4c28915abf32a493ea11ddd262f3a30f57c458c6",
+  "structural_kkt_unknown_count": "36 + L + R",
+  "structural_kkt_condition_count": "36 + L + R",
+  "structural_count_matched": true,
+  "deterministic_stationary_kkt_anchor_solved": true,
+  "original_condition_evaluator_implemented": true,
+  "stochastic_policy_solver_implemented": false,
+  "synthetic_parameters_only": true,
+  "numerical_parameter_domain": "common beta, 0<delta<1, epsilon!=1, strictly positive downstream activity, Ke>0",
+  "steady_state_branch": "fixed net-zero bonds, h=0 selection, I=0, J>0, slack capacity",
+  "complete_dynamic_rank_verified": false,
+  "remaining_gates": [
+    "finite-positive-risk policy fixed point",
+    "global successor feasibility and tail conditions",
+    "dynamic rank and solution selection",
+    "GIRF and re-solved counterfactuals",
+    "China trade and external payment closure",
+    "identification and real estimation"
+  ],
+  "implementation_files": [
+    "model/dsge/parameters.py",
+    "model/dsge/state.py",
+    "model/dsge/shocks.py",
+    "model/dsge/economy.py",
+    "model/dsge/residuals.py",
+    "model/dsge/steady_state.py"
+  ],
+  "validation_record": "docs/validation/equation_chain_20261126.json"
 }

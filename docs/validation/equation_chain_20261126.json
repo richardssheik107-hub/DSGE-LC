@@ -1,0 +1,751 @@
+{
+  "model_id": "LC_DSGE_EQCHAIN_20261126",
+  "validated_on": "2026-11-26",
+  "scope": "new original-equation evaluator and synthetic deterministic stationary KKT anchor",
+  "stage": "EQUATION_CHAIN_AND_DETERMINISTIC_ANCHOR",
+  "synthetic_parameters": true,
+  "china_calibration_claimed": false,
+  "real_data_estimated": false,
+  "full_dsge_equilibrium_solved": false,
+  "full_dsge_solver_implemented": false,
+  "dsge_results_inherited": false,
+  "configured_positive_risk_kernel_branches": 16,
+  "configured_parameters": {
+    "beta": 0.99,
+    "gamma": [
+      1.0,
+      2.0,
+      2.0,
+      2.0
+    ],
+    "labor_weight": 1.0,
+    "labor_elasticity_power": 1.0,
+    "a0": 1.5,
+    "ab": 1.8,
+    "al": 5.0,
+    "fixed_factor": 1.0,
+    "alpha_s": 0.15,
+    "alpha_c": 0.1,
+    "phi": 0.15,
+    "epsilon": 1.5,
+    "omega_bar": 0.35,
+    "m_bar": 0.2,
+    "pj_bar": 0.4,
+    "collateral_bar": 0.2,
+    "alpha_q": 0.8,
+    "nu_q": 2.0,
+    "adjustment_q": 0.15,
+    "adjustment_c": 0.15,
+    "chi_j": 0.2,
+    "congestion": 0.05,
+    "inventory_survival": 0.99,
+    "storage_linear": 0.02,
+    "storage_quadratic": 0.05,
+    "depreciation": 0.03,
+    "construction_lag": 3,
+    "ramp_weights": [
+      0.45,
+      0.8
+    ],
+    "debt_floors": [
+      -0.5,
+      -0.5,
+      -0.5
+    ],
+    "anchor_bonds": [
+      -0.05,
+      -0.1,
+      -0.05,
+      0.2
+    ],
+    "shock_persistence": [
+      0.8,
+      0.75,
+      0.7,
+      0.8
+    ],
+    "shock_scales": [
+      0.01,
+      0.01,
+      0.01,
+      0.01
+    ],
+    "shock_names": [
+      "z_omega",
+      "z_m",
+      "z_pj",
+      "z_kappa"
+    ]
+  },
+  "anchor_parameters": {
+    "beta": 0.99,
+    "gamma": [
+      1.0,
+      2.0,
+      2.0,
+      2.0
+    ],
+    "labor_weight": 1.0,
+    "labor_elasticity_power": 1.0,
+    "a0": 1.5,
+    "ab": 1.8,
+    "al": 5.0,
+    "fixed_factor": 1.0,
+    "alpha_s": 0.15,
+    "alpha_c": 0.1,
+    "phi": 0.15,
+    "epsilon": 1.5,
+    "omega_bar": 0.35,
+    "m_bar": 0.2,
+    "pj_bar": 0.4,
+    "collateral_bar": 0.2,
+    "alpha_q": 0.8,
+    "nu_q": 2.0,
+    "adjustment_q": 0.15,
+    "adjustment_c": 0.15,
+    "chi_j": 0.2,
+    "congestion": 0.05,
+    "inventory_survival": 0.99,
+    "storage_linear": 0.02,
+    "storage_quadratic": 0.05,
+    "depreciation": 0.03,
+    "construction_lag": 3,
+    "ramp_weights": [
+      0.45,
+      0.8
+    ],
+    "debt_floors": [
+      -0.5,
+      -0.5,
+      -0.5
+    ],
+    "anchor_bonds": [
+      -0.05,
+      -0.1,
+      -0.05,
+      0.2
+    ],
+    "shock_persistence": [
+      0.8,
+      0.75,
+      0.7,
+      0.8
+    ],
+    "shock_scales": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "shock_names": [
+      "z_omega",
+      "z_m",
+      "z_pj",
+      "z_kappa"
+    ]
+  },
+  "anchor_selection": {
+    "shock_scales": "all four set to zero for this deterministic calculation",
+    "log_center": "z=0 is the deterministic reference, not the stochastic unconditional mean of levels",
+    "inventory": "I=0; strictly positive storage dual supports the corner",
+    "positions": "h_I=h_D=h_F=0 selected; zero-risk positions are not unique",
+    "bonds_order": [
+      "W",
+      "I",
+      "D",
+      "F"
+    ],
+    "bonds": [
+      -0.05,
+      -0.1,
+      -0.05,
+      0.2
+    ],
+    "wealth_distribution": "fixed initial allocation with exact counterparties; not endogenously selected as unique",
+    "stationary_tail_limits": "bounded stationary real/asset states and constant M=beta<1 imply discounted tails vanish on this selected deterministic path",
+    "global_optimum_proved": false,
+    "qualification": "KKT candidate verified; nonconcave internal congestion means FOCs alone do not prove global optimality"
+  },
+  "state": {
+    "z": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "q_prev": 0.21820718691170632,
+    "inventory_prev": 0.0,
+    "commitment_prev": 0.08728287476468254,
+    "mature": 0.6595332843353936,
+    "construction": [
+      0.02102880064838113,
+      0.02102880064838113
+    ],
+    "ramp": [
+      0.02102880064838113,
+      0.020397936628929695
+    ],
+    "bonds": [
+      -0.05,
+      -0.1,
+      -0.05,
+      0.2
+    ],
+    "old_positions": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "old_forward": 0.5563785749564029
+  },
+  "choice": {
+    "q": 0.21820718691170632,
+    "investment": 0.02102880064838113,
+    "flexible": 0.13092431214702377,
+    "commitment": 0.08728287476468254,
+    "inventory": 0.0,
+    "consumption": [
+      1.3761174318135767,
+      0.002298513794051488,
+      0.07234348221950836,
+      0.0020000000000000018
+    ],
+    "labor_w": 1.0001816540431272,
+    "labor_d": 0.21169778283741897,
+    "labor_0": 0.7448424338233669,
+    "wage": 1.3763674091088836,
+    "spot": 0.5563785749564029,
+    "forward": 0.5563785749564029,
+    "price_0": 0.9175782727392557,
+    "price_b": 1.1856355139495598,
+    "output_0": 1.1172636507350504,
+    "output_b": 0.4095889580593165,
+    "output": 1.510800065632545,
+    "gross_rate": 1.0101010101010102,
+    "next_bonds": [
+      -0.05,
+      -0.1,
+      -0.05,
+      0.2
+    ],
+    "positions": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "wm": 0.433656071988551,
+    "wb": [
+      0.415620412025925,
+      0.41041276787324665
+    ],
+    "wz": [
+      0.42088065864479196,
+      0.43021284277696187
+    ],
+    "capacity_multiplier": 0.0,
+    "lower_q_multiplier": 0.0,
+    "debt_multipliers": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "collateral_multiplier": 0.0
+  },
+  "optimizer": {
+    "success": true,
+    "evaluations": 5,
+    "reduced_max_residual": 1.6653345369377348e-16,
+    "reduced_unknowns": [
+      "log_wage",
+      "log_spot",
+      "log_output_LC",
+      "log_investment"
+    ],
+    "reduced_jacobian_rank": 4,
+    "reduced_jacobian_singular_values": [
+      5.260442117321943,
+      1.6472801533869776,
+      0.4046663781346685,
+      0.2738388285566972
+    ],
+    "reduced_jacobian_condition_number": 19.209993502556888,
+    "rank_scope": "four-variable reduced real stationary system only; not full DSGE/BK"
+  },
+  "original_equation_audit": {
+    "passed": true,
+    "tolerance": 1e-08,
+    "max_abs_residual": 2.220446049250313e-16,
+    "residuals": {
+      "E03.downstream_technology": 0.0,
+      "E04.flexible_foc": -1.1102230246251565e-16,
+      "E09.production_foc": 0.0,
+      "E09.capacity.primal_violation": 0.0,
+      "E09.capacity.dual_violation": 0.0,
+      "E09.capacity.complementarity": 0.0,
+      "E09.lower_output.primal_violation": 0.0,
+      "E09.lower_output.dual_violation": 0.0,
+      "E09.lower_output.complementarity": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[0]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[1]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[2]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[3]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[4]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[5]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[6]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[7]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[8]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[9]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[10]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[11]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[12]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[13]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[14]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[15]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[16]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[17]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[18]": 0.0,
+      "E10_E12_E29_E30.transition_branch_0[19]": 0.0,
+      "E14.mature_envelope": 0.0,
+      "E14.ramp_envelope_0": 0.0,
+      "E14.ramp_envelope_1": 0.0,
+      "E15.construction_envelope_0": 0.0,
+      "E15.construction_envelope_1": 0.0,
+      "E16.investment.primal_violation": 0.0,
+      "E16.investment.dual_violation": 0.0,
+      "E16.investment.complementarity": 3.501998799012773e-18,
+      "E22.futures_I": 0.0,
+      "E22.futures_D": 0.0,
+      "E22.futures_F_subgradient": 0.0,
+      "E21.collateral.primal_violation": 0.0,
+      "E21.collateral.dual_violation": 0.0,
+      "E21.collateral.complementarity": 0.0,
+      "E23.procurement_foc": 0.0,
+      "E24.inventory.primal_violation": 0.0,
+      "E24.inventory.dual_violation": 0.0,
+      "E24.inventory.complementarity": 0.0,
+      "E25.LC_market": 1.3877787807814457e-17,
+      "E26.futures_market": 0.0,
+      "E26.inherited_futures_market": 0.0,
+      "E33.budget_W": 0.0,
+      "E33.budget_I": 0.0,
+      "E33.budget_D": -5.551115123125783e-17,
+      "E33.budget_F": 0.0,
+      "E34.labor_supply": 0.0,
+      "E34.downstream_labor": 0.0,
+      "E35.bond_euler_WID[0]": 0.0,
+      "E35.bond_euler_WID[1]": 0.0,
+      "E35.bond_euler_WID[2]": 0.0,
+      "E35.debt_floor_WID.primal_violation[0]": 0.0,
+      "E35.debt_floor_WID.primal_violation[1]": 0.0,
+      "E35.debt_floor_WID.primal_violation[2]": 0.0,
+      "E35.debt_floor_WID.dual_violation[0]": 0.0,
+      "E35.debt_floor_WID.dual_violation[1]": 0.0,
+      "E35.debt_floor_WID.dual_violation[2]": 0.0,
+      "E35.debt_floor_WID.complementarity[0]": 0.0,
+      "E35.debt_floor_WID.complementarity[1]": 0.0,
+      "E35.debt_floor_WID.complementarity[2]": 0.0,
+      "E35.bond_euler_F": 0.0,
+      "E35.bond_market": 0.0,
+      "E35.inherited_bond_market": 0.0,
+      "E39.inherited_debt_floor[0]": 0.0,
+      "E39.inherited_debt_floor[1]": 0.0,
+      "E39.inherited_debt_floor[2]": 0.0,
+      "E36.non_LC_technology": 0.0,
+      "E36.non_LC_labor": 0.0,
+      "E37.CES_demand_0": 0.0,
+      "E37.CES_demand_B": 0.0,
+      "E37.CES_price_index": 0.0,
+      "E38.labor_market": 1.1102230246251565e-16,
+      "E38.final_resources_redundant_audit": 7.632783294297951e-17,
+      "E37.zero_profit_redundant_audit": -2.220446049250313e-16,
+      "E39.successor_debt_floor_0[0]": 0.0,
+      "E39.successor_debt_floor_0[1]": 0.0,
+      "E39.successor_debt_floor_0[2]": 0.0,
+      "E27.premium_decomposition_redundant_audit": 0.0
+    },
+    "domain_errors": [],
+    "diagnostics": {
+      "effective_capacity": 0.6853145939303089,
+      "capacity_utilization": 0.31840440703338685,
+      "real_costs": {
+        "production": 0.049540675454714175,
+        "construction": 0.008499962350694326,
+        "storage": 0.0,
+        "procurement": 0.0
+      },
+      "final_resource_residual": 7.632783294297951e-17,
+      "assembler_zero_profit_residual": -2.220446049250313e-16,
+      "futures_settlement_total": 0.0,
+      "financial_net_worth": 0.2,
+      "aggregate_net_bonds": 0.0,
+      "mean_future_spot": 0.5563785749564029,
+      "variance_future_spot": 0.0,
+      "risk_premium": 0.0,
+      "basis_forward_minus_spot": 0.0,
+      "inventory_gap": 0.03107193364163252,
+      "investment_gap": 1.6653345369377348e-16,
+      "collateral_slack": 0.198,
+      "sdf_means": [
+        0.99,
+        0.99,
+        0.99,
+        0.99
+      ],
+      "covariance_sdf_F_spot": 0.0,
+      "futures_F_pricing_left": 0.0,
+      "collateral_pricing_wedge_size": 0.0,
+      "capital_marginal_value": 0.017216146057945504,
+      "min_successor_F_net_worth": 0.2,
+      "premium_from_covariance_and_collateral": 0.0
+    },
+    "branch_count": 1,
+    "residual_count_including_redundancy": 86,
+    "independent_equation_count_verified": false,
+    "scope": "one current state, original local conditions and declared successor branches",
+    "global_feasibility_verified": false,
+    "global_transversality_verified": false,
+    "full_dsge_equilibrium_solved": false
+  },
+  "boundary_cases": [
+    {
+      "L": 1,
+      "R": 0,
+      "max_abs_original_residual": 2.220446049250313e-16,
+      "min_consumption": 0.001917435796969312,
+      "capacity_utilization": 0.31207481761220557,
+      "passed": true
+    },
+    {
+      "L": 1,
+      "R": 2,
+      "max_abs_original_residual": 1.1102230246251565e-15,
+      "min_consumption": 0.0020000000000000018,
+      "capacity_utilization": 0.315211419530801,
+      "passed": true
+    },
+    {
+      "L": 3,
+      "R": 0,
+      "max_abs_original_residual": 3.191891195797325e-16,
+      "min_consumption": 0.0020000000000000018,
+      "capacity_utilization": 0.31522634510933883,
+      "passed": true
+    },
+    {
+      "L": 3,
+      "R": 2,
+      "max_abs_original_residual": 2.220446049250313e-16,
+      "min_consumption": 0.0020000000000000018,
+      "capacity_utilization": 0.31840440703338685,
+      "passed": true
+    }
+  ],
+  "derivative_checks": {
+    "central_difference_step": 1e-06,
+    "checks": {
+      "production_dQ": {
+        "numerical": 0.2811050931333936,
+        "analytic": 0.28110509313462617,
+        "absolute_error": 1.2325696019388488e-12
+      },
+      "production_dK": {
+        "numerical": -0.01721614606084443,
+        "analytic": -0.017216146057945504,
+        "absolute_error": 2.898924156280458e-12
+      },
+      "construction_dJ": {
+        "numerical": 0.40630864019553653,
+        "analytic": 0.40630864019451435,
+        "absolute_error": 1.0221823387723816e-12
+      },
+      "procurement_dC_previous": {
+        "numerical": -0.0026184862429427277,
+        "analytic": -0.0026184862429404765,
+        "absolute_error": 2.2512373909489014e-15
+      }
+    },
+    "max_absolute_error": 2.898924156280458e-12
+  },
+  "off_equilibrium_accounting_identity": {
+    "scope": "arbitrary off-equilibrium quantity, wage, final output and net-asset perturbation",
+    "budget_residual_sum": 0.029186796817880195,
+    "market_resource_identity_rhs": 0.02918679681788027,
+    "identity_absolute_error": 7.632783294297951e-17
+  },
+  "frozen_anchor_positive_risk_probe": {
+    "candidate": "constant deterministic-anchor choices under configured positive innovations",
+    "scope": "center plus all 16 first-period successors, each with a full 16-branch expectation",
+    "center_passed": true,
+    "center_max_abs_residual": 2.220446049250313e-16,
+    "successor_states_audited": 16,
+    "successor_states_rejected": 16,
+    "max_abs_successor_residual": 0.003980066500332613,
+    "rows": [
+      {
+        "state_z": [
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01
+        ],
+        "passed": false,
+        "max_abs_residual": 0.003980066500332613,
+        "worst_condition": "E16.investment.dual_violation",
+        "conditional_branches": 16
+      },
+      {
+        "state_z": [
+          -0.01,
+          -0.01,
+          -0.01,
+          0.01
+        ],
+        "passed": false,
+        "max_abs_residual": 0.003980066500332613,
+        "worst_condition": "E16.investment.dual_violation",
+        "conditional_branches": 16
+      },
+      {
+        "state_z": [
+          -0.01,
+          -0.01,
+          0.01,
+          -0.01
+        ],
+        "passed": false,
+        "max_abs_residual": 0.003904533439688773,
+        "worst_condition": "E37.CES_demand_0",
+        "conditional_branches": 16
+      },
+      {
+        "state_z": [
+          -0.01,
+          -0.01,
+          0.01,
+          0.01
+        ],
+        "passed": false,
+        "max_abs_residual": 0.003904533439688773,
+        "worst_condition": "E37.CES_demand_0",
+        "conditional_branches": 16
+      },
+      {
+        "state_z": [
+          -0.01,
+          0.01,
+          -0.01,
+          -0.01
+        ],
+        "passed": false,
+        "max_abs_residual": 0.003980066500332613,
+        "worst_condition": "E16.investment.dual_violation",
+        "conditional_branches": 16
+      },
+      {
+        "state_z": [
+          -0.01,
+          0.01,
+          -0.01,
+          0.01
+        ],
+        "passed": false,
+        "max_abs_residual": 0.003980066500332613,
+        "worst_condition": "E16.investment.dual_violation",
+        "conditional_branches": 16
+      },
+      {
+        "state_z": [
+          -0.01,
+          0.01,
+          0.01,
+          -0.01
+        ],
+        "passed": false,
+        "max_abs_residual": 0.003904533439688773,
+        "worst_condition": "E37.CES_demand_0",
+        "conditional_branches": 16
+      },
+      {
+        "state_z": [
+          -0.01,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "passed": false,
+        "max_abs_residual": 0.003904533439688773,
+        "worst_condition": "E37.CES_demand_0",
+        "conditional_branches": 16
+      },
+      {
+        "state_z": [
+          0.01,
+          -0.01,
+          -0.01,
+          -0.01
+        ],
+        "passed": false,
+        "max_abs_residual": 0.003980066500332613,
+        "worst_condition": "E16.investment.dual_violation",
+        "conditional_branches": 16
+      },
+      {
+        "state_z": [
+          0.01,
+          -0.01,
+          -0.01,
+          0.01
+        ],
+        "passed": false,
+        "max_abs_residual": 0.003980066500332613,
+        "worst_condition": "E16.investment.dual_violation",
+        "conditional_branches": 16
+      },
+      {
+        "state_z": [
+          0.01,
+          -0.01,
+          0.01,
+          -0.01
+        ],
+        "passed": false,
+        "max_abs_residual": 0.003916264538897485,
+        "worst_condition": "E37.CES_demand_0",
+        "conditional_branches": 16
+      },
+      {
+        "state_z": [
+          0.01,
+          -0.01,
+          0.01,
+          0.01
+        ],
+        "passed": false,
+        "max_abs_residual": 0.003916264538897485,
+        "worst_condition": "E37.CES_demand_0",
+        "conditional_branches": 16
+      },
+      {
+        "state_z": [
+          0.01,
+          0.01,
+          -0.01,
+          -0.01
+        ],
+        "passed": false,
+        "max_abs_residual": 0.003980066500332613,
+        "worst_condition": "E16.investment.dual_violation",
+        "conditional_branches": 16
+      },
+      {
+        "state_z": [
+          0.01,
+          0.01,
+          -0.01,
+          0.01
+        ],
+        "passed": false,
+        "max_abs_residual": 0.003980066500332613,
+        "worst_condition": "E16.investment.dual_violation",
+        "conditional_branches": 16
+      },
+      {
+        "state_z": [
+          0.01,
+          0.01,
+          0.01,
+          -0.01
+        ],
+        "passed": false,
+        "max_abs_residual": 0.003916264538897485,
+        "worst_condition": "E37.CES_demand_0",
+        "conditional_branches": 16
+      },
+      {
+        "state_z": [
+          0.01,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "passed": false,
+        "max_abs_residual": 0.003916264538897485,
+        "worst_condition": "E37.CES_demand_0",
+        "conditional_branches": 16
+      }
+    ],
+    "candidate_rejected": true,
+    "global_policy_validation_claimed": false,
+    "lesson": "current-state FOCs can pass while the same candidate fails at reachable states"
+  },
+  "deliberately_wrong_candidate": {
+    "change": "increase I-owner current consumption by 0.01 without a source of funds",
+    "rejected": true,
+    "max_abs_residual": 27.353027026355875,
+    "I_budget_residual": 0.009999999999999981,
+    "resource_residual": -0.009999999999999933
+  },
+  "tests": {
+    "run": 17,
+    "failures": 0,
+    "errors": 0,
+    "passed": true,
+    "details": [
+      "test_aggregate_budget_identity_off_equilibrium (test_equation_chain.EquationChainTests.test_aggregate_budget_identity_off_equilibrium) ... ok",
+      "test_all_construction_ramp_boundaries (test_equation_chain.EquationChainTests.test_all_construction_ramp_boundaries) ... ok",
+      "test_anchor_all_original_conditions (test_equation_chain.EquationChainTests.test_anchor_all_original_conditions) ... ok",
+      "test_declared_kernel_moments (test_equation_chain.EquationChainTests.test_declared_kernel_moments) ... ok",
+      "test_first_capacity_arrives_after_L_without_early_depreciation (test_equation_chain.EquationChainTests.test_first_capacity_arrives_after_L_without_early_depreciation) ... ok",
+      "test_frozen_anchor_must_also_be_audited_at_reachable_states (test_equation_chain.EquationChainTests.test_frozen_anchor_must_also_be_audited_at_reachable_states) ... ok",
+      "test_infeasible_successor_controls_are_rejected (test_equation_chain.EquationChainTests.test_infeasible_successor_controls_are_rejected) ... ok",
+      "test_invalid_consumption_is_not_clipped (test_equation_chain.EquationChainTests.test_invalid_consumption_is_not_clipped) ... ok",
+      "test_missing_branch_cannot_be_used_as_an_expectation (test_equation_chain.EquationChainTests.test_missing_branch_cannot_be_used_as_an_expectation) ... ok",
+      "test_original_cost_and_envelope_derivatives (test_equation_chain.EquationChainTests.test_original_cost_and_envelope_derivatives) ... ok",
+      "test_ramping_capacity_does_not_require_positive_mature_stock (test_equation_chain.EquationChainTests.test_ramping_capacity_does_not_require_positive_mature_stock) ... ok",
+      "test_sdf_price_covariance_is_not_discarded (test_equation_chain.EquationChainTests.test_sdf_price_covariance_is_not_discarded) ... ok",
+      "test_settlement_transfers_wealth_even_when_aggregate_is_zero (test_equation_chain.EquationChainTests.test_settlement_transfers_wealth_even_when_aggregate_is_zero) ... ok",
+      "test_slack_debt_constraint_rejects_positive_multiplier (test_equation_chain.EquationChainTests.test_slack_debt_constraint_rejects_positive_multiplier) ... ok",
+      "test_wrong_consumption_is_rejected_by_budget_and_resources (test_equation_chain.EquationChainTests.test_wrong_consumption_is_rejected_by_budget_and_resources) ... ok",
+      "test_zero_position_uses_subgradient_interval (test_equation_chain.EquationChainTests.test_zero_position_uses_subgradient_interval) ... ok",
+      "test_zero_risk_hedges_are_not_uniquely_identified (test_equation_chain.EquationChainTests.test_zero_risk_hedges_are_not_uniquely_identified) ... ok",
+      "",
+      "----------------------------------------------------------------------",
+      "Ran 17 tests in 0.092s",
+      "",
+      "OK"
+    ]
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "lockfile_reproduction_claimed": false
+  },
+  "commands": [
+    "python -m unittest discover -s tests -v",
+    "python scripts/validate_equation_chain.py --write-report"
+  ],
+  "source_sha256": {
+    "model/dsge/__init__.py": "01b7e48e2008200ca51cb4b4b7407fe55316c959d90c3c5f3deb03ac3ca26cfb",
+    "model/dsge/economy.py": "2fb681fe2dff6959042fa647e035e13509b26d9f7291d75bfd5e59c6a7a478e5",
+    "model/dsge/parameters.py": "ef2e4660ebd5af1b92bba52f48f3e06b6c998c7b8a87491a5744ddf0d6164e07",
+    "model/dsge/residuals.py": "77f396dc5eea312a8122e65d5ee86e63eff0d7691a262c2ee9368d9a1b9c299c",
+    "model/dsge/shocks.py": "d8e526676ca29ae6726ea34f8845ee61fbc34c50894abed6a37f6d7cec2bc3ac",
+    "model/dsge/state.py": "8e9c06b2d9ef44c9c7ff911d236bc3b68bc05dccbe124226b985d255b4063f00",
+    "model/dsge/steady_state.py": "6e8818961324a654707744dcb4439c9803094d6b11293dc8b7b99a3fdaed9349",
+    "scripts/validate_equation_chain.py": "5fcd6213572e3d2bedcc86cf12efd62293ca25f0890e366039a115c1e2d160ae",
+    "tests/test_equation_chain.py": "5a9f6d9cbec640faf8d5f7cbe10b6edc8b4a645bae3071fed614f5ed9702a4b4"
+  },
+  "remaining_gates": [
+    "finite-positive-risk policy solution",
+    "global successor feasibility and solvency",
+    "full dynamic Jacobian/rank and appropriate determinacy analysis",
+    "global optimality or verified solution selection",
+    "positive-risk TVC/tail verification",
+    "GIRF and mechanism counterfactuals",
+    "China trade/payment extension",
+    "parameter identification and real estimation"
+  ],
+  "passed": true
+}

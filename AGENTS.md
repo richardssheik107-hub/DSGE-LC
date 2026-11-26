@@ -1,10 +1,10 @@
 # 当前任务：建设完整 DSGE
 
-用户在 2026-11-26 明确选择完整 DSGE，并要求旧实验、旧文档集中归档。此决定取代前一轮优先部分均衡的建议，也取代冻结版本的“唯一现行 E01—E31”约束。先读 README.md、project.json、docs/01_repository_audit.md、docs/02_group_paper_alignment.md、docs/03_dsge_blueprint.md、docs/04_implementation_plan.md、docs/05_validation_and_data.md。
+用户在 2026-11-26 明确选择完整 DSGE，并要求旧实验、旧文档集中归档。此决定取代前一轮优先部分均衡的建议，也取代冻结版本的“唯一现行 E01—E31”约束。先读 README.md、project.json、docs/01_repository_audit.md、docs/02_group_paper_alignment.md、docs/03_dsge_blueprint.md、docs/04_implementation_plan.md、docs/05_validation_and_data.md、现行规范docs/06_equation_chain.md、冲击docs/07_shock_transmission.md和逐组迁移docs/08_legacy_equation_map.md。
 
 ## 当前模型与研究纪律
 
-- 当前候选 LC_DSGE_DESIGN_20261126 是设计版本，尚无完整 DSGE 求解器、估计或导师通过结论。不得以新目录名、方程数、旧50项测试或旧GIRF替代经济验证。
+- 当前候选 LC_DSGE_EQCHAIN_20261126 已有E01—E40规范、原条件评估器及合成确定性平稳KKT锚；尚无完整正风险政策、估计或导师通过结论。不得以新目录名、方程数、旧50项测试或旧GIRF替代经济验证。
 - 组内生猪稿是主体组织与研究问题的主要参考；经典文献用于核查期望、预算、资源与资产定价。必须区分原稿记载、本文修正与新假设。
 - 先主体/信息/时点，后原始目标与预算、最优条件、实物及资产市场、状态与观测、求解与识别。先做可闭合的基线，再逐项扩展。
 - 碳酸锂是中间品，最终消费与采购承诺使用不同符号；Q、实际耗用、I、下一期承诺C和期货头寸不得混账。
@@ -26,6 +26,6 @@
 
 ## 验证与发布
 
-当前默认检查为 python scripts/check_repository.py，范围是仓库一致性和归档保全。后续新增经济求解代码应登记独立的预算/资源、稳态、确定性、随机及边界验收；旧门槛不继承。
+默认检查为 python scripts/check_repository.py（规范/证据哈希与归档保全）和 python scripts/validate_equation_chain.py（新模型锚与回归）。修改经济代码后须用 --write-report 重建证据；旧门槛不继承。方程唯一规范为docs/06_equation_chain.md，E01—E31保留编号不意味着原式不变；不得将36+L+R计数当独立秩证明。共同β、0<δ<1及选定稳态分支是当前数值子域。单点评估不能声明已解随机政策。
 
 禁止force push、删除历史分支、git reset --hard、git clean或清理未知用户文件。明确路径写入，审查差异，读取远端头，以预期SHA作非强制快进。没有实际执行，不报告已提交、已运行、已复现或已通过。
