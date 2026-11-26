@@ -1,0 +1,51 @@
+{
+  "project": "DSGE-LC",
+  "model_id": "LC_V2_MACRO_REVIEW_20261030",
+  "stage": "ALL_CONDITIONS_REVIEW",
+  "updated_on": "2026-11-05",
+  "canonical_equations": "docs/03_equations.md",
+  "equation_groups": 31,
+  "approved_by_supervisor": false,
+  "full_equilibrium_solved": false,
+  "real_data_validated": false,
+  "parameters_identified": false,
+  "real_data_estimated": false,
+  "old_tests_inherited": false,
+  "archive_branch": "archive/pre-equation-restart-20261029",
+  "archive_commit": "82f0e7fe5f0e7f33a7c6cb318829ef70beefcbf7",
+  "state_dimension": "n_x + n_id + L + R + 3; n_x=4, n_id=5 gives L+R+12",
+  "gates": {
+    "scope_and_timing": "SOURCE_1030_ALIGNED_PENDING_ECONOMIC_REVIEW",
+    "literature_and_functions": "PRIMARY_EVIDENCE_AND_ADAPTATIONS_DOCUMENTED",
+    "equilibrium_and_boundaries": "FULL_CONDITIONS_AND_SYNTHETIC_ANCHOR_CHECKED_STOCHASTIC_FIXED_POINT_NOT_PASSED",
+    "measurement_and_licence": "NOT_PASSED",
+    "identification_and_recovery": "NOT_STARTED",
+    "real_estimation": "BLOCKED"
+  },
+  "checks": [
+    "python scripts/check_project.py",
+    "python -m unittest discover -s tests -v",
+    "python scripts/check_closure.py",
+    "python scripts/check_full_conditions.py"
+  ],
+  "revision": "ALL_CONDITIONS_CLOSURE_20261105",
+  "review_base_commit": "7a6f167b7460ce58f648a424009a699ecd1fa50c",
+  "closure_specification_written": true,
+  "conditional_market_block_checked": true,
+  "dynamic_fixed_point_implemented": false,
+  "closure_document": "docs/14_complete_conditions.md",
+  "flowcharts_document": "docs/11_flowcharts.md",
+  "source_version": "2026-10-30 user-provided expansion",
+  "exogenous_state_counts": {
+    "macro": 4,
+    "industry_residual": 5
+  },
+  "policy_unknown_count": "7+L+R",
+  "all_conditions_specified": true,
+  "full_conditions_evaluator_implemented": true,
+  "full_deterministic_anchor_checked": true,
+  "source_alignment_document": "docs/15_source_alignment_1030.md",
+  "full_conditions_evaluator": "model/full_conditions.py",
+  "validation_document": "docs/09_validation.md",
+  "full_conditions_validation": "docs/validation/full_conditions_20261105.json"
+}

@@ -1,0 +1,12 @@
+target_window:
+  start: 2020-01-01
+  end: 2026-06-30
+sources:
+  battery_install: {preferred: China Automotive Power Battery Industry Innovation Alliance, frequency: monthly, unit: GWh}
+  nev_sales: {preferred: China Association of Automobile Manufacturers, frequency: monthly, unit: vehicles}
+  usd_cny: {preferred: CFETS/PBOC, fallback: FRED DEXCHUS, frequency: daily, unit: CNY per USD}
+  china_gov_3m: {preferred: ChinaBond, frequency: daily, unit: percent}
+  china_gov_6m: {preferred: ChinaBond, frequency: daily, unit: percent}
+  cpi_yoy: {preferred: NBS, frequency: monthly, unit: percent}
+  ppi_yoy: {preferred: NBS, frequency: monthly, unit: percent}
+  lc_trade: {preferred: GACC, frequency: monthly, unit: ton}

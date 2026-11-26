@@ -1,0 +1,119 @@
+{
+  "review_date": "2026-11-26",
+  "scope": "Repository reorganization and frozen PE regression checks. No new DSGE solution or estimation.",
+  "model_id": "LC_DSGE_DESIGN_20261126",
+  "archive": {
+    "manifest": "archive/2026-11-26_pre_dsge/manifest.json",
+    "original_files": 505,
+    "original_bytes": 5185051,
+    "excluded_metadata_records": 508,
+    "hash_check": "PASSED_SHA256_AND_GIT_BLOB_FOR_505_ORIGINAL_FILES"
+  },
+  "current_repository_check": {
+    "command": "python scripts/check_repository.py",
+    "status": "PASSED",
+    "exit_code": 0,
+    "report": {
+      "scope": "active design consistency and archive byte integrity only; no economic solver invoked",
+      "model_id": "LC_DSGE_DESIGN_20261126",
+      "design_modules": 26,
+      "independent_equation_count_verified": false,
+      "reference_records": 14,
+      "primary_reference": "HOG-REF",
+      "active_markdown_files": 12,
+      "local_links_checked": 38,
+      "archive_files_verified": 505,
+      "archive_bytes_verified": 5185051,
+      "excluded_metadata_records": 508,
+      "historical_tests_executed_by_this_check": false,
+      "new_dsge_equilibrium_solved": false,
+      "errors": [],
+      "passed": true
+    }
+  },
+  "frozen_pe_checks": {
+    "source_commit": "4c28915abf32a493ea11ddd262f3a30f57c458c6",
+    "working_directory": "archive/2026-11-26_pre_dsge/frozen_pe_20261118",
+    "after_relocation": true,
+    "commands": [
+      {
+        "command": "python scripts/check_project.py",
+        "exit_code": 0,
+        "passed": true,
+        "local_links_checked": 181,
+        "scope": "documentation and registry consistency, not equilibrium or source validation"
+      },
+      {
+        "command": "python -m unittest discover -s tests -v",
+        "exit_code": 0,
+        "test_count": 50,
+        "passed": true
+      },
+      {
+        "command": "python scripts/check_closure.py",
+        "exit_code": 0,
+        "passed": true,
+        "max_residual": 3.147640262255681e-13,
+        "scope": "fixed-Q fixed-moments market subproblem"
+      },
+      {
+        "command": "python scripts/check_full_conditions.py",
+        "exit_code": 0,
+        "passed": true,
+        "verification_gates": {
+          "deterministic_anchor_passed": true,
+          "four_queue_boundaries_passed": true,
+          "nonzero_variance_computed_internally": true,
+          "unsolved_risky_candidate_is_rejected": true,
+          "stochastic_discount_expansion_passed": true,
+          "discount_correlation_is_not_discarded": true,
+          "standardized_nine_shock_kernel_checked": true,
+          "unsolved_full_nine_shock_candidate_is_rejected": true
+        },
+        "deterministic_anchor_max_residual": 1.7763568394002505e-15,
+        "rejected_unsolved_nine_shock_max_residual": 0.0004918415427966681,
+        "scope": "all-condition evaluator plus exact deterministic stationary anchor and rejected stochastic candidate"
+      }
+    ]
+  },
+  "runtime": {
+    "actual": {
+      "python": "3.12.14",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0"
+    },
+    "frozen_pe_declared": {
+      "python": "3.11",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1"
+    },
+    "locked_environment_reproduced": false
+  },
+  "independent_economic_review": {
+    "performed": true,
+    "scope": "written candidate budgets/resource cancellation, production/queue derivatives, collateral Euler/KKT and uncompressed state count",
+    "not_a_numerical_solution": true,
+    "corrections_applied": [
+      "fixed nontraded downstream operating factor for operating rent",
+      "zero-inventory deterministic anchor and zero-risk portfolio degeneracy",
+      "removed redundant nonnegative-F-bond constraint/multiplier",
+      "explicit positive-capacity domain"
+    ]
+  },
+  "not_executed": [
+    "new DSGE residual evaluator or solver",
+    "new DSGE deterministic anchor",
+    "new DSGE random equilibrium or GIRF",
+    "full legacy nonlinear policy solve",
+    "full legacy GIRF rerun",
+    "real-data estimation",
+    "Mermaid rendering"
+  ],
+  "dsge_results_inherited": false,
+  "diff_review": {
+    "active_changes_whitespace_check_passed": true,
+    "archive_index_whitespace_check_passed": true,
+    "historical_snapshot_whitespace_preserved": true,
+    "note": "The all-files diff whitespace check reports pre-existing trailing spaces/end blank lines in frozen originals. Those bytes are intentionally preserved and hash-verified, not silently rewritten."
+  }
+}

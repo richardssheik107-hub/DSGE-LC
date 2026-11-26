@@ -1,0 +1,35 @@
+{
+  "scope": "Synthetic model mechanism demonstration",
+  "run_id": "stochastic_girf_experiment",
+  "experiment_code_commit": "755e69d12bbbbb3bd691a7604e3d3473a3c3133c",
+  "frozen_policy_sha256": "52315c74dc1e637ceb84f7641f7d139c295a3dcd640bbe2b9194d64cb0748755",
+  "economic_config_sha256": "1d03ff2a34119cc7a4c79cbd045e79f26f0bbb3da1832189a606fbfd82a60042",
+  "response_rows": 5490,
+  "horizon_months": 60,
+  "paired_paths_per_shock_and_initial_state": 4096,
+  "validation": {
+    "passed": true,
+    "visited_states": 2998272,
+    "explicit_checkpoints": 147,
+    "explicit_successors": 75264,
+    "maximum_normalized_dual_violation": 3.633027212401885e-11
+  },
+  "files": {
+    "demand_girf.png": {
+      "sha256": "f605b2c5a159764ffdd64a3cc86b36783219a7e8f25031db5ab1c3fe66007a9e",
+      "bytes": 416000
+    },
+    "cost_girf.png": {
+      "sha256": "12c04305458610b19c316f931443d94d8cedb0d6cb498207001fcf037e8d78ce",
+      "bytes": 425689
+    },
+    "response.csv": {
+      "sha256": "4b9ea6958094607574e6992b9ee096b8adf5d8696b21a53e3969ffeb9d194b2c",
+      "bytes": 719049
+    },
+    "meeting_brief_zh.pdf": {
+      "sha256": "16d6f1fa34af3fad0125c8d716e90622d164a5ae45f361acb17cff6e771b0c1c",
+      "bytes": 150222
+    }
+  }
+}

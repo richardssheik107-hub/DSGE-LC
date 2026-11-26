@@ -1,0 +1,29 @@
+{
+  "project": "DSGE-LC",
+  "model_id": "LC_V2_REVIEW_20261029",
+  "stage": "EQUATION_REVIEW",
+  "updated_on": "2026-10-29",
+  "canonical_equations": "docs/03_equations.md",
+  "equation_groups": 31,
+  "approved_by_supervisor": false,
+  "full_equilibrium_solved": false,
+  "real_data_validated": false,
+  "parameters_identified": false,
+  "real_data_estimated": false,
+  "old_tests_inherited": false,
+  "archive_branch": "archive/pre-equation-restart-20261029",
+  "archive_commit": "82f0e7fe5f0e7f33a7c6cb318829ef70beefcbf7",
+  "state_dimension": "n_z + L + R + 3; n_z=5 gives L+R+8",
+  "gates": {
+    "scope_and_timing": "PENDING_REVIEW",
+    "literature_and_functions": "PENDING_REVIEW",
+    "equilibrium_and_boundaries": "NOT_PASSED",
+    "measurement_and_licence": "NOT_PASSED",
+    "identification_and_recovery": "NOT_STARTED",
+    "real_estimation": "BLOCKED"
+  },
+  "checks": [
+    "python scripts/check_project.py",
+    "python -m unittest discover -s tests -v"
+  ]
+}

@@ -14,9 +14,10 @@ data/processed/
 data/licensed/
 outputs/
 artifacts/
+results/
 *.pdf
+*.npz
+*.parquet
 *.docx
 *.pptx
 *.xlsx
-*.npz
-*.parquet

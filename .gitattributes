@@ -1,0 +1,6 @@
+# Preserve all frozen historical bytes, including CRLF and the validated CSV.
+*.md text eol=lf
+*.json text eol=lf
+*.py text eol=lf
+# More-specific archive rule must remain last.
+archive/** -text

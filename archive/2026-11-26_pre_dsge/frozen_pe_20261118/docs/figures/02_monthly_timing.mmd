@@ -1,0 +1,37 @@
+flowchart TB
+    ST["进入 t：观察4个宏观量与5个行业余项；继承实物记忆"]
+    OLD["旧承诺与旧头寸数量已定；结算使用本期联立 P_t"]
+    INFO["共同信息；本期 b_t；同一政策的未来条件分布"]
+
+    subgraph NOW["本期同时决策与清算：不先外给 P 或 F"]
+        direction TB
+        REAL["实物选择：Q、J、D_s、I、C"]
+        CLEAR["联立确定 P、F 与全部当期选择"]
+        POS["风险选择：h_I、h_D、h_f"]
+        REAL -.->|"行为与物量约束"| CLEAR
+        CLEAR -.->|"价格进入最优条件"| REAL
+        POS -.->|"净持仓清算"| CLEAR
+        CLEAR -.->|"风险补偿"| POS
+    end
+
+    MEMORY["记忆更新：Q、I、C；建设与爬坡推进"]
+    SHOCK["实现宏观与行业创新；更新 x、z_id"]
+    NEXT["进入 t+1：C_t 成为既定耗用；合约按 P_(t+1) 结算"]
+
+    ST --> OLD
+    OLD --> INFO
+    INFO -.-> REAL
+    INFO -.-> POS
+    CLEAR --> MEMORY
+    MEMORY --> SHOCK
+    SHOCK --> NEXT
+    NEXT -->|"下一月重复同一联立问题"| ST
+
+    classDef current fill:#e6f1f7,stroke:#126782,stroke-width:2px,color:#103448;
+    classDef memory fill:#eaf4ec,stroke:#51855e,color:#25482e;
+    classDef information fill:#eeeaf8,stroke:#7860a4,color:#33264e;
+    classDef inherited fill:#f3f5f7,stroke:#7b8997,color:#2a3b4b;
+    class CLEAR,REAL,POS current;
+    class MEMORY,SHOCK,NEXT memory;
+    class INFO information;
+    class ST,OLD inherited;

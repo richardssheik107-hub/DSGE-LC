@@ -1,0 +1,212 @@
+{
+  "scope": "conditional fixed-production two-market block and raw FOC/KKT checks",
+  "parameters_are_industry_calibration": false,
+  "units": "normalized synthetic units for mathematical checks only",
+  "full_equilibrium_solved": false,
+  "rational_expectations_fixed_point_verified": false,
+  "production_and_investment_optimality_verified": false,
+  "state_domain_invariance_verified": false,
+  "zero_variance_positions_unique": false,
+  "cases": [
+    {
+      "case": "positive_inventory_net_selling_pressure",
+      "synthetic_inputs": {
+        "q": 1.7,
+        "net_imports": 0.2,
+        "inventory_lag": 0.3,
+        "commitment_lag": 0.2,
+        "A_s": 1.0,
+        "A_c": 0.4,
+        "eta_s": 0.6,
+        "eta_c": 0.5,
+        "P_ref": 1.0,
+        "mu": 2.0,
+        "variance": 0.25,
+        "beta": 0.99,
+        "alpha_I": 0.98,
+        "h": 0.05,
+        "xi": 0.05,
+        "I0": 0.5,
+        "a_I": 0.3,
+        "a_D": 0.4,
+        "a_f": 0.5
+      },
+      "conditional_moments": {
+        "provenance": "fixed_for_conditional_check",
+        "mean": 2.0,
+        "variance": 0.25,
+        "generated_by_same_dynamic_policy": false
+      },
+      "solution": {
+        "inventory": 1.310831121943536,
+        "spot": 1.8870636272832257,
+        "futures": 1.9681014189788677,
+        "commitment": 0.28512562751386306,
+        "flexible_demand": 0.683168878056464,
+        "h_inventory": -0.859300085891558,
+        "h_procurement": 0.6041114377236936,
+        "h_financial": 0.2551886481678644,
+        "risk_capacity": 7.833333333333334,
+        "net_exposure": 0.9994888719908023,
+        "inventory_gap": -8.237854842718662e-14,
+        "inventory_regime": "positive_inventory",
+        "position_status": "unique_given_exposure_prices_and_positive_variance"
+      },
+      "inventory_objective": {
+        "linear_carry_gap": 0.02761163058992855,
+        "status": "finite_unique"
+      },
+      "original_and_reduced_residuals": {
+        "E19_inventory_raw_gradient": 2.2737367544323206e-13,
+        "E19_inventory_dual_violation": 2.2737367544323206e-13,
+        "E19_inventory_complementarity": 2.980484900816773e-13,
+        "E20_procurement_gradient": -1.4775618228934917e-13,
+        "E22_inventory_position": 1.4925560787304448e-13,
+        "E22_procurement_position": 1.4924866897914058e-13,
+        "E22_financial_position": 1.4924866897914058e-13,
+        "E23_procurement_marginal_gap": 0.0,
+        "E24_inventory_gap": -8.237854842718662e-14,
+        "E24_inventory_dual_violation": 8.237854842718662e-14,
+        "E24_inventory_complementarity": -1.0798436505888895e-13,
+        "E25_spot_clearing": 0.0,
+        "E26_futures_clearing": -5.551115123125783e-17,
+        "E27_futures_pricing": -1.4924866897914058e-13,
+        "max_equality_or_kkt_residual": 2.980484900816773e-13
+      }
+    },
+    {
+      "case": "zero_inventory_net_buying_pressure",
+      "synthetic_inputs": {
+        "q": 0.6,
+        "net_imports": 0.0,
+        "inventory_lag": 0.0,
+        "commitment_lag": 0.2,
+        "A_s": 1.0,
+        "A_c": 0.4,
+        "eta_s": 0.6,
+        "eta_c": 0.5,
+        "P_ref": 1.0,
+        "mu": 2.0,
+        "variance": 0.25,
+        "beta": 0.99,
+        "alpha_I": 0.98,
+        "h": 0.05,
+        "xi": 0.05,
+        "I0": 0.5,
+        "a_I": 0.3,
+        "a_D": 0.4,
+        "a_f": 0.5
+      },
+      "conditional_moments": {
+        "provenance": "fixed_for_conditional_check",
+        "mean": 2.0,
+        "variance": 0.25,
+        "generated_by_same_dynamic_policy": false
+      },
+      "solution": {
+        "inventory": 0.0,
+        "spot": 4.6050393733004835,
+        "futures": 2.009006637977513,
+        "commitment": 0.2822079899614198,
+        "flexible_demand": 0.4,
+        "h_inventory": -0.12008850636656163,
+        "h_procurement": 0.1921416101864986,
+        "h_financial": -0.07205310381993697,
+        "risk_capacity": 7.833333333333334,
+        "net_exposure": -0.2822079899614198,
+        "inventory_gap": 2.605901133134701,
+        "inventory_regime": "zero_inventory",
+        "position_status": "unique_given_exposure_prices_and_positive_variance"
+      },
+      "inventory_objective": {
+        "linear_carry_gap": 2.7059011331347005,
+        "status": "finite_unique"
+      },
+      "original_and_reduced_residuals": {
+        "E19_inventory_raw_gradient": -2.605901133134721,
+        "E19_inventory_dual_violation": 0.0,
+        "E19_inventory_complementarity": -0.0,
+        "E20_procurement_gradient": 2.0998359301360735e-14,
+        "E22_inventory_position": -2.0766374730918358e-14,
+        "E22_procurement_position": -2.0766374730918358e-14,
+        "E22_financial_position": -2.0766374730918358e-14,
+        "E23_procurement_marginal_gap": 4.440892098500626e-16,
+        "E24_inventory_gap": 2.605901133134701,
+        "E24_inventory_dual_violation": 0.0,
+        "E24_inventory_complementarity": 0.0,
+        "E25_spot_clearing": -5.551115123125783e-17,
+        "E26_futures_clearing": 1.3877787807814457e-17,
+        "E27_futures_pricing": 2.0766374730918358e-14,
+        "max_equality_or_kkt_residual": 2.0998359301360735e-14
+      }
+    },
+    {
+      "case": "zero_variance_continuous_limit_selection",
+      "synthetic_inputs": {
+        "q": 1.7,
+        "net_imports": 0.2,
+        "inventory_lag": 0.3,
+        "commitment_lag": 0.2,
+        "A_s": 1.0,
+        "A_c": 0.4,
+        "eta_s": 0.6,
+        "eta_c": 0.5,
+        "P_ref": 1.0,
+        "mu": 2.0,
+        "variance": 0.0,
+        "beta": 0.99,
+        "alpha_I": 0.98,
+        "h": 0.05,
+        "xi": 0.05,
+        "I0": 0.5,
+        "a_I": 0.3,
+        "a_D": 0.4,
+        "a_f": 0.5
+      },
+      "conditional_moments": {
+        "provenance": "fixed_for_conditional_check",
+        "mean": 2.0,
+        "variance": 0.0,
+        "generated_by_same_dynamic_policy": false
+      },
+      "solution": {
+        "inventory": 1.3174453078244475,
+        "spot": 1.9179111442332302,
+        "futures": 2.0,
+        "commitment": 0.28284271247461906,
+        "flexible_demand": 0.6765546921755525,
+        "h_inventory": -0.862052278606963,
+        "h_procurement": 0.6046258047703656,
+        "h_financial": 0.2574264738365973,
+        "risk_capacity": 7.833333333333334,
+        "net_exposure": 1.0082536891933394,
+        "inventory_gap": -2.3869795029440866e-13,
+        "inventory_regime": "positive_inventory",
+        "position_status": "continuous_limit_selection_not_unique"
+      },
+      "inventory_objective": {
+        "linear_carry_gap": 0.02751114423323031,
+        "status": "finite_unique"
+      },
+      "original_and_reduced_residuals": {
+        "E19_inventory_raw_gradient": 2.389199948993337e-13,
+        "E19_inventory_dual_violation": 2.389199948993337e-13,
+        "E19_inventory_complementarity": 3.147640262255681e-13,
+        "E20_procurement_gradient": -2.19824158875781e-16,
+        "E22_inventory_position": 0.0,
+        "E22_procurement_position": 0.0,
+        "E22_financial_position": 0.0,
+        "E23_procurement_marginal_gap": -2.220446049250313e-16,
+        "E24_inventory_gap": -2.389199948993337e-13,
+        "E24_inventory_dual_violation": 2.389199948993337e-13,
+        "E24_inventory_complementarity": -3.147640262255681e-13,
+        "E25_spot_clearing": 0.0,
+        "E26_futures_clearing": -5.551115123125783e-17,
+        "E27_futures_pricing": 0.0,
+        "max_equality_or_kkt_residual": 3.147640262255681e-13
+      }
+    }
+  ],
+  "max_equality_or_kkt_residual": 3.147640262255681e-13,
+  "conditional_check_passed": true
+}

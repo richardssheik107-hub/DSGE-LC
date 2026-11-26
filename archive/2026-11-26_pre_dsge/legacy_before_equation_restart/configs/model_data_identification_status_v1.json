@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "audit_id": "MODEL_DATA_IDENTIFICATION_20260920",
+  "model_id": "RB_CAPACITY_STORAGE_V1",
+  "source_commit": "0b5e3cf8138ac7a861c3e0758c23608f601ca6c2",
+  "status": "REGISTER_AND_SYNTHETIC_PREFLIGHT_COMPLETE_REAL_GATES_OPEN",
+  "report": "docs/rebuild/data_id_v1/REVIEW.md",
+  "identification_note": "docs/rebuild/data_id_v1/IDENTIFICATION.md",
+  "reproducible_preflight_script": "scripts/audit_identification_v1.py",
+  "full_register_and_21_tests_delivery": "CONVERSATION_ARTIFACT_PACKAGE",
+  "coverage_counts": {
+    "variables_and_objects": 23,
+    "parameter_initial_measurement_rows": 28,
+    "current_model_inputs": 20,
+    "observation_interfaces": 8,
+    "evidence_entries": 14,
+    "open_gates": 8
+  },
+  "original_commercial_workbooks_read": false,
+  "data_coverage_basis": "VERSIONED_REPOSITORY_REGISTRATION_NOT_RAW_DATA_REAUDIT",
+  "new_adopted_industry_parameter_values": [],
+  "analytical_findings": [
+    "Abar_and_v_enter_as_difference_only",
+    "material_scale_equivalence_without_independent_Y_or_a",
+    "capacity_scale_equivalence_in_strict_slack_interior_without_capacity_scale_anchor",
+    "h_xi_steady_state_combination_not_global_dynamic_nonidentification",
+    "inventory_and_its_difference_share_measurement_errors"
+  ],
+  "synthetic_observation_design": {
+    "observables": [
+      "P",
+      "Q_reference",
+      "I",
+      "m"
+    ],
+    "frequency": "ideal synchronous monthly levels",
+    "measurement_error_variance": 0,
+    "lead": 2,
+    "lead_is_industry_estimate": false,
+    "state_observability_rank": 5,
+    "state_dimension": 6,
+    "state_observability_rank_with_K": 6,
+    "continuous_input_moment_jacobian_rank_at_fixture": 15,
+    "continuous_inputs_tested": 19,
+    "jacobian_rank_is_final_identification_proof": false
+  },
+  "tests": {
+    "command_in_delivered_package": "PYTHONPATH=. python -m pytest -q tests/test_identification_audit_v1.py",
+    "passed": 21,
+    "failed": 0,
+    "old_tests_rerun": false,
+    "scope": "analytic_symmetry_synthetic_moment_observability_register_guards"
+  },
+  "equations_changed": false,
+  "empirical_estimation_run": false,
+  "parameter_recovery_run": false,
+  "formal_identification_passed": false,
+  "final_observation_frozen": false,
+  "final_parameter_count": null,
+  "supervisor_approval_evidence": null,
+  "real_estimation_allowed": false,
+  "next_action": "Resolve commodity and route coverage, independently anchor Y/a and K/L/pipeline, constrain holding and input costs, then finalize observation and reduced parameterization before identification/recovery.",
+  "machine_parameter_registry": "configs/model_data_identification_v1.json",
+  "p0_catalog_confirmation": {
+    "checked_on": "2026-09-20",
+    "availability_only": true,
+    "ingested": false,
+    "candidates": [
+      "SMM monthly lithium carbonate smelting total capacity",
+      "SMM lithium carbonate supply-demand balance consumption",
+      "SMM monthly LFP production/capacity/operating rate"
+    ]
+  },
+  "recommended_first_estimable_design": {
+    "status": "RECOMMENDED_NOT_FROZEN",
+    "supply": "aggregate Q=total LC output; K=total LC capacity; R=0",
+    "demand_options": [
+      "LC-equivalent demand using LC balance consumption",
+      "literal LFP material Y with engineering-fixed a"
+    ],
+    "preferred_demand": "LC-equivalent demand if supervisor accepts aggregation"
+  }
+}

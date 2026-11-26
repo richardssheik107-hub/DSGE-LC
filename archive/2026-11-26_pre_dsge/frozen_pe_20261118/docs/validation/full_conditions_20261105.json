@@ -1,0 +1,725 @@
+{
+  "model_id": "LC_V2_MACRO_REVIEW_20261030",
+  "revision": "ALL_CONDITIONS_CLOSURE_20261105",
+  "scope": "all-condition evaluator plus exact deterministic stationary anchor and rejected stochastic candidate",
+  "parameters_are_synthetic_reverse_engineered": true,
+  "full_stochastic_equilibrium_solved": false,
+  "global_policy_fixed_point_verified": false,
+  "global_state_domain_invariance_verified": false,
+  "parameter_calibration_performed": false,
+  "macro_external_order": [
+    "g",
+    "e",
+    "r",
+    "zeta",
+    "zA_id",
+    "zm_id",
+    "zJ_id",
+    "zN_id",
+    "zf_id"
+  ],
+  "tau_convention": "known deterministic path; constant zero in anchor; calendar index is not an extra random state",
+  "engineering_convention": "fixed domestic and USD coefficients; FX applies to USD component only",
+  "kernel_convention": "canonical benchmark: nine independent +/-1 innovations, variance I9; deterministic anchor collapses B=0 successors; two-branch tests collapse unused zero-loading shocks",
+  "producer_value_convention": "Bellman verification of a recovered value, not an eighth independent quantity/price condition",
+  "deterministic_anchor": {
+    "parameters": {
+      "L": 3,
+      "R": 2,
+      "delta": 0.05,
+      "g": [
+        0.3333333333333333,
+        0.6666666666666666
+      ],
+      "alpha": 0.2,
+      "nu": 1.0,
+      "kappa": 0.15,
+      "chi": 1.0,
+      "omega_B": 0.05,
+      "D0": 1.5414927829866736,
+      "omega": 0.25,
+      "eta_s": 0.5,
+      "eta_c": 0.5,
+      "P_star": 1.0,
+      "lambda_g": 0.3,
+      "lambda_tau": 0.1,
+      "tau_constant": 0.0,
+      "FX_bar": 1.0,
+      "m_domestic": 0.6,
+      "m_usd": 0.2,
+      "pJ0": 14.028289423217261,
+      "N0": 0.1,
+      "N_scale": 0.1,
+      "af0": 0.5,
+      "gamma_zeta": 0.5,
+      "i_bar": 0.02,
+      "alpha_I": 0.98,
+      "h": 0.04,
+      "xi": 0.11843137254901981,
+      "I0": 0.5,
+      "a_I": 0.8,
+      "a_D": 1.2
+    },
+    "state": {
+      "external": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "q_lag": 1.0,
+      "inventory_lag": 0.5,
+      "commitment_lag": 0.2725,
+      "mature_capacity": 0.9491673970201578,
+      "construction": [
+        0.052585451358457505,
+        0.052585451358457505
+      ],
+      "ramp": [
+        0.052585451358457505,
+        0.04995617879053463
+      ],
+      "time": 0
+    },
+    "decision": {
+      "q": 1.0,
+      "j": 0.052585451358457505,
+      "d_s": 0.8175,
+      "c": 0.2725,
+      "inventory": 0.5,
+      "spot": 2.0,
+      "futures": 2.0,
+      "producer_value": 18.39350348489133,
+      "w_m": 16.02857142857141,
+      "w_z": [
+        14.95373482726422,
+        15.661904761904744
+      ],
+      "w_b": [
+        14.657895067887194,
+        14.367856088105796
+      ],
+      "h_inventory": -0.4234183673469388,
+      "h_procurement": 0.3168877551020408,
+      "h_financial": 0.10653061224489796
+    },
+    "kernel": {
+      "A": [
+        [
+          0.8,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.8,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.8,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.8,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.8,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.8,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.8,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.8,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.8
+        ]
+      ],
+      "B": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "branches": [
+        {
+          "probability": 1.0,
+          "innovation": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "conditions": {
+      "model_id": "LC_V2_MACRO_REVIEW_20261030",
+      "revision": "ALL_CONDITIONS_CLOSURE_20261105",
+      "scope": "all local structural conditions for one supplied policy, not a stochastic equilibrium solver",
+      "minimal_policy_unknowns": 12,
+      "producer_value_is_recovered_Bellman_check_not_extra_independent_condition": true,
+      "state_dimension": 17,
+      "calendar_index": 0,
+      "mapped_primitives": {
+        "A": 1.5414927829866736,
+        "A_s": 1.1561195872400052,
+        "A_c": 0.3853731957466684,
+        "FX": 1.0,
+        "m": 0.8,
+        "p_j": 14.028289423217261,
+        "N": 0.1,
+        "a_f": 0.5,
+        "b": 0.9803921568627451,
+        "tau": 0.0
+      },
+      "conditional_moments": {
+        "provenance": "same_policy_same_transition_same_branch_weights",
+        "externally_supplied_price_moments": false,
+        "mean_price": 2.0,
+        "price_variance": 0.0,
+        "mean_Q": 1.0,
+        "mean_producer_value": 18.39350348489133,
+        "mean_W_M": 16.02857142857141,
+        "mean_W_Z": [
+          14.95373482726422,
+          15.661904761904744
+        ],
+        "mean_W_B": [
+          14.657895067887194,
+          14.367856088105796
+        ]
+      },
+      "original_equalities": {
+        "producer_Bellman": 0.0,
+        "E09_Q_stationarity_reconstructed": 0.0,
+        "E04_flexible_demand_gradient": -2.220446049250313e-16,
+        "E19_inventory_hedge_gradient": 0.0,
+        "E20_procurement_gradient": -2.1769078914218755e-16,
+        "E20_procurement_hedge_gradient": 0.0,
+        "E21_financial_hedge_gradient": 0.0,
+        "E25_goods_clearing": 0.0,
+        "E26_futures_clearing": 0.0,
+        "E14_mature_value": 0.0,
+        "E14_ramp_value_0": 0.0,
+        "E14_ramp_value_1": -1.7763568394002505e-15,
+        "E15_construction_value_1": 0.0,
+        "E15_construction_value_2": 0.0
+      },
+      "original_complementarity": {
+        "E09_output_lower": {
+          "primal": 1.0,
+          "dual_gap": 0.0,
+          "primal_violation": 0.0,
+          "dual_violation": -0.0,
+          "product": 0.0
+        },
+        "E09_capacity_upper": {
+          "primal": 0.0,
+          "dual_gap": 1.0,
+          "primal_violation": -0.0,
+          "dual_violation": 0.0,
+          "product": 0.0
+        },
+        "E16_investment": {
+          "primal": 0.052585451358457505,
+          "dual_gap": 0.0,
+          "primal_violation": 0.0,
+          "dual_violation": -0.0,
+          "product": 0.0
+        },
+        "E19_inventory_original": {
+          "primal": 0.5,
+          "dual_gap": -0.0,
+          "primal_violation": 0.0,
+          "dual_violation": 0.0,
+          "product": -0.0
+        }
+      },
+      "derived_checks_not_extra_independent_conditions": {
+        "E23_procurement_reduced": -2.220446049250313e-16,
+        "E27_futures_reduced": 0.0
+      },
+      "derived_inventory_complementarity": {
+        "primal": 0.5,
+        "dual_gap": 0.0,
+        "primal_violation": 0.0,
+        "dual_violation": -0.0,
+        "product": 0.0
+      },
+      "recovered": {
+        "lambda_capacity": 1.0,
+        "mu_output": 0.0,
+        "current_capacity_service": 1.1,
+        "Q_lag_envelope": 0.0,
+        "expected_next_Q_lag_envelope": 0.0
+      },
+      "diagnostics": {
+        "output_unconstrained_gradient": 1.0,
+        "inventory_original_gradient": 0.0,
+        "investment_gap": 0.0,
+        "current_producer_profit": 0.36065693107630137,
+        "maximum_physical_margin": 1.3175000000000001,
+        "inventory_linear_carry_gap": 0.11843137254901981,
+        "inventory_objective_status": "finite_unique",
+        "zero_variance_positions_unique": false,
+        "zero_variance_position_status": "continuous_limit_selection_nonunique",
+        "risk_share_selection_deviation_not_a_constraint_at_v0": 0.0
+      },
+      "successor_checks": [
+        {
+          "branch": 0,
+          "probability": 1.0,
+          "state_dimension": 17,
+          "K_e": 1.0,
+          "maximum_physical_margin": 1.3175000000000001,
+          "b": 0.9803921568627451,
+          "output_capacity_violation": 0.0
+        }
+      ],
+      "max_equality_or_kkt_residual": 1.7763568394002505e-15,
+      "all_local_conditions_passed": true,
+      "full_equilibrium_solved": false,
+      "global_domain_invariance_verified": false,
+      "infinite_horizon_tvc_verified": false,
+      "parameter_calibration_performed": false
+    },
+    "terminal_argument": "On this exact stationary path b<1 and all states, value and shadows are finite constants, so discounted value/state-costate tails vanish. This does not prove the same off-path."
+  },
+  "four_queue_boundary_checks": [
+    {
+      "L": 1,
+      "R": 0,
+      "state_dimension": 13,
+      "positive_start_J": 0.05,
+      "max_equality_or_kkt_residual": 2.220446049250313e-16,
+      "local_conditions_passed": true,
+      "forward_investment_expansion_error": 0.0
+    },
+    {
+      "L": 1,
+      "R": 2,
+      "state_dimension": 15,
+      "positive_start_J": 0.052585451358457505,
+      "max_equality_or_kkt_residual": 1.7763568394002505e-15,
+      "local_conditions_passed": true,
+      "forward_investment_expansion_error": 0.0
+    },
+    {
+      "L": 3,
+      "R": 0,
+      "state_dimension": 15,
+      "positive_start_J": 0.05,
+      "max_equality_or_kkt_residual": 2.220446049250313e-16,
+      "local_conditions_passed": true,
+      "forward_investment_expansion_error": 0.0
+    },
+    {
+      "L": 3,
+      "R": 2,
+      "state_dimension": 17,
+      "positive_start_J": 0.052585451358457505,
+      "max_equality_or_kkt_residual": 1.7763568394002505e-15,
+      "local_conditions_passed": true,
+      "forward_investment_expansion_error": 1.7763568394002505e-15
+    }
+  ],
+  "nonzero_variance_unsolved_candidate": {
+    "model_id": "LC_V2_MACRO_REVIEW_20261030",
+    "revision": "ALL_CONDITIONS_CLOSURE_20261105",
+    "scope": "all local structural conditions for one supplied policy, not a stochastic equilibrium solver",
+    "minimal_policy_unknowns": 12,
+    "producer_value_is_recovered_Bellman_check_not_extra_independent_condition": true,
+    "state_dimension": 17,
+    "calendar_index": 0,
+    "mapped_primitives": {
+      "A": 1.5414927829866736,
+      "A_s": 1.1561195872400052,
+      "A_c": 0.3853731957466684,
+      "FX": 1.0,
+      "m": 0.8,
+      "p_j": 14.028289423217261,
+      "N": 0.1,
+      "a_f": 0.5,
+      "b": 0.9803921568627451,
+      "tau": 0.0
+    },
+    "conditional_moments": {
+      "provenance": "same_policy_same_transition_same_branch_weights",
+      "externally_supplied_price_moments": false,
+      "mean_price": 2.0006250325527617,
+      "price_variance": 0.002500520876738056,
+      "mean_Q": 1.0,
+      "mean_producer_value": 18.39350348489133,
+      "mean_W_M": 16.02857142857141,
+      "mean_W_Z": [
+        14.95373482726422,
+        15.661904761904744
+      ],
+      "mean_W_B": [
+        14.657895067887194,
+        14.367856088105796
+      ]
+    },
+    "original_equalities": {
+      "producer_Bellman": 0.0,
+      "E09_Q_stationarity_reconstructed": 0.0,
+      "E04_flexible_demand_gradient": -2.220446049250313e-16,
+      "E19_inventory_hedge_gradient": 0.00048219759097712554,
+      "E20_procurement_gradient": -0.00048219759097734325,
+      "E20_procurement_hedge_gradient": 0.00048219759097712554,
+      "E21_financial_hedge_gradient": 0.00048219759097712554,
+      "E25_goods_clearing": 0.0,
+      "E26_futures_clearing": 0.0,
+      "E14_mature_value": 0.0,
+      "E14_ramp_value_0": 0.0,
+      "E14_ramp_value_1": -1.7763568394002505e-15,
+      "E15_construction_value_1": 0.0,
+      "E15_construction_value_2": 0.0
+    },
+    "original_complementarity": {
+      "E09_output_lower": {
+        "primal": 1.0,
+        "dual_gap": 0.0,
+        "primal_violation": 0.0,
+        "dual_violation": -0.0,
+        "product": 0.0
+      },
+      "E09_capacity_upper": {
+        "primal": 0.0,
+        "dual_gap": 1.0,
+        "primal_violation": -0.0,
+        "dual_violation": 0.0,
+        "product": 0.0
+      },
+      "E16_investment": {
+        "primal": 0.052585451358457505,
+        "dual_gap": 0.0,
+        "primal_violation": 0.0,
+        "dual_violation": -0.0,
+        "product": 0.0
+      },
+      "E19_inventory_original": {
+        "primal": 0.5,
+        "dual_gap": -0.00047255363915743587,
+        "primal_violation": 0.0,
+        "dual_violation": 0.00047255363915743587,
+        "product": -0.00023627681957871793
+      }
+    },
+    "derived_checks_not_extra_independent_conditions": {
+      "E23_procurement_reduced": -2.220446049250313e-16,
+      "E27_futures_reduced": -0.0004918415427966681
+    },
+    "derived_inventory_complementarity": {
+      "primal": 0.5,
+      "dual_gap": 0.0,
+      "primal_violation": 0.0,
+      "dual_violation": -0.0,
+      "product": 0.0
+    },
+    "recovered": {
+      "lambda_capacity": 1.0,
+      "mu_output": 0.0,
+      "current_capacity_service": 1.1,
+      "Q_lag_envelope": 0.0,
+      "expected_next_Q_lag_envelope": 0.0
+    },
+    "diagnostics": {
+      "output_unconstrained_gradient": 1.0,
+      "inventory_original_gradient": 0.00047255363915743587,
+      "investment_gap": 0.0,
+      "current_producer_profit": 0.36065693107630137,
+      "maximum_physical_margin": 1.3175000000000001,
+      "inventory_linear_carry_gap": 0.11843137254901981,
+      "inventory_objective_status": "finite_unique",
+      "zero_variance_positions_unique": null,
+      "zero_variance_position_status": "not_zero_variance",
+      "risk_share_selection_deviation_not_a_constraint_at_v0": 0.0
+    },
+    "successor_checks": [
+      {
+        "branch": 0,
+        "probability": 0.5,
+        "state_dimension": 17,
+        "K_e": 1.0,
+        "maximum_physical_margin": 1.3175000000000001,
+        "b": 0.9803921568627451,
+        "output_capacity_violation": 0.0
+      },
+      {
+        "branch": 1,
+        "probability": 0.5,
+        "state_dimension": 17,
+        "K_e": 1.0,
+        "maximum_physical_margin": 1.3175000000000001,
+        "b": 0.9803921568627451,
+        "output_capacity_violation": 0.0
+      }
+    ],
+    "max_equality_or_kkt_residual": 0.0004918415427966681,
+    "all_local_conditions_passed": false,
+    "full_equilibrium_solved": false,
+    "global_domain_invariance_verified": false,
+    "infinite_horizon_tvc_verified": false,
+    "parameter_calibration_performed": false
+  },
+  "standardized_nine_shock_candidate": {
+    "branches": 512,
+    "innovation_mean": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "innovation_variance": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "identity_covariance_max_error": 0.0,
+    "all_nine_shock_loadings_positive": true,
+    "successors_checked": 512,
+    "conditional_moments": {
+      "provenance": "same_policy_same_transition_same_branch_weights",
+      "externally_supplied_price_moments": false,
+      "mean_price": 2.0006250325527617,
+      "price_variance": 0.002500520876738056,
+      "mean_Q": 1.0,
+      "mean_producer_value": 18.39350348489133,
+      "mean_W_M": 16.02857142857141,
+      "mean_W_Z": [
+        14.95373482726422,
+        15.661904761904744
+      ],
+      "mean_W_B": [
+        14.657895067887194,
+        14.367856088105796
+      ]
+    },
+    "max_equality_or_kkt_residual": 0.0004918415427966681,
+    "all_local_conditions_passed": false,
+    "global_invariant_domain_verified": false,
+    "full_stochastic_equilibrium_solved": false
+  },
+  "variable_rate_and_future_congestion_check": {
+    "horizon": 2,
+    "terminal_paths": 4,
+    "expected_path_discount_products": [
+      1.0,
+      0.9523809523809523,
+      0.9073586788857635
+    ],
+    "expected_discounted_future_J_by_building_period": [
+      0.047619047619047616
+    ],
+    "discounted_future_congestion_cost": 0.002380952380952381,
+    "discounted_completed_capacity_value": 9.072376977285787,
+    "expanded_investment_gap": 6.333715459688985,
+    "one_step_investment_gap": 6.3337154596889835,
+    "one_step_minus_expanded_gap": -1.7763568394002505e-15,
+    "discounted_mature_value_tail": 8.187820222000422,
+    "discounted_producer_value_tail": 15.320103179644072,
+    "discounted_absolute_state_costate_tail": 9.503605783290514,
+    "infinite_horizon_tvc_proved_by_this_finite_check": false,
+    "incorrect_factorization_Ed_times_EU_for_comparison": 9.073586788857636,
+    "correlation_difference": -0.0012098115718490732
+  },
+  "verification_gates": {
+    "deterministic_anchor_passed": true,
+    "four_queue_boundaries_passed": true,
+    "nonzero_variance_computed_internally": true,
+    "unsolved_risky_candidate_is_rejected": true,
+    "stochastic_discount_expansion_passed": true,
+    "discount_correlation_is_not_discarded": true,
+    "standardized_nine_shock_kernel_checked": true,
+    "unsolved_full_nine_shock_candidate_is_rejected": true
+  },
+  "checks_passed": true
+}

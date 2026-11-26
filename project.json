@@ -1,29 +1,51 @@
 {
   "project": "DSGE-LC",
-  "model_id": "LC_V2_REVIEW_20261029",
-  "stage": "EQUATION_REVIEW",
-  "updated_on": "2026-10-29",
-  "canonical_equations": "docs/03_equations.md",
-  "equation_groups": 31,
+  "model_id": "LC_DSGE_DESIGN_20261126",
+  "updated_on": "2026-11-26",
+  "stage": "DESIGN_AND_CLOSURE_REVIEW",
+  "user_direction": "Build a full DSGE, with the group hog manuscript as primary structural reference; archive obsolete work.",
+  "primary_reference_id": "HOG-REF",
+  "reference_registry": "references/library.json",
+  "canonical_equations": "docs/03_dsge_blueprint.md",
+  "model_specification": "model/dsge_specification.json",
+  "current_documents": [
+    "docs/01_repository_audit.md",
+    "docs/02_group_paper_alignment.md",
+    "docs/03_dsge_blueprint.md",
+    "docs/04_implementation_plan.md",
+    "docs/05_validation_and_data.md"
+  ],
   "approved_by_supervisor": false,
-  "full_equilibrium_solved": false,
+  "full_dsge_solver_implemented": false,
+  "dsge_steady_state_solved": false,
+  "full_dsge_equilibrium_solved": false,
   "real_data_validated": false,
   "parameters_identified": false,
   "real_data_estimated": false,
   "old_tests_inherited": false,
-  "archive_branch": "archive/pre-equation-restart-20261029",
-  "archive_commit": "82f0e7fe5f0e7f33a7c6cb318829ef70beefcbf7",
-  "state_dimension": "n_z + L + R + 3; n_z=5 gives L+R+8",
-  "gates": {
-    "scope_and_timing": "PENDING_REVIEW",
-    "literature_and_functions": "PENDING_REVIEW",
-    "equilibrium_and_boundaries": "NOT_PASSED",
-    "measurement_and_licence": "NOT_PASSED",
-    "identification_and_recovery": "NOT_STARTED",
-    "real_estimation": "BLOCKED"
-  },
+  "archive_root": "archive/2026-11-26_pre_dsge",
+  "archive_manifest": "archive/2026-11-26_pre_dsge/manifest.json",
+  "archive_is_default_reference": false,
+  "archive_in_default_test_discovery": false,
   "checks": [
-    "python scripts/check_project.py",
-    "python -m unittest discover -s tests -v"
-  ]
+    "python scripts/check_repository.py"
+  ],
+  "validation_document": "docs/validation/reorganization_20261126.json",
+  "baseline_commits": {
+    "previous_main": "90992297a09af4e2080d758c3624dca5746cc16d",
+    "latest_stochastic_pe": "4c28915abf32a493ea11ddd262f3a30f57c458c6",
+    "previous_closure": "e546e8d126c174ce29cd50dc45084b9faf49fca4",
+    "pre_restart": "82f0e7fe5f0e7f33a7c6cb318829ef70beefcbf7"
+  },
+  "gates": {
+    "repository_reorganization": "PASSED_BYTE_PRESERVATION_AND_CURRENT_ENTRY_CHECK",
+    "group_source_mapping": "DOCUMENTED",
+    "budget_and_resource_candidate": "DERIVED_AND_INDEPENDENTLY_REVIEWED_NOT_CODED",
+    "complete_kkt_and_dimension": "NOT_IMPLEMENTED_OR_RANK_VERIFIED",
+    "deterministic_anchor": "NOT_SOLVED",
+    "positive_risk_equilibrium": "NOT_SOLVED",
+    "china_open_economy_extension": "INTERFACE_ONLY",
+    "measurement_and_identification": "REQUIREMENTS_ONLY",
+    "real_estimation": "NOT_STARTED"
+  }
 }

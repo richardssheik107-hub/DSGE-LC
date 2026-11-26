@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "model_id": "RB_CAPACITY_STORAGE_V1",
+  "as_of": "2026-09-20",
+  "source_commit": "df0e66dcb57eae5e326168a059c3010492d94670",
+  "status": "CANDIDATE_THEORY_AND_LOCAL_SOLUTION_NOT_ESTIMATED",
+  "model_class": "DYNAMIC_STOCHASTIC_PARTIAL_EQUILIBRIUM",
+  "display_relation_groups": 26,
+  "independent_interior_sequences": "L+8",
+  "state_dimension": "L+4",
+  "illustrative_lead": 2,
+  "illustrative_state_dimension": 6,
+  "industry_lead_frozen": false,
+  "state_timing": "after exogenous t innovations, before t controls",
+  "state_order": [
+    "z_demand_t",
+    "c_unit_cost_t",
+    "Q_lag",
+    "I_lag",
+    "K_current",
+    "B_1_to_B_Lminus1"
+  ],
+  "control_order": [
+    "Q_current",
+    "I_end",
+    "J_capacity_start"
+  ],
+  "shocks": [
+    "demand",
+    "unit_cost"
+  ],
+  "new_free_shock_processes": [],
+  "equal_beta_price_taking_potential_required": true,
+  "storage_specification": "H(I)=h*I-xi*log(I/Iref), xi>0",
+  "production_cost": "m*Q+gamma*Q^2/(2*K)+kappa*(Q-Qlag)^2/2",
+  "unmodelled_flows": "R,N,Uother fixed at reference in numerical solver",
+  "replaced": [
+    "single_period_production_FOC",
+    "given_net_stock_addition_E24",
+    "old_C0_closed_form_price",
+    "gQ2_production_cost_without_capacity"
+  ],
+  "not_added": [
+    "endogenous_trade",
+    "recycling_cohorts",
+    "joint_futures",
+    "mixed_frequency",
+    "new_AR_per_mechanism"
+  ],
+  "comparisons": [
+    "capacity_only",
+    "storage_only",
+    "joint"
+  ],
+  "solver": "first_order_interior_via_discounted_Riccati",
+  "global_constrained_solution": false,
+  "empirically_calibrated": false,
+  "estimated": false,
+  "parameter_recovery_run": false,
+  "identification_verified": false,
+  "observation_frozen": false,
+  "supervisor_approval_evidence": null,
+  "free_parameter_count": null,
+  "relations": [
+    {
+      "id": "T01",
+      "title": "需求移位",
+      "role": "assumption"
+    },
+    {
+      "id": "T02",
+      "title": "需求AR",
+      "role": "assumption"
+    },
+    {
+      "id": "T03",
+      "title": "成本锚",
+      "role": "assumption"
+    },
+    {
+      "id": "T04",
+      "title": "成本AR和创新",
+      "role": "assumption"
+    },
+    {
+      "id": "T05",
+      "title": "总成品生产",
+      "role": "identity"
+    },
+    {
+      "id": "T06",
+      "title": "成品净进口",
+      "role": "identity"
+    },
+    {
+      "id": "T07",
+      "title": "实际LC耗用",
+      "role": "engineering_mapping"
+    },
+    {
+      "id": "T08",
+      "title": "材料厂目标",
+      "role": "assumption"
+    },
+    {
+      "id": "T09",
+      "title": "材料FOC",
+      "role": "derived"
+    },
+    {
+      "id": "T10",
+      "title": "容量相关生产成本",
+      "role": "assumption"
+    },
+    {
+      "id": "T11",
+      "title": "投资支出",
+      "role": "assumption"
+    },
+    {
+      "id": "T12",
+      "title": "生产者跨期目标",
+      "role": "assumption"
+    },
+    {
+      "id": "T13",
+      "title": "产能递推",
+      "role": "accounting"
+    },
+    {
+      "id": "T14",
+      "title": "等价建设队列",
+      "role": "equivalent_representation"
+    },
+    {
+      "id": "T15",
+      "title": "跨期生产FOC",
+      "role": "derived"
+    },
+    {
+      "id": "T16",
+      "title": "生产边界和乘子",
+      "role": "constraint"
+    },
+    {
+      "id": "T17",
+      "title": "能力边际价值",
+      "role": "derived"
+    },
+    {
+      "id": "T18",
+      "title": "投资最优条件",
+      "role": "derived"
+    },
+    {
+      "id": "T19",
+      "title": "运营库存净成本",
+      "role": "assumption"
+    },
+    {
+      "id": "T20",
+      "title": "库存持有者目标",
+      "role": "assumption"
+    },
+    {
+      "id": "T21",
+      "title": "储存最优条件",
+      "role": "derived"
+    },
+    {
+      "id": "T22",
+      "title": "物量守恒清算",
+      "role": "identity"
+    },
+    {
+      "id": "T23",
+      "title": "确定性参考点",
+      "role": "derived"
+    },
+    {
+      "id": "T24",
+      "title": "状态向量",
+      "role": "representation"
+    },
+    {
+      "id": "T25",
+      "title": "局部转移和输出",
+      "role": "derived"
+    },
+    {
+      "id": "T26",
+      "title": "观测接口",
+      "role": "not_frozen"
+    }
+  ],
+  "tests": {
+    "command": "PYTHONPATH=. python -m pytest -q tests/test_capacity_storage_v1.py",
+    "passed": 49,
+    "failed": 0,
+    "scope": "synthetic_reference_local_solution_residual_domain_not_empirical"
+  },
+  "documents": [
+    "docs/rebuild/two_step_v1/EQUATIONS.md",
+    "docs/rebuild/two_step_v1/STATE_SPACE.md",
+    "docs/rebuild/two_step_v1/SOURCES.md",
+    "docs/rebuild/two_step_v1/VALIDATION.md"
+  ],
+  "data_identification_registry": "configs/model_data_identification_v1.json",
+  "data_identification_status_registry": "configs/model_data_identification_status_v1.json",
+  "data_identification_status": "REGISTER_AND_SYNTHETIC_PREFLIGHT_COMPLETE_REAL_GATES_OPEN"
+}

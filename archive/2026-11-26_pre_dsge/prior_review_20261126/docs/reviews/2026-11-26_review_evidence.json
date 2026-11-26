@@ -1,0 +1,408 @@
+{
+  "review_date": "2026-11-26",
+  "repository": "richardssheik107-hub/DSGE-LC",
+  "baselines": {
+    "main": {
+      "branch": "main",
+      "commit": "90992297a09af4e2080d758c3624dca5746cc16d",
+      "model_id": "LC_V2_REVIEW_20261029"
+    },
+    "stochastic_branch": {
+      "branch": "codex/stochastic-equilibrium-20261118",
+      "commit": "4c28915abf32a493ea11ddd262f3a30f57c458c6",
+      "model_id": "LC_V2_MACRO_REVIEW_20261030",
+      "revision": "ALL_CONDITIONS_CLOSURE_20261105",
+      "inspection_checkout": "independent detached worktree"
+    }
+  },
+  "execution_checks": [
+    {
+      "baseline": "main",
+      "command": "python scripts/check_project.py",
+      "exit_code": 0,
+      "test_count": null,
+      "scope": "documentation and registry consistency"
+    },
+    {
+      "baseline": "main",
+      "command": "python -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "test_count": 17,
+      "scope": "local identities, timing and implemented numerical interfaces; not full model reproduction"
+    },
+    {
+      "baseline": "stochastic_branch",
+      "command": "python scripts/check_project.py",
+      "exit_code": 0,
+      "test_count": null,
+      "scope": "documentation and registry consistency"
+    },
+    {
+      "baseline": "stochastic_branch",
+      "command": "python -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "test_count": 50,
+      "scope": "local identities, timing and implemented numerical interfaces; not full model reproduction"
+    },
+    {
+      "baseline": "stochastic_branch",
+      "command": "python scripts/check_closure.py",
+      "exit_code": 0,
+      "test_count": null,
+      "conditional_check_passed": true,
+      "max_equality_or_kkt_residual": 3.147640262255681e-13,
+      "scope": "fixed production and fixed conditional moments market subproblem"
+    },
+    {
+      "baseline": "stochastic_branch",
+      "command": "python scripts/check_full_conditions.py",
+      "exit_code": 0,
+      "test_count": null,
+      "checks_passed": true,
+      "deterministic_anchor_max_residual": 1.7763568394002505e-15,
+      "rejected_unsolved_stochastic_candidate_max_residual": 0.0004918415427966681,
+      "scope": "all-condition evaluator, deterministic anchor, boundary and shock-kernel interface checks; unsolved risky candidates are correctly rejected"
+    }
+  ],
+  "runtime": {
+    "actual": {
+      "python": "3.12.14",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0"
+    },
+    "declared": {
+      "python": "3.11",
+      "python_source": "README.md stochastic reproduction section",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "package_source": "requirements-stochastic.txt"
+    },
+    "locked_environment_reproduced": false,
+    "note": "All specified lightweight checks passed with the actual versions listed here. No dependency install or full nonlinear solver/GIRF rerun was performed."
+  },
+  "csv": {
+    "source": "docs/presentations/girf/response.csv",
+    "row_count_excluding_header": 5490,
+    "column_count": 10,
+    "columns": [
+      "shock",
+      "start_id",
+      "horizon",
+      "variable",
+      "m_plus",
+      "m_minus",
+      "m_base",
+      "girf_plus",
+      "mc_se",
+      "paired_paths_per_case"
+    ],
+    "shock_count": 2,
+    "shocks": [
+      "zA_id",
+      "zm_id"
+    ],
+    "initial_state_count": 3,
+    "initial_states": [
+      "anchor",
+      "warm_0",
+      "warm_1"
+    ],
+    "horizon_count": 61,
+    "horizon_min": 0,
+    "horizon_max": 60,
+    "variable_count": 15,
+    "variables": [
+      "C",
+      "D_s",
+      "F",
+      "I",
+      "J",
+      "K_e",
+      "P",
+      "Q",
+      "demand_scale",
+      "expected_spot",
+      "net_hedge_exposure",
+      "price_variance",
+      "risk_premium",
+      "risk_premium_E27",
+      "unit_cost"
+    ],
+    "expected_cartesian_product_rows": 5490,
+    "paired_paths_per_case_values": [
+      4096
+    ],
+    "baseline_arithmetic_max_difference": 0.0,
+    "girf_arithmetic_max_difference": 5.6212955297507694e-14
+  },
+  "manifest_checks": [
+    {
+      "file": "docs/presentations/girf/demand_girf.png",
+      "expected_sha256": "f605b2c5a159764ffdd64a3cc86b36783219a7e8f25031db5ab1c3fe66007a9e",
+      "actual_sha256": "f605b2c5a159764ffdd64a3cc86b36783219a7e8f25031db5ab1c3fe66007a9e",
+      "sha256_matches": true,
+      "expected_size_bytes": 416000,
+      "actual_size_bytes": 416000,
+      "size_matches": true
+    },
+    {
+      "file": "docs/presentations/girf/cost_girf.png",
+      "expected_sha256": "12c04305458610b19c316f931443d94d8cedb0d6cb498207001fcf037e8d78ce",
+      "actual_sha256": "12c04305458610b19c316f931443d94d8cedb0d6cb498207001fcf037e8d78ce",
+      "sha256_matches": true,
+      "expected_size_bytes": 425689,
+      "actual_size_bytes": 425689,
+      "size_matches": true
+    },
+    {
+      "file": "docs/presentations/girf/response.csv",
+      "expected_sha256": "4b9ea6958094607574e6992b9ee096b8adf5d8696b21a53e3969ffeb9d194b2c",
+      "actual_sha256": "4b9ea6958094607574e6992b9ee096b8adf5d8696b21a53e3969ffeb9d194b2c",
+      "sha256_matches": true,
+      "expected_size_bytes": 719049,
+      "actual_size_bytes": 719049,
+      "size_matches": true
+    },
+    {
+      "file": "docs/presentations/girf/meeting_brief_zh.pdf",
+      "expected_sha256": "16d6f1fa34af3fad0125c8d716e90622d164a5ae45f361acb17cff6e771b0c1c",
+      "actual_sha256": "16d6f1fa34af3fad0125c8d716e90622d164a5ae45f361acb17cff6e771b0c1c",
+      "sha256_matches": true,
+      "expected_size_bytes": 150222,
+      "actual_size_bytes": 150222,
+      "size_matches": true
+    }
+  ],
+  "shock_scale": {
+    "demand_innovation_loading": 0.00025,
+    "cost_innovation_loading": 0.00025,
+    "direct_positive_multiplier_percent_change": 0.025003125260432944,
+    "industry_calibrated": false,
+    "source": "configs/stochastic_refined.json"
+  },
+  "risk_premium_comparisons": [
+    {
+      "shock": "zA_id",
+      "start_id": "anchor",
+      "horizon": 0,
+      "direct_response_string": "-8.82377851341154e-12",
+      "e27_response_string": "-8.33567127900574e-12",
+      "direct_response": -8.82377851341154e-12,
+      "e27_response": -8.33567127900574e-12,
+      "direct_baseline_level": 9.19262924895664e-09,
+      "monte_carlo_se_at_h0": 0.0,
+      "max_absolute_response_discrepancy_h0_to_h60": 4.881072344057997e-13,
+      "source": "docs/presentations/girf/response.csv"
+    },
+    {
+      "shock": "zA_id",
+      "start_id": "warm_0",
+      "horizon": 0,
+      "direct_response_string": "-5.759624548129505e-13",
+      "e27_response_string": "-8.33784309708126e-12",
+      "direct_response": -5.759624548129505e-13,
+      "e27_response": -8.33784309708126e-12,
+      "direct_baseline_level": 9.31311974804519e-09,
+      "monte_carlo_se_at_h0": 0.0,
+      "max_absolute_response_discrepancy_h0_to_h60": 7.76188064226831e-12,
+      "source": "docs/presentations/girf/response.csv"
+    },
+    {
+      "shock": "zA_id",
+      "start_id": "warm_1",
+      "horizon": 0,
+      "direct_response_string": "-8.286796162465526e-12",
+      "e27_response_string": "-8.343048391411153e-12",
+      "direct_response": -8.286796162465526e-12,
+      "e27_response": -8.343048391411153e-12,
+      "direct_baseline_level": 9.108860628010557e-09,
+      "monte_carlo_se_at_h0": 0.0,
+      "max_absolute_response_discrepancy_h0_to_h60": 2.4516115591284615e-13,
+      "source": "docs/presentations/girf/response.csv"
+    },
+    {
+      "shock": "zm_id",
+      "start_id": "anchor",
+      "horizon": 0,
+      "direct_response_string": "-1.4057938840794648e-13",
+      "e27_response_string": "1.652057911225711e-13",
+      "direct_response": -1.4057938840794648e-13,
+      "e27_response": 1.652057911225711e-13,
+      "direct_baseline_level": 9.19262924895664e-09,
+      "monte_carlo_se_at_h0": 0.0,
+      "max_absolute_response_discrepancy_h0_to_h60": 3.057851795305176e-13,
+      "source": "docs/presentations/girf/response.csv"
+    },
+    {
+      "shock": "zm_id",
+      "start_id": "warm_0",
+      "horizon": 0,
+      "direct_response_string": "4.834430165218118e-12",
+      "e27_response_string": "1.6688557870744348e-13",
+      "direct_response": 4.834430165218118e-12,
+      "e27_response": 1.6688557870744348e-13,
+      "direct_baseline_level": 9.31311974804519e-09,
+      "monte_carlo_se_at_h0": 0.0,
+      "max_absolute_response_discrepancy_h0_to_h60": 4.667544586510674e-12,
+      "source": "docs/presentations/girf/response.csv"
+    },
+    {
+      "shock": "zm_id",
+      "start_id": "warm_1",
+      "horizon": 0,
+      "direct_response_string": "2.0129297534365875e-14",
+      "e27_response_string": "1.642114120039907e-13",
+      "direct_response": 2.0129297534365875e-14,
+      "e27_response": 1.642114120039907e-13,
+      "direct_baseline_level": 9.108860628010557e-09,
+      "monte_carlo_se_at_h0": 0.0,
+      "max_absolute_response_discrepancy_h0_to_h60": 1.4408211446962481e-13,
+      "source": "docs/presentations/girf/response.csv"
+    }
+  ],
+  "reproduction_limits": {
+    "complete_nonlinear_projection_reexecuted": false,
+    "complete_stochastic_girf_reexecuted": false,
+    "frozen_policy_coefficients_tracked_in_reviewed_commit": false,
+    "full_results_validation_and_warmup_archives_tracked": false,
+    "historical_solver_path_residuals_independently_reproduced": false,
+    "real_industry_estimation_performed": false,
+    "general_equilibrium_solved": false,
+    "interpretation": "Historical large simulation counts and numerical policy validation claims remain branch-reported results. The present review directly verified lightweight checks, code structure, published CSV values and manifest hashes. Monte Carlo standard errors do not include policy approximation error."
+  },
+  "source_locators": [
+    {
+      "baseline": "main",
+      "path": "docs/03_equations.md",
+      "line_start": 13,
+      "line_end": 19,
+      "evidence": "E01 external state transition and innovation moments"
+    },
+    {
+      "baseline": "main",
+      "path": "docs/03_equations.md",
+      "line_start": 82,
+      "line_end": 98,
+      "evidence": "E08 expected-profit objective and E09 forward-looking production condition"
+    },
+    {
+      "baseline": "main",
+      "path": "docs/03_equations.md",
+      "line_start": 166,
+      "line_end": 171,
+      "evidence": "E17 conditional price mean and variance"
+    },
+    {
+      "baseline": "main",
+      "path": "docs/03_equations.md",
+      "line_start": 183,
+      "line_end": 258,
+      "evidence": "risk-bearing objectives, position first-order conditions and E27"
+    },
+    {
+      "baseline": "main",
+      "path": "docs/03_equations.md",
+      "line_start": 280,
+      "line_end": 294,
+      "evidence": "same-policy expectation closure and warning about risk approximation"
+    },
+    {
+      "baseline": "stochastic_branch",
+      "path": "model/stochastic_equilibrium.py",
+      "line_start": 38,
+      "line_end": 44,
+      "evidence": "nine-dimensional Rademacher kernel"
+    },
+    {
+      "baseline": "stochastic_branch",
+      "path": "model/stochastic_equilibrium.py",
+      "line_start": 118,
+      "line_end": 125,
+      "evidence": "512 successor states"
+    },
+    {
+      "baseline": "stochastic_branch",
+      "path": "model/stochastic_equilibrium.py",
+      "line_start": 127,
+      "line_end": 168,
+      "evidence": "joint economic residuals including conditional variance pricing"
+    },
+    {
+      "baseline": "stochastic_branch",
+      "path": "model/stochastic_equilibrium.py",
+      "line_start": 304,
+      "line_end": 308,
+      "evidence": "frozen polynomial policy prediction"
+    },
+    {
+      "baseline": "stochastic_branch",
+      "path": "model/stochastic_equilibrium.py",
+      "line_start": 332,
+      "line_end": 345,
+      "evidence": "exact conditional moments from the same policy"
+    },
+    {
+      "baseline": "stochastic_branch",
+      "path": "model/stochastic_equilibrium.py",
+      "line_start": 409,
+      "line_end": 413,
+      "evidence": "policy prediction, moment integration and residual evaluation in the policy fixed point"
+    },
+    {
+      "baseline": "stochastic_branch",
+      "path": "scripts/run_stochastic_girf.py",
+      "line_start": 106,
+      "line_end": 114,
+      "evidence": "opposite-sign interventions agree in all non-target innovations"
+    },
+    {
+      "baseline": "stochastic_branch",
+      "path": "scripts/run_stochastic_girf.py",
+      "line_start": 154,
+      "line_end": 200,
+      "evidence": "paired paths and subsequent stochastic innovations"
+    },
+    {
+      "baseline": "stochastic_branch",
+      "path": "docs/18_stochastic_girf.md",
+      "line_start": 9,
+      "line_end": 23,
+      "evidence": "shock scale, timing, paired GIRF and sampling precision definition"
+    },
+    {
+      "baseline": "stochastic_branch",
+      "path": "docs/18_stochastic_girf.md",
+      "line_start": 38,
+      "line_end": 42,
+      "evidence": "reported risk-premium precision limitation and historical simulation counts"
+    },
+    {
+      "baseline": "stochastic_branch",
+      "path": "configs/stochastic_girf.json",
+      "line_start": 2,
+      "line_end": 5,
+      "evidence": "dependency on untracked frozen policy and warm-up artifacts"
+    },
+    {
+      "baseline": "stochastic_branch",
+      "path": ".gitignore",
+      "line_start": 17,
+      "line_end": 23,
+      "evidence": "results and NPZ files ignored"
+    }
+  ],
+  "source_materials": [
+    {
+      "name": "260719农业经济问题修改-我国生猪价格波动研究-基于DSGE模型的分析(1).docx",
+      "sha256": "aedf3b1a1e88bdded6442519f031fa24397f66b274d6887498283aa2c97a0c5f",
+      "rendered_pages": 25,
+      "used_locators": "Rendered pp.7-13; original text and math checked; source manuscript not included"
+    },
+    {
+      "name": "组会-李江涛_11.13.docx",
+      "sha256": "db3472e1961f12126d6aff9a5d53765c6fcd155fb6a5f6873dc324c636d0bef3",
+      "rendered_pages": 13,
+      "used_locators": "Rendered pp.10-13; source manuscript not included"
+    }
+  ]
+}

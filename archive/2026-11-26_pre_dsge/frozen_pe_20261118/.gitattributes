@@ -1,0 +1,2 @@
+# Preserve the validated CSV bytes so the release manifest can verify them.
+/docs/presentations/girf/response.csv -text

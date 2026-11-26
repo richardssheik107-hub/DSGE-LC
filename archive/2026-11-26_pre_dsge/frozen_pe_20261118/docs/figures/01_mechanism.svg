@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1040" viewBox="0 0 1400 1040" role="img">
+<title>01  Economic mechanisms and expectations</title><desc>LC_V2_MACRO_REVIEW_20261030 | 2026-11-05 | Full conditions specified; stochastic policy iteration remains pending</desc>
+<defs>
+<marker id="arrow-ink" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#344C5C"/></marker>
+<marker id="arrow-policy" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8067AB"/></marker>
+<marker id="arrow-time" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#557F68"/></marker>
+</defs>
+<rect width="1400" height="1040" fill="#FFFFFF"/>
+<g font-family="Arial">
+<text x="70" y="48" fill="#17384B" font-size="29" text-anchor="start" font-weight="700">01  Economic mechanisms and expectations</text>
+<text x="70" y="79" fill="#5D7280" font-size="14" text-anchor="start" font-weight="400">LC_V2_MACRO_REVIEW_20261030 | 2026-11-05 | Full conditions specified; stochastic policy iteration remains pending</text>
+<rect x="80" y="108" width="1240" height="78" rx="13" fill="#F2F5F8" stroke="#7B8E9D" stroke-width="1.8"/>
+<text x="700.0" y="140.5" fill="#2C4152" font-size="18" text-anchor="middle" font-weight="400">4 macro states (g, e, r, ζ) + 5 industry residuals; known technology path τ(t)</text>
+<text x="700.0" y="167.5" fill="#2C4152" font-size="18" text-anchor="middle" font-weight="400">Inherited Q_-, I_-, C_-, K, B, Z  |  State dimension: L + R + 12  |  E01–E02, E29</text>
+<rect x="80" y="235" width="550" height="260" rx="13" fill="#F0F7FB" stroke="#236C8A" stroke-width="1.8"/>
+<text x="355.0" y="266" fill="#173F52" font-size="21" text-anchor="middle" font-weight="700">PHYSICAL MARKET</text>
+<text x="355.0" y="298" fill="#173F52" font-size="18" text-anchor="middle" font-weight="400">Production Q and flexible use D_s</text>
+<text x="355.0" y="325" fill="#173F52" font-size="18" text-anchor="middle" font-weight="400">Spot P clears: Q + N + α_I I_-</text>
+<text x="355.0" y="352" fill="#173F52" font-size="18" text-anchor="middle" font-weight="400">= D_s + C_- + I</text>
+<text x="355.0" y="379" fill="#173F52" font-size="18" text-anchor="middle" font-weight="400">Inventory I responds to P, F and current b_t</text>
+<text x="355.0" y="406" fill="#173F52" font-size="18" text-anchor="middle" font-weight="400">E04, E09, E24, E25</text>
+<rect x="770" y="235" width="550" height="260" rx="13" fill="#FFF5E8" stroke="#B27B35" stroke-width="1.8"/>
+<text x="1045.0" y="266" fill="#6A4A1A" font-size="21" text-anchor="middle" font-weight="700">RISK SHARING</text>
+<text x="1045.0" y="298" fill="#6A4A1A" font-size="18" text-anchor="middle" font-weight="400">Commitment C: next-month use; T depends on ζ</text>
+<text x="1045.0" y="325" fill="#6A4A1A" font-size="18" text-anchor="middle" font-weight="400">Net hedge H = α_I I − C</text>
+<text x="1045.0" y="352" fill="#6A4A1A" font-size="18" text-anchor="middle" font-weight="400">F = μ_P − (v_P / T) H</text>
+<text x="1045.0" y="379" fill="#6A4A1A" font-size="18" text-anchor="middle" font-weight="400">Three futures positions sum to zero</text>
+<text x="1045.0" y="406" fill="#6A4A1A" font-size="18" text-anchor="middle" font-weight="400">E19–E27</text>
+<rect x="80" y="630" width="550" height="240" rx="13" fill="#ECF5EF" stroke="#57886A" stroke-width="1.8"/>
+<text x="355.0" y="661" fill="#2C5039" font-size="21" text-anchor="middle" font-weight="700">INVESTMENT AND CAPACITY</text>
+<text x="355.0" y="693" fill="#2C5039" font-size="18" text-anchor="middle" font-weight="400">Capacity service → W^M, W^Z and W^B</text>
+<text x="355.0" y="720" fill="#2C5039" font-size="18" text-anchor="middle" font-weight="400">J → construction B → ramp-up Z → K_e</text>
+<text x="355.0" y="747" fill="#2C5039" font-size="18" text-anchor="middle" font-weight="400">Use b_t and path discount d_(t,s); retain congestion</text>
+<text x="355.0" y="774" fill="#2C5039" font-size="18" text-anchor="middle" font-weight="400">E06–E16</text>
+<rect x="770" y="630" width="550" height="240" rx="13" fill="#F1ECF8" stroke="#8067AB" stroke-width="1.8"/>
+<text x="1045.0" y="661" fill="#3D2D58" font-size="21" text-anchor="middle" font-weight="700">CONSISTENT EXPECTATIONS</text>
+<text x="1045.0" y="693" fill="#3D2D58" font-size="18" text-anchor="middle" font-weight="400">S′ = Φ(S, G_t(S), ε′)</text>
+<text x="1045.0" y="720" fill="#3D2D58" font-size="18" text-anchor="middle" font-weight="400">Same next-period policy and joint shock weights:</text>
+<text x="1045.0" y="747" fill="#3D2D58" font-size="18" text-anchor="middle" font-weight="400">μ_P, v_P, E Q′, E W′</text>
+<text x="1045.0" y="774" fill="#3D2D58" font-size="18" text-anchor="middle" font-weight="400">E17, E29–E30</text>
+<path d="M 355.000 186.000 L 355.000 193.000 M 355.000 198.000 L 355.000 205.000 M 355.000 210.000 L 355.000 217.000 M 355.000 222.000 L 355.000 229.000 M 355.000 234.000 L 355.000 235.000" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="355.000,235.000 350.500,225.000 359.500,225.000" fill="#8067AB"/>
+<path d="M 1045.000 186.000 L 1045.000 193.000 M 1045.000 198.000 L 1045.000 205.000 M 1045.000 210.000 L 1045.000 217.000 M 1045.000 222.000 L 1045.000 229.000 M 1045.000 234.000 L 1045.000 235.000" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="1045.000,235.000 1040.500,225.000 1049.500,225.000" fill="#8067AB"/>
+<path d="M 1320 147 L 1360 147 L 1360 674 L 1320 674" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="1320.000,674.000 1330.000,669.500 1330.000,678.500" fill="#557F68"/>
+<rect x="1171.19" y="583" width="167.61999999999998" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="1255" y="596" fill="#526D7E" font-size="14" text-anchor="middle" font-weight="400">E01: 9-state update</text>
+<path d="M 630.000 315.000 L 637.000 315.000 M 642.000 315.000 L 649.000 315.000 M 654.000 315.000 L 661.000 315.000 M 666.000 315.000 L 673.000 315.000 M 678.000 315.000 L 685.000 315.000 M 690.000 315.000 L 697.000 315.000 M 702.000 315.000 L 709.000 315.000 M 714.000 315.000 L 721.000 315.000 M 726.000 315.000 L 733.000 315.000 M 738.000 315.000 L 745.000 315.000 M 750.000 315.000 L 757.000 315.000 M 762.000 315.000 L 769.000 315.000" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="770.000,315.000 760.000,319.500 760.000,310.500" fill="#8067AB"/>
+<rect x="669.2" y="286" width="61.599999999999994" height="24" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="700" y="301" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">I → H</text>
+<path d="M 770.000 435.000 L 763.000 435.000 M 758.000 435.000 L 751.000 435.000 M 746.000 435.000 L 739.000 435.000 M 734.000 435.000 L 727.000 435.000 M 722.000 435.000 L 715.000 435.000 M 710.000 435.000 L 703.000 435.000 M 698.000 435.000 L 691.000 435.000 M 686.000 435.000 L 679.000 435.000 M 674.000 435.000 L 667.000 435.000 M 662.000 435.000 L 655.000 435.000 M 650.000 435.000 L 643.000 435.000 M 638.000 435.000 L 631.000 435.000" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="630.000,435.000 640.000,430.500 640.000,439.500" fill="#8067AB"/>
+<rect x="669.2" y="406" width="61.599999999999994" height="24" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="700" y="421" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">F → I</text>
+<path d="M 245.000 495.000 L 245.000 502.000 M 245.000 507.000 L 245.000 514.000 M 245.000 519.000 L 245.000 526.000 M 245.000 531.000 L 245.000 538.000 M 245.000 543.000 L 245.000 550.000 M 245.000 555.000 L 245.000 562.000 M 245.000 567.000 L 245.000 574.000 M 245.000 579.000 L 245.000 586.000 M 245.000 591.000 L 245.000 598.000 M 245.000 603.000 L 245.000 610.000 M 245.000 615.000 L 245.000 622.000 M 245.000 627.000 L 245.000 630.000" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="245.000,630.000 240.500,620.000 249.500,620.000" fill="#8067AB"/>
+<rect x="195.96" y="543" width="98.08" height="24" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="245" y="558" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">Q/K_e → W</text>
+<path d="M 465.000 630.000 L 465.000 623.000 M 465.000 618.000 L 465.000 611.000 M 465.000 606.000 L 465.000 599.000 M 465.000 594.000 L 465.000 587.000 M 465.000 582.000 L 465.000 575.000 M 465.000 570.000 L 465.000 563.000 M 465.000 558.000 L 465.000 551.000 M 465.000 546.000 L 465.000 539.000 M 465.000 534.000 L 465.000 527.000 M 465.000 522.000 L 465.000 515.000 M 465.000 510.000 L 465.000 503.000 M 465.000 498.000 L 465.000 495.000" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="465.000,495.000 469.500,505.000 460.500,505.000" fill="#8067AB"/>
+<rect x="425.08" y="572" width="79.84" height="24" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="465" y="587" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">K_e → Q</text>
+<path d="M 1155 495 L 1155 630" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="1155.000,630.000 1150.500,620.000 1159.500,620.000" fill="#557F68"/>
+<rect x="1119.64" y="541" width="70.72" height="24" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="1155" y="556" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">C → s′</text>
+<path d="M 935.000 630.000 L 935.000 623.000 M 935.000 618.000 L 935.000 611.000 M 935.000 606.000 L 935.000 599.000 M 935.000 594.000 L 935.000 587.000 M 935.000 582.000 L 935.000 575.000 M 935.000 570.000 L 935.000 563.000 M 935.000 558.000 L 935.000 551.000 M 935.000 546.000 L 935.000 539.000 M 935.000 534.000 L 935.000 527.000 M 935.000 522.000 L 935.000 515.000 M 935.000 510.000 L 935.000 503.000 M 935.000 498.000 L 935.000 495.000" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="935.000,495.000 939.500,505.000 930.500,505.000" fill="#8067AB"/>
+<rect x="872.28" y="572" width="125.44" height="24" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="935" y="587" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">μ_P, v_P → F</text>
+<path d="M 630 475 L 682 475 L 682 674 L 770 674" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="770.000,674.000 760.000,678.500 760.000,669.500" fill="#557F68"/>
+<rect x="635.525" y="593" width="92.94999999999999" height="23" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="682" y="607" fill="#526D7E" font-size="15" text-anchor="middle" font-weight="400">Q, I → s′</text>
+<path d="M 630 786 L 770 786" fill="none" stroke="#557F68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="770.000,786.000 760.000,790.500 760.000,781.500" fill="#557F68"/>
+<rect x="644.12" y="762" width="111.75999999999999" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="700" y="775" fill="#526D7E" font-size="14" text-anchor="middle" font-weight="400">K, B, Z → s′</text>
+<path d="M 770.000 718.000 L 763.000 718.000 M 758.000 718.000 L 751.000 718.000 M 746.000 718.000 L 739.000 718.000 M 734.000 718.000 L 727.000 718.000 M 722.000 718.000 L 715.000 718.000 M 710.000 718.000 L 703.000 718.000 M 698.000 718.000 L 691.000 718.000 M 686.000 718.000 L 679.000 718.000 M 674.000 718.000 L 667.000 718.000 M 662.000 718.000 L 655.000 718.000 M 650.000 718.000 L 643.000 718.000 M 638.000 718.000 L 631.000 718.000" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="630.000,718.000 640.000,713.500 640.000,722.500" fill="#8067AB"/>
+<rect x="673.76" y="691" width="52.48" height="24" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="700" y="706" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">E W′</text>
+<path d="M 990.000 870.000 L 990.000 877.000 M 990.000 882.000 L 990.000 889.000 M 990.000 894.000 L 990.000 901.000 M 990.000 906.000 L 990.000 913.000 M 990.000 918.000 L 990.000 925.000 M 990.000 930.000 L 983.000 930.000 M 978.000 930.000 L 971.000 930.000 M 966.000 930.000 L 959.000 930.000 M 954.000 930.000 L 947.000 930.000 M 942.000 930.000 L 935.000 930.000 M 930.000 930.000 L 923.000 930.000 M 918.000 930.000 L 911.000 930.000 M 906.000 930.000 L 899.000 930.000 M 894.000 930.000 L 887.000 930.000 M 882.000 930.000 L 875.000 930.000 M 870.000 930.000 L 863.000 930.000 M 858.000 930.000 L 851.000 930.000 M 846.000 930.000 L 839.000 930.000 M 834.000 930.000 L 827.000 930.000 M 822.000 930.000 L 815.000 930.000 M 810.000 930.000 L 803.000 930.000 M 798.000 930.000 L 791.000 930.000 M 786.000 930.000 L 779.000 930.000 M 774.000 930.000 L 767.000 930.000 M 762.000 930.000 L 755.000 930.000 M 750.000 930.000 L 743.000 930.000 M 738.000 930.000 L 731.000 930.000 M 726.000 930.000 L 719.000 930.000 M 714.000 930.000 L 707.000 930.000 M 702.000 930.000 L 695.000 930.000 M 690.000 930.000 L 683.000 930.000 M 678.000 930.000 L 671.000 930.000 M 666.000 930.000 L 659.000 930.000 M 654.000 930.000 L 647.000 930.000 M 642.000 930.000 L 635.000 930.000 M 630.000 930.000 L 623.000 930.000 M 618.000 930.000 L 611.000 930.000 M 606.000 930.000 L 599.000 930.000 M 594.000 930.000 L 587.000 930.000 M 582.000 930.000 L 575.000 930.000 M 570.000 930.000 L 563.000 930.000 M 558.000 930.000 L 551.000 930.000 M 546.000 930.000 L 539.000 930.000 M 534.000 930.000 L 527.000 930.000 M 522.000 930.000 L 515.000 930.000 M 510.000 930.000 L 503.000 930.000 M 498.000 930.000 L 491.000 930.000 M 486.000 930.000 L 479.000 930.000 M 474.000 930.000 L 467.000 930.000 M 462.000 930.000 L 455.000 930.000 M 450.000 930.000 L 443.000 930.000 M 438.000 930.000 L 431.000 930.000 M 426.000 930.000 L 419.000 930.000 M 414.000 930.000 L 407.000 930.000 M 402.000 930.000 L 395.000 930.000 M 390.000 930.000 L 383.000 930.000 M 378.000 930.000 L 371.000 930.000 M 366.000 930.000 L 359.000 930.000 M 354.000 930.000 L 347.000 930.000 M 342.000 930.000 L 335.000 930.000 M 330.000 930.000 L 323.000 930.000 M 318.000 930.000 L 311.000 930.000 M 306.000 930.000 L 299.000 930.000 M 294.000 930.000 L 287.000 930.000 M 282.000 930.000 L 275.000 930.000 M 270.000 930.000 L 263.000 930.000 M 258.000 930.000 L 251.000 930.000 M 246.000 930.000 L 239.000 930.000 M 234.000 930.000 L 227.000 930.000 M 222.000 930.000 L 215.000 930.000 M 210.000 930.000 L 203.000 930.000 M 198.000 930.000 L 191.000 930.000 M 186.000 930.000 L 179.000 930.000 M 174.000 930.000 L 167.000 930.000 M 162.000 930.000 L 155.000 930.000 M 150.000 930.000 L 143.000 930.000 M 138.000 930.000 L 131.000 930.000 M 126.000 930.000 L 119.000 930.000 M 114.000 930.000 L 107.000 930.000 M 102.000 930.000 L 95.000 930.000 M 90.000 930.000 L 83.000 930.000 M 78.000 930.000 L 71.000 930.000 M 66.000 930.000 L 59.000 930.000 M 54.000 930.000 L 47.000 930.000 M 42.000 930.000 L 40.000 930.000 M 40.000 930.000 L 40.000 923.000 M 40.000 918.000 L 40.000 911.000 M 40.000 906.000 L 40.000 899.000 M 40.000 894.000 L 40.000 887.000 M 40.000 882.000 L 40.000 875.000 M 40.000 870.000 L 40.000 863.000 M 40.000 858.000 L 40.000 851.000 M 40.000 846.000 L 40.000 839.000 M 40.000 834.000 L 40.000 827.000 M 40.000 822.000 L 40.000 815.000 M 40.000 810.000 L 40.000 803.000 M 40.000 798.000 L 40.000 791.000 M 40.000 786.000 L 40.000 779.000 M 40.000 774.000 L 40.000 767.000 M 40.000 762.000 L 40.000 755.000 M 40.000 750.000 L 40.000 743.000 M 40.000 738.000 L 40.000 731.000 M 40.000 726.000 L 40.000 719.000 M 40.000 714.000 L 40.000 707.000 M 40.000 702.000 L 40.000 695.000 M 40.000 690.000 L 40.000 683.000 M 40.000 678.000 L 40.000 671.000 M 40.000 666.000 L 40.000 659.000 M 40.000 654.000 L 40.000 647.000 M 40.000 642.000 L 40.000 635.000 M 40.000 630.000 L 40.000 623.000 M 40.000 618.000 L 40.000 611.000 M 40.000 606.000 L 40.000 599.000 M 40.000 594.000 L 40.000 587.000 M 40.000 582.000 L 40.000 575.000 M 40.000 570.000 L 40.000 563.000 M 40.000 558.000 L 40.000 551.000 M 40.000 546.000 L 40.000 539.000 M 40.000 534.000 L 40.000 527.000 M 40.000 522.000 L 40.000 515.000 M 40.000 510.000 L 40.000 503.000 M 40.000 498.000 L 40.000 491.000 M 40.000 486.000 L 40.000 479.000 M 40.000 474.000 L 40.000 467.000 M 40.000 462.000 L 40.000 455.000 M 40.000 450.000 L 40.000 443.000 M 40.000 438.000 L 40.000 431.000 M 40.000 426.000 L 40.000 419.000 M 40.000 414.000 L 40.000 407.000 M 40.000 407.000 L 47.000 407.000 M 52.000 407.000 L 59.000 407.000 M 64.000 407.000 L 71.000 407.000 M 76.000 407.000 L 80.000 407.000" fill="none" stroke="#8067AB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="80.000,407.000 70.000,411.500 70.000,402.500" fill="#8067AB"/>
+<rect x="142.4" y="906" width="335.2" height="24" rx="4" fill="#FFFFFF" fill-opacity="0.96"/>
+<text x="310" y="921" fill="#526D7E" font-size="16" text-anchor="middle" font-weight="400">E Q′ closes production expectations</text>
+<text x="700" y="978" fill="#445F6F" font-size="16" text-anchor="middle" font-weight="400">g → demand; e → USD input costs; r → b_t and d_(t,s); ζ → financial risk capacity. No separate price AR.</text>
+<text x="700" y="1008" fill="#657985" font-size="14" text-anchor="middle" font-weight="400">C is future use; I is inventory. Dashed: policy dependence. Solid: state/time update. Full mapping: docs/11_flowcharts.md.</text>
+</g>
+</svg>

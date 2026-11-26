@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "parent_library": "configs/industry_equation_blueprint_v2.json",
+  "status": "ROUND_ASSIGNMENT_NOT_FINAL_MODEL",
+  "relation_group_count": 28,
+  "all_relations_jointly_active": false,
+  "mutual_exclusion": [
+    [
+      "E23",
+      "E24"
+    ]
+  ],
+  "replacement_rules": [
+    {
+      "when": "E14",
+      "replaces": [
+        "E10",
+        "E11"
+      ]
+    }
+  ],
+  "counting_rule": "目标/定义/约束/推导/观测不同；组数不等于状态或独立条件数",
+  "relations": [
+    {
+      "id": "E01",
+      "round": "R0/R1",
+      "role": "conditional_mapping",
+      "decision_note": "应用与化学体系，不独立自由估每格冲击"
+    },
+    {
+      "id": "E02",
+      "round": "R0/R1",
+      "role": "conditional_mapping",
+      "decision_note": "订单到制造映射，装车不直接等于耗用"
+    },
+    {
+      "id": "E03",
+      "round": "R1",
+      "role": "own_assumption",
+      "decision_note": "材料厂局部凹收益目标"
+    },
+    {
+      "id": "E04",
+      "round": "R1",
+      "role": "derived",
+      "decision_note": "E03的一阶或约束解，不另计独立条件"
+    },
+    {
+      "id": "E05",
+      "round": "R1",
+      "role": "engineering_accounting",
+      "decision_note": "实际LC耗用"
+    },
+    {
+      "id": "E06",
+      "round": "R1",
+      "role": "accounting",
+      "decision_note": "采购与耗用、下游库存避免重复"
+    },
+    {
+      "id": "E07",
+      "round": "R1",
+      "role": "engineering_accounting",
+      "decision_note": "到岸原料成本与币种"
+    },
+    {
+      "id": "E08",
+      "round": "OPTIONAL",
+      "role": "accounting",
+      "decision_note": "原料库存，非成品库存"
+    },
+    {
+      "id": "E09",
+      "round": "R1",
+      "role": "engineering_accounting",
+      "decision_note": "路线单位可变成本"
+    },
+    {
+      "id": "E10",
+      "round": "R1",
+      "role": "own_assumption",
+      "decision_note": "单期生产目标"
+    },
+    {
+      "id": "E11",
+      "round": "R1",
+      "role": "derived",
+      "decision_note": "E10条件解"
+    },
+    {
+      "id": "E12",
+      "round": "R1",
+      "role": "accounting",
+      "decision_note": "总成品产量，再生只计一次"
+    },
+    {
+      "id": "E13",
+      "round": "R2-K",
+      "role": "dynamic_accounting",
+      "decision_note": "能力和建设队列"
+    },
+    {
+      "id": "E14",
+      "round": "R2-K",
+      "role": "own_assumption",
+      "decision_note": "跨期目标，替换单期生产条件"
+    },
+    {
+      "id": "E15",
+      "round": "OPTIONAL",
+      "role": "accounting",
+      "decision_note": "地下资源，非第一轮核心"
+    },
+    {
+      "id": "E16",
+      "round": "OPTIONAL",
+      "role": "own_assumption",
+      "decision_note": "内生进口商行为"
+    },
+    {
+      "id": "E17",
+      "round": "R1",
+      "role": "accounting",
+      "decision_note": "成品净贸易输入"
+    },
+    {
+      "id": "E18",
+      "round": "OPTIONAL",
+      "role": "cohort_mapping",
+      "decision_note": "需要样本前寿命批次"
+    },
+    {
+      "id": "E19",
+      "round": "OPTIONAL",
+      "role": "accounting",
+      "decision_note": "收集与梯次利用"
+    },
+    {
+      "id": "E20",
+      "round": "OPTIONAL",
+      "role": "accounting",
+      "decision_note": "回收原料及内部废料边界"
+    },
+    {
+      "id": "E21",
+      "round": "OPTIONAL",
+      "role": "constraint",
+      "decision_note": "回收率和能力上界不单独决定产量"
+    },
+    {
+      "id": "E22",
+      "round": "R1",
+      "role": "identity",
+      "decision_note": "LC库存物量守恒"
+    },
+    {
+      "id": "E23",
+      "round": "R2-I",
+      "role": "own_assumption",
+      "decision_note": "内生储存，与E24互斥"
+    },
+    {
+      "id": "E24",
+      "round": "R1",
+      "role": "closure_choice",
+      "decision_note": "外给净补库，与E23互斥"
+    },
+    {
+      "id": "E25",
+      "round": "R1",
+      "role": "derived",
+      "decision_note": "清算价格消元，不重复算约束"
+    },
+    {
+      "id": "E26",
+      "round": "OPTIONAL",
+      "role": "conditional_mapping",
+      "decision_note": "有依据才映射制度输入，不直接宣称政策因果"
+    },
+    {
+      "id": "E27",
+      "round": "ALL",
+      "role": "observation",
+      "decision_note": "观测与整体变换从首轮同步设计"
+    },
+    {
+      "id": "E28",
+      "round": "ALL",
+      "role": "solution_gate",
+      "decision_note": "均衡和解，不是独立新增经济状态"
+    }
+  ]
+}

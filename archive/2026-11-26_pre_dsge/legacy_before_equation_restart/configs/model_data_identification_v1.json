@@ -1,0 +1,369 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-20",
+  "model_id": "RB_CAPACITY_STORAGE_V1",
+  "status": "REGISTER_AND_SYNTHETIC_PREFLIGHT_COMPLETE_REAL_GATES_OPEN",
+  "empirical_estimation_ready": false,
+  "audit_source_commit": "0b5e3cf8138ac7a861c3e0758c23608f601ca6c2",
+  "concurrent_audit_commit": "73db159ab6f53fcb3a11e0bf635dfbfb19a375c6",
+  "structural_parameter_count": 20,
+  "p0_blockers": [
+    "monthly_lc_capacity_K",
+    "demand_observation_Y_or_lc_consumption",
+    "price_output_product_boundary",
+    "effective_unit_cost_mapping_m"
+  ],
+  "synthetic_preflight": {
+    "status": "COMPLETE_NOT_FORMAL_IDENTIFICATION",
+    "ideal_observables": [
+      "P",
+      "Q_reference",
+      "I",
+      "m"
+    ],
+    "state_dimension_at_L2": 6,
+    "state_observability_rank": 5,
+    "state_observability_rank_with_K": 6,
+    "continuous_inputs_tested": 19,
+    "moment_jacobian_rank_at_fixture": 15,
+    "parameter_recovery_run": false,
+    "note": "Toy synchronous monthly zero-measurement-noise design; not final likelihood identification."
+  },
+  "preferred_supply_freeze": {
+    "status": "RECOMMENDED_NOT_FROZEN",
+    "Q": "aggregate total domestic LC output",
+    "K": "aggregate monthly LC smelting capacity",
+    "R": "0 by aggregation identity"
+  },
+  "demand_options": [
+    {
+      "id": "LITERAL_MATERIAL",
+      "status": "ALTERNATIVE",
+      "Y": "monthly LFP material output",
+      "a": "fixed engineering LC intensity"
+    },
+    {
+      "id": "LC_EQUIVALENT_DEMAND",
+      "status": "RECOMMENDED_NOT_FROZEN",
+      "demand": "monthly actual LC consumption from LC supply-demand balance",
+      "a": "normalize 1 only after explicit model reparameterization"
+    }
+  ],
+  "p0_catalog_confirmation": {
+    "checked_on": "2026-09-20",
+    "ingested": false,
+    "authorization_required": true,
+    "series": [
+      "SMM monthly lithium carbonate smelting total capacity",
+      "SMM lithium carbonate supply-demand balance consumption",
+      "SMM monthly LFP output/capacity/operating rate"
+    ]
+  },
+  "variables": [
+    {
+      "id": "P",
+      "unit": "CNY/t LC",
+      "availability": "DIRECT_CORE_WITH_PRODUCT_MISMATCH",
+      "role": "OBSERVE",
+      "priority": "P0_BOUNDARY"
+    },
+    {
+      "id": "Q_total",
+      "unit": "t/month",
+      "availability": "DIRECT_CORE",
+      "role": "OBSERVE",
+      "priority": "P0"
+    },
+    {
+      "id": "Q",
+      "unit": "t/month",
+      "availability": "DEFINITION_NOT_FROZEN",
+      "role": "OBSERVE_OR_COMPONENT",
+      "priority": "P0"
+    },
+    {
+      "id": "R",
+      "unit": "t/month",
+      "availability": "DERIVABLE_WITH_RECONCILIATION_RISK",
+      "role": "FIX_OR_ZERO",
+      "priority": "P1"
+    },
+    {
+      "id": "N",
+      "unit": "t/month",
+      "availability": "DIRECT_PARTIAL",
+      "role": "KNOWN_FLOW",
+      "priority": "P1"
+    },
+    {
+      "id": "Y",
+      "unit": "t material/month",
+      "availability": "MISSING_P0_REPO_CATALOG_EXISTS",
+      "role": "OBSERVE_IF_LITERAL_MATERIAL",
+      "priority": "P0"
+    },
+    {
+      "id": "U_total",
+      "unit": "t LC/month",
+      "availability": "MISSING_P0_REPO_CATALOG_EXISTS",
+      "role": "OBSERVE_OR_ANCHOR",
+      "priority": "P0"
+    },
+    {
+      "id": "U_other",
+      "unit": "t LC/month",
+      "availability": "WEAK",
+      "role": "ABSORB_OR_DERIVE",
+      "priority": "P1"
+    },
+    {
+      "id": "I",
+      "unit": "t LC",
+      "availability": "DIRECT_PARTIAL_SHORT",
+      "role": "MISSING_OBSERVATION_STATE",
+      "priority": "P1"
+    },
+    {
+      "id": "K",
+      "unit": "t/month capacity",
+      "availability": "MISSING_P0_REPO_CATALOG_EXISTS",
+      "role": "OBSERVE",
+      "priority": "P0"
+    },
+    {
+      "id": "J_capacity",
+      "unit": "t/month capacity started",
+      "availability": "DERIVED_OR_LATENT",
+      "role": "MODEL_CONTROL",
+      "priority": "P1"
+    },
+    {
+      "id": "pipeline",
+      "unit": "t/month future capacity",
+      "availability": "MISSING_INITIAL_STATE_INFO",
+      "role": "LATENT_STATE",
+      "priority": "P1"
+    },
+    {
+      "id": "m",
+      "unit": "CNY/t LC",
+      "availability": "PARTIAL_COST_ANCHOR",
+      "role": "OBSERVE_WITH_MEASUREMENT_OR_LATENT",
+      "priority": "P0"
+    },
+    {
+      "id": "A",
+      "availability": "LATENT",
+      "role": "DERIVED_STATE_LEVEL",
+      "priority": "P1"
+    },
+    {
+      "id": "z_demand",
+      "availability": "LATENT",
+      "role": "FILTER",
+      "priority": "P1"
+    },
+    {
+      "id": "c_unit_cost",
+      "availability": "LATENT_OR_REMOVABLE",
+      "role": "FILTER_OR_REMOVE",
+      "priority": "P1"
+    },
+    {
+      "id": "W",
+      "availability": "UNOBSERVED_MODEL_OUTPUT",
+      "role": "DERIVE",
+      "priority": "P2"
+    }
+  ],
+  "parameters": [
+    {
+      "field": "beta",
+      "symbol": "beta",
+      "classification": "FIX_CALIBRATE",
+      "estimate": false
+    },
+    {
+      "field": "delta",
+      "symbol": "delta_K",
+      "classification": "FIX_CALIBRATE",
+      "estimate": false
+    },
+    {
+      "field": "gamma",
+      "symbol": "gamma",
+      "classification": "ESTIMATE_CANDIDATE",
+      "requires": [
+        "Q",
+        "K",
+        "m_or_cost_anchor"
+      ],
+      "estimate": true
+    },
+    {
+      "field": "kappa",
+      "symbol": "kappa",
+      "classification": "ESTIMATE_CANDIDATE",
+      "requires": [
+        "Q",
+        "P",
+        "m_or_cost_anchor"
+      ],
+      "estimate": true
+    },
+    {
+      "field": "a",
+      "symbol": "a",
+      "classification": "FIX_CALIBRATE_OR_NORMALIZE",
+      "estimate": false
+    },
+    {
+      "field": "b",
+      "symbol": "b",
+      "classification": "CONDITIONAL_ESTIMATE",
+      "requires": [
+        "Y_or_LC_demand",
+        "P",
+        "a_fixed"
+      ],
+      "estimate": true
+    },
+    {
+      "field": "invest_price",
+      "symbol": "p_K",
+      "classification": "CALIBRATE_FIX",
+      "estimate": false
+    },
+    {
+      "field": "invest_curvature",
+      "symbol": "chi",
+      "classification": "CONDITIONAL_ESTIMATE",
+      "requires": [
+        "K",
+        "p_K_fixed",
+        "delta_fixed",
+        "L_fixed"
+      ],
+      "estimate": true
+    },
+    {
+      "field": "storage_cost",
+      "symbol": "h",
+      "classification": "FIX_CALIBRATE",
+      "estimate": false
+    },
+    {
+      "field": "storage_service",
+      "symbol": "xi",
+      "classification": "DERIVE_OR_CONDITIONAL_ESTIMATE",
+      "requires": [
+        "I",
+        "h_fixed",
+        "beta_fixed",
+        "loss_fixed"
+      ],
+      "estimate": false
+    },
+    {
+      "field": "loss",
+      "symbol": "ell_I",
+      "classification": "FIX_SENSITIVITY",
+      "estimate": false
+    },
+    {
+      "field": "demand_mean",
+      "symbol": "Abar",
+      "classification": "REPARAMETERIZE_NET_INTERCEPT",
+      "estimate": false
+    },
+    {
+      "field": "non_lc_cost",
+      "symbol": "v",
+      "classification": "ABSORB_OR_FIXED",
+      "estimate": false
+    },
+    {
+      "field": "unit_cost_mean",
+      "symbol": "mbar",
+      "classification": "DERIVE_CALIBRATE",
+      "estimate": false
+    },
+    {
+      "field": "net_flow",
+      "symbol": "fbar",
+      "classification": "DERIVE_CONDITIONAL",
+      "estimate": false
+    },
+    {
+      "field": "rho_d",
+      "symbol": "rho_D",
+      "classification": "ESTIMATE_CONDITIONAL",
+      "requires": [
+        "demand_scale_anchor"
+      ],
+      "estimate": true
+    },
+    {
+      "field": "rho_c",
+      "symbol": "rho_C",
+      "classification": "ESTIMATE_CONDITIONAL_OR_REMOVE",
+      "requires": [
+        "cost_state_retained"
+      ],
+      "estimate": true
+    },
+    {
+      "field": "sigma_d",
+      "symbol": "sigma_D",
+      "classification": "ESTIMATE_CONDITIONAL",
+      "requires": [
+        "demand_scale_anchor",
+        "measurement_error_separated"
+      ],
+      "estimate": true
+    },
+    {
+      "field": "sigma_c",
+      "symbol": "sigma_C",
+      "classification": "ESTIMATE_CONDITIONAL_OR_REMOVE",
+      "requires": [
+        "cost_state_retained",
+        "cost_measurement"
+      ],
+      "estimate": true
+    },
+    {
+      "field": "lead",
+      "symbol": "L",
+      "classification": "FIX_DISCRETE_EVIDENCE_GRID",
+      "estimate": false
+    }
+  ],
+  "analytical_nonidentification": [
+    {
+      "id": "Abar_v",
+      "action": "replace by one net demand intercept or independently fix one"
+    },
+    {
+      "id": "material_scale",
+      "action": "observe Y or fix engineering a before estimating demand curvature/state scale"
+    },
+    {
+      "id": "capacity_scale",
+      "action": "observe K or anchor capacity/investment scale before estimating gamma/chi"
+    },
+    {
+      "id": "storage_steady_combo",
+      "action": "constrain h/beta/loss before xi; steady state alone does not separate h and xi"
+    },
+    {
+      "id": "inventory_difference_error",
+      "action": "do not treat I and J derived from same I as independent observations"
+    }
+  ],
+  "observation_error_registry_status": "PLANNED_AFTER_OBSERVATION_FREEZE",
+  "formal_identification_passed": false,
+  "final_observation_frozen": false,
+  "formal_estimation_protocol_status": "NOT_FROZEN",
+  "supervisor_scope_status": "PENDING"
+}
