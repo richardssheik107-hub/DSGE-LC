@@ -14,10 +14,16 @@ data/processed/
 data/licensed/
 outputs/
 artifacts/
-results/
+results/*
+!results/local_stochastic/
+results/local_stochastic/*
+!results/local_stochastic/linear_solution_sigma_0p001.json
+!results/local_stochastic/irf_sigma_0p001.csv
+!results/local_stochastic/irf_sigma_0p01.csv
 *.pdf
 *.npz
 *.parquet
 *.docx
 *.pptx
 *.xlsx
+!reports/2026-11-26_weekly_dsge/meeting_report_20261126.docx

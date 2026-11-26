@@ -1,0 +1,867 @@
+{
+  "model_id": "LC_DSGE_EQCHAIN_20261126",
+  "date": "2026-11-26",
+  "scope": "shock definitions, units, exact exogenous expectations, and fixed-choice constraint activation",
+  "synthetic_parameters": true,
+  "kernel": {
+    "branches": 16,
+    "probability_sum": 1.0,
+    "latent_innovation_mean": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "latent_innovation_covariance": [
+      [
+        0.00010000000000000003,
+        1.6547635657560011e-21,
+        -3.9302328752599533e-23,
+        -3.9302328752599533e-23
+      ],
+      [
+        1.6547635657560011e-21,
+        0.00010000000000000003,
+        -3.9302328752599533e-23,
+        -3.9302328752599533e-23
+      ],
+      [
+        -3.9302328752599533e-23,
+        -3.9302328752599533e-23,
+        0.00010000000000000003,
+        -3.9302328752599533e-23
+      ],
+      [
+        -3.9302328752599533e-23,
+        -3.9302328752599533e-23,
+        -3.9302328752599533e-23,
+        0.00010000000000000003
+      ]
+    ]
+  },
+  "scales": [
+    {
+      "name": "z_omega",
+      "rho": 0.8,
+      "sigma_innovation": 0.01,
+      "stationary_sd_of_latent_state": 0.01666666666666667,
+      "latent_state_support_bound_from_zero": 0.05000000000000001,
+      "absolute_latent_response_half_life_months": 3.1062837195053903,
+      "mapping": "logistic share",
+      "anchor_share": 0.35,
+      "share_after_plus_one_sd_from_zero": 0.35227839861129345,
+      "direct_mapping_change_percentage_points": 0.2278398611293475
+    },
+    {
+      "name": "z_m",
+      "rho": 0.75,
+      "sigma_innovation": 0.01,
+      "stationary_sd_of_latent_state": 0.015118578920369089,
+      "latent_state_support_bound_from_zero": 0.04,
+      "absolute_latent_response_half_life_months": 2.409420839653209,
+      "mapping": "exponential multiplier",
+      "direct_mapping_change_percent_from_zero": 1.0050167084168058
+    },
+    {
+      "name": "z_pj",
+      "rho": 0.7,
+      "sigma_innovation": 0.01,
+      "stationary_sd_of_latent_state": 0.014002800840280098,
+      "latent_state_support_bound_from_zero": 0.033333333333333326,
+      "absolute_latent_response_half_life_months": 1.9433582098747315,
+      "mapping": "exponential multiplier",
+      "direct_mapping_change_percent_from_zero": 1.0050167084168058
+    },
+    {
+      "name": "z_kappa",
+      "rho": 0.8,
+      "sigma_innovation": 0.01,
+      "stationary_sd_of_latent_state": 0.01666666666666667,
+      "latent_state_support_bound_from_zero": 0.05000000000000001,
+      "absolute_latent_response_half_life_months": 3.1062837195053903,
+      "mapping": "exponential multiplier",
+      "direct_mapping_change_percent_from_zero": 1.0050167084168058
+    }
+  ],
+  "anchor_primitive_incidence": {
+    "scope": "partial derivatives with all endogenous choices held fixed; not equilibrium responses",
+    "rows": [
+      "E37.log_relative_final_demand_at_fixed_prices",
+      "E09.current_unit_resource_cost",
+      "E16.current_unit_construction_cost",
+      "E33.I_production_and_construction_resources",
+      "E21.F_collateral_requirement"
+    ],
+    "columns": [
+      "z_omega",
+      "z_m",
+      "z_pj",
+      "z_kappa"
+    ],
+    "analytic": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.2,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.4,
+        0.0
+      ],
+      [
+        0.0,
+        0.04364143738234127,
+        0.008411520259352453,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "central_difference": [
+      [
+        0.9999999999843466,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.20000000000158777,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.40000000000317554,
+        0.0
+      ],
+      [
+        0.0,
+        0.04364143738264103,
+        0.008411520259488103,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "step": 1e-05,
+    "max_derivative_error": 1.565336749109747e-11,
+    "primitive_entry_rank_at_candidate": 3,
+    "structural_identification_rank_claimed": false
+  },
+  "anchor_collateral_activation": {
+    "bond_market_value": 0.198,
+    "position_F": 0.0,
+    "collateral_parameter": 0.2,
+    "collateral_requirement": 0.0,
+    "collateral_slack": 0.198,
+    "multiplier_F": 0.0,
+    "requirement_derivative_wrt_log_kappa": 0.0,
+    "fixed_choice_maximum_kappa": null,
+    "fixed_choice_log_tightening_to_binding": null,
+    "zero_position_requires_no_collateral": true,
+    "zero_current_wedge_certified_by_zero_multiplier": true,
+    "zero_position_requires_subgradient_interval": true,
+    "economic_equilibrium_claimed": false
+  },
+  "nonzero_position_probe": {
+    "is_equilibrium": false,
+    "incidence": {
+      "scope": "partial derivatives with all endogenous choices held fixed; not equilibrium responses",
+      "rows": [
+        "E37.log_relative_final_demand_at_fixed_prices",
+        "E09.current_unit_resource_cost",
+        "E16.current_unit_construction_cost",
+        "E33.I_production_and_construction_resources",
+        "E21.F_collateral_requirement"
+      ],
+      "columns": [
+        "z_omega",
+        "z_m",
+        "z_pj",
+        "z_kappa"
+      ],
+      "analytic": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.2,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.4,
+          0.0
+        ],
+        [
+          0.0,
+          0.04364143738234127,
+          0.008411520259352453,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.02225514299825612
+        ]
+      ],
+      "central_difference": [
+        [
+          0.9999999999843466,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.20000000000158777,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.40000000000317554,
+          0.0
+        ],
+        [
+          0.0,
+          0.04364143738264103,
+          0.008411520259488103,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.02225514299843828
+        ]
+      ],
+      "step": 1e-05,
+      "max_derivative_error": 1.565336749109747e-11,
+      "primitive_entry_rank_at_candidate": 4,
+      "structural_identification_rank_claimed": false
+    },
+    "collateral": {
+      "bond_market_value": 0.198,
+      "position_F": -0.2,
+      "collateral_parameter": 0.2,
+      "collateral_requirement": 0.02225514299825612,
+      "collateral_slack": 0.1757448570017439,
+      "multiplier_F": 0.0,
+      "requirement_derivative_wrt_log_kappa": 0.02225514299825612,
+      "fixed_choice_maximum_kappa": 1.7793639880499983,
+      "fixed_choice_log_tightening_to_binding": 2.185693902803365,
+      "zero_position_requires_no_collateral": false,
+      "zero_current_wedge_certified_by_zero_multiplier": true,
+      "zero_position_requires_subgradient_interval": false,
+      "economic_equilibrium_claimed": false
+    }
+  },
+  "exogenous_paths": [
+    {
+      "shock": "z_omega",
+      "rows": [
+        {
+          "month": 0,
+          "latent_conditional_mean_plus": 0.01,
+          "primitive_conditional_mean_plus": 0.35227839861129345,
+          "primitive_conditional_mean_minus": 0.34772842629031386,
+          "primitive_unconditional_baseline": 0.3500034124508037,
+          "conditional_mean_difference": 0.002274986160489767,
+          "relative_difference_percent": 0.6499897085459283,
+          "share_difference_percentage_points": 0.2274986160489767
+        },
+        {
+          "month": 1,
+          "latent_conditional_mean_plus": 0.008,
+          "primitive_conditional_mean_plus": 0.35182555594157,
+          "primitive_conditional_mean_minus": 0.3481856365419215,
+          "primitive_unconditional_baseline": 0.35000559624174576,
+          "conditional_mean_difference": 0.0018199596998242362,
+          "relative_difference_percent": 0.5199801715648045,
+          "share_difference_percentage_points": 0.18199596998242362
+        },
+        {
+          "month": 2,
+          "latent_conditional_mean_plus": 0.006400000000000001,
+          "primitive_conditional_mean_plus": 0.3514629465907333,
+          "primitive_conditional_mean_minus": 0.34855104099971923,
+          "primitive_unconditional_baseline": 0.35000699379522626,
+          "conditional_mean_difference": 0.0014559527955070317,
+          "relative_difference_percent": 0.415978200812428,
+          "share_difference_percentage_points": 0.14559527955070317
+        },
+        {
+          "month": 3,
+          "latent_conditional_mean_plus": 0.005120000000000001,
+          "primitive_conditional_mean_plus": 0.35117264277454785,
+          "primitive_conditional_mean_minus": 0.3488431336247916,
+          "primitive_unconditional_baseline": 0.3500078881996697,
+          "conditional_mean_difference": 0.0011647545748781352,
+          "relative_difference_percent": 0.332779521304305,
+          "share_difference_percentage_points": 0.11647545748781352
+        },
+        {
+          "month": 4,
+          "latent_conditional_mean_plus": 0.004096000000000001,
+          "primitive_conditional_mean_plus": 0.3509402603435876,
+          "primitive_conditional_mean_minus": 0.3490766608690419,
+          "primitive_unconditional_baseline": 0.35000846060631474,
+          "conditional_mean_difference": 0.0009317997372728648,
+          "relative_difference_percent": 0.2662220609349619,
+          "share_difference_percentage_points": 0.09317997372728648
+        },
+        {
+          "month": 5,
+          "latent_conditional_mean_plus": 0.0032768000000000007,
+          "primitive_conditional_mean_plus": 0.35075426472302673,
+          "primitive_conditional_mean_minus": 0.3492633891601155,
+          "primitive_unconditional_baseline": 0.3500088269415711,
+          "conditional_mean_difference": 0.0007454377814556379,
+          "relative_difference_percent": 0.21297685203238714,
+          "share_difference_percentage_points": 0.07454377814556379
+        },
+        {
+          "month": 6,
+          "latent_conditional_mean_plus": 0.002621440000000001,
+          "primitive_conditional_mean_plus": 0.35060541059097927,
+          "primitive_conditional_mean_minus": 0.3494127121971982,
+          "primitive_unconditional_baseline": 0.3500090613940887,
+          "conditional_mean_difference": 0.0005963491968905554,
+          "relative_difference_percent": 0.17038107371143418,
+          "share_difference_percentage_points": 0.05963491968905554
+        },
+        {
+          "month": 7,
+          "latent_conditional_mean_plus": 0.002097152000000001,
+          "primitive_conditional_mean_plus": 0.35048629027390055,
+          "primitive_conditional_mean_minus": 0.34953213261182303,
+          "primitive_unconditional_baseline": 0.3500092114428618,
+          "conditional_mean_difference": 0.0004770788310387575,
+          "relative_difference_percent": 0.13630465011822412,
+          "share_difference_percentage_points": 0.04770788310387575
+        },
+        {
+          "month": 8,
+          "latent_conditional_mean_plus": 0.001677721600000001,
+          "primitive_conditional_mean_plus": 0.3503909702690105,
+          "primitive_conditional_mean_minus": 0.34962764467845586,
+          "primitive_unconditional_baseline": 0.35000930747373316,
+          "conditional_mean_difference": 0.0003816627952773488,
+          "relative_difference_percent": 0.10904361316335098,
+          "share_difference_percentage_points": 0.03816627952773488
+        },
+        {
+          "month": 9,
+          "latent_conditional_mean_plus": 0.0013421772800000006,
+          "primitive_conditional_mean_plus": 0.35031469903156087,
+          "primitive_conditional_mean_minus": 0.3497040388351397,
+          "primitive_unconditional_baseline": 0.3500093689333503,
+          "conditional_mean_difference": 0.00030533009821059887,
+          "relative_difference_percent": 0.08723483578199076,
+          "share_difference_percentage_points": 0.030533009821059887
+        },
+        {
+          "month": 10,
+          "latent_conditional_mean_plus": 0.0010737418240000006,
+          "primitive_conditional_mean_plus": 0.3502536722753544,
+          "primitive_conditional_mean_minus": 0.34976514425954075,
+          "primitive_unconditional_baseline": 0.3500094082674476,
+          "conditional_mean_difference": 0.0002442640079068359,
+          "relative_difference_percent": 0.06978784059432641,
+          "share_difference_percentage_points": 0.02442640079068359
+        },
+        {
+          "month": 11,
+          "latent_conditional_mean_plus": 0.0008589934592000006,
+          "primitive_conditional_mean_plus": 0.350204844611393,
+          "primitive_conditional_mean_minus": 0.3498140222710996,
+          "primitive_unconditional_baseline": 0.3500094334412463,
+          "conditional_mean_difference": 0.00019541117014670872,
+          "relative_difference_percent": 0.0558302581234571,
+          "share_difference_percentage_points": 0.019541117014670872
+        },
+        {
+          "month": 12,
+          "latent_conditional_mean_plus": 0.0006871947673600004,
+          "primitive_conditional_mean_plus": 0.3501657784700617,
+          "primitive_conditional_mean_minus": 0.34985312063487395,
+          "primitive_unconditional_baseline": 0.3500094495524678,
+          "conditional_mean_difference": 0.00015632891759387313,
+          "relative_difference_percent": 0.04466419915054587,
+          "share_difference_percentage_points": 0.015632891759387313
+        }
+      ],
+      "scope": "exogenous mapping only; endogenous DSGE policy is not used",
+      "future_innovations_integrated": true,
+      "equilibrium_irf": false,
+      "baseline": "unconditioned current sign, future innovations integrated under the original two-point law"
+    },
+    {
+      "shock": "z_m",
+      "rows": [
+        {
+          "month": 0,
+          "latent_conditional_mean_plus": 0.01,
+          "primitive_conditional_mean_plus": 0.2020100334168336,
+          "primitive_conditional_mean_minus": 0.19800996674983362,
+          "primitive_unconditional_baseline": 0.2000100000833336,
+          "conditional_mean_difference": 0.00200003333349999,
+          "relative_difference_percent": 0.9999666679999297,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 1,
+          "latent_conditional_mean_plus": 0.0075,
+          "primitive_conditional_mean_plus": 0.20151571445482216,
+          "primitive_conditional_mean_minus": 0.1985155363270868,
+          "primitive_unconditional_baseline": 0.20001562539095447,
+          "conditional_mean_difference": 0.001500089063867699,
+          "relative_difference_percent": 0.7499859378164109,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 2,
+          "latent_conditional_mean_plus": 0.005625,
+          "primitive_conditional_mean_plus": 0.2011438835349106,
+          "primitive_conditional_mean_minus": 0.19889369588308226,
+          "primitive_unconditional_baseline": 0.20001878970899645,
+          "conditional_mean_difference": 0.001125093825914164,
+          "relative_difference_percent": 0.5624940674578749,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 3,
+          "latent_conditional_mean_plus": 0.00421875,
+          "primitive_conditional_mean_plus": 0.20086440143614592,
+          "primitive_conditional_mean_minus": 0.19917673789185583,
+          "primitive_unconditional_baseline": 0.2000205696640009,
+          "conditional_mean_difference": 0.0008438317721450317,
+          "relative_difference_percent": 0.4218724971949195,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 4,
+          "latent_conditional_mean_plus": 0.0031640625,
+          "primitive_conditional_mean_plus": 0.20065444953664102,
+          "primitive_conditional_mean_minus": 0.19938869225726097,
+          "primitive_unconditional_baseline": 0.200021570896951,
+          "conditional_mean_difference": 0.0006328786396900266,
+          "relative_difference_percent": 0.316405194125835,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 5,
+          "latent_conditional_mean_plus": 0.002373046875,
+          "primitive_conditional_mean_plus": 0.20049679510234547,
+          "primitive_conditional_mean_minus": 0.19954747308385257,
+          "primitive_unconditional_baseline": 0.20002213409309902,
+          "conditional_mean_difference": 0.00047466100924645205,
+          "relative_difference_percent": 0.23730424205228307,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 6,
+          "latent_conditional_mean_plus": 0.00177978515625,
+          "primitive_conditional_mean_plus": 0.20037844750488407,
+          "primitive_conditional_mean_minus": 0.1996664542786344,
+          "primitive_unconditional_baseline": 0.20002245089175924,
+          "conditional_mean_difference": 0.000355996613124826,
+          "relative_difference_percent": 0.17797832770156674,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 7,
+          "latent_conditional_mean_plus": 0.0013348388671875,
+          "primitive_conditional_mean_plus": 0.2002896269123169,
+          "primitive_conditional_mean_minus": 0.19975563127021767,
+          "primitive_unconditional_baseline": 0.20002262909126728,
+          "conditional_mean_difference": 0.00026699782104960823,
+          "relative_difference_percent": 0.13348380743849475,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 8,
+          "latent_conditional_mean_plus": 0.001001129150390625,
+          "primitive_conditional_mean_plus": 0.20022297784674453,
+          "primitive_conditional_mean_minus": 0.19982248081040213,
+          "primitive_unconditional_baseline": 0.20002272932857335,
+          "conditional_mean_difference": 0.0002002485181711866,
+          "relative_difference_percent": 0.10011288159268439,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 9,
+          "latent_conditional_mean_plus": 0.0007508468627929688,
+          "primitive_conditional_mean_plus": 0.20017297216499963,
+          "primitive_conditional_mean_minus": 0.19987259925916875,
+          "primitive_unconditional_baseline": 0.2000227857120842,
+          "conditional_mean_difference": 0.00015018645291542398,
+          "relative_difference_percent": 0.0750846721691012,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 10,
+          "latent_conditional_mean_plus": 0.0005631351470947266,
+          "primitive_conditional_mean_plus": 0.200135457294625,
+          "primitive_conditional_mean_minus": 0.19991017756100965,
+          "primitive_unconditional_baseline": 0.20002281742781733,
+          "conditional_mean_difference": 0.0001126398668076789,
+          "relative_difference_percent": 0.056313508756722364,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 11,
+          "latent_conditional_mean_plus": 0.00042235136032104493,
+          "primitive_conditional_mean_plus": 0.20010731517946734,
+          "primitive_conditional_mean_minus": 0.19993835535637236,
+          "primitive_unconditional_baseline": 0.20002283526791986,
+          "conditional_mean_difference": 8.44799115474748e-05,
+          "relative_difference_percent": 0.042235133520796,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 12,
+          "latent_conditional_mean_plus": 0.0003167635202407837,
+          "primitive_conditional_mean_plus": 0.2000862052414659,
+          "primitive_conditional_mean_minus": 0.19995948536449074,
+          "primitive_unconditional_baseline": 0.2000228453029783,
+          "conditional_mean_difference": 6.335993848757826e-05,
+          "relative_difference_percent": 0.03167635096461563,
+          "share_difference_percentage_points": null
+        }
+      ],
+      "scope": "exogenous mapping only; endogenous DSGE policy is not used",
+      "future_innovations_integrated": true,
+      "equilibrium_irf": false,
+      "baseline": "unconditioned current sign, future innovations integrated under the original two-point law"
+    },
+    {
+      "shock": "z_pj",
+      "rows": [
+        {
+          "month": 0,
+          "latent_conditional_mean_plus": 0.01,
+          "primitive_conditional_mean_plus": 0.4040200668336672,
+          "primitive_conditional_mean_minus": 0.39601993349966724,
+          "primitive_unconditional_baseline": 0.4000200001666672,
+          "conditional_mean_difference": 0.00400006666699998,
+          "relative_difference_percent": 0.9999666679999297,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 1,
+          "latent_conditional_mean_plus": 0.006999999999999999,
+          "primitive_conditional_mean_plus": 0.4028299635657227,
+          "primitive_conditional_mean_minus": 0.3972296378276573,
+          "primitive_unconditional_baseline": 0.40002980069669003,
+          "conditional_mean_difference": 0.002800162869032674,
+          "relative_difference_percent": 0.6999885668907524,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 2,
+          "latent_conditional_mean_plus": 0.0049,
+          "primitive_conditional_mean_plus": 0.4019947569313303,
+          "primitive_conditional_mean_minus": 0.39807444919678187,
+          "primitive_unconditional_baseline": 0.4000346030640561,
+          "conditional_mean_difference": 0.001960153867274217,
+          "relative_difference_percent": 0.48999607840434223,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 3,
+          "latent_conditional_mean_plus": 0.003429999999999999,
+          "primitive_conditional_mean_plus": 0.4014090776288985,
+          "primitive_conditional_mean_minus": 0.39866483487092946,
+          "primitive_unconditional_baseline": 0.400036956249914,
+          "conditional_mean_difference": 0.0013721213789845144,
+          "relative_difference_percent": 0.34299865488609527,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 4,
+          "latent_conditional_mean_plus": 0.0024009999999999995,
+          "primitive_conditional_mean_plus": 0.40099859897198464,
+          "primitive_conditional_mean_minus": 0.3990776196623965,
+          "primitive_unconditional_baseline": 0.4000381093171906,
+          "conditional_mean_difference": 0.0009604896547940611,
+          "relative_difference_percent": 0.24009953862482725,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 5,
+          "latent_conditional_mean_plus": 0.0016806999999999994,
+          "primitive_conditional_mean_plus": 0.40071101868850995,
+          "primitive_conditional_mean_minus": 0.39936632995478255,
+          "primitive_unconditional_baseline": 0.40003867432164625,
+          "conditional_mean_difference": 0.0006723443668636975,
+          "relative_difference_percent": 0.16806984174813078,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 6,
+          "latent_conditional_mean_plus": 0.0011764899999999997,
+          "primitive_conditional_mean_plus": 0.4005095927827114,
+          "primitive_conditional_mean_minus": 0.39956830956566325,
+          "primitive_unconditional_baseline": 0.4000389511741873,
+          "conditional_mean_difference": 0.00047064160852411385,
+          "relative_difference_percent": 0.11764894571959505,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 7,
+          "latent_conditional_mean_plus": 0.0008235429999999996,
+          "primitive_conditional_mean_plus": 0.4003685361472252,
+          "primitive_conditional_mean_minus": 0.3997096375168115,
+          "primitive_unconditional_baseline": 0.40003908683201833,
+          "conditional_mean_difference": 0.0003294493152068423,
+          "relative_difference_percent": 0.08235428138181344,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 8,
+          "latent_conditional_mean_plus": 0.0005764800999999997,
+          "primitive_conditional_mean_plus": 0.40026976788993046,
+          "primitive_conditional_mean_minus": 0.3998085387188221,
+          "primitive_unconditional_baseline": 0.4000391533043763,
+          "conditional_mean_difference": 0.00023061458555417857,
+          "relative_difference_percent": 0.057648003613963716,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 9,
+          "latent_conditional_mean_plus": 0.0004035360699999998,
+          "primitive_conditional_mean_plus": 0.4002006161079885,
+          "primitive_conditional_mean_minus": 0.39987775564368483,
+          "primitive_unconditional_baseline": 0.40003918587583664,
+          "conditional_mean_difference": 0.00016143023215187124,
+          "relative_difference_percent": 0.04035360480960648,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 10,
+          "latent_conditional_mean_plus": 0.00028247524899999984,
+          "primitive_conditional_mean_plus": 0.400152203005996,
+          "primitive_conditional_mean_minus": 0.3999262006657105,
+          "primitive_unconditional_baseline": 0.4000392018358533,
+          "conditional_mean_difference": 0.0001130011701427347,
+          "relative_difference_percent": 0.028247524148672376,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 11,
+          "latent_conditional_mean_plus": 0.0001977326742999999,
+          "primitive_conditional_mean_plus": 0.40011831047798113,
+          "primitive_conditional_mean_minus": 0.39996010883454247,
+          "primitive_unconditional_baseline": 0.40003920965626183,
+          "conditional_mean_difference": 7.910082171930233e-05,
+          "relative_difference_percent": 0.019773267172307207,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 12,
+          "latent_conditional_mean_plus": 0.0001384128720099999,
+          "primitive_conditional_mean_plus": 0.400094584064364,
+          "primitive_conditional_mean_minus": 0.3999838429121601,
+          "primitive_unconditional_baseline": 0.40003921348826205,
+          "conditional_mean_difference": 5.537057610194296e-05,
+          "relative_difference_percent": 0.013841287112614786,
+          "share_difference_percentage_points": null
+        }
+      ],
+      "scope": "exogenous mapping only; endogenous DSGE policy is not used",
+      "future_innovations_integrated": true,
+      "equilibrium_irf": false,
+      "baseline": "unconditioned current sign, future innovations integrated under the original two-point law"
+    },
+    {
+      "shock": "z_kappa",
+      "rows": [
+        {
+          "month": 0,
+          "latent_conditional_mean_plus": 0.01,
+          "primitive_conditional_mean_plus": 0.2020100334168336,
+          "primitive_conditional_mean_minus": 0.19800996674983362,
+          "primitive_unconditional_baseline": 0.2000100000833336,
+          "conditional_mean_difference": 0.00200003333349999,
+          "relative_difference_percent": 0.9999666679999297,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 1,
+          "latent_conditional_mean_plus": 0.008,
+          "primitive_conditional_mean_plus": 0.20161649750571267,
+          "primitive_conditional_mean_minus": 0.19841630336923008,
+          "primitive_unconditional_baseline": 0.20001640043747138,
+          "conditional_mean_difference": 0.0016000970682412963,
+          "relative_difference_percent": 0.799982933770238,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 2,
+          "latent_conditional_mean_plus": 0.006400000000000001,
+          "primitive_conditional_mean_plus": 0.20130061048900214,
+          "primitive_conditional_mean_minus": 0.1987403830856669,
+          "primitive_unconditional_baseline": 0.20002049678733452,
+          "conditional_mean_difference": 0.0012801137016676123,
+          "relative_difference_percent": 0.6399912620098425,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 3,
+          "latent_conditional_mean_plus": 0.005120000000000001,
+          "primitive_conditional_mean_plus": 0.20104722791965704,
+          "primitive_conditional_mean_minus": 0.19899900908377752,
+          "primitive_unconditional_baseline": 0.20002311850171728,
+          "conditional_mean_difference": 0.0010241094179397614,
+          "relative_difference_percent": 0.5119955261226217,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 4,
+          "latent_conditional_mean_plus": 0.004096000000000001,
+          "primitive_conditional_mean_plus": 0.2008440934038942,
+          "primitive_conditional_mean_minus": 0.19920549943529625,
+          "primitive_unconditional_baseline": 0.20002479641959522,
+          "conditional_mean_difference": 0.0008192969842989728,
+          "relative_difference_percent": 0.4095977093661496,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 5,
+          "latent_conditional_mean_plus": 0.0032768000000000007,
+          "primitive_conditional_mean_plus": 0.20068131272137107,
+          "primitive_conditional_mean_minus": 0.1993704278696387,
+          "primitive_unconditional_baseline": 0.2000258702955049,
+          "conditional_mean_difference": 0.0006554424258661817,
+          "relative_difference_percent": 0.3276788271926456,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 6,
+          "latent_conditional_mean_plus": 0.002621440000000001,
+          "primitive_conditional_mean_plus": 0.2005509139975408,
+          "primitive_conditional_mean_minus": 0.19950220116157022,
+          "primitive_unconditional_baseline": 0.2000265575795555,
+          "conditional_mean_difference": 0.0005243564179852889,
+          "relative_difference_percent": 0.2621433995217082,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 7,
+          "latent_conditional_mean_plus": 0.002097152000000001,
+          "primitive_conditional_mean_plus": 0.2004464838455362,
+          "primitive_conditional_mean_minus": 0.19960751104000082,
+          "primitive_unconditional_baseline": 0.20002699744276853,
+          "conditional_mean_difference": 0.000419486402767677,
+          "relative_difference_percent": 0.20971489255479092,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 8,
+          "latent_conditional_mean_plus": 0.001677721600000001,
+          "primitive_conditional_mean_plus": 0.20036286872743317,
+          "primitive_conditional_mean_minus": 0.19969168918418043,
+          "primitive_unconditional_baseline": 0.2000272789558068,
+          "conditional_mean_difference": 0.00033558977162637116,
+          "relative_difference_percent": 0.16777200258797365,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 9,
+          "latent_conditional_mean_plus": 0.0013421772800000006,
+          "primitive_conditional_mean_plus": 0.20029593127419035,
+          "primitive_conditional_mean_minus": 0.19975898697458885,
+          "primitive_unconditional_baseline": 0.2000274591243896,
+          "conditional_mean_difference": 0.00026847214980074696,
+          "relative_difference_percent": 0.13421764740499942,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 10,
+          "latent_conditional_mean_plus": 0.0010737418240000006,
+          "primitive_conditional_mean_plus": 0.20024235232246093,
+          "primitive_conditional_mean_minus": 0.19981279654229964,
+          "primitive_unconditional_baseline": 0.20002757443238028,
+          "conditional_mean_difference": 0.0002147778900806474,
+          "relative_difference_percent": 0.10737414113535237,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 11,
+          "latent_conditional_mean_plus": 0.0008589934592000006,
+          "primitive_conditional_mean_plus": 0.20019947062876173,
+          "primitive_conditional_mean_minus": 0.19985582583030678,
+          "primitive_unconditional_baseline": 0.20002764822953426,
+          "conditional_mean_difference": 0.00017182239922747256,
+          "relative_difference_percent": 0.08589932479248219,
+          "share_difference_percentage_points": null
+        },
+        {
+          "month": 12,
+          "latent_conditional_mean_plus": 0.0006871947673600004,
+          "primitive_conditional_mean_plus": 0.20016515342373867,
+          "primitive_conditional_mean_minus": 0.19989023749571974,
+          "primitive_unconditional_baseline": 0.2000276954597292,
+          "conditional_mean_difference": 0.00013745796400946309,
+          "relative_difference_percent": 0.06871946591873179,
+          "share_difference_percentage_points": null
+        }
+      ],
+      "scope": "exogenous mapping only; endogenous DSGE policy is not used",
+      "future_innovations_integrated": true,
+      "equilibrium_irf": false,
+      "baseline": "unconditioned current sign, future innovations integrated under the original two-point law"
+    }
+  ],
+  "tests": {
+    "run": 4,
+    "passed": true,
+    "log": "test_current_anchor_has_three_primitive_entries_not_four_active_channels (test_shock_audit.ShockAuditTests.test_current_anchor_has_three_primitive_entries_not_four_active_channels) ... ok\ntest_future_randomness_is_integrated_in_level_expectation (test_shock_audit.ShockAuditTests.test_future_randomness_is_integrated_in_level_expectation) ... ok\ntest_logistic_share_and_conditional_baseline_units_are_distinct (test_shock_audit.ShockAuditTests.test_logistic_share_and_conditional_baseline_units_are_distinct) ... ok\ntest_nonzero_position_tightening_hits_actual_constraint (test_shock_audit.ShockAuditTests.test_nonzero_position_tightening_hits_actual_constraint) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.005s\n\nOK\n"
+  },
+  "source_sha256": {
+    "model/dsge/__init__.py": "01b7e48e2008200ca51cb4b4b7407fe55316c959d90c3c5f3deb03ac3ca26cfb",
+    "model/dsge/economy.py": "2fb681fe2dff6959042fa647e035e13509b26d9f7291d75bfd5e59c6a7a478e5",
+    "model/dsge/linear_re.py": "78ecd6888ec66ce8832560831cfb7dd6f1f881f19ba97fe6c729d577d78a188a",
+    "model/dsge/local_projection.py": "0d77499767b34571e46fcc24523c3e0fb5825b8f076a0a6769a8c6feafd9ace9",
+    "model/dsge/parameters.py": "ef2e4660ebd5af1b92bba52f48f3e06b6c998c7b8a87491a5744ddf0d6164e07",
+    "model/dsge/residuals.py": "77f396dc5eea312a8122e65d5ee86e63eff0d7691a262c2ee9368d9a1b9c299c",
+    "model/dsge/shock_audit.py": "e6c64ac9dc3710b6d316782f600cac43cd1a4d97b1b52885c668efb257f0576c",
+    "model/dsge/shocks.py": "d8e526676ca29ae6726ea34f8845ee61fbc34c50894abed6a37f6d7cec2bc3ac",
+    "model/dsge/state.py": "8e9c06b2d9ef44c9c7ff911d236bc3b68bc05dccbe124226b985d255b4063f00",
+    "model/dsge/steady_state.py": "6e8818961324a654707744dcb4439c9803094d6b11293dc8b7b99a3fdaed9349",
+    "scripts/validate_shocks.py": "69703243e48a4786e9d5e5041143dd9597b1618095e6507a25e28797c38e4669",
+    "tests/test_shock_audit.py": "92082dfcded4878abd19e026e198123e13cc8f8a89274032989639c3f7be799a"
+  },
+  "equilibrium_irfs_computed": false,
+  "positive_risk_equilibrium_solved_by_this_script": false,
+  "passed": true
+}

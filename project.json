@@ -2,7 +2,7 @@
   "project": "DSGE-LC",
   "model_id": "LC_DSGE_EQCHAIN_20261126",
   "updated_on": "2026-11-26",
-  "stage": "EQUATION_CHAIN_AND_DETERMINISTIC_ANCHOR",
+  "stage": "LOCAL_STOCHASTIC_SOLUTION_AND_VALIDATION",
   "user_direction": "Build a full DSGE, with the group hog manuscript as primary structural reference; archive obsolete work.",
   "primary_reference_id": "HOG-REF",
   "reference_registry": "references/library.json",
@@ -16,7 +16,11 @@
     "docs/05_validation_and_data.md",
     "docs/06_equation_chain.md",
     "docs/07_shock_transmission.md",
-    "docs/08_legacy_equation_map.md"
+    "docs/08_legacy_equation_map.md",
+    "docs/09_stochastic_computation.md",
+    "docs/10_recent_literature.md",
+    "docs/11_shock_audit.md",
+    "reports/2026-11-26_weekly_dsge/meeting_report_20261126.md"
   ],
   "approved_by_supervisor": false,
   "full_dsge_solver_implemented": false,
@@ -32,7 +36,10 @@
   "archive_in_default_test_discovery": false,
   "checks": [
     "python scripts/check_repository.py",
-    "python scripts/validate_equation_chain.py"
+    "python scripts/validate_equation_chain.py",
+    "python scripts/validate_shocks.py",
+    "python scripts/solve_stochastic.py",
+    "python -m unittest discover -s tests -v"
   ],
   "validation_document": "docs/validation/equation_chain_20261126.json",
   "baseline_commits": {
@@ -45,16 +52,66 @@
     "repository_reorganization": "PASSED_BYTE_PRESERVATION_AND_CURRENT_ENTRY_CHECK",
     "group_source_mapping": "DOCUMENTED_INCLUDING_SHOCK_ENTRIES",
     "budget_and_resource_candidate": "DERIVED_CODED_AND_OFF_EQUILIBRIUM_IDENTITY_VERIFIED",
-    "complete_kkt_and_dimension": "NECESSARY_CONDITIONS_CODED_COUNTS_MATCH_FULL_DYNAMIC_RANK_NOT_VERIFIED",
+    "complete_kkt_and_dimension": "NECESSARY_CONDITIONS_CODED_SELECTED_REGIME_SCHUR_VERIFIED_ALL_REGIME_RANK_NOT_VERIFIED",
     "deterministic_anchor": "SYNTHETIC_STATIONARY_KKT_VERIFIED_AT_FIXED_WEALTH",
-    "positive_risk_equilibrium": "NOT_SOLVED_FROZEN_ANCHOR_REJECTED_AT_16_SUCCESSOR_STATES",
+    "positive_risk_equilibrium": "NONLINEAR_PROJECTION_REJECTED_BY_ORIGINAL_RESIDUALS_UNSTABLE_TRANSITION_AND_SUCCESSOR_COLLATERAL",
     "china_open_economy_extension": "INTERFACE_ONLY",
     "measurement_and_identification": "REQUIREMENTS_ONLY",
-    "real_estimation": "NOT_STARTED"
+    "real_estimation": "NOT_STARTED",
+    "local_first_order_stochastic_solution": "PASSED_LINEAR_EQUATIONS_LEADING_PORTFOLIO_AND_CONDITIONAL_MEAN_IRFS",
+    "structural_shock_incidence": "DERIVATIVES_KERNEL_UNITS_AND_SLACK_CONSTRAINT_ACTIVATION_VERIFIED",
+    "stationary_wealth_distribution": "NOT_ESTABLISHED_THREE_NEUTRAL_MODES_EXCITED_IN_LINEAR_MODEL"
   },
   "archive_validation_document": "docs/validation/reorganization_20261126.json",
   "equation_chain_reconstructed": true,
   "original_condition_evaluator_implemented": true,
   "deterministic_stationary_kkt_anchor_solved": true,
-  "steady_state_scope": "Synthetic stationary KKT candidate at fixed wealth; global optimality and uniqueness not proved"
+  "steady_state_scope": "Synthetic stationary KKT candidate at fixed wealth; global optimality and uniqueness not proved",
+  "current_artifacts": [
+    "reports/2026-11-26_weekly_dsge/meeting_report_20261126.docx"
+  ],
+  "weekly_report": {
+    "markdown": "reports/2026-11-26_weekly_dsge/meeting_report_20261126.md",
+    "docx": "reports/2026-11-26_weekly_dsge/meeting_report_20261126.docx",
+    "figure_manifest": "reports/2026-11-26_weekly_dsge/figures/manifest.json"
+  },
+  "local_first_order_policy_solved": true,
+  "leading_risky_portfolio_selected": true,
+  "local_conditional_mean_irfs_computed": true,
+  "selected_regime_schur_solution_verified": true,
+  "neutral_wealth_root_count": 3,
+  "nonlinear_policy_solved": false,
+  "second_order_policy_solved": false,
+  "nonlinear_projection_candidate_accepted": false,
+  "global_successor_feasibility_verified": false,
+  "global_transversality_verified": false,
+  "stationary_wealth_distribution_verified": false,
+  "full_dynamic_rank_all_regimes_verified": false,
+  "nonlinear_girfs_computed": false,
+  "time_varying_risk_premium_identified": false,
+  "local_stochastic_validation_document": "docs/validation/local_stochastic_20261126.json",
+  "shock_validation_document": "docs/validation/shock_audit_20261126.json",
+  "local_policy_snapshot": "results/local_stochastic/linear_solution_sigma_0p001.json",
+  "local_irf_files": [
+    {
+      "path": "results/local_stochastic/irf_sigma_0p001.csv",
+      "sigma": 0.001,
+      "role": "working local illustration"
+    },
+    {
+      "path": "results/local_stochastic/irf_sigma_0p01.csv",
+      "sigma": 0.01,
+      "role": "amplitude comparison; nonlinear truncation error is larger"
+    }
+  ],
+  "local_solution_scope": "Synthetic first-order rational-expectations solution on the zero-inventory, slack-capacity/debt/collateral branch; zero-order futures holdings selected by second-order covariance restrictions; no full second-order policy or global equilibrium proof.",
+  "projection_reproduction": {
+    "command": "OPENBLAS_NUM_THREADS=1 python scripts/solve_stochastic.py --fit-projection --max-nfev 350 --write-report",
+    "heldout_seed": 20261126,
+    "reachable_path_seed": 71126,
+    "attempted_path_horizon_months": 120,
+    "fitted_points": 35,
+    "heldout_points": 64,
+    "sampled_candidate_accepted": false
+  }
 }

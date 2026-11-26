@@ -1,6 +1,6 @@
 {
   "model_id": "LC_DSGE_EQCHAIN_20261126",
-  "status": "EQUATIONS_IMPLEMENTED_DETERMINISTIC_KKT_VERIFIED",
+  "status": "LOCAL_FIRST_ORDER_STOCHASTIC_RE_VERIFIED_NONLINEAR_PROJECTION_REJECTED",
   "canonical_document": "docs/06_equation_chain.md",
   "primary_structure_source": "HOG-REF",
   "model_class_target": "real DSGE with heterogeneous household owners and incomplete asset participation",
@@ -30,7 +30,9 @@
       "title": "结构创新与同一概率核",
       "source_ids": [
         "HOG-REF",
-        "SW07"
+        "SW07",
+        "GL25",
+        "AGS22"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -40,7 +42,9 @@
       "title": "基本面映射与参数归属",
       "source_ids": [
         "HOG-REF",
-        "LC-MEETING"
+        "LC-MEETING",
+        "GL25",
+        "AGS22"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -49,7 +53,8 @@
       "id": "E03",
       "title": "由真实产出取代外给收益曲线",
       "source_ids": [
-        "HOG-REF"
+        "HOG-REF",
+        "BF22"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -114,7 +119,9 @@
       "title": "剩余建设期队列",
       "source_ids": [
         "LC-MEETING",
-        "KP82"
+        "KP82",
+        "CKKT24",
+        "KL22"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -124,7 +131,9 @@
       "title": "投用后的爬坡队列",
       "source_ids": [
         "LC-MEETING",
-        "KP82"
+        "KP82",
+        "CKKT24",
+        "KL22"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -134,7 +143,9 @@
       "title": "成熟能力与有效能力",
       "source_ids": [
         "LC-MEETING",
-        "KP82"
+        "KP82",
+        "CKKT24",
+        "KL22"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -152,7 +163,9 @@
       "id": "E14",
       "title": "成熟与爬坡能力的随机价值递推",
       "source_ids": [
-        "LC-MEETING"
+        "LC-MEETING",
+        "CKKT24",
+        "KL22"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -161,7 +174,9 @@
       "id": "E15",
       "title": "建设状态的价值与未来拥挤",
       "source_ids": [
-        "LC-MEETING"
+        "LC-MEETING",
+        "CKKT24",
+        "KL22"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -171,7 +186,9 @@
       "title": "新开工互补条件",
       "source_ids": [
         "LC-MEETING",
-        "KP82"
+        "KP82",
+        "CKKT24",
+        "KL22"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -210,7 +227,9 @@
       "title": "下一期采购计划与调整成本",
       "source_ids": [
         "LC-MEETING",
-        "ELV19"
+        "ELV19",
+        "CKKT24",
+        "KL22"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "ADJUSTMENT_COST_CODED"
@@ -220,7 +239,10 @@
       "title": "金融风险资本与抵押",
       "source_ids": [
         "H90",
-        "HK13"
+        "HK13",
+        "AGS22",
+        "KL22",
+        "DNH25"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -229,17 +251,24 @@
       "id": "E22",
       "title": "三类期货头寸的最优条件",
       "source_ids": [
-        "H90"
+        "H90",
+        "AGS22",
+        "KL22",
+        "DNH25",
+        "DS11",
+        "TVW10"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
-      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+      "implementation_status": "ORIGINAL_FOC_CODED_ZERO_RISK_TANGENT_RANK_ONE_LEADING_PORTFOLIO_SELECTED_BY_SECOND_ORDER_COVARIANCES"
     },
     {
       "id": "E23",
       "title": "预定采购的随机最优条件",
       "source_ids": [
         "LC-MEETING",
-        "ELV19"
+        "ELV19",
+        "CKKT24",
+        "KL22"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -249,7 +278,10 @@
       "title": "库存原始KKT及可保留的套利形式",
       "source_ids": [
         "DL92",
-        "LC-MEETING"
+        "LC-MEETING",
+        "GMS24",
+        "GL25",
+        "B21"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -278,7 +310,10 @@
       "title": "由新最优条件导出的期货定价",
       "source_ids": [
         "H90",
-        "HK13"
+        "HK13",
+        "AGS22",
+        "KL22",
+        "DNH25"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "PRICING_DIAGNOSTIC_DERIVED_FROM_FOC"
@@ -288,7 +323,10 @@
       "title": "正库存与期现联系的派生检查",
       "source_ids": [
         "DL92",
-        "LC-MEETING"
+        "LC-MEETING",
+        "GMS24",
+        "GL25",
+        "B21"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "DERIVED_CHECK_NOT_INDEPENDENT"
@@ -298,27 +336,36 @@
       "title": "包含财富分配的状态",
       "source_ids": [
         "HOG-REF",
-        "SGU04"
+        "SGU04",
+        "KL22",
+        "AGS22",
+        "MMW21"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
-      "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
+      "implementation_status": "FULL_STATE_CODED_LOCAL_ZERO_INVENTORY_REDUCTION_TO_17_STATES"
     },
     {
       "id": "E30",
       "title": "政策固定点与条件残差",
       "source_ids": [
         "SGU04",
-        "LC-MEETING"
+        "LC-MEETING",
+        "KL22",
+        "AGS22",
+        "MMW21",
+        "DS11",
+        "TVW10"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
-      "implementation_status": "CONDITIONAL_EVALUATOR_IMPLEMENTED_NOT_POLICY_SOLVER"
+      "implementation_status": "LOCAL_FIRST_ORDER_RE_SOLVED_NONLINEAR_PROJECTION_IMPLEMENTED_BUT_REJECTED"
     },
     {
       "id": "E31",
       "title": "观测桥与结构状态分离",
       "source_ids": [
         "HOG-REF",
-        "SW07"
+        "SW07",
+        "GL25"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "OBSERVATION_INTERFACE_DOCUMENTED_NOT_ESTIMATED"
@@ -328,7 +375,10 @@
       "title": "家庭目标与随机贴现因子",
       "source_ids": [
         "HOG-REF",
-        "H90"
+        "H90",
+        "KL22",
+        "AGS22",
+        "MMW21"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -337,7 +387,10 @@
       "id": "E33",
       "title": "四份逐主体预算",
       "source_ids": [
-        "HOG-REF"
+        "HOG-REF",
+        "KL22",
+        "AGS22",
+        "MMW21"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -356,7 +409,10 @@
       "title": "安全债券Euler、借款下界与市场清算",
       "source_ids": [
         "HOG-REF",
-        "HK13"
+        "HK13",
+        "AGS22",
+        "KL22",
+        "DNH25"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -374,7 +430,8 @@
       "id": "E37",
       "title": "最终复合品与部门需求",
       "source_ids": [
-        "HOG-REF"
+        "HOG-REF",
+        "BF22"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -383,7 +440,10 @@
       "id": "E38",
       "title": "劳动和最终资源清算",
       "source_ids": [
-        "HOG-REF"
+        "HOG-REF",
+        "KL22",
+        "AGS22",
+        "MMW21"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
       "implementation_status": "CONDITION_OR_DEFINITION_IMPLEMENTED"
@@ -403,10 +463,15 @@
       "title": "均衡定义、条件计数与本轮计算范围",
       "source_ids": [
         "BK80",
-        "SGU04"
+        "SGU04",
+        "KL22",
+        "AGS22",
+        "MMW21",
+        "DS11",
+        "TVW10"
       ],
       "attribution": "LC-specific assumption or derivation; primary group reference and sources at registered verification scope",
-      "implementation_status": "STRUCTURAL_COUNT_DERIVED_STATIONARY_KKT_CHECKED_NOT_FULL_RANK_PROOF"
+      "implementation_status": "STRUCTURAL_COUNT_AND_SELECTED_REGIME_SCHUR_VERIFIED_NOT_ALL_REGIME_RANK_OR_GLOBAL_EXISTENCE_PROOF"
     }
   ],
   "closed_form_pe_E27_inherited": false,
@@ -421,16 +486,16 @@
   "structural_count_matched": true,
   "deterministic_stationary_kkt_anchor_solved": true,
   "original_condition_evaluator_implemented": true,
-  "stochastic_policy_solver_implemented": false,
+  "stochastic_policy_solver_implemented": true,
   "synthetic_parameters_only": true,
   "numerical_parameter_domain": "common beta, 0<delta<1, epsilon!=1, strictly positive downstream activity, Ke>0",
   "steady_state_branch": "fixed net-zero bonds, h=0 selection, I=0, J>0, slack capacity",
   "complete_dynamic_rank_verified": false,
   "remaining_gates": [
-    "finite-positive-risk policy fixed point",
+    "accepted finite-positive-risk nonlinear policy across reachable states",
     "global successor feasibility and tail conditions",
-    "dynamic rank and solution selection",
-    "GIRF and re-solved counterfactuals",
+    "all-regime dynamic rank and wealth distribution closure",
+    "nonlinear GIRF, risk-premium and welfare calculations",
     "China trade and external payment closure",
     "identification and real estimation"
   ],
@@ -440,7 +505,29 @@
     "model/dsge/shocks.py",
     "model/dsge/economy.py",
     "model/dsge/residuals.py",
-    "model/dsge/steady_state.py"
+    "model/dsge/steady_state.py",
+    "model/dsge/shock_audit.py",
+    "model/dsge/local_projection.py",
+    "model/dsge/linear_re.py"
   ],
-  "validation_record": "docs/validation/equation_chain_20261126.json"
+  "validation_record": "docs/validation/equation_chain_20261126.json",
+  "stochastic_policy_solver_scope": "local first-order rational expectations with leading portfolio selection; nonlinear projection attempt not accepted",
+  "local_first_order_policy_solved": true,
+  "leading_risky_portfolio_selected": true,
+  "local_conditional_mean_irfs_computed": true,
+  "selected_regime_schur_solution_verified": true,
+  "local_state_count": 17,
+  "local_first_order_control_count": 16,
+  "neutral_wealth_root_count": 3,
+  "local_selected_regime": "I=0; J>0; capacity, debt and collateral inequalities strictly slack in local computation",
+  "full_dsge_solver_implemented": false,
+  "full_dsge_equilibrium_solved": false,
+  "second_order_policy_solved": false,
+  "global_successor_feasibility_verified": false,
+  "global_transversality_verified": false,
+  "stationary_wealth_distribution_verified": false,
+  "nonlinear_projection_candidate_accepted": false,
+  "nonlinear_girfs_computed": false,
+  "local_stochastic_validation_record": "docs/validation/local_stochastic_20261126.json",
+  "shock_validation_record": "docs/validation/shock_audit_20261126.json"
 }

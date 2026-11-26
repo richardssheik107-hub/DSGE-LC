@@ -233,6 +233,213 @@
       "supports": "Capital constraints can affect the marginal risk bearer and equilibrium risk premia.",
       "does_not_support": "The present four-owner discrete-time collateral specification is our proposed model, not a reproduction of the paper or a verified journal equation.",
       "checked_on": "2026-11-26"
+    },
+    {
+      "id": "B21",
+      "authors": "Steven D. Baker",
+      "year": 2021,
+      "title": "The Financialization of Storable Commodities",
+      "publication": "Management Science",
+      "volume": "67(1)",
+      "pages": "471-499",
+      "doi": "10.1287/mnsc.2019.3445",
+      "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2019.3445",
+      "open_version": {
+        "version": "2019-04-05 author manuscript; publication online 2020, issue 2021",
+        "url": "https://stevendbaker.com/papers/baker_oilSpeculation.pdf"
+      },
+      "verification": "Publisher metadata and abstract; author manuscript model and equilibrium sections read",
+      "locator": "Author manuscript pp.11-15, equations (4)-(21); pp.40-42 equity participation; Appendix A numerical iteration. Page and equation numbers are not certified for published pagination.",
+      "supports": "Heterogeneous commodity-market participants, active futures, nonnegative storage, and state-contingent jointly clearing spot/futures policies. Market participation restrictions affect risk sharing.",
+      "does_not_support": "Its rolling mean-variance problems do not derive our persistent-owner CRRA SDF, collateral constraint, lithium parameters, or new stochastic numerical results.",
+      "checked_on": "2026-11-26"
+    },
+    {
+      "id": "GMS24",
+      "authors": "Christophe Gouel; Qingyin Ma; John Stachurski",
+      "year": 2024,
+      "title": "Interest rate dynamics and commodity prices",
+      "publication": "Journal of Economic Theory",
+      "volume": "222",
+      "pages": "105915",
+      "doi": "10.1016/j.jet.2024.105915",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0022053124001212",
+      "open_version": {
+        "version": "2024-09-07 author manuscript",
+        "url": "https://johnstachurski.net/pdfs/cp_jet.pdf"
+      },
+      "verification": "Publisher and author bibliography; author manuscript full model equations inspected",
+      "locator": "Author manuscript section2.1, pp.6-7, equations(1)-(6); section2.2 equation(8) and Assumption2.1.",
+      "supports": "Storage nonnegativity and expected discounted future price in inventory optimality; state-dependent discounting and conditions for a well-defined storage equilibrium.",
+      "does_not_support": "Their discount-factor and production processes are exogenous. Their existence/uniqueness theorem does not prove the present endogenous-SDF four-owner GE or justify an extra exogenous policy rate in our closed real model.",
+      "checked_on": "2026-11-26"
+    },
+    {
+      "id": "GL25",
+      "authors": "Christophe Gouel; Nicolas Legrand",
+      "year": 2025,
+      "title": "The role of storage in commodity markets: Indirect inference based on grain data",
+      "publication": "Quantitative Economics",
+      "volume": "16(2)",
+      "pages": "705-747",
+      "doi": "10.3982/QE2329",
+      "url": "https://doi.org/10.3982/QE2329",
+      "open_version": {
+        "version": "2023-05-22 author manuscript hosted for JRSS2023; not the final published pagination",
+        "url": "https://www.sfer.asso.fr/source/jrss2023/articles/C11_7_Gouel_Legrand_The%20Role%20of%20Storage%20in%20Commodity%20Markets.pdf"
+      },
+      "verification": "Author publication list verifies 2025 journal metadata; 2023 manuscript sections2.1-2.4 read; accepted-manuscript indexed excerpts also inspected but final PDF not obtained",
+      "locator": "2023 manuscript pp.5-8 equations(1)-(6): observed cost/planting shocks, future harvest shock, inventory inequality, persistent demand; section2.4 pp.10-11 policy system.",
+      "supports": "Shocks enter primitive costs/demand and respect information timing; demand AR(1), supply shocks, storage complementarity and common-policy rational expectations. Prices plus quantities assist identification.",
+      "does_not_support": "Their four shocks are not our four shocks; Gaussian innovations do not validate our two-point kernel; their grain estimates do not calibrate lithium. Do not mix 2023 equation numbers with 2025 journal pages.",
+      "checked_on": "2026-11-26"
+    },
+    {
+      "id": "KL22",
+      "authors": "Rohan Kekre; Moritz Lenel",
+      "year": 2022,
+      "title": "Monetary Policy, Redistribution, and Risk Premia",
+      "publication": "Econometrica",
+      "volume": "90(5)",
+      "pages": "2249-2282",
+      "doi": "10.3982/ECTA18014",
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.3982/ECTA18014",
+      "open_version": {
+        "version": "Published article in University of Chicago repository",
+        "url": "https://knowledge.uchicago.edu/records/g64w1-az248/files/Monetary-Policy-Redistribution-and-Risk-Premia.pdf?download=1"
+      },
+      "verification": "Published full text downloaded from university repository and equations extracted; publisher full text and metadata checked",
+      "locator": "Printed pp.2253-2256, budgets(2)-(3), clearing(9)-(12), portfolio FOC(13), Proposition1; p.2267 section3.2.5 wealth state(39) and global solution.",
+      "supports": "Heterogeneous risk bearing and wealth redistribution affect equilibrium premia; portfolio decisions require marginal-utility-weighted expected excess payoffs; wealth shares belong in the state.",
+      "does_not_support": "It uses Epstein-Zin preferences, nominal policy and mortality/newborn redistribution. These are not part of our current CRRA real model; its wealth stabilization and calibration cannot be silently imported.",
+      "checked_on": "2026-11-26"
+    },
+    {
+      "id": "CKKT24",
+      "authors": "Ben Charoenwong; Yosuke Kimura; Alan Kwan; Eugene Tan",
+      "year": 2024,
+      "title": "Capital budgeting, uncertainty, and misallocation",
+      "publication": "Journal of Financial Economics",
+      "volume": "153",
+      "pages": "103779",
+      "doi": "10.1016/j.jfineco.2024.103779",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0304405X24000023",
+      "verification": "Publisher bibliographic record, abstract and introduction inspected; full article equations not certified",
+      "locator": "Publisher Abstract and Introduction; no journal equation locator claimed.",
+      "supports": "Investment plans precede production and interact with uncertainty and later information; recent motivation for retaining time-to-build and procurement/investment timing.",
+      "does_not_support": "Does not derive our exact B/Z queues, ramp coefficients, internal-congestion cost, quadratic procurement adjustment or lithium project duration. Those remain explicit project assumptions with independently derived FOCs.",
+      "checked_on": "2026-11-26"
+    },
+    {
+      "id": "MMW21",
+      "authors": "Lilia Maliar; Serguei Maliar; Pablo Winant",
+      "year": 2021,
+      "title": "Deep learning for solving dynamic economic models",
+      "publication": "Journal of Monetary Economics",
+      "volume": "122",
+      "pages": "76-101",
+      "doi": "10.1016/j.jmoneco.2021.07.004",
+      "url": "https://stanford.edu/~maliars/Files/JME2021.pdf",
+      "verification": "Author-hosted published article text inspected",
+      "locator": "Introduction pp.76-78; section4.4 pp.88-89, equations(28)-(30); section4.2 accuracy evaluation.",
+      "supports": "Solve decision rules by economic equilibrium/Euler residuals while integrating future shocks; complementarity residuals; evaluate accuracy on independent points with accurate integration.",
+      "does_not_support": "Citing the method is not a convergence proof. This project does not claim to have used neural networks or their all-in-one integration merely by using residual minimization.",
+      "checked_on": "2026-11-26"
+    },
+    {
+      "id": "AGS22",
+      "authors": "Marlon Azinovic; Luca Gaegauf; Simon Scheidegger",
+      "year": 2022,
+      "title": "Deep Equilibrium Nets",
+      "publication": "International Economic Review",
+      "volume": "63(4)",
+      "pages": "1471-1525",
+      "doi": "10.1111/iere.12575",
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/iere.12575",
+      "verification": "Publisher full text, native displayed equations and methodological sections inspected",
+      "locator": "Section3: equations(7),(9),(15)-(22); section4.1 Definition2 and equations(23)-(32); section4.2.2 equations(40)-(48), section4.2.5 validation.",
+      "supports": "Finite-state stochastic GE; endogenous asset distributions; collateral KKT wedges in asset Euler equations; common state-transition/policy expectations; budgets, market clearing and out-of-sample residual checks.",
+      "does_not_support": "Its collateral is capital backing a short bond, not our cash backing absolute futures exposure. Our exact constraint and subgradient follow our own budget/Lagrangian. The method does not guarantee global optimality or equilibrium uniqueness here.",
+      "checked_on": "2026-11-26"
+    },
+    {
+      "id": "DNH25",
+      "authors": "Shengwu Du; Travis D. Nesmith; Yanggen Heppe",
+      "year": 2025,
+      "title": "Does Financial Stress Affect Commodity Futures Traders’ Positions?",
+      "publication": "Federal Reserve Board Finance and Economics Discussion Series",
+      "volume": "2025-082r1",
+      "doi": "10.17016/FEDS.2025.082r1",
+      "url": "https://www.federalreserve.gov/econres/feds/does-financial-stress-affect-commodity-futures-traders-positions.htm",
+      "open_version": {
+        "version": "November2025 revision; author spelling follows revised PDF cover rather than older landing-page label",
+        "url": "https://www.federalreserve.gov/econres/feds/files/2025082r1pap.pdf"
+      },
+      "verification": "Official revised PDF cover, abstract, introduction and data section; official revision metadata",
+      "locator": "Revised PDF cover; printed pp.1-3; not the original September2025 PDF.",
+      "supports": "Empirical motivation to distinguish producers, intermediaries and financial stress; responses vary across episodes, so no universal sign should be imposed.",
+      "does_not_support": "Working paper, not a peer-reviewed journal article. It neither identifies our kappa shock nor supplies a lithium collateral calibration or a structural DSGE pricing equation.",
+      "checked_on": "2026-11-26"
+    },
+    {
+      "id": "BF22",
+      "authors": "David Baqaee; Emmanuel Farhi",
+      "year": 2022,
+      "title": "Supply and Demand in Disaggregated Keynesian Economies with an Application to the COVID-19 Crisis",
+      "publication": "American Economic Review",
+      "volume": "112(5)",
+      "pages": "1397-1436",
+      "doi": "10.1257/aer.20201229",
+      "url": "https://www.aeaweb.org/articles?id=10.1257/aer.20201229",
+      "open_version": {
+        "version": "AEA-hosted author/accepted manuscript, 63 pages; header says MONTH YEAR, exact manuscript date not printed; final publication metadata verified separately",
+        "url": "https://www.aeaweb.org/content/file?id=16066"
+      },
+      "verification": "AEA final publication metadata; accessible full manuscript, sections I.A, I.B, III Demand Shocks, IV CES production read directly",
+      "locator": "Author manuscript pp.7-8: final-consumption aggregator Y=C(c_1,...,c_N;omega_D), ideal price index, firm profit maximization and intermediate-goods market clearing; pp.10-11: demand shock changes expenditure shares at fixed prices/incomes; pp.19-20 equations (12)-(13): changing Cobb-Douglas final-demand weights; pp.22-23 equation (14): CES intermediate-input production. These are manuscript page numbers, not final journal pagination.",
+      "supports": "Microfounded final-demand composition shocks propagate through producer input demands and jointly clearing goods markets. CES production and Cobb-Douglas consumption are explicit cases. This supports classifying omega as a sectoral composition shock, not an unexplained additive demand residual.",
+      "does_not_support": "The exact lithium model two-input final-good aggregator, omega logistic AR map, coefficient calibration, or E03/E37 algebra are project assumptions and derivations. This paper has nominal wage rigidities, credit constraints and a two-period main model; none should be silently imported. Its CES example concerns production while final consumption stays Cobb-Douglas.",
+      "checked_on": "2026-11-26"
+    },
+    {
+      "id": "DS11",
+      "authors": "Michael B. Devereux; Alan Sutherland",
+      "year": 2011,
+      "title": "Country Portfolios in Open Economy Macro-Models",
+      "publication": "Journal of the European Economic Association",
+      "volume": "9(2)",
+      "pages": "337-369",
+      "doi": "10.1111/j.1542-4774.2010.01010.x",
+      "url": "https://doi.org/10.1111/j.1542-4774.2010.01010.x",
+      "open_version": {
+        "version": "Author manuscript revised September 2008, hosted by Alan Sutherland at University of St Andrews; final publication metadata separately verified",
+        "url": "https://www.st-andrews.ac.uk/~ajs10/papers/devereux-sutherland-country-portfolios.pdf"
+      },
+      "verification": "Publisher-indexed publication metadata; full author manuscript sections 2.2, 2.3, 3.2 and introduction read directly",
+      "locator": "2008 author manuscript pp.9-12; eqs.(12)-(15), especially (14) and Properties 1-2; pp.20-22 eq.(37) and footnote 21. First-order changing portfolios: pp.3-4 and 10. Constant-beta unit root: p.5. These are author-manuscript, not journal page numbers.",
+      "supports": "Second-order portfolio optimality differences identify zero-order holdings using first-order non-portfolio responses; numerical iteration over holdings is explicitly allowed. Constant-beta incomplete-market wealth roots can be neutral.",
+      "does_not_support": "Our specific three-owner futures formula, global uniqueness, binding-collateral regimes, or a complete second-order policy. A constant leading portfolio does not identify its first-order time variation.",
+      "checked_on": "2026-11-26"
+    },
+    {
+      "id": "TVW10",
+      "authors": "Cédric Tille; Eric van Wincoop",
+      "year": 2010,
+      "title": "International capital flows",
+      "publication": "Journal of International Economics",
+      "volume": "80(2)",
+      "pages": "157-175",
+      "doi": "10.1016/j.jinteco.2009.11.003",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0022199609001366",
+      "open_version": {
+        "version": "Federal Reserve Bank of New York Staff Report 280, March 2007; final publication metadata separately verified",
+        "url": "https://www.newyorkfed.org/medialibrary/media/research/staff_reports/sr280.pdf"
+      },
+      "verification": "Publisher-indexed final metadata and author institutional repository metadata; full NY Fed manuscript sections 3.3-3.5 read directly",
+      "locator": "2007 NY Fed manuscript p.9 eq.(8): pricing kernels and excess returns; p.11 eq.(11): portfolio Euler differential; p.12 Solution Algorithm; pp.19-20 first-order state-space solution eq.(29). These are working-paper page numbers.",
+      "supports": "Jointly determine zero-order portfolio differences and first-order other variables using second-order portfolio Euler differentials; one-order changing portfolios require third-order portfolio conditions and second-order other equations.",
+      "does_not_support": "Neither its country equity portfolios nor its trading frictions are our cash-collateralized lithium contract. No claim of replicating its full solution algorithm or journal-version equation numbering.",
+      "checked_on": "2026-11-26"
     }
   ]
 }

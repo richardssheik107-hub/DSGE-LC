@@ -710,7 +710,7 @@
       "test_zero_risk_hedges_are_not_uniquely_identified (test_equation_chain.EquationChainTests.test_zero_risk_hedges_are_not_uniquely_identified) ... ok",
       "",
       "----------------------------------------------------------------------",
-      "Ran 17 tests in 0.092s",
+      "Ran 17 tests in 0.090s",
       "",
       "OK"
     ]
@@ -729,8 +729,11 @@
   "source_sha256": {
     "model/dsge/__init__.py": "01b7e48e2008200ca51cb4b4b7407fe55316c959d90c3c5f3deb03ac3ca26cfb",
     "model/dsge/economy.py": "2fb681fe2dff6959042fa647e035e13509b26d9f7291d75bfd5e59c6a7a478e5",
+    "model/dsge/linear_re.py": "78ecd6888ec66ce8832560831cfb7dd6f1f881f19ba97fe6c729d577d78a188a",
+    "model/dsge/local_projection.py": "0d77499767b34571e46fcc24523c3e0fb5825b8f076a0a6769a8c6feafd9ace9",
     "model/dsge/parameters.py": "ef2e4660ebd5af1b92bba52f48f3e06b6c998c7b8a87491a5744ddf0d6164e07",
     "model/dsge/residuals.py": "77f396dc5eea312a8122e65d5ee86e63eff0d7691a262c2ee9368d9a1b9c299c",
+    "model/dsge/shock_audit.py": "e6c64ac9dc3710b6d316782f600cac43cd1a4d97b1b52885c668efb257f0576c",
     "model/dsge/shocks.py": "d8e526676ca29ae6726ea34f8845ee61fbc34c50894abed6a37f6d7cec2bc3ac",
     "model/dsge/state.py": "8e9c06b2d9ef44c9c7ff911d236bc3b68bc05dccbe124226b985d255b4063f00",
     "model/dsge/steady_state.py": "6e8818961324a654707744dcb4439c9803094d6b11293dc8b7b99a3fdaed9349",

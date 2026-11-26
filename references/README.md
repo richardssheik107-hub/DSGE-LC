@@ -1,6 +1,6 @@
 # 当前文献入口与核验边界
 
-机器登记见 [library.json](library.json)。**组内生猪稿是主要结构参考**；下列经典和权威原始文献用于核对个别经济机制和求解方法。它们不替代组内稿，也不为LC具体参数、结果或新设定提供自动背书。
+机器登记见 [library.json](library.json)。**组内生猪稿是主要结构参考**；近期原始研究和经典文献用于核对具体经济关系及求解方法。新关系式与2021—2025年来源的对应见[10近年文献依据](../docs/10_recent_literature.md)。文献不替代组内稿，也不为LC参数、结果和新增假设提供自动背书。
 
 ## 主参考与组会材料
 
@@ -10,6 +10,22 @@
 | LC-MEETING | 《组会-李江涛_11.13》，用户提供Word；本次渲染13页，重点第10—13页 | 保留LC已有的建设、爬坡、库存、采购、随机核与共同政策预期机制，核对历史进度 |
 
 原稿的文件指纹和逐页核查在 [02文献对齐](../docs/02_group_paper_alignment.md)。未确认生猪稿的正式发表状态，文件名不是发表日期。只登记必要分析，不上传Word、完整提取文本或原论文全文。稿内实证结果未复现，不引用为LC结果。
+
+## 本轮新增的近年来源
+
+| ID | 年份与来源 | 当前用途与边界 |
+|---|---|---|
+| GL25 | Gouel与Legrand，2025，Quantitative Economics，DOI 10.3982/QE2329 | 成本与需求冲击、随机库存政策、价格数量联合信息；式号据2023作者稿，不混作期刊页码 |
+| GMS24 | Gouel、Ma与Stachurski，2024，Journal of Economic Theory，DOI 10.1016/j.jet.2024.105915 | 未来价格与随机贴现同处期望的库存条件；其外生折现存在性结论不直接移植到本模型 |
+| BF22 | Baqaee与Farhi，2022，American Economic Review，DOI 10.1257/aer.20201229 | 最终需求、生产联系和清算；本文两部门和预定投入技术自行设定 |
+| KL22 | Kekre与Lenel，2022，Econometrica，DOI 10.3982/ECTA18014 | 财富异质性、风险承担与资产价格；原文EZ偏好不是本文CRRA式的逐字来源 |
+| CKKT24 | Charoenwong等，2024，Journal of Financial Economics，DOI 10.1016/j.jfineco.2024.103779 | 投资计划、投产时滞与不确定性的动机；已核摘要/导言，不编造具体式号 |
+| AGS22 | Azinovic等，2022，International Economic Review，DOI 10.1111/iere.12575 | 资产预算、抵押KKT、递归均衡与数值核验；本项目现金抵押合约为自设 |
+| MMW21 | Maliar、Maliar与Winant，2021，Journal of Monetary Economics，DOI 10.1016/j.jmoneco.2021.07.004 | 随机积分与经济残差验证；不据引文声称本项目使用深度学习 |
+| B21 | Baker，2021，Management Science，DOI 10.1287/mnsc.2019.3445 | 延续组会的库存、期货和参与结构讨论；作者稿为滚动MV主体，不是CRRA依据 |
+| DNH25 | Du、Nesmith与Yanggen Heppe，2025年11月修订FEDS工作论文，DOI 10.17016/FEDS.2025.082r1 | 金融压力与分类持仓的经验动机；不是期刊终稿，不识别本文κ创新 |
+
+完整题名、作者、卷页、URL、所读版本和支持边界见[JSON](library.json)及[10](../docs/10_recent_literature.md)。新E21抵押式、E27风险溢价分解和具体LC成本/队列由本项目原始问题设定与推导，不把机制依据写成逐字公式来源。
 
 ## 经典文献怎样服务本项目
 

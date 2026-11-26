@@ -1,0 +1,28 @@
+{
+  "model_id": "LC_DSGE_EQCHAIN_20261126",
+  "date": "2026-11-26",
+  "source": "reports/2026-11-26_weekly_dsge/meeting_report_20261126.md",
+  "source_sha256": "cba18252da06ea1145acdef98b254d7428b4675440f8eef32cfc976a1853d3ff",
+  "build_script_sha256": "24bf8f0e3ed59b54ab0d5f2e331146bb63984ba36ff3969925f71acade92e7c2",
+  "docx": "reports/2026-11-26_weekly_dsge/meeting_report_20261126.docx",
+  "docx_sha256": "8633923c6c356137b4d6ea82be50a018d31e4cebc54031238f7d5b75fd043fb7",
+  "editable_office_math_count": 41,
+  "display_equation_count": 14,
+  "figures": 2,
+  "tables": 2,
+  "style_reference": {
+    "source_name": "组会-李江涛_11.13.docx",
+    "source_sha256": "db3472e1961f12126d6aff9a5d53765c6fcd155fb6a5f6873dc324c636d0bef3",
+    "meeting_entries": [
+      "10.23",
+      "10.30",
+      "11.6",
+      "11.13"
+    ],
+    "source_document_republished": false,
+    "page": "A4, 2 cm margins",
+    "body": "11 pt Chinese serif / Times New Roman, 1.15 line spacing",
+    "equations": "native editable Office Math"
+  },
+  "publication_scope": "synthetic local first-order RE and leading zero-order portfolio; not full nonlinear or estimated results"
+}

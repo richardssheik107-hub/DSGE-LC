@@ -1,10 +1,10 @@
 # 当前任务：建设完整 DSGE
 
-用户在 2026-11-26 明确选择完整 DSGE，并要求旧实验、旧文档集中归档。此决定取代前一轮优先部分均衡的建议，也取代冻结版本的“唯一现行 E01—E31”约束。先读 README.md、project.json、docs/01_repository_audit.md、docs/02_group_paper_alignment.md、docs/03_dsge_blueprint.md、docs/04_implementation_plan.md、docs/05_validation_and_data.md、现行规范docs/06_equation_chain.md、冲击docs/07_shock_transmission.md和逐组迁移docs/08_legacy_equation_map.md。
+用户在 2026-11-26 明确选择完整 DSGE，并要求旧实验、旧文档集中归档。此决定取代前一轮优先部分均衡的建议，也取代冻结版本的“唯一现行 E01—E31”约束。先读 README.md、project.json、docs/01_repository_audit.md、docs/02_group_paper_alignment.md、docs/03_dsge_blueprint.md、docs/04_implementation_plan.md、docs/05_validation_and_data.md、现行规范docs/06_equation_chain.md、冲击docs/07_shock_transmission.md、逐组迁移docs/08_legacy_equation_map.md、本轮计算docs/09_stochastic_computation.md、近期来源docs/10_recent_literature.md、冲击审计docs/11_shock_audit.md及reports/2026-11-26_weekly_dsge/meeting_report_20261126.md。
 
 ## 当前模型与研究纪律
 
-- 当前候选 LC_DSGE_EQCHAIN_20261126 已有E01—E40规范、原条件评估器及合成确定性平稳KKT锚；尚无完整正风险政策、估计或导师通过结论。不得以新目录名、方程数、旧50项测试或旧GIRF替代经济验证。
+- 当前 LC_DSGE_EQCHAIN_20261126 阶段为 LOCAL_STOCHASTIC_SOLUTION_AND_VALIDATION。已完成E01—E40、原条件评估器、合成确定性锚、选定松弛分支的一阶随机理性预期解、二阶协方差条件选择的零阶期货组合和局部条件均值IRF。完整正风险非线性政策、全局存在/最优、真实估计和导师通过结论仍未完成。不得以旧测试或旧PE图替代本模型证据。
 - 组内生猪稿是主体组织与研究问题的主要参考；经典文献用于核查期望、预算、资源与资产定价。必须区分原稿记载、本文修正与新假设。
 - 先主体/信息/时点，后原始目标与预算、最优条件、实物及资产市场、状态与观测、求解与识别。先做可闭合的基线，再逐项扩展。
 - 碳酸锂是中间品，最终消费与采购承诺使用不同符号；Q、实际耗用、I、下一期承诺C和期货头寸不得混账。
@@ -14,7 +14,9 @@
 - 预期、价格矩、SDF与影子价值来自同一政策、信息和随机核。状态必须包含未结算头寸/财富或经济上等价的压缩状态，不能因为结算零和就丢失财富分配。
 - 保留库存/投资/产能互补、L=1与R=0边界；不得clip非法路径。个体价格接受与总体价格政策分开。
 - 区分冲击创新、持续状态、确定性已知路径、测量误差和波动率冲击。不得预先固定完整均衡的响应符号。
-- 采用一阶扰动时不得据此宣称已识别时变风险溢价；固定非零风险的投影次数也不是扰动阶数。
+- 采用一阶扰动时不得据此宣称已识别时变风险溢价；固定非零风险的投影次数也不是扰动阶数。三条期货FOC在确定性锚的一阶切线秩为1，零阶组合由二阶协方差条件选择；一阶持仓斜率仍未识别，不能将其暂取零称为最优持仓不调整。
+- 当前局部解有3个受冲击激发的财富单位根；不得宣称已验证平稳财富分布、平稳无条件方差或FEVD。仅在本局部全程松弛分支，抵押创新响应为零；不能将此推广为所有未来约束概率下均无金融效应。
+- results/local_stochastic是当前局部解和条件均值响应，不是行业校准、预测或非线性GIRF。350步非线性投影被原条件、转移稳定性和可达后继抵押检查拒绝；失败证据必须保留，不得混作成功政策。
 
 ## 归档与数据
 
@@ -26,6 +28,6 @@
 
 ## 验证与发布
 
-默认检查为 python scripts/check_repository.py（规范/证据哈希与归档保全）和 python scripts/validate_equation_chain.py（新模型锚与回归）。修改经济代码后须用 --write-report 重建证据；旧门槛不继承。方程唯一规范为docs/06_equation_chain.md，E01—E31保留编号不意味着原式不变；不得将36+L+R计数当独立秩证明。共同β、0<δ<1及选定稳态分支是当前数值子域。单点评估不能声明已解随机政策。
+默认检查在project.json的checks：check_repository.py只读核对规范、数值证据、IRF/快照、图表指纹和归档；validate_equation_chain.py复算锚与原17项测试；validate_shocks.py复算冲击审计；solve_stochastic.py复算局部随机解；unittest发现当前全部测试。修改经济代码后重建相应证据，旧门槛不继承。完整随机证据生成命令为 OPENBLAS_NUM_THREADS=1 python scripts/solve_stochastic.py --fit-projection --max-nfev 350 --write-report；已有失败投影记录时，普通--write-report被保护性拒绝，不能静默抹去失败证据。方程唯一规范为docs/06_equation_chain.md，E01—E31保留编号不意味着原式不变；不得将36+L+R计数当独立秩证明。共同β、0<δ<1及选定稳态分支是当前数值子域。单点评估不能声明已解随机政策。
 
 禁止force push、删除历史分支、git reset --hard、git clean或清理未知用户文件。明确路径写入，审查差异，读取远端头，以预期SHA作非强制快进。没有实际执行，不报告已提交、已运行、已复现或已通过。
